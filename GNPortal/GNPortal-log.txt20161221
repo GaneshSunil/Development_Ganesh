@@ -1,0 +1,610 @@
+2016-12-21 12:05:20,633 [10] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:05:26,574 [9] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:05:36,842 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:24:14,869 [38] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:24:27,855 [38] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:24:30,534 [38] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:24:34,830 [40] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:30:51,302 [40] WARN  GenomeNext.App.BamViewerService - Unable to consume one or more Messages
+System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+2016-12-21 12:30:51,321 [40] WARN  GenomeNext.App.AnalysisRequestService - Unable to read message from GN_BAM_VIEWER queue.
+System.Exception: Unable to read message from GN_BAM_VIEWER queue. ---> System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 111
+   at GenomeNext.App.BamViewerService.CheckNewMessages() in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 49
+   at GenomeNext.App.AnalysisRequestService.WaitForBamViewerResponse(Guid analysisId) in f:\GitHub\webapp\GNApp\AnalysisService.cs:line 1811
+   --- End of inner exception stack trace ---
+2016-12-21 12:30:54,764 [40] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:31:02,179 [32] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:34:38,541 [32] WARN  GenomeNext.App.BamViewerService - Unable to consume one or more Messages
+System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+2016-12-21 12:34:38,545 [32] WARN  GenomeNext.App.AnalysisRequestService - Unable to read message from GN_BAM_VIEWER queue.
+System.Exception: Unable to read message from GN_BAM_VIEWER queue. ---> System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 111
+   at GenomeNext.App.BamViewerService.CheckNewMessages() in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 49
+   at GenomeNext.App.AnalysisRequestService.WaitForBamViewerResponse(Guid analysisId) in f:\GitHub\webapp\GNApp\AnalysisService.cs:line 1811
+   --- End of inner exception stack trace ---
+2016-12-21 12:34:59,470 [32] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:35:21,321 [22] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:37:09,526 [22] WARN  GenomeNext.App.BamViewerService - Unable to consume one or more Messages
+System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+2016-12-21 12:37:09,531 [22] WARN  GenomeNext.App.AnalysisRequestService - Unable to read message from GN_BAM_VIEWER queue.
+System.Exception: Unable to read message from GN_BAM_VIEWER queue. ---> System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 111
+   at GenomeNext.App.BamViewerService.CheckNewMessages() in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 49
+   at GenomeNext.App.AnalysisRequestService.WaitForBamViewerResponse(Guid analysisId) in f:\GitHub\webapp\GNApp\AnalysisService.cs:line 1811
+   --- End of inner exception stack trace ---
+2016-12-21 12:37:15,053 [22] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:37:20,457 [22] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:38:30,530 [27] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:38:38,579 [27] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:39:24,274 [22] WARN  GenomeNext.App.BamViewerService - Unable to consume one or more Messages
+System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+2016-12-21 12:39:24,770 [22] WARN  GenomeNext.App.AnalysisRequestService - Unable to read message from GN_BAM_VIEWER queue.
+System.Exception: Unable to read message from GN_BAM_VIEWER queue. ---> System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 111
+   at GenomeNext.App.BamViewerService.CheckNewMessages() in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 49
+   at GenomeNext.App.AnalysisRequestService.WaitForBamViewerResponse(Guid analysisId) in f:\GitHub\webapp\GNApp\AnalysisService.cs:line 1811
+   --- End of inner exception stack trace ---
+2016-12-21 12:41:03,260 [27] WARN  GenomeNext.App.BamViewerService - Unable to consume one or more Messages
+System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+2016-12-21 12:41:03,349 [27] WARN  GenomeNext.App.AnalysisRequestService - Unable to read message from GN_BAM_VIEWER queue.
+System.Exception: Unable to read message from GN_BAM_VIEWER queue. ---> System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 111
+   at GenomeNext.App.BamViewerService.CheckNewMessages() in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 49
+   at GenomeNext.App.AnalysisRequestService.WaitForBamViewerResponse(Guid analysisId) in f:\GitHub\webapp\GNApp\AnalysisService.cs:line 1811
+   --- End of inner exception stack trace ---
+2016-12-21 12:41:18,767 [17] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:41:39,016 [22] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:41:55,778 [22] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:44:38,037 [22] WARN  GenomeNext.App.BamViewerService - Unable to consume one or more Messages
+System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+2016-12-21 12:44:38,048 [22] WARN  GenomeNext.App.AnalysisRequestService - Unable to read message from GN_BAM_VIEWER queue.
+System.Exception: Unable to read message from GN_BAM_VIEWER queue. ---> System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 111
+   at GenomeNext.App.BamViewerService.CheckNewMessages() in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 49
+   at GenomeNext.App.AnalysisRequestService.WaitForBamViewerResponse(Guid analysisId) in f:\GitHub\webapp\GNApp\AnalysisService.cs:line 1811
+   --- End of inner exception stack trace ---
+2016-12-21 12:48:01,098 [6] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:48:12,982 [9] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:50:18,841 [9] WARN  GenomeNext.App.BamViewerService - Unable to consume one or more Messages
+System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+2016-12-21 12:50:18,854 [9] WARN  GenomeNext.App.AnalysisRequestService - Unable to read message from GN_BAM_VIEWER queue.
+System.Exception: Unable to read message from GN_BAM_VIEWER queue. ---> System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 111
+   at GenomeNext.App.BamViewerService.CheckNewMessages() in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 49
+   at GenomeNext.App.AnalysisRequestService.WaitForBamViewerResponse(Guid analysisId) in f:\GitHub\webapp\GNApp\AnalysisService.cs:line 1811
+   --- End of inner exception stack trace ---
+2016-12-21 12:50:54,033 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:51:04,554 [6] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:51:10,937 [21] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:51:46,837 [21] WARN  GenomeNext.App.BamViewerService - Unable to consume one or more Messages
+System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+2016-12-21 12:51:46,850 [21] WARN  GenomeNext.App.AnalysisRequestService - Unable to read message from GN_BAM_VIEWER queue.
+System.Exception: Unable to read message from GN_BAM_VIEWER queue. ---> System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 111
+   at GenomeNext.App.BamViewerService.CheckNewMessages() in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 49
+   at GenomeNext.App.AnalysisRequestService.WaitForBamViewerResponse(Guid analysisId) in f:\GitHub\webapp\GNApp\AnalysisService.cs:line 1811
+   --- End of inner exception stack trace ---
+2016-12-21 12:57:02,111 [34] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:57:45,695 [8] WARN  GenomeNext.App.BamViewerService - Unable to consume one or more Messages
+System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+2016-12-21 12:57:45,700 [8] WARN  GenomeNext.App.AnalysisRequestService - Unable to read message from GN_BAM_VIEWER queue.
+System.Exception: Unable to read message from GN_BAM_VIEWER queue. ---> System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 111
+   at GenomeNext.App.BamViewerService.CheckNewMessages() in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 49
+   at GenomeNext.App.AnalysisRequestService.WaitForBamViewerResponse(Guid analysisId) in f:\GitHub\webapp\GNApp\AnalysisService.cs:line 1811
+   --- End of inner exception stack trace ---
+2016-12-21 12:58:13,676 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:58:22,318 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 12:59:22,948 [8] WARN  GenomeNext.App.BamViewerService - Unable to consume one or more Messages
+System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+2016-12-21 12:59:22,952 [8] WARN  GenomeNext.App.AnalysisRequestService - Unable to read message from GN_BAM_VIEWER queue.
+System.Exception: Unable to read message from GN_BAM_VIEWER queue. ---> System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\6b1e8283-3920-4b67-adda-d6ef67ab1bb2'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 177
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 111
+   at GenomeNext.App.BamViewerService.CheckNewMessages() in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 49
+   at GenomeNext.App.AnalysisRequestService.WaitForBamViewerResponse(Guid analysisId) in f:\GitHub\webapp\GNApp\AnalysisService.cs:line 1811
+   --- End of inner exception stack trace ---
+2016-12-21 13:08:21,380 [6] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 13:10:10,744 [7] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 13:11:20,698 [19] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 13:12:23,465 [5] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 13:13:20,479 [5] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 13:15:16,085 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 13:15:21,961 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 13:15:55,606 [8] WARN  GenomeNext.App.BamViewerService - Unable to consume one or more Messages
+System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\Sites\GNPortal-1.1\jbrowse\a157afeb-c80c-4891-aebd-3ac005d77e57'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.Directory.InternalCreateDirectory(String fullPath, String path, Object dirSecurityObj, Boolean checkHost)
+   at System.IO.Directory.InternalCreateDirectoryHelper(String path, Boolean checkHost)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 173
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+2016-12-21 13:15:55,622 [8] WARN  GenomeNext.App.AnalysisRequestService - Unable to read message from GN_BAM_VIEWER queue.
+System.Exception: Unable to read message from GN_BAM_VIEWER queue. ---> System.Exception: Unable to consume one or more Messages ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\Sites\GNPortal-1.1\jbrowse\a157afeb-c80c-4891-aebd-3ac005d77e57'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.Directory.InternalCreateDirectory(String fullPath, String path, Object dirSecurityObj, Boolean checkHost)
+   at System.IO.Directory.InternalCreateDirectoryHelper(String path, Boolean checkHost)
+   at GenomeNext.App.BamViewerService.CopyFiles(DirectoryInfo source, DirectoryInfo target) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 173
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 91
+   --- End of inner exception stack trace ---
+   at GenomeNext.App.BamViewerService.ConsumeMessages(Int32 visibilityTimeout) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 111
+   at GenomeNext.App.BamViewerService.CheckNewMessages() in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 49
+   at GenomeNext.App.AnalysisRequestService.WaitForBamViewerResponse(Guid analysisId) in f:\GitHub\webapp\GNApp\AnalysisService.cs:line 1811
+   --- End of inner exception stack trace ---
+2016-12-21 13:16:16,246 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 13:16:33,048 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 13:18:50,255 [18] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:45:36,357 [6] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:45:45,291 [5] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:45:56,296 [6] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:45:58,710 [6] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:49:15,605 [6] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 203
+   --- End of inner exception stack trace ---
+2016-12-21 18:50:12,291 [11] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:50:14,912 [6] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:51:24,065 [6] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 203
+   --- End of inner exception stack trace ---
+2016-12-21 18:51:48,996 [11] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:51:49,694 [6] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:52:30,105 [6] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 203
+   --- End of inner exception stack trace ---
+2016-12-21 18:53:04,320 [6] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:53:06,906 [11] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:54:11,252 [11] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 202
+   --- End of inner exception stack trace ---
+2016-12-21 18:54:22,358 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:54:57,643 [6] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:54:59,470 [11] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:56:18,116 [11] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 202
+   --- End of inner exception stack trace ---
+2016-12-21 18:56:49,636 [26] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:56:59,085 [6] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 18:59:33,102 [6] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 202
+   --- End of inner exception stack trace ---
+2016-12-21 19:00:59,756 [17] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:01:27,854 [13] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:01:43,188 [13] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.NotSupportedException: The given path's format is not supported.
+   at System.Security.Util.StringExpressionSet.CanonicalizePath(String path, Boolean needFullPath)
+   at System.Security.Util.StringExpressionSet.CreateListFromExpressions(String[] str, Boolean needFullPath)
+   at System.Security.Permissions.FileIOPermission.AddPathList(FileIOPermissionAccess access, AccessControlActions control, String[] pathListOrig, Boolean checkForDuplicates, Boolean needFullPath, Boolean copyPathList)
+   at System.Security.Permissions.FileIOPermission.AddPathList(FileIOPermissionAccess access, String[] pathListOrig, Boolean checkForDuplicates, Boolean needFullPath, Boolean copyPathList)
+   at System.IO.Directory.InternalCreateDirectoryHelper(String path, Boolean checkHost)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 204
+   --- End of inner exception stack trace ---
+2016-12-21 19:02:10,256 [17] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:02:31,720 [17] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:03:32,914 [17] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 209
+   --- End of inner exception stack trace ---
+2016-12-21 19:06:28,763 [28] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:06:40,068 [35] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:07:46,115 [35] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 216
+   --- End of inner exception stack trace ---
+2016-12-21 19:16:32,931 [7] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:18:26,698 [7] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:20:51,048 [7] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 216
+   --- End of inner exception stack trace ---
+2016-12-21 19:21:19,057 [7] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:21:42,444 [18] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:22:37,479 [18] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 216
+   --- End of inner exception stack trace ---
+2016-12-21 19:23:55,806 [7] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:24:21,469 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:25:01,858 [8] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 216
+   --- End of inner exception stack trace ---
+2016-12-21 19:28:06,520 [18] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:28:20,440 [18] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:29:02,913 [18] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 241
+   --- End of inner exception stack trace ---
+2016-12-21 19:29:37,502 [25] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:29:55,978 [22] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:31:19,695 [22] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 241
+   --- End of inner exception stack trace ---
+2016-12-21 19:31:24,948 [29] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:31:28,585 [22] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:32:30,454 [3] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:32:37,826 [3] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:33:00,854 [22] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 241
+   --- End of inner exception stack trace ---
+2016-12-21 19:33:05,723 [3] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 241
+   --- End of inner exception stack trace ---
+2016-12-21 19:34:39,732 [5] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:35:07,518 [5] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:35:55,279 [5] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 241
+   --- End of inner exception stack trace ---
+2016-12-21 19:36:50,278 [5] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:37:00,889 [9] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:38:24,970 [9] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 241
+   --- End of inner exception stack trace ---
+2016-12-21 19:38:58,149 [9] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:39:04,610 [10] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:39:48,624 [10] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 241
+   --- End of inner exception stack trace ---
+2016-12-21 19:40:28,906 [9] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:40:28,906 [10] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:41:16,927 [10] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The operation completed successfully
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 241
+   --- End of inner exception stack trace ---
+2016-12-21 19:41:45,760 [9] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:41:45,760 [10] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:42:30,054 [10] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 241
+   --- End of inner exception stack trace ---
+2016-12-21 19:43:14,545 [9] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:43:14,545 [10] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:43:49,750 [10] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 241
+   --- End of inner exception stack trace ---
+2016-12-21 19:44:29,990 [9] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:45:03,755 [9] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:45:33,559 [9] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 241
+   --- End of inner exception stack trace ---
+2016-12-21 19:48:15,453 [23] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:48:16,597 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:48:29,668 [8] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\a157afeb-c80c-4891-aebd-3ac005d77e57'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.Directory.InternalGetFileDirectoryNames(String path, String userPathOriginal, String searchPattern, Boolean includeFiles, Boolean includeDirs, SearchOption searchOption, Boolean checkHost)
+   at System.IO.Directory.InternalGetDirectories(String path, String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 217
+   --- End of inner exception stack trace ---
+2016-12-21 19:48:38,853 [23] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:48:54,197 [23] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\a157afeb-c80c-4891-aebd-3ac005d77e57'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.Directory.InternalGetFileDirectoryNames(String path, String userPathOriginal, String searchPattern, Boolean includeFiles, Boolean includeDirs, SearchOption searchOption, Boolean checkHost)
+   at System.IO.Directory.InternalGetDirectories(String path, String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 217
+   --- End of inner exception stack trace ---
+2016-12-21 19:49:46,649 [23] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:49:54,246 [20] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:50:21,645 [20] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'Z:\a157afeb-c80c-4891-aebd-3ac005d77e57'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.Directory.InternalGetFileDirectoryNames(String path, String userPathOriginal, String searchPattern, Boolean includeFiles, Boolean includeDirs, SearchOption searchOption, Boolean checkHost)
+   at System.IO.Directory.InternalGetDirectories(String path, String searchPattern, SearchOption searchOption)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 217
+   --- End of inner exception stack trace ---
+2016-12-21 19:51:16,797 [9] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:51:16,821 [20] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 19:52:29,235 [9] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.ComponentModel.Win32Exception: The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 254
+   --- End of inner exception stack trace ---
+2016-12-21 20:24:46,456 [11] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 20:24:47,865 [13] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 20:24:48,863 [13] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\Sites\GNPortal-1.1\jbrowse\a157afeb-c80c-4891-aebd-3ac005d77e57'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.Directory.InternalCreateDirectory(String fullPath, String path, Object dirSecurityObj, Boolean checkHost)
+   at System.IO.Directory.InternalCreateDirectoryHelper(String path, Boolean checkHost)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 168
+   --- End of inner exception stack trace ---
+2016-12-21 20:28:01,897 [22] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-21 20:28:02,083 [22] WARN  GenomeNext.App.BamViewerService - !!!!! Unable to consume Message !!!!!
+{
+"analysisId" : "a157afeb-c80c-4891-aebd-3ac005d77e57"
+}
+System.Exception: !!!!! Unable to consume Message !!!!! ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\Sites\GNPortal-1.1\jbrowse\a157afeb-c80c-4891-aebd-3ac005d77e57'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.Directory.InternalCreateDirectory(String fullPath, String path, Object dirSecurityObj, Boolean checkHost)
+   at System.IO.Directory.InternalCreateDirectoryHelper(String path, Boolean checkHost)
+   at GenomeNext.App.BamViewerService.ConsumeMessage(Object queueMessage) in f:\GitHub\webapp\GNApp\BamViewerService.cs:line 168
+   --- End of inner exception stack trace ---

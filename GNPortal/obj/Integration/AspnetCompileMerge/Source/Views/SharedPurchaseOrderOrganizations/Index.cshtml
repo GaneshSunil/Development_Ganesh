@@ -1,0 +1,74 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNSharedPurchaseOrderOrganization>
+
+@{
+    ViewBag.Title = "Shared Purchase Orders Across Organizations";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-euro gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Create New", "Create", "SharedPurchaseOrderOrganizations", null, "info", "plus")
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn small">
+        <tr>
+            <th>Organization</th>
+            <th>Purchase Order</th>
+            <th>Invoice</th>
+            <th class="text-right">Amount Billed on Invoice</th>
+            <th>Notes</th>
+            <th>Date</th>
+            <th class="col-md-1"></th>
+        </tr>
+
+        @if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td class="col-md-3">
+                        @Html.DisplayFor(modelItem => item.GNInvoice.Account.Organization.Name)
+                    </td>
+                    <td class="col-md-3">
+                        <span class="small">Internal system id @Html.DisplayFor(modelItem => item.GNPurchaseOrder.Id)</span>
+                        <br />External PO #: @Html.DisplayFor(modelItem => item.GNPurchaseOrder.ExternalPONum)
+                        <br />Current Balance: @Html.DisplayFor(modelItem => item.GNPurchaseOrder.Balance)
+                    </td>
+                    <td class="col-md-3">
+                        <span class="small">Id: @Html.DisplayFor(modelItem => item.GNInvoiceId)</span>
+                        <br />Date Created: @Html.DisplayFor(modelItem => item.GNInvoice.InvoiceStartDate)
+                        <br />Cycle: @Html.DisplayFor(modelItem => item.GNInvoice.InvoiceCycle)
+                    </td>
+                    <td class="col-md-1 text-right" style="margin-right:5px;">
+                        @string.Format("{0:$#,###.##}", item.AmountBilledOnInvoice)                        
+                    </td>
+                    <td>
+                        <textarea cols="15" rows="3">@Html.DisplayFor(modelItem => item.Notes)</textarea>
+                    </td>
+                    <td class="col-md-1 text-center">
+                        @Html.DisplayFor(modelItem => item.CreateDateTime)
+                    </td>
+                    <td class="col-md-2">
+                        @Html.BootstrapActionButton("", "Edit", "SharedPurchaseOrderOrganizations", new RouteValueDictionary(new { id = item.Id }), "success", "pencil", "sm")
+                        @Html.BootstrapActionButton("", "Delete", "SharedPurchaseOrderOrganizations", new RouteValueDictionary(new { id = item.Id }), "danger", "trash", "sm")
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8">
+                    No records found.
+                </td>
+            </tr>
+       }
+
+
+</table>
+</div>

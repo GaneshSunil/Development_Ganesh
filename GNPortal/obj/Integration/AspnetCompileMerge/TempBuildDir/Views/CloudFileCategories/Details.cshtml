@@ -1,0 +1,68 @@
+﻿@model GenomeNext.Data.EntityModel.GNCloudFileCategory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-cloud gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @if (!string.IsNullOrEmpty(Request["organizationId"]))
+        {
+            @Html.BootstrapActionButton("Back to List", "Index", "CloudFileCategories", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "chevron-left")
+            @Html.Raw("&nbsp;")
+            @Html.BootstrapActionButton("Edit", "Edit", "CloudFileCategories", new RouteValueDictionary(new { id = Model.Id, organizationId = Request["organizationId"] }), "warning", "cog", null)
+        }
+        else
+        {
+            @Html.BootstrapActionButton("Back to List", "Index", "CloudFileCategories", null, "info", "chevron-left")
+            @Html.Raw("&nbsp;")
+            @Html.BootstrapActionButton("Edit", "Edit", "CloudFileCategories", new RouteValueDictionary(new { id = Model.Id }), "warning", "cog", null)
+        }
+    </span>
+</h2>
+@Html.BootstrapRowSpacer()
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.BootstrapRowSpacer()
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Type)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Type)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FileExtensions)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FileExtensions)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FolderPath)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FolderPath)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+}

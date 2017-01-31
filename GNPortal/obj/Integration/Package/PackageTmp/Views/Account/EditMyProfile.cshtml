@@ -1,0 +1,108 @@
+﻿@model GenomeNext.Data.EntityModel.GNContact
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/profile.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/profile_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/profile_white_green.png";
+    ViewData["ModuleHasActionBar"] = true;
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "My Profile";
+}
+
+@section ModuleIndexHeadingActionBar{
+    <div class="pull-right" style="padding-top:20px;">
+        <a href="#" class="text-uppercase white"
+           onclick="$('form[action=\'@(HttpContext.Current.Request.Url.AbsolutePath)\']').submit();">
+            Save Profile&nbsp;
+            <span class="glyphicon glyphicon-floppy-disk"></span>
+        </a>
+    </div>
+}
+
+@section ModuleIndexContent{
+
+<div class="col-md-12 panel form-horizontal bg-white">
+
+    @Html.BootstrapRowSpacer()
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+
+        @Html.BootstrapRowSpacer()
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <dl class="dl-horizontal col-md-6">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GNOrganization)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GNOrganization.Name)
+                    </dd>
+
+                    @Html.FormFieldFor(model => model.Title)
+                    @Html.FormFieldFor(model => model.FirstName)
+                    @Html.FormFieldFor(model => model.LastName)
+
+                    @Html.FormFieldFor(model => model.Email, false)
+
+                    @Html.FormFieldFor(model => model.Phone)
+                    @Html.FormFieldFor(model => model.Fax)
+                    @Html.FormFieldFor(model => model.Website)
+
+                </dl>
+                <dl class="dl-horizontal col-md-6">
+
+                    @Html.FormFieldFor(model => model.StreetAddress1)
+                    @Html.FormFieldFor(model => model.StreetAddress2)
+                    @Html.FormFieldFor(model => model.City)
+                    @Html.FormFieldFor(model => model.State)
+                    @Html.FormFieldFor(model => model.Zip)
+
+                    <div class="form-group">
+                        <label class='control-label col-md-4'>@Html.DisplayNameFor(model => model.TermsAcceptDateTime)</label>
+                        <div class='col-md-8'>
+                            @TimeZoneInfo.ConvertTime(Model.TermsAcceptDateTime.GetValueOrDefault(), contactForUser.GNOrganization.OrgTimeZoneInfo)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class='control-label col-md-4'>@Html.DisplayNameFor(model => model.PrivacyPolicyAcceptDateTime)</label>
+                        <div class='col-md-8'>
+                            @TimeZoneInfo.ConvertTime(Model.PrivacyPolicyAcceptDateTime.GetValueOrDefault(), contactForUser.GNOrganization.OrgTimeZoneInfo)
+                        </div>
+                    </div>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GNContactRoles)
+                    </dt>
+
+                    <dd>
+                        @if (Model.GNContactRoles != null && Model.GNContactRoles.Count != 0)
+                        {
+                            foreach (var contactRole in Model.GNContactRoles)
+                            {
+                                @contactRole.AspNetRole.Name
+                                <br />
+                            }
+                        }
+                        else
+                        {
+                            @("No Roles Assigned.")
+                        }
+                    </dd>
+
+                </dl>
+
+            </div>
+        </div>
+    }
+</div>
+}
+

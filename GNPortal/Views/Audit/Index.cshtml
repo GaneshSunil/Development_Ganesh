@@ -1,0 +1,359 @@
+﻿@model IEnumerable<GenomeNext.Data.Metadata.Audit.GNAudit>
+
+@{
+    ViewBag.Title = "Audit Records";
+
+    //Setup Values for Searchable List Table/Control/Partials
+    int resultsColSpan = 7;
+    ViewData["ResultsColSpan"] = resultsColSpan;
+    ViewData["SearchListItemsCount"] = Model.Count();
+
+    ViewData["SearchTextActions"] = new string[] { "All", "VIEW", "CREATE", "UPDATE", "DELETE", "VIEW_INDEX_UI", "VIEW_DETAILS_UI", "START_ANALYSIS", "MARK_ANALYSIS_FAILED", "UPLOAD_FILES", "RUN_TERTIARY_ANALYSIS" };
+    ViewData["SearchTextEntityTypes"] = new string[] { "All", "ANALYSIS_REQUEST", "PROJECT", "TEAM", "SAMPLE", "INVOICE" };
+    ViewData["SearchTextOptions"] = new string[] { "All", "Organization", "Actor", "Action", "Entity Type", "Entity Id" };
+}
+
+@{
+    <script>
+
+        function searchSetup() {
+
+
+            $("#searchText").val('');
+            $("#searchText").focus();
+
+            $('#searchTextOption').html('All ');
+            //search text options dropdown click handlers
+            $("#searchTextOptionList li a").click(function () {
+                $("#searchTextOption").html($(this).html() + " ");
+            });
+
+            //search button event handlers
+            $("#searchClear")
+                .click(function () {
+                    $("#searchText").val("");
+                    $('#searchTextOption').html($('#searchTextOptionList li a').first().html() + ' ');
+                    searchList();
+                })
+            $("#searchBtnAudit")
+                .click(function () {
+                    searchListAudit();
+                })
+            $("#searchText")
+                .keypress(function (e) {
+                    if (e.which == 13) {
+                        searchList();
+                    }
+                });
+        }
+
+        function searchList() {
+
+            var queryParts = [];
+
+
+
+            var queryStr = "";
+            if (queryParts.length != 0) queryStr = queryParts.join("&") + "&";
+
+            window.location.href =
+                "/GNPortal-1.1.6/Audit"
+                + "?" + queryStr
+                + "filters=" + $("#searchDateFrom").html().trim() + ":" + $("#searchDateFrom").val();
+        }
+
+
+    </script>
+}
+
+<h2>
+    <span class="glyphicon glyphicon-list gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        <span class="small">
+            @{
+                string levelName = "";
+
+                foreach (var repo in log4net.LogManager.GetAllRepositories())
+                {
+                    foreach (var logger in repo.GetCurrentLoggers().OfType<log4net.Repository.Hierarchy.Logger>())
+                    {
+                        if (logger.Level != null && string.IsNullOrEmpty(levelName))
+                        {
+                            levelName = logger.Level.Name;
+                            break;
+                        }
+                    }
+                }
+            }
+        </span>
+    </span>
+</h2>
+
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    
+    var DateMinus30Days = String.Format("{0:MM/dd/yyyy}", DateTime.Now.AddDays(-365));
+    var DateToday = String.Format("{0:MM/dd/yyyy}", DateTime.Now);
+    var MaxRecords = "100000";
+    var ValueOrganization = "";
+    bool organizationIsReadOnly = false;
+    if (!User.IsInRole("GN_ADMIN"))
+    {
+        ValueOrganization = contactForUser.GNOrganization.Id.ToString();
+        organizationIsReadOnly = true;
+    }
+    
+    var ValueActor = "";
+    var ValueAction = "";
+    var ValueEntityType = "";
+    var ValueEntityId = "";
+    var ValueIP = "";
+    if (Request["searchDateFrom"] != null)      {   DateMinus30Days = Request["searchDateFrom"];        }
+    if (Request["searchDateTo"] != null)        {   DateToday = Request["searchDateTo"];                }
+    if (Request["maxRecords"] != null)          {   MaxRecords = Request["maxRecords"];                 }
+    if (Request["searchOrganization"] != null && !organizationIsReadOnly) { ValueOrganization = Request["searchOrganization"].ToLower(); }
+    if (Request["searchActor"] != null)         {   ValueActor = Request["searchActor"].ToLower();      }
+    if (Request["searchAction"] != null)        {   ValueAction = Request["searchAction"].ToUpper();    }
+    if (Request["searchEntityType"] != null)    {   ValueEntityType = Request["searchEntityType"].ToUpper(); }
+    if (Request["searchEntityId"] != null)      {   ValueEntityId = Request["searchEntityId"].ToLower();          }
+    if (Request["searchIP"] != null)            {   ValueIP = Request["searchIP"].ToUpper();            }
+
+    <script language="JavaScript">
+        function showFilters()
+        {
+            $('#AuditFilters').toggle();
+        }
+    </script>
+}
+
+<form name="searchAudit" id="searchAudit" method="post">
+    @if (User.IsInRole("GN_ADMIN"))
+    {
+        <div class="col-md-12" style="text-align:right;"><h4><a href="javascript:showFilters();" id="AuditFiltersLabel">Show/hide filters</a></h4></div>
+    }
+    
+    <div id="AuditFilters" style="display:none;">
+        <hr style="border: 1px solid #808080;" />
+        <div class="col-md-12" style="margin-top:5px;margin-bottom:5px;">
+            <div style="float:left">
+                Date Range: From:
+            </div>
+            <div style="float:left;margin-left:10px;margin-right:10px;">
+                <input id="searchDateFrom" name="searchDateFrom" type="text" maxlength="10" value="@DateMinus30Days" class="form-control" style="width:10em;" placeholder="From mm/dd/yyyy">
+            </div>
+            <div style="float:left">
+                To:
+            </div>
+            <div style="float:left;margin-left:10px;margin-right:10px;">
+                <input id="searchDateTo" name="searchDateTo" type="text" maxlength="10" value="@DateToday" class="form-control" style="width:10em;" placeholder="To mm/dd/yyyy">
+            </div>
+            <div style="float:left">
+                Organization:
+            </div>
+            <div style="float:left;margin-left:10px;margin-right:10px;">
+                @if (organizationIsReadOnly)
+                {
+                    <input id="srchOrganization" name="srchOrganization" value="@ValueOrganization" type="text" class="form-control" style="width:38em;font-size:12px;" readonly>
+                    <input id="searchOrganization" name="searchOrganization" value="@ValueOrganization" type="hidden">
+                }
+                else
+                {
+                    <input id="searchOrganization" name="searchOrganization" value="@ValueOrganization" type="text" class="form-control" style="width:28em;" placeholder="Organization ID">
+                }                
+            </div>
+        </div>
+        <div class="col-md-12" style="margin-top:5px;margin-bottom:5px;">
+            <div style="float:left">
+                Actor:
+            </div>
+            <div style="float:left;margin-left:10px;margin-right:10px;">
+                <input id="searchActor" name="searchActor" value="@ValueActor" type="text" class="form-control" style="width:28em;" placeholder="Actor ID or e-mail">&nbsp;
+            </div>
+            <div style="float:left">
+                Action:
+            </div>
+            <div style="float:left;margin-left:10px;margin-right:10px;">
+                <input id="searchAction" name="searchAction" value="@ValueAction" type="text" class="form-control" style="width:28em;" placeholder="Action code">&nbsp;
+            </div>
+            <div style="float:left">
+                Entity Type:
+            </div>
+            <div style="float:left;margin-left:10px;margin-right:10px;">
+                <input id="searchEntityType" name="searchEntityType" value="@ValueEntityType" type="text" class="form-control" style="width:28em;" placeholder="Entity code">&nbsp;
+            </div>
+        </div>
+
+        <div class="col-md-12" style="margin-top:-15px;margin-bottom:5px;">
+            <div style="float:left">
+                Entity ID:
+            </div>
+            <div style="float:left;margin-left:10px;margin-right:10px;">
+                <input id="searchEntityId" name="searchEntityId" value="@ValueEntityId" type="text" class="form-control" style="width:12em;" placeholder="Entity ID">&nbsp;
+            </div>
+            <div style="float:left">
+                IP:
+            </div>
+            <div style="float:left;margin-left:10px;margin-right:10px;">
+                <input id="searchIP" name="searchIP" value="@ValueIP" type="text" class="form-control" style="width:12em;" placeholder="IP Address">&nbsp;
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <fieldset title="Output" style="padding:5px; margin-left:10px; margin-right:10px;">
+                <div style="float:left;margin-left:20px; ">
+                    Records:
+                </div>
+
+                <div style="float:left;margin-left:10px;margin-right:10px;">
+                    <input id="maxRecords" name="maxRecords" type="text" maxlength="5" value="@MaxRecords" class="form-control" style="width:3em;text-align:right;padding:2px;" placeholder="i.e. 1000">
+                </div>
+
+                @if (User.IsInRole("GN_ADMIN"))
+                {
+                    <div style="float:left;margin-left:20px; ">Format:</div>
+                    <div style="float:left;padding:3px;">
+                        <input type="radio" id="outputFormat" name="outputFormat" value="ui" checked />Screen
+                        <input type="radio" id="outputFormat" name="outputFormat" value="xls" />Excel File
+                    </div>
+                }
+                else
+                {
+                    <input type="hidden" id="outputFormat" name="outputFormat" value="xls" />
+                }
+            </fieldset>
+        </div>
+
+        <br />
+        <br />
+        <hr style="border: 1px solid #808080;" />
+    </div>
+
+
+    <div class="col-md-12" style="margin-top:0px;margin-bottom:5px; text-align:right;">
+        <div>
+            @if (User.IsInRole("GN_ADMIN"))
+            {
+                <button id="searchBtnAudit" class="btn bg-gn-green" type="submit">
+                    <span class="glyphicon glyphicon-download small text-uppercase white">&nbsp;Generate</span>
+                </button>
+            }
+            else
+            {            
+                <button id="searchBtnAudit" class="btn bg-gn-green" type="submit">
+                    <span class="glyphicon glyphicon-download small text-uppercase white">&nbsp;Download Excel File</span>
+                </button>
+            }
+        </div>
+    </div>
+</form>
+
+@Model.Count() records found.
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                Date (UTC) and log ID
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Organization)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Action)
+            </th>
+        </tr>
+
+        @if (Model != null && Model.Count() != 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr class="small">
+                    <td class="col-md-2">
+                        @Html.DisplayFor(modelItem => item.Timestamp)<br />
+                        <span style="font-size:9px;">@Html.DisplayFor(modelItem => item.Id)</span>
+                    </td>
+                    <td class="col-md-2">
+                        <a href="@Url.Action("Details", "Organizations", new { id = item.OrganizationId })" target="_blank">@Html.DisplayFor(modelItem => item.ActorOrganization.Name)</a><br />
+                    </td>
+                    <td class="col-md-3">
+                        <a href="@Url.Action("Details", "Contacts", new { id = item.ActorId })" target="_blank">@Html.DisplayFor(modelItem => item.Actor.FullName) (<span class="small">@Html.DisplayFor(modelItem => item.ActorEmail)</span>)</a><br />
+                        IP: @Html.DisplayFor(modelItem => item.IP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Action) on @Html.DisplayFor(modelItem => item.EntityType)
+                  @{
+                    switch (item.EntityType)
+                    {
+                        case "CONTACT":
+                            <br /><a href="@Url.Action("Details", "Contacts", new { id = item.EntityId })" target="_blank">@Html.DisplayFor(modelItem => item.EntityType) <span class="small">@Html.DisplayFor(modelItem => item.EntityId)</span></a><br />
+                            @Html.DisplayFor(modelItem => item.Analysis.Description) @Html.DisplayFor(modelItem => item.Analysis.AnalysisType.Name)
+                            break;
+                        case "ORGANIZATION":
+                        <br /><a href="@Url.Action("Details", "Organizations", new { id = item.EntityId })" target="_blank">@Html.DisplayFor(modelItem => item.EntityType) <span class="small">@Html.DisplayFor(modelItem => item.EntityId)</span></a><br />
+                            @Html.DisplayFor(modelItem => item.Analysis.Description) @Html.DisplayFor(modelItem => item.Analysis.AnalysisType.Name)
+                            break;
+                        case "TEAM":
+                            <br /><a href="@Url.Action("Details", "Teams", new { id = item.EntityId })" target="_blank">@Html.DisplayFor(modelItem => item.Team.Name) <span class="small">@Html.DisplayFor(modelItem => item.EntityId)</span></a><br />
+                        
+                            break;
+                        case "PROJECT":
+                        <br /><a href="@Url.Action("Details", "Projects", new { id = item.EntityId })" target="_blank">@Html.DisplayFor(modelItem => item.Project.Name) <span class="small">@Html.DisplayFor(modelItem => item.EntityId)</span></a><br />
+                            break;
+                        case "SAMPLE":
+                            <br /><a href="@Url.Action("Details", "Samples", new { id = item.EntityId })" target="_blank">@Html.DisplayFor(modelItem => item.Sample.Name) <span class="small">@Html.DisplayFor(modelItem => item.EntityId)</span></a><br />
+                            break;
+                        case "CLOUD_FILE":
+                            <br />
+                            if (item.CloudFile != null)
+                            {
+                                string description = (item.CloudFile.Description.Substring((item.CloudFile.Description.LastIndexOf('/') + 1)));
+                                @Html.BootstrapActionIconLink(description, "Download", "CloudFiles", new RouteValueDictionary(new { id = item.CloudFile.Id }), "black", "cloud-download", "sm", false, true)
+                            }
+                            else
+                            {
+                                <span class="small btn-gray">@Html.Raw("File not found")</span>
+                            }
+                            break;
+                        case "ANALYSIS_REQUEST":
+                            <br /><a href="@Url.Action("Details", "AnalysisRequests", new { id = item.EntityId })" target="_blank">@Html.DisplayFor(modelItem => item.Analysis.Description) <span class="small">(@Html.DisplayFor(modelItem => item.EntityId))</span></a>
+                            break;
+                        case "ADMIN_UI":
+                        case "ACCOUNT":
+                            break;
+                        case "SAMPLE_RELATIONSHIP":
+                        case "SETTINGS_TEMPLATE":
+                        case "SETTINGS_TEMPLATE_CONFIG":
+                        case "PRODUCT":
+                        case "INVOICE":
+                        case "INVOICE_DETAIL":
+                        case "PURCHASE_ORDER":
+                        default:
+                            if (!item.EntityId.Equals(Guid.Empty))
+                            {
+                                @Html.DisplayFor(modelItem => item.EntityId);
+                            }
+                            break;
+                       }
+                    }
+                    </td>
+                    
+                </tr>
+            }
+
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">
+                    No logs found.
+                </td>
+            </tr>
+        }
+
+
+    </table>
+</div>

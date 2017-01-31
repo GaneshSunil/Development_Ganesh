@@ -1,0 +1,195 @@
+﻿@model GenomeNext.Data.EntityModel.GNSettingsTemplate
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-wrench gn-green"></span>
+    @ViewBag.Title
+
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "SettingsTemplate", null, "info", "chevron-left")
+        @Html.BootstrapActionButton("Edit", "Edit", "SettingsTemplate", new RouteValueDictionary(new { id = Model.Id }), "warning", "cog")
+    </span>
+</h2>
+@Html.BootstrapRowSpacer()
+
+@using (Html.BeginForm())
+{
+    <div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDateTime)
+        </dd>
+
+    </dl>
+</div>
+
+
+<div class="row">
+
+    <!-- Configs List -->
+    <div class="col-md-12">
+
+        <h4>
+            Configs
+            <span class="pull-right">
+                @Html.BootstrapActionButton("Create new config", "Create", "SettingsTemplateConfigs", new RouteValueDictionary(new { templateId = Model.Id }), "info", "cog", "sm")
+            </span>
+        </h4>
+
+        @if (Model.GNSettingsTemplateConfigs != null && Model.GNSettingsTemplateConfigs.Count != 0)
+        {
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered table-gn">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.GNSettingsTemplateConfigs.FirstOrDefault().GNSettingsTemplateField.ConfigType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.GNSettingsTemplateConfigs.FirstOrDefault().GNSettingsTemplateField.Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.GNSettingsTemplateConfigs.FirstOrDefault().GNSettingsTemplateField.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.GNSettingsTemplateConfigs.FirstOrDefault().Value)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model.GNSettingsTemplateConfigs
+                        .OrderBy(id => id.GNSettingsTemplateField.Id)
+                        .OrderBy(id => id.GNSettingsTemplateField.ConfigType))
+                    {
+                        <tr>
+                            <td class="col-md-2">
+                                @Html.DisplayFor(modelItem => item.GNSettingsTemplateField.ConfigType)
+                            </td>
+                            <td class="col-md-2">
+                                @Html.DisplayFor(modelItem => item.GNSettingsTemplateField.Id)
+                            </td>
+                            <td class="col-md-4">
+                                @Html.DisplayFor(modelItem => item.GNSettingsTemplateField.Name)<br />
+                                <span class="small">@Html.DisplayFor(modelItem => item.GNSettingsTemplateField.Description)</span>
+                            </td>
+                            <td class="col-md-2">
+                                @Html.DisplayFor(modelItem => item.Value)
+                            </td>
+
+                            <td class="text-center md-col-2">
+                                @Html.BootstrapActionButton("Edit", "Edit", "SettingsTemplateConfigs", new RouteValueDictionary(new { id = item.Id, templateId = Model.Id }), "cog", "th", "sm")
+                                @Html.BootstrapActionButton("Delete", "Delete", "SettingsTemplateConfigs", new RouteValueDictionary(new { id = item.Id, templateId = Model.Id }), "delete", "th", "sm")
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    No config items exist for this Template.
+                </div>
+            </div>
+        }
+
+
+    </div>
+
+</div>
+
+    @Html.BootstrapRowSpacer()
+    @Html.BootstrapRowSpacer()
+
+<div class="row">
+
+    <!-- Organizations List -->
+    <div class="col-md-12">
+
+        <h4>
+            Organizations Using This Template
+        </h4>
+
+        @if (Model.GNOrganizations != null && Model.GNOrganizations.Count != 0)
+        {
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered table-gn">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.GNOrganizations.FirstOrDefault().Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.GNOrganizations.FirstOrDefault().Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.GNOrganizations.FirstOrDefault().OrgMainContact)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model.GNOrganizations.OrderByDescending(id => id.CreateDateTime))
+                    {
+                        <tr>
+                            <td class="col-md-4">
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td class="col-md-3">
+                                @Html.DisplayFor(modelItem => item.Name)<br />
+                            </td>
+                            <td class="col-md-3">
+                                @Html.DisplayFor(modelItem => item.OrgMainContact.FullName)
+                            </td>
+
+                            <td class="text-center md-col-2">
+                                @Html.BootstrapActionButton("View", "Details", "GNOrganizations", new RouteValueDictionary(new { id = item.Id }), "success", "th", "sm")
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    No config items exist for this Template.
+                </div>
+            </div>
+        }
+
+
+    </div>
+
+</div>
+
+}

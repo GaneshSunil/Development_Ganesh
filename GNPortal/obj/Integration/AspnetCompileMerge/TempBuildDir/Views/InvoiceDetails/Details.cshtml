@@ -1,0 +1,171 @@
+﻿@model GenomeNext.Data.EntityModel.GNInvoiceDetail
+
+@{
+    ViewBag.Title = "Invoice Detail";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-euro gn-green"></span>
+    @ViewBag.Title
+
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to Invoice", "Edit", "Invoices", new RouteValueDictionary(new { id = Model.GNInvoiceId }), "info", "chevron-left")
+        @Html.BootstrapActionButton("Edit", "Edit", "InvoiceDetails", new RouteValueDictionary(new { id = Model.Id }), "warning", "cog")
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="form-horizontal">
+
+    @Html.BootstrapRowSpacer()
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Invoice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Invoice.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountAmount)
+        </dt>
+
+        <dd>
+            @if (Model.DiscountType == GenomeNext.Data.EntityModel.GNAccount.DiscountType.PERCENT.GetCode())
+            {
+                @Html.DisplayFor(model => model.DiscountAmount)<span>%</span>
+            }
+            else
+            {
+                <span>$</span>@Html.DisplayFor(model => model.DiscountAmount)
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        @{
+            ViewData["ViewMode"] = "Details";
+            ViewData["CreatedBy"] = Model.CreatedByContact;
+            ViewData["CreateDateTime"] = Model.CreateDateTime;
+        }
+        @Html.Partial("_AuditModelPartial", null, ViewData)
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Transactions)
+        </dt>
+
+        <dd>
+            @if (Model.Transactions != null && Model.Transactions.Count != 0)
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered table-gn">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Transactions.FirstOrDefault().CreateDateTime)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Transactions.FirstOrDefault().TransactionType)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Transactions.FirstOrDefault().Description)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Transactions.FirstOrDefault().Product)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Transactions.FirstOrDefault().ValueUsed)
+                            </th>
+                            <th class="col-md-3"></th>
+                        </tr>
+
+                        @foreach (var item in Model.Transactions.OrderByDescending(id => id.CreateDateTime))
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreateDateTime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TransactionType.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    @if (item.Product != null)
+                                    {
+                                        @Html.DisplayFor(modelItem => item.Product.Name)
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ValueUsed)
+                                    @Html.DisplayFor(modelItem => item.ValueUnits)
+                                </td>
+                                <td class="text-center">
+                                    @Html.BootstrapActionButton("View", "Details", "Transactions", new RouteValueDictionary(new { id = item.Id, invoiceDetailId = Model.Id }), "success", "th", "sm")
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        No transactions exist for this Invoice Detail record.
+                    </div>
+                </div>
+            }
+        </dd>
+
+    </dl>
+</div>

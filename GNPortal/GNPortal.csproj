@@ -1,0 +1,1033 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{19952982-CB78-4603-8A6A-FF47475DB28B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GenomeNext.Portal</RootNamespace>
+    <AssemblyName>GNPortal</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\references\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="CaptchaMvc, Version=2.5.0.0, Culture=neutral, PublicKeyToken=fe46ad421dd3b0e6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\CaptchaMvc.Mvc5.1.5.0\lib\net45-full\CaptchaMvc.dll</HintPath>
+    </Reference>
+    <Reference Include="CsvHelper">
+      <HintPath>..\packages\CsvHelper.2.12.0.2\lib\net40-client\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ephtmltopdf">
+      <HintPath>..\packages\ExpertPdfHtmlToPdf.9.4.0\lib\net40\ephtmltopdf.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\Microsoft.AspNet.Identity.Owin.2.1.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Protocol.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocol.Extensions.1.0.0\lib\net45\Microsoft.IdentityModel.Protocol.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.WsFederation">
+      <HintPath>..\packages\Microsoft.Owin.Security.WsFederation.3.0.1\lib\net45\Microsoft.Owin.Security.WsFederation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PayPal">
+      <HintPath>..\references\PayPal-SDK-v1.2.1-net451\PayPal.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPalCoreSDK">
+      <HintPath>..\references\PayPal-Merchant-SDK-v2.14.117-net20\PayPalCoreSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPalMerchantSDK">
+      <HintPath>..\references\PayPal-Merchant-SDK-v2.14.117-net20\PayPalMerchantSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.4.0.0\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\JbrowseController.cs" />
+    <Compile Include="Controllers\AnalysisAdaptorController.cs" />
+    <Compile Include="Controllers\AnalysisRequestTypesController.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Attributes\AuthorizeRedirect.cs" />
+    <Compile Include="Attributes\GetNavBarInfoAttribute.cs" />
+    <Compile Include="Attributes\GetContactUserAttribute.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Attributes\GNHandleErrorAttribute.cs" />
+    <Compile Include="ControllerExtensions\ControllerExtensions.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuditController.cs" />
+    <Compile Include="Controllers\AWSComputeEnvironmentsController.cs" />
+    <Compile Include="Controllers\BillingAccountController.cs" />
+    <Compile Include="Controllers\BulkImportController.cs" />
+    <Compile Include="Controllers\ReplicatesController.cs" />
+    <Compile Include="Controllers\SequencerJobsController.cs" />
+    <Compile Include="Controllers\OwinHomeController.cs" />
+    <Compile Include="Controllers\SsoController.cs" />
+    <Compile Include="Controllers\NotificationTopicAddresseesController.cs" />
+    <Compile Include="Controllers\NotificationTopicSubscribersController.cs" />
+    <Compile Include="Controllers\PayPalController.cs" />
+    <Compile Include="Controllers\PurchaseOrdersController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AnalysisRequestsController.cs" />
+    <Compile Include="Controllers\AccountTypesController.cs" />
+    <Compile Include="Controllers\AnalysisTypesController.cs" />
+    <Compile Include="Controllers\AWSConfigsController.cs" />
+    <Compile Include="Controllers\AWSRegionsController.cs" />
+    <Compile Include="Controllers\AWSResourcesController.cs" />
+    <Compile Include="Controllers\AWSResourceTypesController.cs" />
+    <Compile Include="Controllers\CloudFileCategoriesController.cs" />
+    <Compile Include="Controllers\CloudFilesController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InviteCodesController.cs" />
+    <Compile Include="Controllers\InvoiceDetailsController.cs" />
+    <Compile Include="Controllers\InvoicesController.cs" />
+    <Compile Include="Controllers\LogsController.cs" />
+    <Compile Include="Controllers\NotificationLogsController.cs" />
+    <Compile Include="Controllers\NotificationTopicsController.cs" />
+    <Compile Include="Controllers\OrgAccountProductSubscriptionsController.cs" />
+    <Compile Include="Controllers\OrgAccountsController.cs" />
+    <Compile Include="Controllers\OrganizationsController.cs" />
+    <Compile Include="Controllers\PaymentMethodsController.cs" />
+    <Compile Include="Controllers\PaymentMethodTypesController.cs" />
+    <Compile Include="Controllers\PaymentsController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProductTypesController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\S3FileUploadController.cs" />
+    <Compile Include="Controllers\SharedPurchaseOrderOrganizationsController.cs" />
+    <Compile Include="Controllers\SampleRelationshipsController.cs" />
+    <Compile Include="Controllers\AnalysisSampleAffectedIndicatorController.cs" />
+    <Compile Include="Controllers\SampleRelationshipTypesController.cs" />
+    <Compile Include="Controllers\SamplesController.cs" />
+    <Compile Include="Controllers\SampleTypesController.cs" />
+    <Compile Include="Controllers\TeamsController.cs" />
+    <Compile Include="Controllers\TransactionsController.cs" />
+    <Compile Include="Controllers\TransactionTypesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\GenesController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Helpers\HtmlFormHelpers.cs" />
+    <Compile Include="Helpers\Wrappable\GNClickableListGroupItem.cs" />
+    <Compile Include="Helpers\Wrappable\GNModuleIndexHeading.cs" />
+    <Compile Include="Helpers\Wrappable\GNPanel.cs" />
+    <Compile Include="Helpers\Wrappable\HtmlWrappableHelpers.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AnalysisReportDataRow.cs" />
+    <Compile Include="Models\BulkImportViewModel.cs" />
+    <Compile Include="Models\MyInvoicePrintModel.cs" />
+    <Compile Include="Models\MyBillingModels.cs" />
+    <Compile Include="Models\RegisterContactViewModel.cs" />
+    <Compile Include="Models\RegisterAccountViewModel.cs" />
+    <Compile Include="Controllers\NotificationSendersController.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
+    <Compile Include="Controllers\NotificationSuppressionListsController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controllers\SampleRelationshipTypeMappingsController.cs" />
+    <Compile Include="Controllers\SettingsTemplateController.cs" />
+    <Compile Include="Controllers\SettingsTemplateConfigsController.cs" />
+    <Compile Include="Controllers\SettingsTemplateFieldsController.cs" />
+    <Compile Include="Controllers\SampleQualifiersController.cs" />
+    <Compile Include="Controllers\SampleQualifierGroupsController.cs" />
+    <Compile Include="Controllers\TemplateGenesController.cs" />
+    <Compile Include="Controllers\TemplatesController.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\digicertseal.png" />
+    <Content Include="Content\edit.gif" />
+    <Content Include="Content\icons\admin.png" />
+    <Content Include="Content\icons\admin_white.png" />
+    <Content Include="Content\icons\admin_white_green.png" />
+    <Content Include="Content\icons\analyses.png" />
+    <Content Include="Content\icons\analyses_white.png" />
+    <Content Include="Content\icons\analyses_white_green.png" />
+    <Content Include="Content\icons\billing.png" />
+    <Content Include="Content\icons\billing_bills.png" />
+    <Content Include="Content\icons\billing_bills_white.png" />
+    <Content Include="Content\icons\billing_bills_white_green.png" />
+    <Content Include="Content\icons\billing_make_payment.png" />
+    <Content Include="Content\icons\billing_make_payment_white.png" />
+    <Content Include="Content\icons\billing_make_payment_white_green.png" />
+    <Content Include="Content\icons\billing_overview.png" />
+    <Content Include="Content\icons\billing_overview_white.png" />
+    <Content Include="Content\icons\billing_overview_white_green.png" />
+    <Content Include="Content\icons\billing_payments.png" />
+    <Content Include="Content\icons\billing_payments_white.png" />
+    <Content Include="Content\icons\billing_payments_white_green.png" />
+    <Content Include="Content\icons\billing_payment_methods.png" />
+    <Content Include="Content\icons\billing_payment_methods_white.png" />
+    <Content Include="Content\icons\billing_payment_methods_white_green.png" />
+    <Content Include="Content\icons\billing_white.png" />
+    <Content Include="Content\icons\billing_white_green.png" />
+    <Content Include="Content\icons\browser-icon-chrome.png" />
+    <Content Include="Content\icons\browser-icon-firefox.png" />
+    <Content Include="Content\icons\browser-icon-ie.png" />
+    <Content Include="Content\icons\browser-icon-safari.png" />
+    <Content Include="Content\icons\contacts.png" />
+    <Content Include="Content\icons\contacts_white.png" />
+    <Content Include="Content\icons\contacts_white_green.png" />
+    <Content Include="Content\icons\dashboard.png" />
+    <Content Include="Content\icons\dashboard_white.png" />
+    <Content Include="Content\icons\dashboard_white_green.png" />
+    <Content Include="Content\icons\help_white.png" />
+    <Content Include="Content\icons\help_white_green.png" />
+    <Content Include="Content\icons\login.png" />
+    <Content Include="Content\icons\login_white.png" />
+    <Content Include="Content\icons\login_white_green.png" />
+    <Content Include="Content\icons\logout.png" />
+    <Content Include="Content\icons\logout_white.png" />
+    <Content Include="Content\icons\logout_white_green.png" />
+    <Content Include="Content\icons\organization.png" />
+    <Content Include="Content\icons\organization_white.png" />
+    <Content Include="Content\icons\organization_white_green.png" />
+    <Content Include="Content\icons\pedigrees.png" />
+    <Content Include="Content\icons\pedigrees_white.png" />
+    <Content Include="Content\icons\pedigrees_white_green.png" />
+    <Content Include="Content\icons\profile.png" />
+    <Content Include="Content\icons\profile_white.png" />
+    <Content Include="Content\icons\profile_white_green.png" />
+    <Content Include="Content\icons\projects.png" />
+    <Content Include="Content\icons\projects_white.png" />
+    <Content Include="Content\icons\projects_white_green.png" />
+    <Content Include="Content\icons\register.png" />
+    <Content Include="Content\icons\register_white.png" />
+    <Content Include="Content\icons\register_white_green.png" />
+    <Content Include="Content\icons\samples.png" />
+    <Content Include="Content\icons\samples_white.png" />
+    <Content Include="Content\icons\samples_white_green.png" />
+    <Content Include="Content\icons\teams_white.png" />
+    <Content Include="Content\icons\teams.png" />
+    <Content Include="Content\icons\teams_white_green.png" />
+    <Content Include="Content\jquery.tagit.css" />
+    <Content Include="Content\loading.gif" />
+    <Content Include="Content\processing.gif" />
+    <Content Include="Content\s3.jquery.fine-uploader-5.1.3\fine-uploader.css" />
+    <Content Include="Content\s3.jquery.fine-uploader-5.1.3\fine-uploader.min.css" />
+    <Content Include="Content\s3.jquery.fine-uploader-5.1.3\placeholders\not_available-generic.png" />
+    <Content Include="Content\s3.jquery.fine-uploader-5.1.3\placeholders\waiting-generic.png" />
+    <Content Include="Content\s3.jquery.fine-uploader-5.1.3\templates\default.html" />
+    <Content Include="Content\s3.jquery.fine-uploader-5.1.3\templates\simple-thumbnails.html" />
+    <Content Include="Content\s3.jquery.fine-uploader-5.5.0\fine-uploader.css" />
+    <Content Include="Content\s3.jquery.fine-uploader-5.5.0\fine-uploader.min.css" />
+    <Content Include="Content\s3.jquery.fine-uploader-5.5.0\placeholders\not_available-generic.png" />
+    <Content Include="Content\s3.jquery.fine-uploader-5.5.0\placeholders\waiting-generic.png" />
+    <Content Include="Content\s3.jquery.fine-uploader-5.5.0\templates\default.html" />
+    <Content Include="Content\s3.jquery.fine-uploader-5.5.0\templates\gallery.html" />
+    <Content Include="Content\s3.jquery.fine-uploader-5.5.0\templates\simple-thumbnails.html" />
+    <Content Include="Content\tagit.ui-zendesk.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\s3.jquery.fine-uploader-5.1.3\LICENSE" />
+    <Content Include="Content\s3.jquery.fine-uploader-5.5.0\LICENSE" />
+    <None Include="Properties\PublishProfiles\AWS-CodeDeploy-Dev-WFE.pubxml" />
+    <None Include="Properties\PublishProfiles\DEV-Integration-WFE.pubxml" />
+    <Content Include="Images\fb_icon.png" />
+    <Content Include="Images\genealogy_icon.gif" />
+    <Content Include="Images\genomenextllclogo.jpg" />
+    <Content Include="Images\GenomeNextLogo.jpg" />
+    <Content Include="Images\gn-logo-transparent.png" />
+    <Content Include="Images\in_icon.png" />
+    <Content Include="Images\tw_icon.png" />
+    <None Include="Properties\PublishProfiles\PROD-Release-WFE.pubxml" />
+    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Images\gn-logo-dark-transparent.png" />
+    <Content Include="Images\gn-logo-dark.png" />
+    <Content Include="Images\gn-logo-square-dark.png" />
+    <Content Include="Images\gn-logo-square-white.png" />
+    <Content Include="Images\gn-portal-logo-dark-transparent.png" />
+    <Content Include="Views\AnalysisRequests\RenderJbrowse.cshtml" />
+    <None Include="Views\Jbrowse\index.cshtml" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.11.1.js" />
+    <Content Include="Scripts\jquery-ui.min-1.11.1.js" />
+    <Content Include="Scripts\jquery.nestable.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\progress-bar.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.1.3\iframe.xss.response.js" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.1.3\s3.jquery.fine-uploader.js" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.1.3\s3.jquery.fine-uploader.min.js" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader.js" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader.min.js" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\continue.gif" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\edit.gif" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\fine-uploader-gallery.css" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\fine-uploader-gallery.min.css" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\fine-uploader-new.css" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\fine-uploader-new.min.css" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\fine-uploader.css" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\fine-uploader.min.css" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\iframe.xss.response.js" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\loading.gif" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\pause.gif" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\placeholders\not_available-generic.png" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\placeholders\waiting-generic.png" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\processing.gif" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\retry.gif" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\s3.jquery.fine-uploader.js" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\s3.jquery.fine-uploader.min.js" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\templates\default.html" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\templates\gallery.html" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\templates\simple-thumbnails.html" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\trash.gif" />
+    <Content Include="Scripts\tag-it.js" />
+    <Content Include="Scripts\tag-it.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\About\TermsOfService.cshtml" />
+    <Content Include="Views\About\TermsOfServiceContent.cshtml" />
+    <Content Include="Views\About\PrivacyPolicyContent.cshtml" />
+    <Content Include="Views\Account\MyOrganization.cshtml" />
+    <Content Include="Views\Account\MyProfile.cshtml" />
+    <Content Include="Views\AWSConfigs\Create.cshtml" />
+    <Content Include="Views\AWSConfigs\Delete.cshtml" />
+    <Content Include="Views\AWSConfigs\Details.cshtml" />
+    <Content Include="Views\AWSConfigs\Edit.cshtml" />
+    <Content Include="Views\AWSConfigs\Index.cshtml" />
+    <Content Include="Views\AWSRegions\Create.cshtml" />
+    <Content Include="Views\AWSRegions\Delete.cshtml" />
+    <Content Include="Views\AWSRegions\Details.cshtml" />
+    <Content Include="Views\AWSRegions\Edit.cshtml" />
+    <Content Include="Views\AWSRegions\Index.cshtml" />
+    <Content Include="Views\AWSResourceTypes\Create.cshtml" />
+    <Content Include="Views\AWSResourceTypes\Delete.cshtml" />
+    <Content Include="Views\AWSResourceTypes\Details.cshtml" />
+    <Content Include="Views\AWSResourceTypes\Edit.cshtml" />
+    <Content Include="Views\AWSResourceTypes\Index.cshtml" />
+    <Content Include="Views\AWSResources\Create.cshtml" />
+    <Content Include="Views\AWSResources\Delete.cshtml" />
+    <Content Include="Views\AWSResources\Details.cshtml" />
+    <Content Include="Views\AWSResources\Edit.cshtml" />
+    <Content Include="Views\AWSResources\Index.cshtml" />
+    <Content Include="Views\AnalysisTypes\Create.cshtml" />
+    <Content Include="Views\AnalysisTypes\Delete.cshtml" />
+    <Content Include="Views\AnalysisTypes\Details.cshtml" />
+    <Content Include="Views\AnalysisTypes\Edit.cshtml" />
+    <Content Include="Views\AnalysisTypes\Index.cshtml" />
+    <Content Include="Views\SampleTypes\Create.cshtml" />
+    <Content Include="Views\SampleTypes\Delete.cshtml" />
+    <Content Include="Views\SampleTypes\Details.cshtml" />
+    <Content Include="Views\SampleTypes\Edit.cshtml" />
+    <Content Include="Views\SampleTypes\Index.cshtml" />
+    <Content Include="Views\Logs\Details.cshtml" />
+    <Content Include="Views\Logs\Index.cshtml" />
+    <Content Include="Views\Shared\_AuditModelPartial.cshtml" />
+    <Content Include="Views\Register\Account.cshtml" />
+    <Content Include="Views\Register\AccountConfirm.cshtml" />
+    <Content Include="Views\Register\AccountSubmit.cshtml" />
+    <Content Include="Views\Register\_AccountConfirmPartial.cshtml" />
+    <Content Include="Views\Register\AccountComplete.cshtml" />
+    <Content Include="Views\Register\_AccountConfirmPartial_Script.cshtml" />
+    <Content Include="Views\Contacts\Invite.cshtml" />
+    <Content Include="Views\Register\Contact.cshtml" />
+    <Content Include="Views\Register\ContactConfirm.cshtml" />
+    <Content Include="Views\Register\_ContactConfirmPartial.cshtml" />
+    <Content Include="Views\Register\_ContactConfirmPartial_Script.cshtml" />
+    <Content Include="Views\Register\ContactSubmit.cshtml" />
+    <Content Include="Views\Register\ContactComplete.cshtml" />
+    <Content Include="Views\InviteCodes\Create.cshtml" />
+    <Content Include="Views\InviteCodes\Delete.cshtml" />
+    <Content Include="Views\InviteCodes\Details.cshtml" />
+    <Content Include="Views\InviteCodes\Edit.cshtml" />
+    <Content Include="Views\InviteCodes\Index.cshtml" />
+    <Content Include="Views\OrgAccounts\Create.cshtml" />
+    <Content Include="Views\OrgAccounts\Delete.cshtml" />
+    <Content Include="Views\OrgAccounts\Details.cshtml" />
+    <Content Include="Views\OrgAccounts\Edit.cshtml" />
+    <Content Include="Views\OrgAccounts\Index.cshtml" />
+    <Content Include="Views\Invoices\Create.cshtml" />
+    <Content Include="Views\Invoices\Delete.cshtml" />
+    <Content Include="Views\Invoices\Details.cshtml" />
+    <Content Include="Views\Invoices\Edit.cshtml" />
+    <Content Include="Views\Invoices\Index.cshtml" />
+    <Content Include="Views\Payments\Create.cshtml" />
+    <Content Include="Views\Payments\Delete.cshtml" />
+    <Content Include="Views\Payments\Details.cshtml" />
+    <Content Include="Views\Payments\Edit.cshtml" />
+    <Content Include="Views\Payments\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\PaymentMethodTypes\Create.cshtml" />
+    <Content Include="Views\PaymentMethodTypes\Delete.cshtml" />
+    <Content Include="Views\PaymentMethodTypes\Details.cshtml" />
+    <Content Include="Views\PaymentMethodTypes\Edit.cshtml" />
+    <Content Include="Views\PaymentMethodTypes\Index.cshtml" />
+    <Content Include="Views\ProductTypes\Create.cshtml" />
+    <Content Include="Views\ProductTypes\Delete.cshtml" />
+    <Content Include="Views\ProductTypes\Details.cshtml" />
+    <Content Include="Views\ProductTypes\Edit.cshtml" />
+    <Content Include="Views\ProductTypes\Index.cshtml" />
+    <Content Include="Views\SampleRelationshipTypes\Create.cshtml" />
+    <Content Include="Views\SampleRelationshipTypes\Delete.cshtml" />
+    <Content Include="Views\SampleRelationshipTypes\Details.cshtml" />
+    <Content Include="Views\SampleRelationshipTypes\Edit.cshtml" />
+    <Content Include="Views\SampleRelationshipTypes\Index.cshtml" />
+    <Content Include="Views\InvoiceDetails\Create.cshtml" />
+    <Content Include="Views\InvoiceDetails\Delete.cshtml" />
+    <Content Include="Views\InvoiceDetails\Details.cshtml" />
+    <Content Include="Views\InvoiceDetails\Edit.cshtml" />
+    <Content Include="Views\OrgAccountProductSubscriptions\Create.cshtml" />
+    <Content Include="Views\OrgAccountProductSubscriptions\Delete.cshtml" />
+    <Content Include="Views\OrgAccountProductSubscriptions\Details.cshtml" />
+    <Content Include="Views\OrgAccountProductSubscriptions\Edit.cshtml" />
+    <Content Include="Views\SampleRelationships\Create.cshtml" />
+    <Content Include="Views\SampleRelationships\Delete.cshtml" />
+    <Content Include="Views\SampleRelationships\Details.cshtml" />
+    <Content Include="Views\SampleRelationships\Index.cshtml" />
+    <Content Include="Views\NotificationLogs\Create.cshtml" />
+    <Content Include="Views\NotificationLogs\Delete.cshtml" />
+    <Content Include="Views\NotificationLogs\Details.cshtml" />
+    <Content Include="Views\NotificationLogs\Edit.cshtml" />
+    <Content Include="Views\NotificationLogs\Index.cshtml" />
+    <Content Include="Views\NotificationTopics\Create.cshtml" />
+    <Content Include="Views\NotificationTopics\Delete.cshtml" />
+    <Content Include="Views\NotificationTopics\Details.cshtml" />
+    <Content Include="Views\NotificationTopics\Edit.cshtml" />
+    <Content Include="Views\NotificationTopics\Index.cshtml" />
+    <Content Include="Views\Account\MyBilling.cshtml" />
+    <Content Include="Views\Account\MyBillingOverview.cshtml" />
+    <Content Include="Views\PaymentMethods\Create.cshtml" />
+    <Content Include="Views\PaymentMethods\Delete.cshtml" />
+    <Content Include="Views\PaymentMethods\Details.cshtml" />
+    <Content Include="Views\PaymentMethods\Edit.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\Error\Unauthorized.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\AccountTypes\Create.cshtml" />
+    <Content Include="Views\AccountTypes\Delete.cshtml" />
+    <Content Include="Views\AccountTypes\Details.cshtml" />
+    <Content Include="Views\AccountTypes\Edit.cshtml" />
+    <Content Include="Views\AccountTypes\Index.cshtml" />
+    <Content Include="Views\PurchaseOrders\Create.cshtml" />
+    <Content Include="Views\PurchaseOrders\Delete.cshtml" />
+    <Content Include="Views\PurchaseOrders\Details.cshtml" />
+    <Content Include="Views\PurchaseOrders\Edit.cshtml" />
+    <Content Include="Views\PurchaseOrders\Index.cshtml" />
+    <Content Include="Views\Account\MyBillingPayments.cshtml" />
+    <Content Include="Views\Account\MyBillingBills.cshtml" />
+    <Content Include="Views\Account\MyBillingBillDetail.cshtml" />
+    <Content Include="Views\Account\MyBillingBillDetailItemDetail.cshtml" />
+    <Content Include="Views\AmazonPayments\OrderProduct.cshtml" />
+    <Content Include="Views\AmazonPayments\Error.cshtml" />
+    <Content Include="Views\AmazonPayments\BillingAgreement.cshtml" />
+    <Content Include="Views\AnalysisSampleAffectedIndicator\Create.cshtml" />
+    <Content Include="Views\AnalysisSampleAffectedIndicator\Delete.cshtml" />
+    <Content Include="Views\AnalysisSampleAffectedIndicator\Edit.cshtml" />
+    <Content Include="Views\AnalysisSampleAffectedIndicator\Index.cshtml" />
+    <Content Include="Views\NotificationTopicSubscribers\Create.cshtml" />
+    <Content Include="Views\NotificationTopicSubscribers\Delete.cshtml" />
+    <Content Include="Views\NotificationTopicSubscribers\Details.cshtml" />
+    <Content Include="Views\NotificationTopicSubscribers\Edit.cshtml" />
+    <Content Include="Views\NotificationTopicSubscribers\Index.cshtml" />
+    <Content Include="Views\Account\MyNotifications.cshtml" />
+    <Content Include="Views\NotificationSenders\Create.cshtml" />
+    <Content Include="Views\NotificationSenders\Delete.cshtml" />
+    <Content Include="Views\NotificationSenders\Details.cshtml" />
+    <Content Include="Views\NotificationSenders\Edit.cshtml" />
+    <Content Include="Views\NotificationSenders\Index.cshtml" />
+    <Content Include="Views\Error\NotAllowed.cshtml" />
+    <Content Include="Views\Account\EditMyProfile.cshtml" />
+    <Content Include="Views\NotificationTopicSubscribers\MyNotifications.cshtml" />
+    <Content Include="Views\About\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Projects\_CreatePartial.cshtml" />
+    <Content Include="Views\Projects\_DeletePartial.cshtml" />
+    <Content Include="Views\Projects\_EditPartial.cshtml" />
+    <Content Include="Views\Projects\_InfoPartial.cshtml" />
+    <Content Include="Views\Projects\_ProjectAnalysesPartial.cshtml" />
+    <Content Include="Views\Samples\_CreatePartial.cshtml" />
+    <Content Include="Views\Samples\_DeletePartial.cshtml" />
+    <Content Include="Views\Samples\_EditPartial.cshtml" />
+    <Content Include="Views\Samples\_InfoPartial.cshtml" />
+    <Content Include="Views\Samples\_SampleAnalysesPartial.cshtml" />
+    <Content Include="Views\Samples\_SampleCloudFilesPartial.cshtml" />
+    <Content Include="Views\Samples\_SamplePedigreePartial.cshtml" />
+    <Content Include="Views\AnalysisRequests\_InfoPartial.cshtml" />
+    <Content Include="Views\AnalysisRequests\_AnalysisSamplesDnaPartial.cshtml" />
+    <Content Include="Views\AnalysisRequests\_AnalysisStatusPartial.cshtml" />
+    <Content Include="Views\AnalysisRequests\_AnalysisResultPartial.cshtml" />
+    <Content Include="Views\Samples\List.cshtml" />
+    <Content Include="Views\AnalysisRequests\_CreatePartial.cshtml" />
+    <Content Include="Views\AnalysisRequests\_DeletePartial.cshtml" />
+    <Content Include="Views\AnalysisRequests\_EditPartial.cshtml" />
+    <Content Include="Views\AnalysisRequests\_EditAnalysisSamplesPartial.cshtml" />
+    <Content Include="Views\Home\_AnalysisRequestDisplayListPartial.cshtml" />
+    <Content Include="Views\Home\_ProjectDisplayListPartial.cshtml" />
+    <Content Include="Views\Home\_SampleDisplayListPartial.cshtml" />
+    <Content Include="Views\AnalysisRequests\_AnalysisStartPartial.cshtml" />
+    <Content Include="Views\CloudFiles\_CreatePartial.cshtml" />
+    <Content Include="Views\Contacts\_InfoPartial.cshtml" />
+    <Content Include="Views\Contacts\_ContactInfoPartial.cshtml" />
+    <Content Include="Views\Contacts\_ContactAddressPartial.cshtml" />
+    <Content Include="Views\Contacts\_ContactRolesPartial.cshtml" />
+    <Content Include="Views\CloudFiles\_CreatePartial_Script.cshtml" />
+    <Content Include="Views\Home\_TeamDisplayListPartial.cshtml" />
+    <Content Include="Views\AnalysisRequests\_AnalysisSummaryOfErrors.cshtml" />
+    <Content Include="Views\Contacts\_EditPartial.cshtml" />
+    <Content Include="Views\Error\_ErrorBackBtn.cshtml" />
+    <Content Include="Views\Error\_ErrorBackBtn_Script.cshtml" />
+    <Content Include="Views\SampleRelationshipTypeMappings\Create.cshtml" />
+    <Content Include="Views\SampleRelationshipTypeMappings\Delete.cshtml" />
+    <Content Include="Views\SampleRelationshipTypeMappings\Details.cshtml" />
+    <Content Include="Views\SampleRelationshipTypeMappings\Edit.cshtml" />
+    <Content Include="Views\SampleRelationshipTypeMappings\Index.cshtml" />
+    <Content Include="Views\AnalysisRequests\_AnalysisInProgress.cshtml" />
+    <Content Include="Views\BulkImport\Import.cshtml" />
+    <Content Include="Views\BulkImport\ImportStatus.cshtml" />
+    <Content Include="Views\BulkImport\_ImportPartial_Script.cshtml" />
+    <Content Include="Views\BulkImport\_ImportPartial.cshtml" />
+    <Content Include="Views\BulkImport\MyImports.cshtml" />
+    <Content Include="Views\SettingsTemplate\Create.cshtml" />
+    <Content Include="Views\SettingsTemplate\Delete.cshtml" />
+    <Content Include="Views\SettingsTemplate\Details.cshtml" />
+    <Content Include="Views\SettingsTemplate\Edit.cshtml" />
+    <Content Include="Views\SettingsTemplate\Index.cshtml" />
+    <Content Include="Views\SettingsTemplateConfigs\Create.cshtml" />
+    <Content Include="Views\SettingsTemplateConfigs\Delete.cshtml" />
+    <Content Include="Views\SettingsTemplateConfigs\Details.cshtml" />
+    <Content Include="Views\SettingsTemplateConfigs\Edit.cshtml" />
+    <Content Include="Views\SettingsTemplateConfigs\Index.cshtml" />
+    <Content Include="Views\SettingsTemplateFields\Create.cshtml" />
+    <Content Include="Views\SettingsTemplateFields\Delete.cshtml" />
+    <Content Include="Views\SettingsTemplateFields\Details.cshtml" />
+    <Content Include="Views\SettingsTemplateFields\Edit.cshtml" />
+    <Content Include="Views\SettingsTemplateFields\Index.cshtml" />
+    <Content Include="Views\AWSComputeEnvironments\Create.cshtml" />
+    <Content Include="Views\AWSComputeEnvironments\Delete.cshtml" />
+    <Content Include="Views\AWSComputeEnvironments\Details.cshtml" />
+    <Content Include="Views\AWSComputeEnvironments\Edit.cshtml" />
+    <Content Include="Views\AWSComputeEnvironments\Index.cshtml" />
+    <Content Include="Views\Contacts\_ContactActivityPartial.cshtml" />
+    <Content Include="Views\AnalysisRequests\_AnalysisReStartPartial.cshtml" />
+    <Content Include="Views\NotificationSuppressionLists\Create.cshtml" />
+    <Content Include="Views\NotificationSuppressionLists\Delete.cshtml" />
+    <Content Include="Views\NotificationSuppressionLists\Details.cshtml" />
+    <Content Include="Views\NotificationSuppressionLists\Edit.cshtml" />
+    <Content Include="Views\NotificationSuppressionLists\Index.cshtml" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.1.3\LICENSE" />
+    <Content Include="Views\Samples\_SampleCloudFilesPartial_Script.cshtml" />
+    <Content Include="Views\Account\MyBillingBuyCredits.cshtml" />
+    <Content Include="Views\Audit\Index.cshtml" />
+    <Content Include="Views\Register\GEN2015.cshtml" />
+    <Content Include="Views\Invoices\PrintDetails.cshtml" />
+    <Content Include="Views\Genes\Create.cshtml" />
+    <Content Include="Views\Genes\Delete.cshtml" />
+    <Content Include="Views\Genes\Details.cshtml" />
+    <Content Include="Views\Genes\Edit.cshtml" />
+    <Content Include="Views\Genes\Index.cshtml" />
+    <Content Include="Views\AnalysisRequests\_AnalysisTemplatesPartial.cshtml" />
+    <Content Include="Views\Reports\AnnotationAnalysis.cshtml" />
+    <Content Include="Views\Templates\List.cshtml" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\LICENSE" />
+    <Content Include="Scripts\s3.jquery.fine-uploader-5.5.0\s3.jquery.fine-uploader\LICENSE" />
+    <Content Include="Views\SampleQualifiers\Create.cshtml" />
+    <Content Include="Views\SampleQualifiers\Delete.cshtml" />
+    <Content Include="Views\SampleQualifiers\Details.cshtml" />
+    <Content Include="Views\SampleQualifiers\Edit.cshtml" />
+    <Content Include="Views\SampleQualifiers\Index.cshtml" />
+    <Content Include="Views\AnalysisRequestTypes\Create.cshtml" />
+    <Content Include="Views\AnalysisRequestTypes\Delete.cshtml" />
+    <Content Include="Views\AnalysisRequestTypes\Details.cshtml" />
+    <Content Include="Views\AnalysisRequestTypes\Edit.cshtml" />
+    <Content Include="Views\AnalysisRequestTypes\Index.cshtml" />
+    <Content Include="Views\AnalysisRequests\_AnalysisSamplesTumorNormalPartial.cshtml" />
+    <Content Include="Views\AnalysisRequests\_AnalysisSamplesRnaPartial.cshtml" />
+    <Content Include="Views\AnalysisRequests\_TreeViewPartial.cshtml" />
+    <Content Include="Views\Account\ResetPasswordAsAdmin.cshtml" />
+    <Content Include="Views\Account\ExecuteResetPasswordAsAdmin.cshtml" />
+    <Content Include="Views\SampleQualifierGroups\Create.cshtml" />
+    <Content Include="Views\SampleQualifierGroups\Delete.cshtml" />
+    <Content Include="Views\SampleQualifierGroups\Details.cshtml" />
+    <Content Include="Views\SampleQualifierGroups\Edit.cshtml" />
+    <Content Include="Views\SampleQualifierGroups\Index.cshtml" />
+    <Content Include="Views\SharedPurchaseOrderOrganizations\Index.cshtml" />
+    <Content Include="Views\SharedPurchaseOrderOrganizations\Create.cshtml" />
+    <Content Include="Views\SharedPurchaseOrderOrganizations\Edit.cshtml" />
+    <Content Include="Views\SharedPurchaseOrderOrganizations\Delete.cshtml" />
+    <Content Include="Views\AnalysisRequests\_AnalysisSamplesRnaPartialSamples.cshtml" />
+    <Content Include="Views\AnalysisRequests\_AnalysisSamplesRnaPartialGroups.cshtml" />
+    <Content Include="Views\AnalysisRequests\_AnalysisSamplesRnaPartialHelp.cshtml" />
+    <Content Include="Views\AnalysisRequests\BamViewer.cshtml" />
+    <Content Include="Views\BillingInvoices\Create.cshtml" />
+    <Content Include="Views\BillingInvoices\Delete.cshtml" />
+    <Content Include="Views\BillingInvoices\Details.cshtml" />
+    <Content Include="Views\BillingInvoices\Edit.cshtml" />
+    <Content Include="Views\BillingInvoices\Index.cshtml" />
+    <Content Include="Views\BillingInvoices\PrintDetails.cshtml" />
+    <Content Include="Views\BillingAccount\Create.cshtml" />
+    <Content Include="Views\BillingAccount\Delete.cshtml" />
+    <Content Include="Views\BillingAccount\Details.cshtml" />
+    <Content Include="Views\BillingAccount\Edit.cshtml" />
+    <Content Include="Views\BillingAccount\Index.cshtml" />
+    <Content Include="Views\AnalysisAdaptor\Create.cshtml" />
+    <Content Include="Views\AnalysisAdaptor\Delete.cshtml" />
+    <Content Include="Views\AnalysisAdaptor\Edit.cshtml" />
+    <Content Include="Views\AnalysisAdaptor\Index.cshtml" />
+    <Content Include="Views\AnalysisRequests\_AnalysisSamplesPartial.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Samples\_SampleStatusPartial.cshtml" />
+    <Content Include="Views\SequencerJobs\Details.cshtml" />
+    <Content Include="Views\SequencerJobs\Index.cshtml" />
+    <Content Include="Views\Replicates\Create.cshtml" />
+    <Content Include="Views\Replicates\Delete.cshtml" />
+    <Content Include="Views\Replicates\Details.cshtml" />
+    <Content Include="Views\Replicates\Edit.cshtml" />
+    <Content Include="Views\Replicates\Index.cshtml" />
+    <Content Include="Views\Samples\_EditRnaPartial.cshtml" />
+    <None Include="Views\Shared\_CloudFileDisplayListPartial.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\MyCredentials.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Contacts\Create.cshtml" />
+    <Content Include="Views\Contacts\Delete.cshtml" />
+    <Content Include="Views\Contacts\Details.cshtml" />
+    <Content Include="Views\Contacts\Edit.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
+    <Content Include="Views\Organizations\Create.cshtml" />
+    <Content Include="Views\Organizations\Delete.cshtml" />
+    <Content Include="Views\Organizations\Details.cshtml" />
+    <Content Include="Views\Organizations\Edit.cshtml" />
+    <Content Include="Views\Organizations\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Roles\Details.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Projects\Create.cshtml" />
+    <Content Include="Views\Projects\Details.cshtml" />
+    <Content Include="Views\Projects\Edit.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\Teams\Create.cshtml" />
+    <Content Include="Views\Teams\Details.cshtml" />
+    <Content Include="Views\Teams\Edit.cshtml" />
+    <Content Include="Views\Teams\Index.cshtml" />
+    <Content Include="Views\AnalysisRequests\Create.cshtml" />
+    <Content Include="Views\AnalysisRequests\Details.cshtml" />
+    <Content Include="Views\AnalysisRequests\Edit.cshtml" />
+    <Content Include="Views\AnalysisRequests\Index.cshtml" />
+    <Content Include="Views\Samples\Create.cshtml" />
+    <Content Include="Views\Samples\Details.cshtml" />
+    <Content Include="Views\Samples\Edit.cshtml" />
+    <Content Include="Views\Samples\Index.cshtml" />
+    <Content Include="Views\CloudFiles\Create.cshtml" />
+    <Content Include="Views\CloudFiles\Delete.cshtml" />
+    <Content Include="Views\CloudFiles\Index.cshtml" />
+    <Content Include="Views\CloudFileCategories\Create.cshtml" />
+    <Content Include="Views\CloudFileCategories\Delete.cshtml" />
+    <Content Include="Views\CloudFileCategories\Details.cshtml" />
+    <Content Include="Views\CloudFileCategories\Edit.cshtml" />
+    <Content Include="Views\CloudFileCategories\Index.cshtml" />
+    <Content Include="Views\Shared\_SearchListControlPartial.cshtml" />
+    <Content Include="Views\Shared\_SearchListMoreResultsPartial.cshtml" />
+    <Content Include="Views\Users\MakeDefault.cshtml" />
+    <Content Include="Views\TransactionTypes\Create.cshtml" />
+    <Content Include="Views\TransactionTypes\Delete.cshtml" />
+    <Content Include="Views\TransactionTypes\Details.cshtml" />
+    <Content Include="Views\TransactionTypes\Edit.cshtml" />
+    <Content Include="Views\TransactionTypes\Index.cshtml" />
+    <Content Include="Views\Transactions\Create.cshtml" />
+    <Content Include="Views\Transactions\Delete.cshtml" />
+    <Content Include="Views\Transactions\Details.cshtml" />
+    <Content Include="Views\Transactions\Edit.cshtml" />
+    <Content Include="Views\Shared\_TermsConditionsModalPartial.cshtml" />
+    <Content Include="Views\Shared\_TermsConditionsModalPartial_Script.cshtml" />
+    <Content Include="Views\Shared\_PrivacyPolicyModalPartial.cshtml" />
+    <Content Include="Views\Shared\_PrivacyPolicyModalPartial_Script.cshtml" />
+    <Content Include="Views\Shared\_DigiCertPartial.cshtml" />
+    <Content Include="Views\Shared\_DigiCertPartial_Script.cshtml" />
+    <Content Include="Views\Teams\_TeamMembersPartial.cshtml" />
+    <Content Include="Views\Teams\_TeamProjectsPartial.cshtml" />
+    <Content Include="Views\Teams\_TeamAnalysesPartial.cshtml" />
+    <Content Include="Views\Teams\_InfoPartial.cshtml" />
+    <Content Include="Views\Teams\_DeletePartial.cshtml" />
+    <Content Include="Views\Teams\_EditPartial.cshtml" />
+    <Content Include="Views\Teams\_CreatePartial.cshtml" />
+    <Content Include="Views\Shared\_ModuleLayout.cshtml" />
+    <Content Include="Views\Shared\_ModuleCreateNewItemButtonPartial.cshtml" />
+    <Content Include="Views\Shared\_ModuleIndexLayout.cshtml" />
+    <Content Include="Views\Shared\_LoggedOutLayout.cshtml" />
+    <Content Include="Views\Shared\_TopNavMenuPartial.cshtml" />
+    <Content Include="Views\Shared\_TopNavSubMenuPartial.cshtml" />
+    <Content Include="Views\Users\_InfoPartial.cshtml" />
+    <Content Include="Views\Users\_CreatePartial.cshtml" />
+    <Content Include="Views\Users\_DeletePartial.cshtml" />
+    <Content Include="Views\Users\_EditPartial.cshtml" />
+    <Content Include="Views\Users\_UserContactsPartial.cshtml" />
+    <Content Include="Views\Users\_UserSystemInfoPartial.cshtml" />
+    <Content Include="Views\Users\_EditUserSystemInfoPartial.cshtml" />
+    <Content Include="Views\Shared\_TipsPanelPartial.cshtml" />
+    <Content Include="Views\Shared\_GoogleAnalyticsTrackingPartial.cshtml" />
+    <Content Include="Views\Templates\Create.cshtml" />
+    <Content Include="Views\Templates\Delete.cshtml" />
+    <Content Include="Views\Templates\Details.cshtml" />
+    <Content Include="Views\Templates\Edit.cshtml" />
+    <Content Include="Views\Templates\Index.cshtml" />
+    <Content Include="Views\TemplateGenes\Create.cshtml" />
+    <Content Include="Views\TemplateGenes\Delete.cshtml" />
+    <Content Include="Views\TemplateGenes\Details.cshtml" />
+    <Content Include="Views\TemplateGenes\Edit.cshtml" />
+    <Content Include="Views\TemplateGenes\Index.cshtml" />
+    <Content Include="Views\Templates\_CreatePartial.cshtml" />
+    <Content Include="Views\Templates\_InfoPartial.cshtml" />
+    <Content Include="Views\Templates\_EditPartial.cshtml" />
+    <Content Include="Views\Templates\_GenesListPartial.cshtml" />
+    <Content Include="Views\Users\SsoTest.cshtml" />
+    <None Include="Web.Integration.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\themes\base\minified\images\" />
+    <Folder Include="jbrowse\" />
+    <Folder Include="Views\PayPal\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GNApp\GNApp.csproj">
+      <Project>{20eba1c9-9c24-4269-bf13-347b53d08cd4}</Project>
+      <Name>GNApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GNBilling\GNBilling.csproj">
+      <Project>{5ad70673-8adf-472f-91f9-537f07786936}</Project>
+      <Name>GNBilling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GNCloud\GNCloud.csproj">
+      <Project>{1658539a-5ed4-4ef4-bb1e-b3b213f47310}</Project>
+      <Name>GNCloud</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GNData\GNData.csproj">
+      <Project>{28ece1c4-db94-4b43-b297-f5611c700af2}</Project>
+      <Name>GNData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GNNotification\GNNotification.csproj">
+      <Project>{955a6cc3-289f-4be3-bdad-059aee81aba0}</Project>
+      <Name>GNNotification</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GNUtility\GNUtility.csproj">
+      <Project>{8d489f4d-7827-4767-ba43-e71a190e741c}</Project>
+      <Name>GNUtility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Integration|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>17836</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/GNPortal-1.3</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,132 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNAnalysisRequest>
+@{
+    
+    var on_load_open = "";
+}
+<script>
+    function toggleGroup(id, iconplus, iconminus)
+    {
+        $('#' + id).toggle();
+        $('#' + iconplus).toggle();
+        $('#' + iconminus).toggle();
+    }
+</script>
+
+<div>
+    @{
+        List<Guid> includedOrganizations = new List<Guid>();
+        List<Guid> includedTeams = new List<Guid>();
+        List<Guid> includedProjects = new List<Guid>();
+
+        
+        <ol style="list-style-type:none;margin-left:-50px;">
+
+            @foreach (var itemOrg in ViewBag.Organizations)
+            {
+                if (!includedOrganizations.Contains(itemOrg.Id))
+                {
+
+                    if (itemOrg.Teams.Count > 0)
+                    {
+                    var orgIdTeams = itemOrg.Id + "_teams";
+                    includedOrganizations.Add(itemOrg.Id);
+                    <li>
+                        <div style="margin:10px;">
+                            @{
+                                var idplus_org = itemOrg.Id+"_plus";
+                                var idminus_org = itemOrg.Id + "_minus";
+                            }
+                            <a href="javascript:toggleGroup('@orgIdTeams', '@idplus_org', '@idminus_org')" class="glyphicon glyphicon-minus-sign" id="@idplus_org" style="text-decoration:none"></a>
+                            <a href="javascript:toggleGroup('@orgIdTeams', '@idplus_org', '@idminus_org')" class="glyphicon glyphicon-plus-sign" id="@idminus_org" style="display:none;text-decoration:none"></a>
+
+                            <a href="@Url.Action("Index", "AnalysisRequests", new { OrganizationId = itemOrg.Id })" class="gn-dark-gray gn-green-hover" style="text-decoration:none" alt="See Analyses for this organization">
+                                <img src="@Url.Content("~/Content/icons/dashboard.png")" width="18" height="18"
+                                     class="topNavIconImg" title="See Analyses for this organization" alt="See Analyses for this organization" />
+                                <span class="hidden-sm small">@itemOrg.Name</span>
+                            </a>
+                        </div>
+
+
+                        <ol style="list-style-type:none" id="@orgIdTeams">
+                            @if (itemOrg.Teams.Count == 0)
+                            {
+                                <div class="small">No Teams found</div>
+                            }
+                            
+                            @foreach (var itemTeam in itemOrg.Teams)
+                            {
+                                if (!includedTeams.Contains(itemTeam.Id))
+                                {
+                                    if (itemTeam.Projects.Count > 0)
+                                    {
+                                        var teamIdProjects = itemTeam.Id + "_projects";
+                                        includedTeams.Add(itemTeam.Id);
+                                        <li style="margin:10px;">
+                                            <div>
+                                                @{
+                                                    var idplus = itemTeam.Id + "_plus";
+                                                    var idminus = itemTeam.Id + "_minus";
+                                                }
+                                                <a href="javascript:toggleGroup('@teamIdProjects', '@idplus', '@idminus')" class="glyphicon glyphicon-minus-sign" id="@idplus" style="display:none;text-decoration:none"></a>
+                                                <a href="javascript:toggleGroup('@teamIdProjects', '@idplus', '@idminus')" class="glyphicon glyphicon-plus-sign" id="@idminus" style="text-decoration:none"></a>
+
+                                                <a href="@Url.Action("Index", "AnalysisRequests", new { teamId = itemTeam.Id })" class="gn-dark-gray gn-green-hover" style="text-decoration:none" alt="See Analyses for this team">
+                                                    <img src="@Url.Content("~/Content/icons/teams.png")" width="18" height="18"
+                                                         class="topNavIconImg" title="See Analyses for this team" alt="See Analyses for this team" />
+                                                    <span class="hidden-sm small">@itemTeam.Name</span>
+                                                </a>
+                                            </div>
+
+                                            
+                                            <ol style="list-style-type:none;display:none;" id="@teamIdProjects">
+                                                @if (itemTeam.Projects.Count == 0)
+                                                {
+                                                    <div class="small">No Projects found</div>
+                                                }
+                                                @foreach (var itemProject in itemTeam.Projects)
+                                                {
+                                                    if (!includedProjects.Contains(itemProject.Id))
+                                                    {
+                                                        includedProjects.Add(itemProject.Id);
+                                                        var project_li_class = "";
+                                                        var project_li_style = "margin:10px;";
+                                                        if (Request["projectId"] != null && Guid.Parse(Request["projectId"]).Equals(itemProject.Id))
+                                                        {
+                                                            project_li_class = "bg-gn-light-gray";
+                                                            project_li_style = "margin:2px;margin-right:-40px;padding:10px;";
+                                                                                                                        
+                                                        }
+
+                                                        <li style="@project_li_style" class="@project_li_class">
+                                                            <div>
+                                                                <a href="@Url.Action("Index", "AnalysisRequests", new { projectId = itemProject.Id, teamId = itemTeam.Id })" class="gn-dark-gray gn-green-hover" style="text-decoration:none" alt="See Analyses for this project">
+                                                                    <img src="@Url.Content("~/Content/icons/projects.png")" width="18" height="18"
+                                                                            class="topNavIconImg" title="See Analyses for this project" alt="See Analyses for this project" />
+                                                                    <span class="hidden-sm small">@itemProject.Name 
+                                                                    <span class="badge">@itemProject.AnalysisRequests.Count</span>
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        </li>
+                                                        
+                                                    }
+                                                }
+                                            </ol>
+                                        </li>  
+                                        }
+                                    }
+                               
+                            }
+                        </ol>
+                        </li>
+                    }          
+                }
+            }
+            </ol>
+
+
+}
+    
+</div>
+
+

@@ -1,0 +1,53 @@
+﻿@model GenomeNext.Data.EntityModel.GNContact
+
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Assigned Roles & System Info", "briefcase"))
+    {
+        <span class="pull-right">
+
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody())
+    {
+        <dl class="dl-horizontal col-md-12">
+
+            <dt class="col-md-8">Assigned Roles</dt>
+
+            <dd>
+
+                @if (Model.GNContactRoles.Count > 0)
+                {
+                    <ul style="margin-left:-25px;">
+                        @foreach (var item in Model.GNContactRoles)
+                        {
+                            <li>@Html.Raw(item.AspNetRole.Name)</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <span>No roles assigned.</span>
+                }
+            </dd>
+
+
+            <dt class="col-md-8">@Html.DisplayNameFor(model => model.IsInviteAccepted)</dt>
+            <dd>@Html.DisplayFor(model => model.IsInviteAcceptedText)</dd>
+
+
+            <dt class="col-md-8">@Html.DisplayNameFor(model => model.IsSubscribedForNewsletters)</dt>
+            <dd>@Html.DisplayFor(model => model.IsSubscribedForNewslettersText)</dd>
+
+
+            <dt class="col-md-8">Terms and Conditions</dt>
+            <dd>@Html.DisplayFor(model => model.TermsAcceptDateTime)</dd>
+            
+        </dl>
+    }
+
+}

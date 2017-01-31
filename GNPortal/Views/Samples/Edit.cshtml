@@ -1,0 +1,60 @@
+﻿@model GenomeNext.Data.EntityModel.GNSample
+
+@{
+    ViewBag.Title = Model.Name;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/samples_white.png";
+    ViewData["ModuleCtl"] = "Samples";
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+
+    if (!string.IsNullOrEmpty(Request["analysisRequestId"]))
+    {
+        ViewData["customBackLink"] = true;
+        ViewData["customBackLinkModuleCtl"] = "AnalysisRequests";
+        ViewData["customBackLinkAction"] = "Details";
+        ViewData["customBackLinkParam"] = Request["analysisRequestId"];
+        ViewData["customBackLinkText"] = "Back to Analysis";
+    }
+}
+
+@section scripts {
+    @Html.Partial("~/Views/Samples/_SampleCloudFilesPartial_Script.cshtml");
+}
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-md-6">
+            @{
+                if (Model.GNSampleQualifierCode.Equals("RNA"))
+                {
+                    @Html.Partial("~/Views/Samples/_EditRnaPartial.cshtml", Model)
+                }
+                else
+                {
+                    @Html.Partial("~/Views/Samples/_EditPartial.cshtml", Model)
+                }
+            }
+
+            @{
+                ViewData["AllowEdit"] = true;
+                ViewData["SampleId"] = Model.Id;
+                ViewData["AnalysisRequestId"] = Request["analysisRequestId"];
+            }
+            @Html.Partial("~/Views/Samples/_SampleCloudFilesPartial.cshtml", Model)
+
+        </div>
+
+        <div class="col-md-6">
+            @{
+                ViewData["isEdit"] = true;
+            }
+            @Html.Partial("~/Views/Samples/_SamplePedigreePartial.cshtml", Model)
+
+            @Html.Partial("~/Views/Samples/_SampleAnalysesPartial.cshtml", Model)
+
+        </div>
+
+    </div>
+}

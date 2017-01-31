@@ -1,0 +1,70 @@
+﻿@model GenomeNext.Data.IdentityModel.AspNetUser
+
+@{
+    ViewBag.Title = "Set Default Organization";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-user gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @if (!string.IsNullOrEmpty(Request["organizationId"]))
+        {
+            @Html.BootstrapActionButton("Back to List", "Index", "Users", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "chevron-right", null, true)
+        }
+        else
+        {
+            @Html.BootstrapActionButton("Back to List", "Index", "Users", null, "info", "chevron-right", null, true)
+        }
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="form-horizontal">
+
+    @Html.BootstrapRowSpacer()
+
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+        </dt>
+        <dd>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("organizationId", Request["organizationId"])
+
+                <button type="submit" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-user"></span>
+                    Delete
+                </button>
+            }
+        </dd>
+
+    </dl>
+</div>

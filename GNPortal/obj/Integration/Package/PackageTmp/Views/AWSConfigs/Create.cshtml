@@ -1,0 +1,53 @@
+﻿@model GenomeNext.Data.EntityModel.AWSConfig
+
+@{
+    ViewBag.Title = "Create New AWS Config";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h2>
+        <span class="glyphicon glyphicon-cloud gn-green"></span>
+        @ViewBag.Title
+        <span class="pull-right">
+            @Html.BootstrapActionButton("Back to List", "Index", "AWSConfigs", null, "info", "chevron-left")
+            @Html.BootstrapFormSaveButton("Create")
+        </span>
+    </h2>
+
+    @Html.BootstrapRowSpacer()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.AWSAccessKeyId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AWSAccessKeyId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AWSAccessKeyId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AWSSecretAccessKey, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AWSSecretAccessKey, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AWSSecretAccessKey, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AWSRegionSystemName, "AWSRegionSystemName", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("AWSRegionSystemName", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AWSRegionSystemName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

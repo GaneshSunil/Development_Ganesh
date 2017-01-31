@@ -1,0 +1,82 @@
+﻿@model GenomeNext.Data.EntityModel.GNSample
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+}
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Status", "refresh"))
+    {
+        <span class="pull-right">
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(false, "status-body"))
+    {    
+
+        if (User.IsInRole("GN_ADMIN"))
+        {
+            if (Model.GNNewSampleBatchSample == null)
+            {
+                <div class="col-md-12 text-center">
+                    @Html.BootstrapActionButton("Mark As Failed Request", "MarkAsFailedRequest", "AnalysisRequests", new RouteValueDictionary(new { id = Model.Id }), "btn-danger white", "exclamation-sign", displayText: true)
+                </div>
+    
+                @Html.BootstrapRowSpacer()
+            }
+
+            if (Model.GNNewSampleBatchSample != null && Model.GNNewSampleBatchSample.Count != 0)
+            {
+                <dt>Total time</dt>
+                <dd>@Model.TotalTimeLapse</dd>
+                using (Html.BeginGNPanel(false))
+                {
+                    using (Html.BeginGNPanelHeading("Sample Creation History"))
+                    {
+                        <span class="pull-right">
+                            <a id="analysisStatusHistoryToggleBtn" href="#" class="white clickable">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </a>
+                        </span>
+                    }
+
+                    using (Html.BeginGNPanelBody(true))
+                    {
+                        <div id="analysisStatusHistory">
+                            @if (Model.GNNewSampleBatchSample != null && Model.GNNewSampleBatchSample.GNNewSampleBatch.GNNewSampleBatchStatus != null)
+                            {
+                                int i = 0;
+                                foreach (var item in Model.GNNewSampleBatchSample.GNNewSampleBatch.GNNewSampleBatchStatus)
+                                {
+                                    using (Html.BeginGNClickableListGroupItem("#", (i % 2) != 0))
+                                    {
+                                        <span class="small">
+                                            @if (item.IsError)
+                                            {
+                                                <span class="glyphicon glyphicon-remove-circle alert-danger"></span>
+                                            }
+                                            <b>@Html.DisplayFor(modelItem => item.PercentComplete)%</b> 
+                                            <span class="gn-green">@Html.Raw(TimeZoneInfo.ConvertTime(item.CreateDateTime.Value, contactForUser.GNOrganization.OrgTimeZoneInfo))</span>
+                                            @if (item.IsError && User.IsInRole("GN_ADMIN"))
+                                            {
+                                                <br/>
+                                                <span class="muted">@item.Message</span>
+                                            }
+                                        </span>
+                                    }
+                                    i++;
+                                }
+                            }
+                        </div>
+                    }
+                }
+            }
+        }
+    }
+
+}

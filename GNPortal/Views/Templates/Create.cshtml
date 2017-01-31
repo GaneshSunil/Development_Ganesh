@@ -1,0 +1,49 @@
+﻿@model GenomeNext.Data.EntityModel.GNTemplate
+
+@{
+    ViewBag.Title = "Create New Test Template";
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/teams_white.png";
+    ViewData["ModuleCtl"] = "Template";
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+}
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            var itemMinHeight = $("div.panel[class*='border-gn-dark-gray']:first").height() + 2;
+            $("#createNewItemPanel").css("min-height", itemMinHeight + "px");
+
+            $("#Name").focus();
+        });
+
+    </script>
+}
+
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-xs-12 col-md-6">
+
+            @Html.Partial("~/Views/Templates/_CreatePartial.cshtml", Model)
+
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+
+            @{
+                ViewData["TipsPanelTitle"] = "Tips for Creating a Test Template";
+                ViewData["TipsPanelImg"] = "~/Content/icons/teams.png";
+                ViewData["TipContent"] = new List<string>
+                {
+                    "Enter the Template code and Name."
+                };
+            }
+            @Html.Partial("~/Views/Shared/_TipsPanelPartial.cshtml", null, ViewData)
+
+        </div>
+
+    </div>
+}

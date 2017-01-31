@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3507b3fca3bb4394adb8f8dfd6f247c2" Name="GNEntityModelDiagram" ZoomLevel="101">
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNAccount" Width="2.75" PointX="4.25" PointY="8.5" IsExpanded="true" FillColor="Green" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNAnalysisRequest" Width="2.875" PointX="19.5" PointY="0.5" IsExpanded="true" FillColor="Olive" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNAnalysisResult" Width="2.5" PointX="23.375" PointY="5.125" IsExpanded="true" FillColor="Olive" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNCloudFileCategory" Width="2.375" PointX="37.375" PointY="16.25" IsExpanded="true" FillColor="Olive" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNCloudFile" Width="2.375" PointX="33.625" PointY="14.375" IsExpanded="true" FillColor="Olive" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNInvoiceDetail" Width="2" PointX="11.375" PointY="18.5" IsExpanded="true" FillColor="Green" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNInvoice" Width="2" PointX="8" PointY="15.5" IsExpanded="true" FillColor="Green" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNPaymentMethod" Width="2.25" PointX="0.5" PointY="15.25" IsExpanded="true" FillColor="Green" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNPayment" Width="1.875" PointX="8.25" PointY="21.375" IsExpanded="true" FillColor="Green" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNTransaction" Width="2" PointX="14.875" PointY="21.625" IsExpanded="true" FillColor="Green" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNTransactionType" Width="1.75" PointX="17.75" PointY="24.125" IsExpanded="true" FillColor="Green" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNOrganization" Width="2.5" PointX="9.25" PointY="4.75" FillColor="Maroon" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNTeam" Width="2.25" PointX="9.125" PointY="0.5" FillColor="Maroon" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNContact" Width="2.375" PointX="5.875" PointY="26.125" FillColor="Maroon" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNTeamMember" Width="2.125" PointX="6.125" PointY="0.5" FillColor="Maroon" />
+
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNTeamGNTeamMembers" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNContactGNTeamMembers" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNOrganizationGNTeam" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNContactGNAccount" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNContactGNAccount1" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNProject" Width="2" PointX="12.625" PointY="5.625" FillColor="Maroon" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNContactGNProject" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNTeamGNProject" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNSample" Width="2.25" PointX="23" PointY="13.875" FillColor="Olive" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNCloudFileCategoryGNCloudFile" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNSampleGNCloudFile" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNProjectGNAnalysisRequest" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNAnalysisType" Width="1.75" PointX="16.875" PointY="1.375" FillColor="Olive" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisRequestGNAnalysisType" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisResultGNCloudFile" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNTag" Width="2.125" PointX="31.25" PointY="17.625" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNEntityTag" Width="2.375" PointX="26.625" PointY="26.875" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNContactGNAccount2" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAccountGNPaymentMethod" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAccountGNInvoice" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNInvoiceDetailGNTransaction" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNTransactionTypeGNTransaction" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNInvoiceGNInvoiceDetail" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNProduct" Width="2.125" PointX="14.625" PointY="14.75" FillColor="Lime" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNProductType" Width="1.875" PointX="17.375" PointY="19.875" FillColor="Lime" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNContactGNOrganization" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNEntityType" Width="2" PointX="26.75" PointY="23.25" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNContactGNTeam" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNContactGNOrganization1" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNOrganizationGNAccount" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNOrganizationGNSample" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.AWSConfig" Width="2.75" PointX="28.125" PointY="3.125" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.AWSResource" Width="2.125" PointX="31.375" PointY="2.5" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.AWSConfigAWSResource" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.AWSResourceType" Width="2" PointX="34" PointY="2.5" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.AWSResourceTypeAWSResource" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNSampleType" Width="2" PointX="22.5" PointY="9.875" FillColor="Olive" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNSampleTypeGNSample" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.AWSRegion" Width="2.5" PointX="28.125" PointY="7.375" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.AWSRegionAWSConfig" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.AWSRegionGNCloudFile" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.AWSRegionGNAnalysisRequest" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.AWSRegionGNAnalysisResult" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNAnalysisStatus" Width="2.125" PointX="25.125" PointY="1.25" FillColor="Olive" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisResultGNAnalysisStatus" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.AWSConfigGNOrganization" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisRequestGNAnalysisStatus" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisRequestGNAnalysisResult" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNContactRole" Width="1.75" PointX="3.125" PointY="0.5" FillColor="Purple" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNContactGNContactRole" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNEntityAudit" Width="2.375" PointX="22.875" PointY="23.375" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNEntityTypeGNEntityTag" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNEntityTypeGNEntityAudit" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNEntityAuditType" Width="2.375" PointX="20.125" PointY="24.25" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNEntityAuditTypeGNEntityAudit" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNSampleRelationship" Width="2.25" PointX="16.625" PointY="10.75" FillColor="Olive" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNSampleRelationshipType" Width="2.125" PointX="13.75" PointY="10.75" FillColor="Olive" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNSampleRelationshipTypeGNSampleRelationship" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNSampleGNSampleLeftRelationship" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNSampleGNSampleRightRelationship" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNContactGNEntityAudit" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNLog" Width="1.875" PointX="30.375" PointY="25.25" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNInviteCode" Width="1.5" PointX="4.25" PointY="2.625" FillColor="Maroon" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNPaymentMethodType" Width="2.125" PointX="0.875" PointY="21.125" FillColor="Green" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNPaymentMethodTypeGNPaymentMethod" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNAccountProductSubscription" Width="2" PointX="11.375" PointY="14.625" FillColor="Green" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNProductTypeGNProduct" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNProductGNAccountProductSubscription" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAccountGNAccountProductSubscription" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNProductGNTransaction" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNNotificationLog" Width="2.125" PointX="26.875" PointY="30.75" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNNotificationTopic" Width="2.5" PointX="22.625" PointY="30.75" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNPaymentGNPaymentMethod" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNPaymentGNInvoice" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNAccountType" Width="2.25" PointX="0.5" PointY="12.375" FillColor="Green" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAccountTypeGNAccount" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNPurchaseOrder" Width="2.5" PointX="3.5" PointY="15.75" FillColor="Green" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAccountGNPurchaseOrder" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNAccountThreshold" Width="2.25" PointX="8.25" PointY="10.875" FillColor="Green" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAccountGNAccountThreshold" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAccountTypeGNProduct" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNAnalysisRequestGNSample" Width="2.625" PointX="17.875" PointY="14.5" FillColor="192, 192, 0" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisRequestGNSampleGNSample" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisRequestGNSampleGNAnalysisRequest" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNAnalysisSampleAffectedIndicator" Width="2.625" PointX="33" PointY="20.625" FillColor="192, 192, 0" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNPurchaseOrderGNInvoice" Width="2.5" PointX="5.375" PointY="20.5" FillColor="Green" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNPurchaseOrderGNInvoice_GNPurchaseOrder" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNPurchaseOrderGNInvoice_GNInvoice" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNNotificationTopicSubscriber" Width="2.375" PointX="22.875" PointY="27.5" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNNotificationTopicSubscriberGNNotificationTopic" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNNotificationTopicSubscriberGNContact" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNNotificationLogGNNotificationTopic" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNNotificationTopicAddressee" Width="2.5" PointX="30" PointY="31.375" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNNotificationTopicAddresseeGNNotificationTopic" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNNotificationSender" Width="2" PointX="30.25" PointY="23" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNSampleRelationshipTypeMapping" Width="2.625" PointX="18.25" PointY="17" FillColor="Olive" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNBulkImportStatus" Width="2.875" PointX="36.5" PointY="1.125" FillColor="Purple" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNBulkImportLog" Width="2" PointX="40.625" PointY="1.125" FillColor="Purple" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBulkImportStatusGNBulkImportLog" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNBulkImportStaging" Width="2.625" PointX="44.625" PointY="3.75" FillColor="Fuchsia" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBulkImportStatusGNBulkImportStaging" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNSettingsTemplate" Width="2.75" PointX="0.5" PointY="8.375" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNSettingsTemplateConfig" Width="2.75" PointX="0.5" PointY="5.625" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNSettingsTemplateField" Width="2.75" PointX="0.5" PointY="2.625" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNSettingsTemplateGNSettingsTemplateConfig" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNSettingsTemplateConfigGNSettingsTemplateField" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNOrganizationGNSettingsTemplate" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.AWSComputeEnvironment" Width="2.375" PointX="35.5" PointY="6.75" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.AWSConfigAWSComputeEnvironment" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNNotificationSuppressionList" Width="2.375" PointX="33.5" PointY="23.25" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNVariant" Width="1.5" PointX="17.375" PointY="12.875" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNTemplate" Width="2.5" PointX="15.25" PointY="7.125" FillColor="192, 192, 0" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNTemplateGene" Width="1.875" PointX="18.375" PointY="7.125" FillColor="192, 192, 0" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNAnalysisRequestGNTemplate" Width="2.375" PointX="15.75" PointY="3.75" FillColor="192, 192, 0" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNGene" Width="1.75" PointX="33.25" PointY="9.875" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisRequestGNTemplateGNAnalysisRequest" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisRequestGNTemplateGNTemplate" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNTemplateGNTemplateGene" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNTemplateGNOrganization" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNTemplateGeneGNGene" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNSampleQualifier" Width="2.5" PointX="23" PointY="20.625" FillColor="192, 192, 0" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNAnalysisRequestType" Width="2.25" PointX="13.75" PointY="0.5" FillColor="192, 192, 0" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisRequestGNAnalysisRequestType" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNTransactionGNAnalysisRequest" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNTransactionGNProject" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNTransactionGNTeam" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNSampleQualifierGroup" Width="2.125" PointX="27.75" PointY="20.625" FillColor="192, 192, 0" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNSampleQualifierGNSampleQualifierGroup" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNSampleQualifierGNSample" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNSharedPurchaseOrderOrganization" Width="2.75" PointX="1.25" PointY="24.625" FillColor="Green" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNSharedPurchaseOrderOrganizationGNInvoice" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNSharedPurchaseOrderOrganizationGNPurchaseOrder" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNAnalysisRequestGroup" Width="3" PointX="25.375" PointY="10.75" FillColor="192, 192, 0" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisRequestGroupGNAnalysisRequest" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisRequestGroupGNSample" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNAnalysisRequestGroupComparison" Width="2.75" PointX="29.5" PointY="13.25" FillColor="192, 192, 0" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisRequestGroupComparisonGNAnalysisRequestGroup" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisRequestGroupGNAnalysisRequestGroupComparison" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisRequestGroupComparisonGNAnalysisRequest" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNAnalysisAdaptor" Width="2.125" PointX="22.75" PointY="1" FillColor="Olive" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNAnalysisAdaptorGNAnalysisRequest" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNBillingAccount" Width="2.25" PointX="9.125" PointY="30.125" FillColor="Lime" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNBillingInvoice" Width="2.375" PointX="9.125" PointY="36.375" FillColor="Lime" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNBillingInvoiceDetail" Width="2.25" PointX="12.25" PointY="33.125" FillColor="Lime" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNBillingPaymentMethod" Width="2.375" PointX="0.75" PointY="30.125" FillColor="Chartreuse" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNBillingPurchaseOrder" Width="2.5" PointX="18.875" PointY="28.25" FillColor="Lime" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNBillingPurchaseOrderInvoice" Width="2.625" PointX="18.75" PointY="33.125" FillColor="Chartreuse" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNBillingPaymentInvoice" Width="2.125" PointX="15.625" PointY="33.125" FillColor="Lime" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNBillingPayment" Width="2.125" PointX="15.875" PointY="28.25" FillColor="Lime" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNBillingTransaction" Width="2.25" PointX="12" PointY="27.5" FillColor="Lime" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingPurchaseOrderGNBillingAccount" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingAccountGNBillingPaymentMethod" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingInvoiceGNBillingPurchaseOrderInvoice" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingPurchaseOrderGNBillingPurchaseOrderInvoice" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingAccountGNOrganization" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingAccountGNAccountType" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingPaymentMethodGNPaymentMethodType" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingTransactionGNTransactionType" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingTransactionGNTeam" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingTransactionGNAnalysisRequest" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingTransactionGNProject" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNContactGNBillingAccount" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingAccountGNContact" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingInvoiceDetailGNBillingInvoice" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingInvoiceDetailGNBillingTransaction" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingTransactionGNProduct" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingInvoiceGNBillingAccount" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingPaymentGNPaymentMethod" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingPaymentInvoiceGNBillingInvoice" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBillingPaymentInvoiceGNBillingPayment" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNBulkImportGroupStaging" Width="2.625" PointX="40.5" PointY="5.75" FillColor="Fuchsia" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNBulkImportGroupStagingGNBulkImportStatus" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNSampleStatus" Width="2.125" PointX="28.5" PointY="17.125" FillColor="Olive" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNSampleStatusGNSample" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNNewSampleBatch" Width="2.875" PointX="37.125" PointY="11.25" FillColor="Fuchsia" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNNewSampleBatchStatus" Width="2.75" PointX="41.625" PointY="11.25" FillColor="Fuchsia" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNNewSampleBatchStatusGNNewSampleBatch" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNNewSampleBatchSamples" Width="2.625" PointX="40.75" PointY="18.5" FillColor="Fuchsia" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNNewSampleBatchSamplesGNNewSampleBatch" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNNewSampleBatchSamplesGNSample" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNSequencerJob" Width="2.125" PointX="4.75" PointY="5.375" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNSequencerJobGNOrganization" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNNewSampleBatchGNSequencerJob" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNSequencerJobGNProject" />
+        <EntityTypeShape EntityType="GenomeNext.Data.EntityModel.GNReplicate" Width="2" PointX="26.125" PointY="14.625" FillColor="192, 192, 0" />
+        <AssociationConnector Association="GenomeNext.Data.EntityModel.GNReplicateGNSample" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

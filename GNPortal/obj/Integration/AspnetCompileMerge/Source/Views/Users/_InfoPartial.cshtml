@@ -1,0 +1,106 @@
+﻿@using GenomeNext.Data.EntityModel
+@using GenomeNext.Data.IdentityModel
+@model GenomeNext.Data.IdentityModel.AspNetUser
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+}
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("User Info", "info-sign"))
+    {
+        <span class="pull-right">
+            @if (!string.IsNullOrEmpty(Request["organizationId"]))
+            {
+                @Html.BootstrapActionIconLink("Edit", "Edit", "Users", new RouteValueDictionary(new { id = Model.Id, editSection = "ui" }), "white", "cog", null, false, false)
+            }
+            else
+            {
+                @Html.BootstrapActionIconLink("Edit", "Edit", "Users", new RouteValueDictionary(new { id = Model.Id, editSection = "ui" }), "white", "cog", null, false, false)
+            }
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody())
+    {
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+                @if(Model.EmailConfirmed)
+                {
+                    <span class="small gn-medium-gray">(<span class="glyphicon glyphicon-ok"></span>&nbsp;confirmed)</span>
+                }
+                else
+                {
+                    <span class="small gn-medium-gray">(<span class="glyphicon glyphicon-remove"></span>&nbsp;not confirmed)</span>
+                }
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)                
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+                @if (Model.PhoneNumber != null && Model.PhoneNumber != "")
+                {
+                    if (Model.PhoneNumberConfirmed)
+                    {
+                        <span class="small gn-medium-gray">(<span class="glyphicon glyphicon-ok"></span>&nbsp;confirmed)</span>
+                    }
+                    else
+                    {
+                        <span class="small gn-medium-gray">(<span class="glyphicon glyphicon-remove"></span>&nbsp;not confirmed)</span>
+                    }
+                }
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsAdmin)
+            </dt>
+
+            <dd>
+                @if(Model.IsAdmin)
+                {
+                    <span class="glyphicon glyphicon-check"></span>
+                }
+                else
+                {
+                    <span class="glyphicon glyphicon-unchecked"></span>
+                }
+            </dd>
+
+            @{
+        ViewData["ViewMode"] = "Details";
+            }
+            @Html.Partial("_AuditModelPartial", Model, ViewData)
+
+        </dl>
+    }
+    
+    @Html.Partial("~/Views/Users/_DeletePartial.cshtml", Model)
+}

@@ -1,0 +1,54 @@
+﻿@model GenomeNext.Data.EntityModel.AWSResource
+
+@{
+    ViewBag.Title = "Create New AWS Resource";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h2>
+        <span class="glyphicon glyphicon-cloud gn-green"></span>
+        @ViewBag.Title
+        <span class="pull-right">
+            @Html.BootstrapActionButton("Back to List", "Index", "AWSResources", null, "info", "chevron-left")
+            @Html.BootstrapFormSaveButton("Create")
+        </span>
+    </h2>
+
+    @Html.BootstrapRowSpacer()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ARN, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ARN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ARN, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AWSConfigId, "AWSConfigId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("AWSConfigId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AWSConfigId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AWSResourceTypeId, "AWSResourceTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("AWSResourceTypeId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AWSResourceTypeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

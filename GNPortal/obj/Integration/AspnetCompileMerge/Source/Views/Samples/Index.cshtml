@@ -1,0 +1,229 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNSample>
+
+@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/samples.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/samples_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/samples_white_green.png";
+    ViewData["ModuleItemName"] = "Sample";
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "Samples";
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    //Setup Values for Searchable List Table/Control/Partials
+    ViewData["SearchListItemsCount"] = Model.Count();
+    if (User.IsInRole("GN_ADMIN"))
+    {
+        ViewData["SearchTextOptions"] = new string[] { "All", "Organization", "Sample Name", "Sample Type" };
+    }
+    else
+    {
+        ViewData["SearchTextOptions"] = new string[] { "All", "Sample Name", "Sample Type" };
+    }
+    
+}
+
+
+
+<style>
+
+    .offset{
+     margin-top:-500px;
+    }
+
+</style>
+
+
+@section ModuleSortDisplayButtons{  
+
+    <script>
+        function sortElements(by) {
+            document.getElementById('sortBy').value = by;
+            document.getElementById('sortForm').submit();
+        }
+    </script>
+    
+
+
+
+
+    <form name="sortForm" id="sortForm" method="get" action="@Url.Action("Index")">
+        <input type="hidden" name="sortBy" id="sortBy" value="@Request["sortBy"]" />
+        <input type="hidden" name="display" id="display" value="@Request["display"]" />
+    </form>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom:15px;">
+        <div class="pull-right">
+            <span class="small gn-dark-gray">
+                Sort by
+            </span>
+            <select class="header-dropdown-index" name="sortDropdown" id="sortDropdown" onchange="javascript: sortElements(this.value);">
+                <option value="NameAsc" @(Request["sortBy"] == "NameAsc" ? "selected" : "")>Name (asc)</option>
+                <option value="NameDesc" @(Request["sortBy"] == "NameDesc" ? "selected" : "")>Name (desc)</option>
+                <option value="NumFilesAsc" @(Request["sortBy"] == "NumFilesAsc" ? "selected" : "")>Num. Files (asc)</option>
+                <option value="NumFilesDesc" @(Request["sortBy"] == "NumFilesDesc" ? "selected" : "")>Num. Files (desc)</option>
+                <option value="NumAnalysisAsc" @(Request["sortBy"] == "NumAnalysisAsc" ? "selected" : "")>Num. Analyses (asc)</option>
+                <option value="NumAnalysisDesc" @(Request["sortBy"] == "NumAnalysisDesc" ? "selected" : "")>Num. Analyses (desc)</option>
+                <option value="TypeAsc" @(Request["sortBy"] == "TypeAsc" ? "selected" : "")>Type (asc)</option>
+                <option value="TypeDesc" @(Request["sortBy"] == "TypeDesc" ? "selected" : "")>Type (desc)</option>
+                <option value="CreateDateAsc" @(Request["sortBy"] == "CreateDateAsc" ? "selected" : "")>Creation Date (asc)</option>
+                <option value="CreateDateDesc" @(Request["sortBy"] == "CreateDateDesc" || Request["sortBy"] == null ? "selected" : "")>Creation Date (desc)</option>
+            </select>
+
+            @Html.BootstrapActionIconLink("Grid Display", "Index", "Samples", new RouteValueDictionary(new { display = "grid", sortBy = Request["sortBy"] }), "gn-dark-gray", "th", "md", false, false)
+            &nbsp;
+            @Html.BootstrapActionIconLink("List Display", "Index", "Samples", new RouteValueDictionary(new { display = "list", sortBy = Request["sortBy"] }), "gn-dark-gray", "th-list", "md", false, false)
+            &nbsp;
+            @Html.BootstrapActionIconLink("Create New", "Create", "Samples", null, "gn-dark-gray", "plus", "md", false, false)
+        </div>
+    </div>
+}
+
+@section ModuleIndexContent{
+
+    @if (Model != null && Model.Count() != 0)
+    {
+        var SortedModel = Model.OrderByDescending(a => a.CreateDateTime);
+        if (Request["sortBy"] != null)
+        {
+            switch (Request["sortBy"])
+            {
+                case "NameAsc":
+                    SortedModel = Model.OrderBy(a => a.Name);
+                    break;
+                case "NameDesc":
+                    SortedModel = Model.OrderByDescending(a => a.Name);
+                    break;
+                case "NumFilesAsc":
+                    SortedModel = Model.OrderBy(a => a.CloudFiles.Count);
+                    break;
+                case "NumFilesDesc":
+                    SortedModel = Model.OrderByDescending(a => a.CloudFiles.Count);
+                    break;
+                case "NumAnalysisAsc":
+                    SortedModel = Model.OrderBy(a => a.GNAnalysisRequestGNSamples.Count);
+                    break;
+                case "NumAnalysisDesc":
+                    SortedModel = Model.OrderByDescending(a => a.GNAnalysisRequestGNSamples.Count);
+                    break;
+                case "TypeAsc":
+                    SortedModel = Model.OrderBy(a => a.GetType().Name);
+                    break;
+                case "TypeDesc":
+                    SortedModel = Model.OrderByDescending(a => a.GetType().Name);
+                    break;
+                case "CreateDateAsc":
+                    SortedModel = Model.OrderBy(a => a.CreateDateTime);
+                    break;
+                case "CreateDateDesc":
+                    SortedModel = Model.OrderByDescending(a => a.CreateDateTime);
+                    break;
+                default:
+                    SortedModel = Model.OrderByDescending(a => a.CreateDateTime);
+                    break;
+            }
+        }
+
+        if (Request["display"] != null && Request["display"] == "list")
+        {
+            int i = 0;
+            foreach (var item in SortedModel)
+            {
+                i++;
+                <div id="item_@i" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 flushLeft clickable"
+                     onclick="window.location.href='@Url.Action("Details", new { id=item.Id})'">
+                    <div class="panel border-gn-green @ViewBag.BoxHeightClass">
+                        <div class="panel-heading bg-gn-green">
+                            <span class="pull-right">
+                                @if (item.CanEdit)
+                                {
+                                    @Html.BootstrapActionIconLink("Edit", "Edit", "Samples", new RouteValueDictionary(new { id = item.Id }), "white", "cog", "sm", false, false)
+                                }
+                            </span>
+                            <h3 class="panel-title white" style="width:600px;">
+                                <img class="pull-left" style="height:18px;padding-right:6px;" src="@Url.Content("~/Content/icons/samples_white.png")" />
+                                @item.Name
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            
+                            <div class="col-md-12">
+                                <span class="small small">@item.SampleType.Name, @item.GNSampleQualifier.Name, @(item.IsPairEnded ? "Paired-End" : "Single-End")@(item.IsReady ? "" : ", Not ready")</span>
+                                <strong class="label bg-gn-light-gray gn-dark-gray">@item.CloudFiles.Count</strong> <span style="font-size:12px">FASTQ file@((@item.CloudFiles.Count != 1) ? "s" : "")</span>
+                                <strong class="label bg-gn-light-gray gn-dark-gray">@item.GNAnalysisRequestGNSamples.Count</strong> <span style="font-size:12px">Analys@((@item.GNAnalysisRequestGNSamples.Count != 1) ? "es" : "is")</span>
+
+                                @if (User.IsInRole("GN_ADMIN"))
+                                {
+                                    <strong class="label bg-gn-light-gray gn-dark-gray"><span class="glyphicon glyphicon-th"></span> @item.Organization.Name</strong>
+                                }
+                                
+                                <span class="col-md-12 flushRight flushTop gn-medium-gray" style="font-size:10px;margin-top:-12px!important;margin-bottom:5px!important;text-align:right!important;" title="Created On">@item.CreateDateTime</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            @Html.Partial("_SearchListMoreResultsPartial")
+        }
+        else
+        { 
+            int i = 0;
+            foreach (var item in SortedModel)
+            {
+                i++;
+                <div id="item_@i" class="col-xs-4 col-sm-3 col-md-3 col-lg-3 flushLeft clickable"
+                     onclick="window.location.href='@Url.Action("Details", new { id=item.Id})'">
+                    <div class="panel border-gn-green @ViewBag.BoxHeightClass">
+                        <div class="panel-heading bg-gn-green">
+                            <span class="pull-right">
+                                @if (item.CanEdit)
+                                {
+                                    @Html.BootstrapActionIconLink("Edit", "Edit", "Samples", new RouteValueDictionary(new { id = item.Id }), "white", "cog", "sm", false, false)
+                                }
+                            </span>
+                            <h3 class="panel-title white ellipsis" style="width:225px;">
+                                <img class="pull-left" style="height:18px;padding-right:6px;" src="@Url.Content("~/Content/icons/samples_white.png")" />
+                                @item.Name
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="col-md-12 flushRight flushTop gn-medium-gray" style="font-size:10px;margin-top:-12px!important;margin-bottom:5px!important;text-align:right!important;" title="Created On">@item.CreateDateTime</div>
+
+                            @if (User.IsInRole("GN_ADMIN"))
+                            {
+                                <div class="col-md-12">
+                                    <h6 class="gn-dark-gray flushLeft flushTop ellipsis" style="width:225px;"><span class="glyphicon glyphicon-th"></span> @item.Organization.Name</h6>
+                                </div>
+                            }
+
+                            <div class="col-md-12 alert alert-info" style="margin:0!important;height:35px!important;padding:5px!important;text-align:center;">
+                                <span class="small small">@item.GNSampleQualifier.Code, @item.SampleType.Name, @(item.IsPairEnded ? "Paired-End" : "Single-End")@(item.IsReady ? "" : ", Not ready")</span>
+                            </div>
+
+                            @if (!item.IsReady)
+                            {
+                                <div class="col-md-12">
+                                    <center class="small" style="margin-top:10px;">
+                                        <div class="alert-warning" role="alert" style="padding:2px;"> <span class="glyphicon glyphicon-warning-sign"></span> &nbsp; Upload in progress</div>
+                                    </center>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-12">
+                                    <h5><strong class="label bg-gn-light-gray gn-dark-gray">@item.CloudFiles.Count</strong> <span style="font-size:12px">FASTQ file@((@item.CloudFiles.Count != 1) ? "s" : "")</span>, <strong class="label bg-gn-light-gray gn-dark-gray">@item.GNAnalysisRequestGNSamples.Count</strong> <span style="font-size:12px">Analys@((@item.GNAnalysisRequestGNSamples.Count != 1) ? "es" : "is")</span></h5>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @Html.Partial("_SearchListMoreResultsPartial")
+        }
+    }
+}
+
+

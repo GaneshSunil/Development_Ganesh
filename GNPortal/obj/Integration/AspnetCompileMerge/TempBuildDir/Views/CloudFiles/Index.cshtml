@@ -1,0 +1,63 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNCloudFile>
+
+@{
+    ViewBag.Title = "Cloud Files";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-cloud gn-green"></span>
+    @ViewBag.Title
+    @if (!string.IsNullOrEmpty((string)ViewBag.SampleId))
+    {
+        @(" : " + ((GenomeNext.Data.EntityModel.GNSample)ViewBag.Sample).Name)
+    }
+    <span class="pull-right">
+        @if (!string.IsNullOrEmpty((string)ViewBag.SampleId))
+        {
+            @Html.BootstrapActionButton("Back to Sample", "Edit", "Samples", new RouteValueDictionary(new { id = ViewBag.SampleId, analysisRequestId = ViewBag.AnalysisRequestId }), "info", "chevron-left")
+            @Html.Raw("&nbsp;")
+            @Html.BootstrapActionButton("Upload File(s)", "Create", "CloudFiles", new RouteValueDictionary(new { sampleId = ViewBag.SampleId, analysisRequestId = ViewBag.AnalysisRequestId }), "success", "cloud-upload")
+        }
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th class="col-md-2">
+                @Html.DisplayNameFor(model => model.CloudFileCategory.Name)
+            </th>
+            <th class="col-md-6">
+                @Html.DisplayNameFor(model => model.FileName)
+            </th>
+            <th class="col-md-2">
+                @Html.DisplayNameFor(model => model.FileSize)
+            </th>
+            <th class="col-md-2"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CloudFileCategory.Name)
+                </td>
+                <td>
+                    @item.Description
+                    <br/>
+                    <span class="small text-muted">@item.FileURL</span>
+                </td>
+                <td>
+                    @(Math.Round(item.FileSize/(1024.0*1024.0),2) + " MB")
+                </td>
+                <td class="text-center">
+                    @Html.BootstrapActionButton("Download", "Download", "CloudFiles", new RouteValueDictionary(new { id = item.Id }), "success", "cloud-download", "sm")
+                    @Html.BootstrapActionButton("Delete", "Delete", "CloudFiles", new RouteValueDictionary(new { id = item.Id }), "danger", "trash", "sm")
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

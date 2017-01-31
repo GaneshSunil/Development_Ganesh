@@ -1,0 +1,56 @@
+﻿@model GenomeNext.Data.EntityModel.GNContact
+
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Activity in the system", "tasks"))
+    {
+        <span class="pull-right">
+            
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody())
+    {
+        <dl class="dl-horizontal col-md-12">
+            <dt>Teams & Projects</dt>
+            <dd>
+                @if (Model.GNOrganization.Teams.Count > 0)
+                {
+                    <ul>
+                        @foreach (var team in Model.GNOrganization.Teams)
+                        {
+                            <li>@Html.Raw(team.Name)</li>
+                            if (team.Projects.Count > 0)
+                            {
+                                <ul>
+                                    @foreach (var project in team.Projects)
+                                    {
+                                        <li>@Html.Raw(project.Name)</li>
+                                    }
+                                </ul>
+                            }
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <span>No teams found for this Contact.</span>
+                }
+            </dd>
+
+        <dt>Samples</dt>
+        <dd>@Html.Raw(ViewBag.SamplesByContact) 
+            <!--Html.BootstrapActionButton("View", "Index", "Samples", new RouteValueDictionary(new { CreatedBy = Model.Id }), null, "share-alt", null)-->
+        </dd>
+
+        <dt>Analyses</dt>
+        <dd>@Html.Raw(ViewBag.AnalysesByContact) 
+           <!--Html.BootstrapActionButton("View", "Index", "AnalysisRequests", new RouteValueDictionary(new { CreatedBy = Model.Id }), null, "share-alt", null)-->
+         </dd>
+    </dl>
+    }
+
+}

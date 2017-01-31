@@ -1,0 +1,223 @@
+﻿@model IEnumerable<GenomeNext.App.tmpAnnotatedTable>
+
+@{
+    ViewBag.Title = "Annotation Report";
+}
+
+<h2>
+    @ViewBag.Title for @ViewBag.AnalysisRequest.Description
+</h2>
+
+
+@Html.BootstrapRowSpacer()
+
+<div>
+    <div class="col-md-6" style="margin-bottom:25px;">
+        <span class="col-md-4 flushLeft">
+            Analysis Request:
+            <br />Create Date & Time:
+            <br />Project:
+            <br />Project Lead:
+            <br />Team:
+        </span>
+        <span class="col-md-6 flushLeft">
+            @ViewBag.AnalysisRequest.Description
+            <br />@ViewBag.AnalysisRequestCreateDate
+            <br />@ViewBag.ProjectName
+            <br />@ViewBag.ProjectLead
+            <br />@ViewBag.TeamName
+        </span>
+    </div>
+
+    <div class="col-md-6">
+        <span class="col-md-2 flushLeft">
+            Templates:
+        </span>
+        <span class="col-md-7 flushLeft">
+            @Html.Raw(ViewBag.Templates)
+        </span>
+        <span id="buttons" class="col-md-3 flushRight">
+            <button type="button" class="btn btn-default btn-sm" style="width:120px;"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Download</button>
+            <br /><br />
+            <button onclick="javascript: document.getElementById('buttons').style.display='none'; window.print();" type="button" class="btn btn-default btn-sm" style="width:120px;"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
+            <br /><br />
+            <button onclick="javascript: history.back()" type="button" class="btn btn-default btn-sm" style="width:120px;"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back to Analysis</button>
+        </span>
+    </div>
+</div>
+
+@Html.BootstrapRowSpacer()
+
+<table id="grid-basic" class="table table-condensed table-striped bootgrid-table" aria-busy="false" data-toggle="bootgrid">
+    <thead>
+        <tr>
+            <th data-column-id="tmpCd" width="50" data-visible="false">
+                TmpCode
+            </th>
+            <th data-column-id="template" width="80" data-visible="false">
+                Template
+            </th>
+            <th data-column-id="chr" width="50">
+                Chr
+            </th>
+            <th data-column-id="start" width="50">
+                Start
+            </th>
+            <th data-column-id="stop" width="50">
+                Stop
+            </th>
+            <th data-column-id="filter" data-visible="false">
+                Filter
+            </th>
+            <th data-column-id="gene">
+                Gene
+            </th>
+            <th data-column-id="locingene" width="100">
+                LocInGene
+            </th>
+            <th data-column-id="ref">
+                Ref > Alt
+            </th>
+            <th data-column-id="type">
+                Type
+            </th>
+            <th data-column-id="cytoband">
+                CytoBand
+            </th>
+            <th data-column-id="qual" data-visible="false">
+                Qual
+            </th>
+            <th data-column-id="SpliceDist" data-visible="false">
+                SpliceDist
+            </th>
+            <th data-column-id="MaxFrequency">
+                MaxFrequency
+            </th>
+            <th data-column-id="dbSNP142">
+                dbSNP142
+            </th>
+            <th data-column-id="OMIM_number">
+                OMIM_number
+            </th>
+            <th data-column-id="OMIM_disorder" data-visible="false">
+                OMIM_disorder
+            </th>
+            <th data-column-id="churchill_1kg_maf">
+                churchill_1kg_maf
+            </th>
+            <th data-column-id="Exon">
+                Exon
+            </th>
+            <th data-column-id="CodingChange" data-visible="false">
+                CodingChange
+            </th>
+            <th data-column-id="Clinvar" data-visible="false">
+                Clinvar
+            </th>
+        </tr>
+    </thead>
+
+    @{ var row = 0; }
+    <tbody>
+        @foreach (var item in ViewBag.Results)
+        {
+            row++;
+            <tr data-row-id="@row">
+                <td class="text-left" width="50">
+                    @item.TemplateCode
+                </td>
+                <td class="text-left" width="80">
+                    @item.Template
+                </td>
+                <td class="text-left" width="30">
+                    @item.Chr
+                </td>
+                <td class="text-left">
+                    @item.Start
+                </td>
+                <td class="text-left">
+                    @item.Stop
+                </td>
+                <td class="text-left">
+                    @item.Filter
+                </td>
+                <td class="text-left">
+                    @item.Gene
+                </td>
+                <td class="text-left" width="100">
+                    @item.LocInGene
+                </td>
+                <td class="text-left">
+                    @item.Ref > @item.Alt
+                </td>
+                <td class="text-left">
+                    @item.Type
+                </td>
+                <td class="text-left">
+                    @item.CytoBand
+                </td>
+                <td class="text-left">
+                    @item.Qual
+                </td>
+                <td class="text-left">
+                    @item.SpliceDist
+                </td>
+                <td class="text-left">
+                    @item.MaxFrequency
+                </td>
+                <td class="text-left">
+                    @item.dbSNP142
+                </td>
+                <td class="text-left">
+                    @item.OMIM_number
+                </td>
+                <td class="text-left">
+                    @item.OMIM_disorder
+                </td>
+                <td class="text-left">
+                    @item.Churchill_1kg_MAF
+                </td>
+                <td class="text-left">
+                    @item.Exon
+                </td>
+                <td class="text-left">
+                    @item.CodingChange
+                </td>
+                <td class="text-left">
+                    @item.Clinvar
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<script>
+    $("#grid-data-api").bootgrid();
+
+    $("#grid-basic").bootgrid(
+        {
+
+            selection: true,
+            multiSelect: true,
+            rowSelect: true,
+            keepSelection: true,     
+
+    }).on("selected.rs.jquery.bootgrid", function(e, rows)
+    {
+        var rowIds = [];
+        for (var i = 0; i < rows.length; i++)
+        {
+            rowIds.push(rows[i].id);
+        }
+        alert("Select: " + rowIds.join(","));
+    }).on("deselected.rs.jquery.bootgrid", function(e, rows)
+    {
+        var rowIds = [];
+        for (var i = 0; i < rows.length; i++)
+        {
+            rowIds.push(rows[i].id);
+        }
+        alert("Deselect: " + rowIds.join(","));
+    });
+</script>

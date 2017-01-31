@@ -1,0 +1,31 @@
+﻿@model GenomeNext.Data.EntityModel.GNContact
+
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Contact Information", "phone-alt"))
+    {
+        <span class="pull-right">
+
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody())
+    {
+        <dl class="dl-horizontal">
+
+            @Html.DisplayFieldFor(model => model.Email)
+            @Html.DisplayFieldFor(model => model.Phone)
+            @Html.DisplayFieldFor(model => model.Fax)
+            @Html.DisplayFieldFor(model => model.Website)
+            @Html.DisplayFieldFor(model => model.StreetAddress1)
+            @Html.DisplayFieldFor(model => model.StreetAddress2)
+            @Html.DisplayFieldFor(model => model.City)
+            @Html.DisplayFieldFor(model => model.State)
+            @Html.DisplayFieldFor(model => model.Zip)
+        </dl>
+    }
+
+}

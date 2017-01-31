@@ -1,0 +1,53 @@
+﻿@{
+    var title = "Import Sample Index";
+    ViewBag.Title = title;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/samples_white.png";
+
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+}
+
+@section scripts
+                {
+    @Scripts.Render("~/bundles/fineuploader")
+
+    @Html.Partial("~/Views/BulkImport/_ImportPartial_Script.cshtml")
+}
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-xs-12 col-md-6">
+
+            @Html.Partial("~/Views/BulkImport/_ImportPartial.cshtml")
+
+        </div>
+
+        <div class="col-md-6">
+
+            @{
+                ViewData["TipsPanelTitle"] = "Tips for Importing a Sample Index";
+                ViewData["TipsPanelImg"] = "~/Content/icons/samples.png";
+                ViewData["TipContent"] = new List<string>
+                {
+                    "Create an index table that maps to the files contained in your AWS S3 bucket. Map each individual sample file per row in the table. "+
+                    "<a href='https://genomenext.desk.com/admin/content-management/attachments/44907/original.xlsx?1420240335' target='_blank'>Download a Sample Index Table Spreadsheet Template</a>",
+                    "Select index table file and click Upload.",
+                    "Your file will immediately begin to process. You can refresh the Index Sample Page to update status.",
+                    
+                };
+                ViewData["TipContentOutro"] = 
+                    "Additional Import Notes:"+
+                    "<ul class='small'><li>It is recommended that your index file contain 20,000 rows or less.</li>" +
+                    "<li>If you entered the value 'Y', 'Yes', or 'True' in the AUTO_START column, your analyses will automatically launch. To manually launch analyses, enter values 'N' or 'False'.</li>"+
+                    "<li>Be sure you have sufficient funds in your account to auto-launch your analyses. If there are insufficient funds, your analyses will not be launched.</li></ul>";
+                ViewData["MoreHelpAndSupportURL"] = "http://support.genomenext.com/customer/portal/articles/1813115-sample-index-import-automated-bulk-sample-import-analyses-creation";
+            }
+            @Html.Partial("~/Views/Shared/_TipsPanelPartial.cshtml", null, ViewData)
+
+
+        </div>
+
+    </div>
+}

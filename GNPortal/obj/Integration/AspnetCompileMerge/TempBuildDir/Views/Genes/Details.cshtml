@@ -1,0 +1,43 @@
+﻿@model GenomeNext.Data.EntityModel.GNGene
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-envelope gn-green"></span>
+    @ViewBag.Title
+
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "Genes", null, "info", "chevron-left")
+        @Html.BootstrapActionButton("Edit", "Edit", "Genes", new RouteValueDictionary(new { id = Model.Id }), "warning", "cog")
+    </span>
+</h2>
+@Html.BootstrapRowSpacer()
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.BootstrapRowSpacer()
+
+            <dl class="dl-horizontal">
+
+                @Html.DisplayFieldFor(model => model.Id)
+                @Html.DisplayFieldFor(model => model.GeneCode)
+                @Html.DisplayFieldFor(model => model.Chromosome)
+                @Html.DisplayFieldFor(model => model.Isoform)
+                @Html.DisplayFieldFor(model => model.CytoBand)
+
+                @{
+    //  ViewData["ViewMode"] = "Details";
+      //        @Html.DisplayFieldFor(model => model.GeneCode)   ViewData["CreatedBy"] = Model.CreatedByContact;
+   // ViewData["CreateDateTime"] = Model.CreateDateTime;
+    //         @Html.Partial("_AuditModelPartial", null, ViewData)
+                }
+       
+
+            </dl>
+        </div>
+    </div>
+}

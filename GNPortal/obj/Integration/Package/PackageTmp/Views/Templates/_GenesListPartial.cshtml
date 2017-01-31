@@ -1,0 +1,135 @@
+﻿@model GenomeNext.Data.EntityModel.GNTemplate
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+}
+
+
+@using (Html.BeginGNPanel())
+{    
+    //Heading
+    using (Html.BeginGNPanelHeading("Associated genes", ""))
+    {
+        <img class="pull-left" style="height:18px;padding-right:6px;" src="@Url.Content("~/Content/icons/pedigrees_white.png")" />
+        if (Model != null)
+        {
+            if(Model.GNTemplateGenes != null)
+            { 
+                <span class="badge">@Model.GNTemplateGenes.Count</span>
+            }
+
+        }
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(false))
+    {
+        int resultCode = 0;
+        if(Request["resultCode"] != null)
+        {
+            resultCode = Int32.Parse(Request["resultCode"]);    
+        }
+        
+        if (resultCode != null && resultCode != 0)
+        {
+            var GeneCode = Request["geneCode"];
+            string alertType = "alert-success";
+            string role = "success";
+            string message = "";
+            
+            switch(resultCode)
+            {
+                case -3:
+                    {
+                        alertType = "alert-danger";
+                        role = "danger";
+                        message = "<span>Please enter a value in the text field below.</span>";
+                    }
+                    break;
+                case -2:
+                    {
+                        alertType = "alert-danger";
+                        role = "danger";
+                        message = "<span>The gene <b>" + GeneCode + "</b> is not valid. Please check the code or <a href='mailto:support@genomenext.com?Subject=Missing gene code: " + @GeneCode + "'>contact the Administrator</a> for review.</span>";
+                    }
+                    break;
+                case -1:
+                    {
+                        alertType = "alert-warning";
+                        role = "warning";
+                        message = "<span>The gene <b>" + GeneCode + "</b> is already associated to this Template.</span>";
+                    }
+                    break;
+                case 1:
+                    {
+                        alertType = "alert-success";
+                        role = "success";
+                        message = "<span>The gene <b>"+GeneCode+"</b> was successfully added to the template.</span>";
+                    }
+                    break;
+                case 2:
+                    {
+                        alertType = "alert-success";
+                        role = "success";
+                        message = "<span>The gene <b>" + GeneCode + "</b> was successfully removed from the template.</span>";
+                    }
+                    break;
+                default: break;
+            }
+            
+            <div class="alert @alertType" role="@role">
+                @Html.Raw(message)
+            </div>
+        }
+
+        <div class="col-md-10" style="margin-top:-30px!important;">
+            <form class="navbar-form navbar-left" name="addGene" id="addGene" method="get" action="@Url.Action("AddGeneToTemplate")">
+                <input type="hidden" name="Id" id="Id" value="@Model.Id" />
+                <div style="padding:20px;" class="form-group">
+                    Add a gene: <input type="text" id="GeneCode" name="GeneCode" placeholder="Type Gene Code here" size="18" />
+                    <span class="glyphicon glyphicon-plus-sign" onclick="javasript: document.addGene.submit();" />
+                </div>
+            </form>
+        </div>
+
+        <div style="border:1px #000;">
+        @if (Model.GNTemplateGenes.Count > 0)
+        {
+            <script language="Javascript">
+                function confirmDeleteAssociation(id) {
+                    $('#' + id + '_icons').toggle();
+                    $('#' + id + '_delete_confirm').toggle();
+                }
+            </script>
+
+            int i = 0;
+            foreach (var item in Model.GNTemplateGenes)
+            {
+                <div class="col-md-7">
+                    <div class="small">
+                        @item.GeneCode (Chr @item.GNGene.Chromosome, @item.GNGene.Isoform)
+                    </div>
+                </div>
+                <div class="col-md-2 text-right flushRight">
+                    <span id="@(item.Id+"_delete_confirm")" style="display:none">
+                        @Html.BootstrapActionButton("", "RemoveGeneFromTemplate", "Templates", new RouteValueDictionary(new { relId = item.Id }), "danger", "trash", "sm ")
+                        <a href="javascript:confirmDeleteAssociation('@item.Id')"><span class="glyphicon glyphicon-remove"></span></a>
+                    </span>
+                    <span id="@(item.Id+"_icons")">
+                        <a href="javascript:confirmDeleteAssociation('@item.Id')"><span class="glyphicon glyphicon-trash small"></span></a>
+                    </span>
+                </div>
+
+                i++;
+            }
+        }
+        else
+        {
+            <div style="padding:20px;">
+                No associated genes found.
+            </div>
+        }
+    </div>
+    }
+
+}

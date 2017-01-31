@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>@ViewBag.Title - GenomeNext - Genome Analysis Portal</title>
+    @Styles.Render("~/Content/jquery-ui")
+    @Styles.Render("~/Content/fineuploader")
+    @Styles.Render("~/Content/jquerybootgrid")
+    @Styles.Render("~/Content/tagit")
+    @Styles.Render("~/Content/tagitzendesk")    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
+
+    @RenderSection("scriptsHead", required: false)
+</head>
+<body>
+    @{
+        string headerAndFooterStyle = "";
+        if (ViewBag.isPrintableView != null && ViewBag.isPrintableView == true)
+        {
+            headerAndFooterStyle = "display:none";
+        }
+    }
+
+    <div class="navbar navbar-fixed-top bg-gn-dark-gray" style="@headerAndFooterStyle">
+
+        <a href="@Url.Action("Index", "Home")" class="pull-left">
+            <img id="topNavLogoImg" src="@Url.Content("~/Images/gn-portal-logo-dark-transparent.png")" />
+        </a>
+
+        @Html.Partial("_TopNavMenuPartial")
+
+        @Html.Partial("_TopNavSubMenuPartial")
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <div class="footer bg-gn-medium-gray" id="footer-block" style="@headerAndFooterStyle">
+        <div class="container" style="padding-top:5px;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6 small text-uppercase text-center">
+                <div style="padding-top:5px">
+                    <a href="@Url.Action("PrivacyPolicy", "About")" style="padding:10px;">Privacy Policy</a>
+                    <a href="@Url.Action("TermsOfService", "About")" style="padding:10px;">Terms of Service</a>
+                    <a href="mailto:support@genomenext.com?Subject=Support" style="padding:10px;">Help</a>
+                </div>
+                <div class="gn-dark-gray" style="padding-top:5px">
+                    GenomeNext, LLC &copy; @DateTime.Now.Year
+                    <br/>
+                    <span class="text-muted text-lowercase">v@(System.Reflection.Assembly.GetAssembly(typeof(GenomeNext.Portal.Controllers.HomeController)).GetName().Version)</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+            </div>
+       </div>
+    </div>
+
+    @Html.Partial("_GoogleAnalyticsTrackingPartial")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-val")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquerybootgrid")
+    @Scripts.Render("~/bundles/tagit")
+    @RenderSection("scripts", required: false)
+
+    <script>
+    $(document).ready(function () {
+
+        $('.datepicker').datepicker();
+
+        navIconSetup();
+        logoutLinkSetup();
+        searchSetup();
+    });
+
+    function navIconSetup() {
+        $("a[class*='gn-green-hover']").hover(
+            function handlerIn(e) {
+                var imgIcon = $(this).children("img:first");
+                var oldSrc = imgIcon.attr("src");
+                if (oldSrc !== undefined && oldSrc.indexOf("_white_green.png") == -1) {
+                    var newSrc = oldSrc.replace("_white.png", "_white_green.png");;
+                    imgIcon.attr("src", newSrc);
+                }
+            },
+            function handlerOut(e) {
+                var imgIcon = $(this).children("img:first");
+                var oldSrc = imgIcon.attr("src");
+                if (oldSrc !== undefined && oldSrc.indexOf("_white_green.png") != -1) {
+                    var newSrc = oldSrc.replace("_white_green.png", "_white.png");;
+                    imgIcon.attr("src", newSrc);
+                }
+            });
+    }
+
+    function leftMenuSetup(leftMenuId)
+    {
+        $("#" + leftMenuId + " div.list-group-item.clickable").hover(
+            function () {
+                if (!$(this).hasClass("active"))
+                {
+                    highlightLeftMenuItem($(this));
+                }
+            },
+            function () {
+                if (!$(this).hasClass("active")) {
+                    unhighlightLeftMenuItem($(this));
+                }
+            });
+    }
+
+    function highlightLeftMenuItem(thisObj)
+    {
+        var imgIcon = thisObj.children("img:first");
+        var oldSrc = imgIcon.attr("src");
+        if (typeof oldSrc !== undefined && oldSrc.indexOf("_white_green.png") == -1) {
+            var newSrc = oldSrc.replace(".png", "_white_green.png");;
+            imgIcon.attr("src", newSrc);
+        }
+
+        thisObj.removeClass("bg-gn-light-gray");
+        thisObj.addClass("bg-gn-green");
+        thisObj.children("h5:first").addClass("white");
+    }
+
+
+    function unhighlightLeftMenuItem(thisObj)
+    {
+        var imgIcon = thisObj.children("img:first");
+        var oldSrc = imgIcon.attr("src");
+        if (typeof oldSrc !== undefined && oldSrc.indexOf("_white_green.png") != -1) {
+            var newSrc = oldSrc.replace("_white_green.png", ".png");;
+            imgIcon.attr("src", newSrc);
+        }
+
+        thisObj.removeClass("bg-gn-green");
+        thisObj.children("h5:first").removeClass("white");
+    }
+
+    function logoutLinkSetup() {
+        $("#logoutLink").click(function () {
+            if (typeof amazon !== 'undefined' && amazon != null)
+            {
+                amazon.Login.logout();
+            }
+
+            $('#logoutForm').submit();
+        });
+    }
+
+    function searchSetup() {
+        @{
+            string searchKey = "";
+            string searchVal = "";
+
+            if (!string.IsNullOrEmpty(Request["filters"]))
+            {
+                var searchFilterParts = Request["filters"].Split(':');
+                searchKey = searchFilterParts[0];
+                searchVal = searchFilterParts[1];
+            }
+        }
+
+        $("#searchText").val('@searchVal');
+        $("#searchText").focus();
+
+        @if (!string.IsNullOrEmpty(searchKey))
+        {
+            @Html.Raw("$('#searchTextOption').html('" + searchKey + " ');");
+        }
+        else
+        {
+            @Html.Raw("$('#searchTextOption').html($('#searchTextOptionList li a').first().html() + ' ');");
+        }
+
+        //search text options dropdown click handlers
+        $("#searchTextOptionList li a").click(function () {
+            $("#searchTextOption").html($(this).html() + " ");
+        });
+
+        //search button event handlers
+        $("#searchClear")
+            .click(function () {
+                $("#searchText").val("");
+                $('#searchTextOption').html($('#searchTextOptionList li a').first().html() + ' ');
+                searchList();
+            })
+        $("#searchBtn")
+            .click(function () {
+                searchList();
+            })
+        $("#searchText")
+            .keypress(function (e) {
+                if (e.which == 13) {
+                    searchList();
+                }
+            });
+    }
+
+    function searchList() {
+
+        var queryParts = [];
+
+        @{
+            foreach (string queryPart in HttpContext.Current.Request.Url.Query.Replace("?","").Split('&'))
+	        {
+		        if(!string.IsNullOrEmpty(queryPart) && !queryPart.StartsWith("filters"))
+                {
+                    @Html.Raw("queryParts[queryParts.length++]='" + queryPart + "';\n");
+                }
+	        }
+        }
+
+        var queryStr = "";
+        if(queryParts.length != 0) queryStr = queryParts.join("&") + "&";
+
+        window.location.href =
+            "@HttpContext.Current.Request.Url.AbsolutePath"
+            + "?" + queryStr
+            + "filters=" + $("#searchTextOption").html().trim() + ":" + $("#searchText").val();
+    }
+
+    function loadMoreSearchResults(start, end, item)
+    {
+        var queryParts = [];
+
+        @{
+            foreach (string queryPart in HttpContext.Current.Request.Url.Query.Replace("?","").Split('&'))
+            {
+		        if(!string.IsNullOrEmpty(queryPart) && !queryPart.StartsWith("start") && !queryPart.StartsWith("end"))
+                {
+                    @Html.Raw("queryParts[queryParts.length++]='"+queryPart+"';\n");
+                }
+            }
+        }
+
+        var queryStr = "";
+        if(queryParts.length != 0) queryStr = queryParts.join("&") + "&";
+
+        window.location.href =
+            "@HttpContext.Current.Request.Url.AbsolutePath"
+            + "?" + queryStr
+            + "start=" + start
+            + "&end=" + end
+            + "#" + item;
+    }
+</script>
+</body>
+</html>

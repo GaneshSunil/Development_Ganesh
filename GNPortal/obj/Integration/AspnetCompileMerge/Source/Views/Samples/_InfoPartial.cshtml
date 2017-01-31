@@ -1,0 +1,141 @@
+﻿@model GenomeNext.Data.EntityModel.GNSample
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+}
+
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Sample Info", "info-sign"))
+    {
+        <span class="pull-right">
+            @{
+                GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+                if (User.IsInRole("GN_ADMIN") || contactForUser.IsInRole("ORG_MANAGER"))
+                {
+                    @Html.BootstrapActionIconLink("Audit Records", "Index", "Audit", new RouteValueDictionary(new { searchEntityId = Model.Id, searchEntityType = "SAMPLE" }), "white", "eye-open", null, false, false)
+                    @Html.Raw("&nbsp;&nbsp;")
+                }
+            }
+
+            @if (!isDelete && Model.CanEdit)
+            {
+                @Html.BootstrapActionIconLink("Edit", "Edit", "Samples", new RouteValueDictionary(new { id = Model.Id, analysisRequestId = Request["analysisRequestId"] }), "white", "cog", null, false, false)                                
+            }
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody())
+    {      
+        
+        @Styles.Render("~/Content/jquery-ui")
+        @Styles.Render("~/Content/tagit")
+        @Styles.Render("~/Content/tagitzendesk")
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jquery-val")
+        @Scripts.Render("~/bundles/jquery-ui")
+        @Scripts.Render("~/bundles/tagit")
+        <script>
+            $(function () {
+                var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'];
+
+                //-------------------------------
+                // Read-only
+                //-------------------------------
+                $('#readOnlyTags').tagit({
+                    readOnly: true
+                });
+
+            });
+
+            function submitForm()
+            {
+                var link = document.getElementById('samplehistorylink').value;
+                alert(link);
+                window.open(link, '_blank', 'width:400');
+            }
+        </script>
+    
+    <dl class="dl-horizontal">
+
+        @Html.DisplayFieldFor(model => model.Organization.Name, "Organization")
+
+        <center>
+            <div class="alert-info text-danger border-gn-light-gray text-center" style="width:400px;padding:10px;margin-bottom:10px;">
+               @Model.GNSampleQualifier.GNSampleQualifierGroup.Name, @Model.SampleType.Name, @Model.ReadTypeDescription
+            </div>
+        </center>
+
+        @if (!Model.IsReady)
+        {
+        <center>
+            <div class="label-warning text-warning border-gn-light-gray text-center" style="width:400px;padding:10px;margin-bottom:10px;">
+                <span class="glyphicon glyphicon-warning-sign"></span> Upload in progress<br /> 
+                
+                @if (Model.GNNewSampleBatchSample != null)
+                {
+                    <span class="small">...as part of Batch @Model.GNNewSampleBatchSample.GNNewSampleBatchId</span>
+                <div class="small small" style="">
+                    <span id="seeHistoryLink"><a href="javascript:toggleBlocks()" target="_blank">See Progress</a></span>
+                    <span id="hideHistoryLink" style="display:none"><a href="javascript:toggleBlocks()" target="_blank">Hide Progress</a></span>
+                </div>
+                }
+        </center>
+        }
+                
+        @Html.DisplayFieldFor(model => model.Name)
+        @Html.DisplayFieldFor(model => model.GNSampleQualifier.Name, "Sample Type")
+
+        <a id="info_link" href="javascript:showMoreData('info')"><strong style="float:right" class="small">show more</strong></a>
+
+        <div id="info_box" style="display:none">
+
+            <a href="javascript:showMoreData('info')"><strong style="float:right" class="small">show less</strong></a>
+
+            @{
+                if (Model.GNSampleQualifierCode == "RNA")
+                {
+                    @Html.DisplayFieldFor(model => model.GNReplicate.Name, "Replicates");
+                }
+                else
+                {
+                    @Html.DisplayFieldFor(model => model.GenderDescription, "Gender");
+                }
+            }
+
+            
+            @Html.DisplayFieldFor(model => model.Id)
+
+            @{
+                ViewData["ViewMode"] = "Details";
+                ViewData["CreateDateTime"] = Model.CreateDateTime;
+            }
+            @Html.Partial("_AuditModelPartial", Model, ViewData)
+
+
+            @if (Model.GNNewSampleBatchSample != null && Model.IsReady)
+            {
+                <center>
+                    <div class="small">
+                        <div class="label-info text-info border-gn-light-gray text-center" style="width:400px;padding:10px;margin-bottom:10px;">
+                            This Sample was created via GenomeNext's BCL2FASTQ Process
+
+                            <div class="small small" style="">
+                                <span id="seeHistoryLink2"><a href="javascript:toggleBlocks()" target="_blank">See Creation History</a></span>
+                                <span id="hideHistoryLink2" style="display:none"><a href="javascript:toggleBlocks()" target="_blank">Hide Creation Progress</a></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </center>
+            }
+    </dl>
+    }
+
+    @Html.Partial("~/Views/Samples/_DeletePartial.cshtml", Model)
+}

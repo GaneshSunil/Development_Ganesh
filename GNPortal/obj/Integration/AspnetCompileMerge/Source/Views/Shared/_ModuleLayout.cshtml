@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+    @RenderSection("scripts", required: false)
+}
+
+@Html.BootstrapRowSpacer()
+
+@if(ViewData["customBackLink"] != null && (bool)ViewData["customBackLink"] )
+{
+    ViewData["goBackText"] = (string)ViewData["customBackLinkText"];
+    ViewData["goBackAction"] = (string)ViewData["customBackLinkAction"];
+    ViewData["goBackModuleCtl"] = (string)ViewData["customBackLinkModuleCtl"];
+}
+else  //Default values
+{    
+    ViewData["goBackText"] = "Back to List";
+    ViewData["goBackAction"] = "Index";
+    ViewData["goBackModuleCtl"] = (string)ViewData["ModuleCtl"];
+}
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 flushLeft">
+    <div class="panel panel-border-gn-green">
+        <div class="panel-heading bg-gn-green clearfix">
+
+            <h2 class="col-xs-12 col-sm-10 col-md-10 col-lg-10 white" style="margin-top:10px !important;">
+                <img class="pull-left" style="height:35px;padding-right:10px;" 
+                     src="@Url.Content((string)ViewData["ModuleIconPath"])" />
+                @ViewBag.Title
+
+            </h2>
+
+            <h5 class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-right" style="margin-top:17px !important;">
+                @RenderSection("ModulePanelHeadingActions", required: false)
+
+                @if (ViewData["customBackLinkParam"] != null)
+                {
+                    @Html.BootstrapActionIconLink((string)ViewData["goBackText"], (string)ViewData["goBackAction"], (string)ViewData["goBackModuleCtl"], new RouteValueDictionary(new { id = ViewData["customBackLinkParam"] }), "bg-clear text-uppercase text-nowrap white", "chevron-right", null, true, true);
+                }
+                else
+                {
+                    @Html.BootstrapActionIconLink((string)ViewData["goBackText"], (string)ViewData["goBackAction"], (string)ViewData["goBackModuleCtl"], null, "bg-clear text-uppercase text-nowrap white", "chevron-right", null, true, true);
+                }
+            </h5>
+        </div>
+        <div class="panel-body">
+
+            @RenderSection("ModulePanelBody", required: false)
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,130 @@
+﻿@model GenomeNext.Portal.Models.MyBillingBuyCreditsModel
+
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    Layout = "~/Views/Account/MyBilling.cshtml";
+
+    ViewBag.SubTitle1 = "Buy Credits";
+    ViewBag.SubTitle2 = "Add funds to this account to allow usage of services";
+    ViewBag.IconName = "billing_make_payment";
+
+    string paymentAmount = Model.MinPurchaseAmount + "";
+    if (!string.IsNullOrEmpty(Request["paymentAmount"]))
+    {
+        paymentAmount = Request["paymentAmount"];
+    }
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            selectMyBillingNavButton(1);
+        });
+    </script>
+}
+
+<div class="panel form-horizontal bg-white">
+
+    <div class="panel-body flushLeft flushRight">
+
+        <div class="col-md-6 flushLeft flushRight">
+            @using (Html.BeginGNPanel(false))
+            {
+                using (Html.BeginGNPanelHeading("Enter Purchase Amount"))
+                {
+                }
+
+                using (Html.BeginGNPanelBody())
+                {
+                    using (Html.BeginForm("MakePayment", "PayPal", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+
+                        <div class="form-group">
+                            <div class="col-md-1 flushRight">
+                                <h5 class="gn-dark-gray">$</h5>
+                            </div>
+                            <div class="col-md-9 flushLeft flushRight">
+                                @Html.TextBox("paymentAmount", paymentAmount, new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-2 flushLeft">
+                                <h5 class="gn-dark-gray">USD</h5>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-1 flushRight">
+                                &nbsp;
+                            </div>
+                            <div class="col-md-11 flushLeft">
+                                @Html.BootstrapFormSaveButton("Make Payment", "usd", "white bg-gn-green")
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @if (!string.IsNullOrEmpty(Request["error"]))
+                                {
+                                    <div class="alert alert-danger small">@Request["error"]</div>
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+            }
+
+            @using (Html.BeginGNPanel(false))
+            {
+                using (Html.BeginGNPanelHeading("Help & Support"))
+                {
+                }
+
+                using (
+                    Html.BeginGNPanelBody())
+                {
+                    <span title="Click here for help calculating costs"><a style="font-family:'Open Sans',sans-serif;text-transform:none;" href="http://support.genomenext.com/customer/portal/articles/1858422-calculating-cost" target="_blank">How to Calculate Analysis Cost</a></span>
+                }
+            }
+
+        </div>
+
+        <div class="col-md-6 flushLeft flushRight">
+
+                        @using (Html.BeginGNPanel(false))
+                        {
+                            using (Html.BeginGNPanelHeading("GenomeNext Product Pricing"))
+                            {                                
+                            }
+
+                            using (Html.BeginGNPanelBody())
+                            {
+                                using (Html.BeginForm())
+                                {
+                        @Html.AntiForgeryToken()
+
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered table-gn">
+                                @foreach (var item in Model.MyProducts.OrderBy(p => p.Price))
+                                {
+                                    <tr>
+                                        <td class="bg-gn-green white text-center" style="font-weight:bold;">
+                                            @Html.DisplayFor(modelItem => item.Price)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
+                                }
+                            }
+                        }
+
+        </div>
+
+    </div>
+</div>

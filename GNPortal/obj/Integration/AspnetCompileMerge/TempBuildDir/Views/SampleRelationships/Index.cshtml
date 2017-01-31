@@ -1,0 +1,57 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNSampleRelationship>
+
+@{
+    ViewBag.Title = "Pedigree for Sample "; 
+}
+
+<form name="addNewRelationship" id="addNewRelationship" method="get" action="@Url.Action("Create")">
+    <input type="hidden" name="GNLeftSampleId" id="GNLeftSampleId" value="@ViewBag.GNSample.Id" />
+
+    <h3>
+        <span class="glyphicon glyphicon-link gn-green"></span>
+        @ViewBag.Title <b><i>@ViewBag.GNSample.Name</i></b>
+    </h3>
+    <span class="pull-right">
+        <div class="col-md-3">@Html.BootstrapActionButton("Back", "Details", "Samples", new RouteValueDictionary(new { Id = Request["GNLeftSampleId"] }), "info", "chevron-left")</div>
+        <div class="col-md-5">@Html.DropDownList("GNSampleRelationshipTypeId", null, htmlAttributes: new { @class = "form-control" })</div>
+        <div class="col-md-4">
+            <a href="javascript:document.getElementById('addNewRelationship').submit();" class="btn btn-info " style="text-align:center" title="Add" alt="Add">
+                <span class="glyphicon glyphicon-plus"></span>&nbsp;Add
+            </a>
+        </div>
+    </span>
+</form>
+
+    @Html.BootstrapRowSpacer()
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered table-gn">
+            <tr>
+                <th>
+                    Sample Name and Relationship
+                </th>
+                <th></th>
+            </tr>
+            @if (Model != null && Model.Count() != 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("Details", "Samples", new { id = item.GNRightSample.Id })" target="_blank">@Html.DisplayFor(modelItem => item.GNRightSample.Name)</a> is <b>@Html.DisplayFor(modelItem => item.GNSampleRelationshipType.Name)</b> of this sample.
+                        </td>
+                        <td align="center">
+                            @Html.BootstrapActionIcon("Delete", "Delete", "SampleRelationships", new RouteValueDictionary(new { id = item.Id, GNLeftSampleId = Request["GNLeftSampleId"] }), "danger", "trash", "sm")
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="2">
+                        No records found.
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>

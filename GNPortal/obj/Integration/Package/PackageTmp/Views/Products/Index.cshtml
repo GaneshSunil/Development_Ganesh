@@ -1,0 +1,92 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNProduct>
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-euro gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Create New", "Create", "Products", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "plus")
+    </span>
+</h2>
+
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                Subscription Info
+            </th>
+            <th class="col-md-3"></th>
+        </tr>
+
+        @foreach (var item in Model.OrderBy(p => p.AccountType.Name).OrderBy(p => p.Name))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductType.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountType.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @if (item.ProductType.CanSubscribe)
+                    {
+                        <span>
+                            @(((GenomeNext.Data.EntityModel.GNAccountProductSubscription.SubscriptionFrequencyInterval)item.SubscribeFrequency).ToString())
+                            <br />
+                            @Html.DisplayFor(modelItem => item.MinRangeValue)
+                            -
+                            @Html.DisplayFor(modelItem => item.MaxRangeValue)
+                            @Html.DisplayFor(modelItem => item.ValueUnits)
+                        </span>
+                    }
+                    else
+                    {
+                        <span>Product not eligible for susbscription.</span>
+                    }
+                </td>
+                <td>
+                    @Html.BootstrapActionButton("View", "Details", "Products", new RouteValueDictionary(new { id = item.Id }), "success", "th-large", "sm")
+                    @Html.BootstrapActionButton("Edit", "Edit", "Products", new RouteValueDictionary(new { id = item.Id }), "warning", "cog", "sm")
+                    @Html.BootstrapActionButton("Delete", "Delete", "Products", new RouteValueDictionary(new { id = item.Id }), "danger", "trash", "sm")
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

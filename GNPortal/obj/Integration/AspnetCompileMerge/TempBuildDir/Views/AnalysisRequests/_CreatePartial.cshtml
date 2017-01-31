@@ -1,0 +1,126 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    using (Html.BeginGNPanel())
+    {
+        //Heading
+        using (Html.BeginGNPanelHeading("Analysis Request Info", "info-sign"))
+        {
+        }
+
+        //Body
+        using (Html.BeginGNPanelBody())
+        {
+            <div class="form-horizontal col-md-12">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                <div class="form-group center-block border-gn-light-gray" style="text-align:center;width:495px;">
+                    <div class="form-group">
+                        @Html.Label("Organization", htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @contactForUser.GNOrganization.Name
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group center-block border-gn-light-gray" style="padding-bottom:10px;text-align:center;width:495px;">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GNAnalysisRequestTypeCode, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6 dropdown">
+                            @Html.DropDownList("GNAnalysisRequestTypeCode", null, htmlAttributes: new { @class = "form-control btn btn-default dropdown-toggle alert-info", @onchange = "javascript:updateFields()" })
+                            @Html.ValidationMessageFor(model => model.GNAnalysisRequestTypeCode, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-2" style="padding-top:15px;">
+                            <span class="glyphicon glyphicon-question-sign" title="Coming soon: RNA analysis"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-gn-light-gray col-md-12" style="margin-left:-13px;width:495px;">
+
+                    <div class="form-group">
+                        @Html.Label("Team Project", htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @if (ViewBag.ProjectsCount > 0)
+                    {
+                                @Html.DropDownList("GNProjectId", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.GNProjectId, "", new { @class = "text-danger" })
+                    }
+                    else
+                    {
+                                <span>No projects found.</span>
+                    }
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @maxlength = "30" } })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="AnalysisTypeBlock">
+                        @Html.LabelFor(model => model.AnalysisType, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.DropDownList("AnalysisTypeId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.AnalysisType, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="AdaptorBlock" style="display:none">
+                        @Html.LabelFor(model => model.GNAnalysisAdaptorCode, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.DropDownList("GNAnalysisAdaptorCode", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.GNAnalysisAdaptorCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        //Footer
+        using (Html.BeginGNPanelFooter())
+        {
+            <div class="pull-left">
+                @Html.BootstrapActionButton("Cancel", "Index", "AnalysisRequests", null, "bg-gn-medium-gray white", "remove")
+            </div>
+            <div class="pull-right col-md-8">
+                @if (ViewBag.ProjectsCount > 0)
+                {
+                    <div class="pull-right">
+                        @Html.BootstrapFormSaveButton("Next", "chevron-right", "bg-gn-green white", true)
+                    </div>                    
+                }
+                else
+                {
+                    <div class="pull-right">
+                        @if ((bool)ViewBag.CanCreateProject)
+                        {
+                            @Html.BootstrapActionButton("Create a Project first", "Create", "Projects", null, "bg-gn-green white", "glyphicon glyphicon-plus", null, false, "left")
+                        }
+                        else
+                        {
+                            <div class="pull-right small">
+                                <span>A project needs to be assigned to the analysis. Please contact your organization manager to create one.</span>
+                            </div>
+                        }
+                    </div>
+                }
+
+            </div>
+        }
+    }
+}
+

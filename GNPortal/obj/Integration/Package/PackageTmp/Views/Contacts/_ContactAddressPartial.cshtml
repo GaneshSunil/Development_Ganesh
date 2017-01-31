@@ -1,0 +1,28 @@
+﻿@model GenomeNext.Data.EntityModel.GNContact
+
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Address", "home"))
+    {
+        <span class="pull-right">
+            
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody())
+    {      
+        <dl class="dl-horizontal">
+
+            @Html.DisplayFieldFor(model => model.StreetAddress1)
+            @Html.DisplayFieldFor(model => model.StreetAddress2)
+            @Html.DisplayFieldFor(model => model.City)
+            @Html.DisplayFieldFor(model => model.State)
+            @Html.DisplayFieldFor(model => model.Zip)
+
+        </dl>
+    }
+
+}

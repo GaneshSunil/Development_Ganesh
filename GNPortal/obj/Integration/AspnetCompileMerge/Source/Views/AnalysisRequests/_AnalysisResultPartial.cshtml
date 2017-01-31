@@ -1,0 +1,313 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Results", "indent-left"))
+    {
+        <span class="badge">@((!Model.IsFailedRequest && Model.AnalysisResult.ResultFiles.Count != 0) ? Model.AnalysisResult.ResultFiles.Count + "" : "")</span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(true))
+    {
+        string requestName = Model.Description + "_";
+
+        if (Model.AnalysisResult != null && Model.AnalysisResult.ResultFiles.Count != 0)
+        {
+            if (Model.AnalysisResult == null || !Model.AnalysisResult.Success)
+            {
+                <div class="alert alert-danger small" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp;Please note: The latest analysis run (secondary or tertiary) did not complete successfully. It was either stopped by the user, or the system returned an error.
+                </div>
+            }
+
+            <script language="javascript">
+                function showBox(id) {
+                    $('#' + id + '_box').toggle();
+                    if (document.getElementById(id + '_box').style.display == 'none') {
+                        document.getElementById(id + '_link').innerHTML = "<span class='glyphicon glyphicon-plus'></span>";
+                    }
+                    else {
+                        document.getElementById(id + '_link').innerHTML = "<span class='glyphicon glyphicon-minus'></span>";
+                    }
+                }
+
+                function confirmReRun() {
+                    $('#rerun_options').toggle();
+                    $('#confirm_rerun_options').toggle();
+                }
+
+                var bams_selected = 0;
+                function toggleCount(id) {
+                    if (document.getElementById(id).checked) {
+                        document.getElementById('message-select-bams').style.display = 'none';
+                        bams_selected++;
+                    }
+                    else {
+                        bams_selected--;
+                    }
+
+                    if (bams_selected > 5) {
+                        document.getElementById('message-max-5-bams').style.display = '';
+                        document.getElementById(id).checked = false;
+                        bams_selected--;
+                    }
+                    else {
+                        document.getElementById('message-max-5-bams').style.display = 'none';
+                    }
+                }
+
+                function launchBamViewer() {
+                        document.getElementById('formBamViewer').submit();
+                        return true;
+                    
+                }
+
+                function launchBamViewer1() {
+                    if (bams_selected > 0) {
+                        document.getElementById('message-select-bams').style.display = 'none';
+                        document.getElementById('formBamViewer').submit();
+                        return true;
+                    }
+                    else {
+                        document.getElementById('message-select-bams').style.display = '';
+                    }
+                }
+            </script>
+
+            int i = 0;
+            int totalAnnotation = Model.AnalysisResult.ResultFiles.Where(a => a.CloudFileCategory.Name.Contains("Annotation")).Count();
+            int totalBam = Model.AnalysisResult.ResultFiles.Where(a => a.CloudFileCategory.Name.Contains("BAM")).Count();
+
+            foreach (var item in Model.AnalysisResult.ResultFiles.Where(a => !a.CloudFileCategory.Name.Contains("Annotation") && !a.CloudFileCategory.Name.Contains("BAM")))
+            {
+                string description = item.Description.Substring(item.Description.LastIndexOf('/') + 1);
+                <div style="padding:5px">
+                    <span class="flushLeft flushTop small text-inline"><span class="glyphicon glyphicon-list-alt"></span> @description</span>
+                    <p class="small text-inline">
+                        <b>@(Math.Round(item.FileSize / (1024.0 * 1024.0), 2) + " MB")</b>, @Html.DisplayFor(modelItem => item.CloudFileCategory.Name)
+                        @Html.BootstrapActionIconLink("Download", "Download", "CloudFiles", new RouteValueDictionary(new { id = item.Id, analysisRequestId = Model.AnalysisResult.AnalysisRequest.Id }), "black", "cloud-download", "sm", false, false)
+                        @if(!item.QcStatsReportLocation.IsEmpty())
+                        {
+                            string icon = "check alert-success";
+                            string qctext = "Stats Available (download report)";
+                            @Html.BootstrapActionIconLink(qctext, "DownloadQcFile", "CloudFiles", new RouteValueDictionary(new { id = item.Id, analysisRequestId = Model.AnalysisResult.AnalysisRequest.Id }), "black", icon, "sm", false, false)
+                        }                        
+                    </p>
+                </div>
+                i++;
+            }
+
+
+
+            if (totalBam > 0)
+            {
+
+                <form id="formBamViewer" method="post" target="_blank" action="@Url.Action("BamViewer", "AnalysisRequests")">
+                    <input type="hidden" id="analysisRequestId" name="analysisRequestId" value="@Model.Id">
+
+                    <div style="padding:5px">
+                        <span class="badge col-md-12">
+                            <span class="col-md-5 pull-left" style="padding:10px!important;text-align:left!important;">BAM Files (@Model.AnalysisResult.ResultFiles.Where(a => a.CloudFileCategory.Name.Contains("BAM")).Count())</span>
+
+                            <span id="bam_viewer_button" class="col-md-7 pull-right" style="padding:0px!important;text-transform:none!important;text-align:right!important;">
+                                <span class="glyphicon glyphicon-question-sign" title="The viewer will launch on a new window"></span>
+
+                                <span class="btn btn-warning small">
+                                    <a href="javascript:launchBamViewer();" title="BAM Viewer" alt="BAM Viewer">
+                                        <span class="glyphicon glyphicon-list-alt white small" style="text-transform:none!important;width:7em;">&nbsp;<span style="font-family: sans-serif !important;">BAM Viewer</span></span>
+                                    </a>
+                                </span>
+                            </span>
+
+                        </span>
+                        <div>
+                            <div id="message-max-5-bams" class="alert alert-danger small" role="alert" style="display:none;padding:10px;margin-top:45px;margin-bottom:-20px;">You have reached the limit of 5 groups of BAM files. If you wish to select this group, please review your selection and unmark some other groups.</div>
+                            <div id="message-select-bams" class="alert alert-danger small" role="alert" style="display:none;padding:10px;margin-top:45px;margin-bottom:-15px;">Select at least one BAM in order to launch the Viewer.</div>
+
+                            @if (totalBam > 1000)
+                            {
+                                <div id="warning-max-5-bams" class="alert alert-warning small" role="alert" style="padding:10px;margin-top:45px;margin-bottom:-10px;">Please select up to 5 groups of BAM files to see on the Viewer.</div>
+                            }
+
+
+                            @{
+                            Dictionary<string, string> boxes = new Dictionary<string, string>();
+                            List<string> patterns = new List<string>();
+
+                            GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+                            foreach (var sample in Model.GNAnalysisRequestGNSamples)
+                            {
+                                patterns.Add(sample.GNSample.Name);
+                                string createdatetime = TimeZoneInfo.ConvertTime((DateTime)sample.GNSample.CreateDateTime, contactForUser.GNOrganization.OrgTimeZoneInfo).ToString();
+                                string keySample = sample.GNSample.Name.Replace(" ", "_");
+                                string searchKey = sample.GNSample.Name.Replace(" ", "_").Replace("(", "_").Replace(")", "_"); 
+                                boxes.Add(searchKey, createdatetime);
+                            }
+
+                            List<Guid> filesDisplayed = new List<Guid>();
+                            foreach (KeyValuePair<string, string> entry in boxes)
+                            {
+                                //build
+                                <br />
+                                <p class="small text-inline">
+                                    @{
+                                        string description1 = entry.Key;
+                                    }
+                                    &nbsp;@Html.Raw(description1)
+                                    <a id="@(entry.Key + "_link")" href="javascript:showBox('@entry.Key')"><span class="glyphicon glyphicon-plus"></span></a>
+                                </p>
+
+                                <div id="@(entry.Key + "_box")" class="flushLeft flushTop" style="display:none;">
+
+                                    @foreach (var file in Model.AnalysisResult.ResultFiles.Where(a => a.CloudFileCategory.Name.Contains("BAM") && a.Description.Contains(entry.Key.ToUpper())).OrderByDescending(b => b.CreateDateTime))
+                                    {
+                                        if (!filesDisplayed.Contains(file.Id))
+                                        {
+                                            filesDisplayed.Add(file.Id);
+                                            <p class="small text-inline" style="font-size:10px!important;">
+                                                @{
+                                            string description = file.Description.Substring(file.Description.LastIndexOf('/') + 1);
+                                                }
+                                                <span>
+                                                    &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-file"></span>&nbsp;@description (@file.CloudFileCategory.Name) <b>@(Math.Round(file.FileSize / (1024.0 * 1024.0), 2) + " MB")</b>
+                                                    @Html.BootstrapActionIconLink("Download", "Download", "CloudFiles", new RouteValueDictionary(new { id = file.Id, analysisRequestId = Model.AnalysisResult.AnalysisRequest.Id }), "black", "cloud-download", "sm", false, false)
+                                                </span>
+                                                <br />
+                                            </p>
+                                        }
+                                    }
+
+                                </div>
+                            }
+
+                            }
+
+                        </div>
+                    </div>
+                </form>
+            }
+
+
+
+            if (totalAnnotation > 0)
+            {
+                //Annotation files
+                <div style="padding:5px">
+                    <span class="badge col-md-12">
+                        <span class="col-md-5 pull-left" style="padding:10px!important;text-align:left!important;">Annotation Results (@Model.AnalysisResult.ResultFiles.Where(a => a.CloudFileCategory.Name.Contains("Annotation")).Count())</span>
+
+                        @if (Model.CurrentProgress == 100 || (Model.LatestRequestPhase == "TERTIARY" && Model.AnalysisResult.Success == false))
+                        {
+                            <span id="rerun_options" class="col-md-7 pull-right" style="padding:0px!important;text-transform:none!important;text-align:right!important;">
+                                <span class="btn btn-warning small">
+                                    <a href="javascript:confirmReRun();" title="Re-Run tertiary analysis" alt="Re-Run tertiary analysis">
+                                        <span class="glyphicon glyphicon-repeat white small" style="text-transform:none!important;width:7em;">&nbsp;<span style="font-family: sans-serif !important;">Re-Run</span></span>
+                                    </a>
+                                </span>
+                            </span>
+
+
+                            <span id="confirm_rerun_options" class="col-md-7 pull-right" style="padding:0px!important;display:none;text-transform:none!important;text-align:right!important;">
+                                <span class="btn btn-warning small">
+                                    Are you sure?
+                                    @Html.BootstrapActionButton("Yes", "ReRunTertiaryAnalysis", "AnalysisRequests", new RouteValueDictionary(new { id = ViewData["SampleId"], analysisRequestId = Model.Id }), "white", "ok", "sm")
+                                    <a href="javascript:confirmReRun()" class="btn white btn-sm" style="text-align:center" title="Cancel" alt="Cancel"><span class="glyphicon glyphicon-remove"></span>&nbsp;Cancel</a>
+                                </span>
+                            </span>
+                        }
+                        else
+                        {
+                            <span id="rerun_options" class="col-md-7 pull-right" style="padding:10px!important;text-transform:none!important;text-align:right!important;">
+
+                            </span>
+                        }
+                    </span>
+                    <div>
+                        @{
+                        Dictionary<string, string> boxes = new Dictionary<string, string>();
+                        List<string> patterns = new List<string>();
+
+                        foreach (var file in Model.AnalysisResult.ResultFiles.Where(a => a.CloudFileCategory.Name.Contains("Annotation")).OrderByDescending(b => b.CreateDateTime))
+                        {
+                            string filename = file.Description.Substring(file.Description.LastIndexOf('/') + 1);
+                            string pattern1 = filename;
+                            string pattern2 = filename;
+                            try
+                            {
+                                pattern1 = filename.Substring(0, (requestName.Length) + 13);
+                                pattern2 = filename.Substring(0, (requestName.Length) + 16);
+                            }
+                            catch (Exception e)
+                            {
+                                pattern1 = filename.Substring(0, filename.IndexOf('.'));
+                                pattern2 = filename.Substring(0, filename.IndexOf('.'));
+                            }
+
+                            if (!patterns.Exists(a => a.Equals(pattern1)))
+                            {
+                                patterns.Add(pattern1);
+
+                                GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+                                string createdatetime = TimeZoneInfo.ConvertTime((DateTime)file.CreateDateTime, contactForUser.GNOrganization.OrgTimeZoneInfo).ToString();
+                                boxes.Add(pattern1, createdatetime);
+                            }
+                        }
+
+                        List<Guid> filesDisplayed = new List<Guid>();
+                        foreach (KeyValuePair<string, string> entry in boxes)
+                        {
+                            //build
+                            <br />
+                            <p class="small text-inline">
+                                @Html.Raw("Created on <span class=\"text-muted text-uppercase\">" + entry.Value + "</span>")
+                                <a id="@(entry.Key + "_link")" href="javascript:showBox('@entry.Key')"><span class="glyphicon glyphicon-plus"></span></a>
+                            </p>
+
+                            <div id="@(entry.Key + "_box")" class="flushLeft flushTop" style="display:none;">
+
+                                @foreach (var file in Model.AnalysisResult.ResultFiles.Where(a => a.CloudFileCategory.Name.Contains("Annotation") && a.Description.Contains(entry.Key)).OrderByDescending(b => b.CreateDateTime))
+                                {
+                                    if (!filesDisplayed.Contains(file.Id))
+                                    {
+                                        filesDisplayed.Add(file.Id);
+                                        <p class="small text-inline" style="font-size:10px!important;">
+                                            @{
+                                        string description = file.Description.Substring(file.Description.LastIndexOf('/') + 1);
+                                            }
+                                            <span>
+                                                &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-file"></span>&nbsp;@description (@file.CloudFileCategory.Name) <b>@(Math.Round(file.FileSize / (1024.0 * 1024.0), 2) + " MB")</b>
+                                                @Html.BootstrapActionIconLink("Download", "Download", "CloudFiles", new RouteValueDictionary(new { id = file.Id, analysisRequestId = Model.AnalysisResult.AnalysisRequest.Id }), "black", "cloud-download", "sm", false, false)
+                                            </span>
+                                            <br />
+                                        </p>
+                                    }
+                                }
+
+                            </div>
+                        }
+
+                        }
+
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            if (Model.AnalysisResult == null || !Model.AnalysisResult.Success)
+            {
+                <div class="alert alert-danger small" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp;Please note: The latest analysis run (secondary or tertiary) did not complete successfully. It was either stopped by the user, or the system returned an error.
+                </div>
+            }
+            else
+            {
+                <div class="list-group-item">
+                    <span>No result files exist for this analysis request.</span>
+                </div>
+            }
+        }
+    }
+}

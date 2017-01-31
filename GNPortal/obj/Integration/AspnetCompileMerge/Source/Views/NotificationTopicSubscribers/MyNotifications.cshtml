@@ -1,0 +1,38 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNNotificationTopicSubscriber>
+
+@{
+    ViewBag.Title = "My Notifications";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-phone gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Save preferences", "SaveSubscriptions", "NotificationTopics", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "success", "floppy-disk")
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+
+@foreach (var item in Model)
+{
+  
+    <dt>
+        <dd class="col-md-7">
+            <strong class="small">
+                @Html.DisplayFor(modelItem => item.GNNotificationTopic.Title)
+            </strong>
+            <br />
+            <span class="small">
+                @Html.DisplayFor(modelItem => item.GNNotificationTopic.Description)
+            </span>
+        </dd>
+        <dd class="col-md-2">
+            @Html.CheckBoxFor(modelItem => item.IsSubscribedBool)
+        </dd>
+
+      </dt>
+
+}
+

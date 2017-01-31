@@ -1,0 +1,77 @@
+﻿@using GenomeNext.Data.EntityModel
+@using GenomeNext.Data.IdentityModel
+@model GenomeNext.Data.IdentityModel.AspNetUser
+
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Associated Contacts", "briefcase"))
+    {
+        <span class="badge"></span>
+        <span class="pull-right">
+
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(true))
+    {
+        <script language="Javascript">
+            function confirmDelete(id)
+            {
+                $('#' + id + '_icons').toggle();
+                $('#' + id + '_delete_confirm').toggle();
+            }
+        </script>
+
+        int i = 0;
+        if (ViewBag.UserContacts != null)
+        {
+            foreach (GNContact item in ViewBag.UserContacts)
+            {
+                using (Html.BeginGNClickableListGroupItem(
+                    "#",
+                    (i % 2) != 0))
+                {
+                    <div class="col-md-4">
+                        <div class="col-md-12 flushLeft flushRight">
+                            <img class="pull-left"
+                                 style="height:18px;padding-right:6px;"
+                                 src="@Url.Content("~/Content/icons/contacts.png")" />
+
+                            @item.FullName<br />
+                            @item.GNOrganization.Name
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div>
+                            @Html.BootstrapActionButton("View", "Details", "Contacts", new RouteValueDictionary(new { id = item.Id, aspNetUserId = Model.Id }), "", "user", "sm")
+                            @if (item.GNOrganizationId.ToString() != Model.DefaultOrganizationId)
+                            {
+                                @Html.BootstrapActionButton("Make Default", "MakeDefault", "Users", new RouteValueDictionary(new { contactId = item.Id, aspNetUserId = Model.Id }), "", "star", "sm")
+                            }
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 text-right">
+                        <span id="@(item.Id+"_delete_confirm")" style="display:none">
+                            @Html.BootstrapActionButton("", "Delete", "Contacts", new RouteValueDictionary(new { id = item.Id }), "danger", "trash", "sm ")
+                            <a href="javascript:confirmDelete('@item.Id')"><span class="glyphicon glyphicon-remove"></span></a>
+                        </span>
+                        <span id="@(item.Id+"_icons")">
+                            <a href="javascript:confirmDelete('@item.Id')"><span class="glyphicon glyphicon-trash small"></span></a>
+                        </span>
+                    </div>
+                }
+                i++;
+            }
+            if (i == 0)
+            {
+                <span style="padding:20px;margin-top:20px;margin-bottom:20;">No contacts associated.</span>
+                <span style="padding:20px;margin-top:20px;margin-bottom:20;">@Html.ActionLink("Contacts", "Index", "Contacts")</span>
+            }
+        }
+    }
+}

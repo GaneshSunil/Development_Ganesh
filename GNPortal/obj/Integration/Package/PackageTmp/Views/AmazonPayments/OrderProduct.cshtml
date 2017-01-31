@@ -1,0 +1,164 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Order Product";
+    string AmznEnv = System.Configuration.ConfigurationManager.AppSettings["AmazonPayments.Environment"];
+    string ClientID = System.Configuration.ConfigurationManager.AppSettings["AmazonPayments.ClientID." + AmznEnv];
+    string MerchantID = System.Configuration.ConfigurationManager.AppSettings["AmazonPayments.MerchantID." + AmznEnv];
+    string WidgetsJSURL = System.Configuration.ConfigurationManager.AppSettings["AmazonPayments.WidgetsJSURL." + AmznEnv];
+}
+
+<h2>@ViewBag.Title</h2>
+
+@section styles{
+<style>
+    #AmazonAddressWidget {
+        width: 400px;
+        height: 228px;
+    }
+    #AmazonWalletWidget {
+        width: 400px; 
+        height: 228px;
+    }
+</style>
+
+}
+
+@section scriptsHead{
+    <script type='text/javascript'>
+        window.onAmazonLoginReady = function () {
+            amazon.Login.setClientId("@ClientID");
+        };
+    </script>
+    <script type='text/javascript'
+        src='@WidgetsJSURL?sellerId=@MerchantID'>
+    </script>
+}
+
+@section scripts{
+
+<script type='text/javascript'>
+    /*
+    function getParamFromQueryString(name, url) {
+        var regexString = "[\\?&]" + name + "=([^&#]*)";
+        var regex = new RegExp(regexString);
+        var results = regex.exec(url);
+
+        var result = null;
+
+        if (results != null && results.length >= 2 && results[1] != null) {
+            var result = results[1].replace("?" + name);
+        }
+
+        return result;
+    }
+    */
+
+    /*
+    var url = window.location.href;
+    var session = getParamFromQueryString("session", url);
+    var access_token = getParamFromQueryString("access_token", url);
+
+    if (session == null && access_token == null) {
+        alert("Missing query string parameters from request, verify that session & access_token are present.");
+    }
+    else {
+        document.getElementById("SessionInformation").innerHTML = "Order Reference Number: " + session + "<p> Access Token : " + access_token;
+    }
+    */
+
+    var amazonBillingAgreementId = null;
+
+    //Address Book Widget
+    new OffAmazonPayments.Widgets.AddressBook({
+        sellerId: '@MerchantID',
+        agreementType: 'BillingAgreement',
+
+        onReady: function (billingAgreement) {
+            amazonBillingAgreementId = billingAgreement.getAmazonBillingAgreementId();
+        },
+        onAddressSelect: function (billingAgreement) {
+            // Replace the following code with the action you that want to perform
+            // after the address is selected.
+            // The amazonBillingAgreementId can be used to retrieve
+            // the address details by calling the GetBillingAgreementDetails operation.
+            // If rendering the AddressBook and Wallet widgets on the same page, you
+            // should wait for this event before you render the Wallet widget for
+            // the first time.
+            RenderWallet();
+        },
+        design: {
+            size: { width: '400px', height: '260px' }
+        },
+        onError: function (error) {
+            // your error handling code
+        }
+    }).bind("AmazonAddressWidget");
+
+    function RenderWallet()
+    {
+        new OffAmazonPayments.Widgets.Wallet({
+            sellerId: '@MerchantID',
+            // amazonBillingAgreementId obtained from the AddressBook widget
+            amazonBillingAgreementId: amazonBillingAgreementId,
+            design: {
+                size: { width: '400px', height: '260px' }
+            },
+            onPaymentSelect: function (billingAgreement) {
+                // Replace this code with the action that you want to perform
+                // after the payment method is selected.
+            },
+            onError: function (error) {
+                // your error handling code
+            }
+        }).bind("AmazonWalletWidget");
+    }
+/*
+    new OffAmazonPayments.Widgets.AddressBook({
+        sellerId: "MerchantID",
+        amazonOrderReferenceId: session,
+        displayMode: 'Edit',
+        design: {
+            designMode: 'responsive'
+        },
+        onOrderReferenceCreate: function (orderReference) {
+            session = orderReference.getAmazonOrderReferenceId();
+            document.getElementById("WalletLink").innerHTML = "<a href=\"wallet.aspx?session=" + session + "&access_token=" + access_token + "\">Wallet page</a>";
+        },
+        onAddressSelect: function (orderReference) {
+            // this method is triggered when the shipping address is selected
+        },
+        onError: function (error) {
+            alert(error.getErrorCode() + ": " + error.getErrorMessage());
+        }
+    }).bind("AmazonAddressWidget");
+
+    //Wallet Widget
+    new OffAmazonPayments.Widgets.Wallet({
+        sellerId: "MerchantID",
+        displayMode: 'Edit',
+        design: {
+            designMode: 'responsive'
+        },
+        onPaymentSelect: function (orderReference) {
+            // this method is triggered when the payment instrument is selected.
+        },
+        onError: function (error) {
+            alert(error.getErrorCode() + ": " + error.getErrorMessage());
+        }
+    }).bind("AmazonWalletWidget");
+    */
+</script>
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div id="AmazonAddressWidget"></div>
+
+        <div id="AmazonWalletWidget"></div>
+
+        <div id="SessionInformation"></div>
+
+    </div>
+</div>

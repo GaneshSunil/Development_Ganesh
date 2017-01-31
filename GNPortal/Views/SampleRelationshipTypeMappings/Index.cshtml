@@ -1,0 +1,51 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNSampleRelationshipTypeMapping>
+
+@{
+    ViewBag.Title = "Sample Relationship Type Mappings";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-tint gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Create New", "Create", "SampleRelationshipTypeMappings", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "plus")
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameLeftRelationship)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GenderRightRelationship)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameRightRelationship)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameLeftRelationship)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GenderRightRelationship)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameRightRelationship)
+                </td>
+                <td>
+                    @Html.BootstrapActionButton("Delete", "Delete", "SampleRelationshipTypeMappings", new RouteValueDictionary(new { NameLeftRelationship = item.NameLeftRelationship, NameRightRelationship = item.NameRightRelationship }), "danger", "trash", "sm")
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

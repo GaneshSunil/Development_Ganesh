@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Email Confirmation";
+}
+
+@Html.BootstrapRowSpacer()
+
+<div class="row">
+
+    <div class="col-md-3">
+
+        <img src="@Url.Content("~/Images/gn-logo-square-dark.png")" class="img-responsive img-rounded" style="width:240px;" />
+
+    </div>
+
+    <div class="col-md-9">
+
+        @using (Html.BeginForm("ConfirmEmail", "Account", FormMethod.Post, new { @class = "form-horizontal col-md-12", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <h3>@ViewBag.Title</h3>
+            <hr />
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success">
+                        Thank you for confirming your account. 
+                        Please @Html.ActionLink("click here to log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+                    </div>
+                    @Html.BootstrapRowSpacer()
+                    @Html.BootstrapRowSpacer()
+                    @Html.BootstrapRowSpacer()
+                    @Html.BootstrapRowSpacer()
+                </div>
+            </div>
+        }
+    </div>
+</div>

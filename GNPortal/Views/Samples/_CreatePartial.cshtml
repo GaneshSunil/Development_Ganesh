@@ -1,0 +1,275 @@
+﻿@model GenomeNext.Data.EntityModel.GNSample
+
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    using (Html.BeginGNPanel())
+    {
+        //Heading
+        using (Html.BeginGNPanelHeading("Sample Info", "info-sign"))
+        {
+        }
+
+        //Body
+        using (Html.BeginGNPanelBody())
+        {
+
+
+            @Styles.Render("~/Content/jquery-ui")
+            @Styles.Render("~/Content/tagit")
+            @Styles.Render("~/Content/tagitzendesk")
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/jquery-val")
+            @Scripts.Render("~/bundles/jquery-ui")
+            @Scripts.Render("~/bundles/tagit")
+            <script>
+                $(function () {
+                    var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'];
+
+                    //-------------------------------
+                    // Minimal
+                    //-------------------------------
+                    $('#myTags').tagit();
+
+                    //-------------------------------
+                    // Single field
+                    //-------------------------------
+                    $('#singleFieldTags').tagit({
+                        availableTags: sampleTags,
+                        // This will make Tag-it submit a single form value, as a comma-delimited field.
+                        singleField: true,
+                        singleFieldNode: $('#Tags'),
+
+                        removeConfirmation: true
+                    });
+
+                    // singleFieldTags2 is an INPUT element, rather than a UL as in the other
+                    // examples, so it automatically defaults to singleField.
+                    $('#singleFieldTags2').tagit({
+                        availableTags: sampleTags
+                    });
+
+                    //-------------------------------
+                    // Preloading data in markup
+                    //-------------------------------
+                    $('#myULTags').tagit({
+                        availableTags: sampleTags, // this param is of course optional. it's for autocomplete.
+                        // configure the name of the input field (will be submitted with form), default: item[tags]
+                        itemName: 'item',
+                        fieldName: 'tags'
+                    });
+
+                    //-------------------------------
+                    // Tag events
+                    //-------------------------------
+                    var eventTags = $('#eventTags');
+
+                    var addEvent = function (text) {
+                        $('#events_container').append(text + '<br>');
+                    };
+
+                    eventTags.tagit({
+                        availableTags: sampleTags,
+                        beforeTagAdded: function (evt, ui) {
+                            if (!ui.duringInitialization) {
+                                addEvent('beforeTagAdded: ' + eventTags.tagit('tagLabel', ui.tag));
+                            }
+                        },
+                        afterTagAdded: function (evt, ui) {
+                            if (!ui.duringInitialization) {
+                                addEvent('afterTagAdded: ' + eventTags.tagit('tagLabel', ui.tag));
+                            }
+                        },
+                        beforeTagRemoved: function (evt, ui) {
+                            addEvent('beforeTagRemoved: ' + eventTags.tagit('tagLabel', ui.tag));
+                        },
+                        afterTagRemoved: function (evt, ui) {
+                            addEvent('afterTagRemoved: ' + eventTags.tagit('tagLabel', ui.tag));
+                        },
+                        onTagClicked: function (evt, ui) {
+                            addEvent('onTagClicked: ' + eventTags.tagit('tagLabel', ui.tag));
+                        },
+                        onTagExists: function (evt, ui) {
+                            addEvent('onTagExists: ' + eventTags.tagit('tagLabel', ui.existingTag));
+                        }
+                    });
+
+                    //-------------------------------
+                    // Read-only
+                    //-------------------------------
+                    $('#readOnlyTags').tagit({
+                        readOnly: true
+                    });
+
+                    //-------------------------------
+                    // Tag-it methods
+                    //-------------------------------
+                    $('#methodTags').tagit({
+                        availableTags: sampleTags
+                    });
+
+                    //-------------------------------
+                    // Allow spaces without quotes.
+                    //-------------------------------
+                    $('#allowSpacesTags').tagit({
+                        availableTags: sampleTags,
+                        allowSpaces: true
+                    });
+
+                    //-------------------------------
+                    // Remove confirmation
+                    //-------------------------------
+                    $('#removeConfirmationTags').tagit({
+                        availableTags: sampleTags,
+                        removeConfirmation: true
+                    });
+
+                });
+            </script>
+
+    <div class="form-horizontal col-md-12">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.Hidden("analysisRequestId", (string)ViewBag.AnalysisRequestId)
+        @Html.HiddenFor(model => model.IsReady)
+
+        @if (!string.IsNullOrEmpty(Request["GroupId"]))
+        {
+            @Html.Hidden("GroupId", Request["GroupId"])
+        }
+
+        <div class="form-group center-block border-gn-light-gray" style="text-align:center;width:495px;">            
+            @Html.Hidden("GNReplicateCode", 0)
+            <div class="form-group">
+                @Html.LabelFor(model => model.GNOrganizationId, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @contactForUser.GNOrganization.Name
+                    @Html.Hidden("GNOrganizationId", contactForUser.GNOrganizationId)
+                    @Html.ValidationMessageFor(model => model.GNOrganizationId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group center-block border-gn-light-gray" style="padding-bottom:10px;text-align:center;width:495px;">
+            @Html.LabelFor(model => model.GNSampleQualifier.GNSampleQualifierGroupCode, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6 dropdown">
+                @Html.DropDownList("GNSampleQualifierGroupCode", null, htmlAttributes: new { @class = "form-control alert-info", @onchange = "javascript:updateFields()" })
+                @Html.ValidationMessageFor(model => model.GNSampleQualifier.GNSampleQualifierGroupCode, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2 dropdown" style="padding-top:15px;">
+                <span class="glyphicon glyphicon-question-sign" title="Coming soon: RNA analysis"></span>
+            </div>
+       </div>
+
+        <div class="border-gn-light-gray col-md-12" style="margin-left:-13px;width:495px;">
+            
+            @{
+                GenomeNext.Data.EntityModel.GNAnalysisRequest currentAnalysisRequest = ViewBag.CurrentAnalysisRequest;
+            }
+
+            @if (currentAnalysisRequest != null)
+            {
+                <div class="form-group">
+                    @Html.Label("Analysis", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @currentAnalysisRequest.Description
+                    </div>
+                </div>
+            }
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" id="SequencingTypeBlock">
+                @Html.LabelFor(model => model.GNSampleTypeId, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.DropDownList("GNSampleTypeId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.GNSampleTypeId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" id="GenderBlock">
+                @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    <span>
+                        @Html.RadioButtonFor(model => model.Gender, "F")
+                        @Html.LabelFor(model => model.Gender, "Female", htmlAttributes: new { @style = "margin-left:-10px; margin-right:10px;" })
+                    </span>
+                    <span>
+                        @Html.RadioButtonFor(model => model.Gender, "M")
+                        @Html.LabelFor(model => model.Gender, "Male", htmlAttributes: new { @style = "margin-left:-10px; margin-right:10px;" })
+                    </span>
+                    <span>
+                        @Html.RadioButtonFor(model => model.Gender, "U", htmlAttributes: new { @checked = "true" })
+                        @Html.LabelFor(model => model.Gender, "Undefined", htmlAttributes: new { @style = "margin-left:-10px; margin-right:10px;" })
+                    </span>
+                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            <div class="form-group" id="PairedEndedBlock">
+                @Html.LabelFor(model => model.IsPairEnded, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.RadioButtonFor(model => model.IsPairEnded, "false")
+                    @Html.LabelFor(model => model.IsPairEnded, "Single-End", htmlAttributes: new { @style = "margin-left:-10px; margin-right:10px;" })
+
+                    @Html.RadioButtonFor(model => model.IsPairEnded, "true", htmlAttributes: new { @checked = "checked" })
+                    @Html.LabelFor(model => model.IsPairEnded, "Paired-End", htmlAttributes: new { @style = "margin-left:-10px; margin-right:10px;" })
+
+                    @Html.ValidationMessageFor(model => model.IsPairEnded, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" id="QualifierBlock">
+                @Html.LabelFor(model => model.GNSampleQualifierCode, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6 dropdown">
+                    @Html.RadioButtonFor(model => model.GNSampleQualifierCode, "DNA", htmlAttributes: new { @checked = "checked" })
+                    @Html.LabelFor(model => model.GNSampleQualifierCode, "Germline", htmlAttributes: new { @style = "margin-left:-10px; margin-right:10px;" })
+
+                    @Html.RadioButtonFor(model => model.GNSampleQualifierCode, "TUMOR")
+                    @Html.LabelFor(model => model.GNSampleQualifierCode, "Tumor", htmlAttributes: new { @style = "margin-left:-10px; margin-right:10px;" })
+
+                    @Html.ValidationMessageFor(model => model.GNSampleQualifierCode, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-2 dropdown" style="padding-top:15px;">
+                    <span class="glyphicon glyphicon-question-sign" title="If you're creating a Tumor-Normal Analysis, please select 'yes'. If this is a 'regular' DNA Analysis, keep the selection as 'No'."></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+        }
+
+        //Footer
+        using (Html.BeginGNPanelFooter())
+        {
+            <div class="pull-left">
+                @if (!string.IsNullOrEmpty(Request["analysisRequestId"]))
+                {
+                    @Html.BootstrapActionButton("Cancel", "Details", "AnalysisRequests", new RouteValueDictionary(new { id = Request["analysisRequestId"] }), "bg-gn-medium-gray white", "remove")
+                }
+                else
+                {
+                    @Html.BootstrapActionButton("Cancel", "Index", "Samples", null, "bg-gn-medium-gray white", "remove")
+                }
+            </div>
+            <div class="pull-right">
+                @Html.BootstrapFormSaveButton("Next", "chevron-right", "bg-gn-green white", true)
+            </div>
+        }
+    }
+}

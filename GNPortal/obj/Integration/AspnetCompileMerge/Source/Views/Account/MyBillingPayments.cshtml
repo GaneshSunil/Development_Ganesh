@@ -1,0 +1,74 @@
+﻿@model GenomeNext.Portal.Models.MyBillingPaymentsModel
+
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    Layout = "~/Views/Account/MyBilling.cshtml";
+
+    ViewBag.SubTitle1 = "Payments";
+    ViewBag.SubTitle2 = "Track all payments applied to this account";
+    ViewBag.IconName = "billing_payments";
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            selectMyBillingNavButton(2);
+        });
+    </script>
+}
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        @if (Model.MyPayments != null && Model.MyPayments.Count != 0)
+        {
+            using (Html.BeginGNPanel(true))
+            {
+                using (Html.BeginGNPanelHeading("Payments for this Account"))
+                {
+                }
+
+                using (Html.BeginGNPanelBody(true))
+                {
+                    int i = 0;
+                    foreach (var item in Model.MyPayments)
+                    {
+                        using (Html.BeginGNClickableListGroupItem("#", (i % 2) != 0))
+                        {
+                            <div class="col-md-2">
+                                <span class="badge bg-gn-green white text-padded col-md-12">
+                                    @Html.DisplayFor(modelItem => item.TotalAmount)
+                                </span>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="badge white text-padded">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    @TimeZoneInfo.ConvertTime(item.PaymentDate, contactForUser.GNOrganization.OrgTimeZoneInfo).ToShortDateString()
+                                </span>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="badge bg-gn-medium-gray white text-padded col-md-12">
+                                    @Html.DisplayFor(modelItem => item.PaymentMethod.PaymentMethodType.Description)
+                                </span>
+                            </div>
+                            <div class="col-md-6 gn-dark-gray text-uppercase">
+                                @Html.ActionLink(item.Invoices.FirstOrDefault().Name, "MyBillingBillDetail", new { id = item.Invoices.FirstOrDefault().Id })
+                                <br />
+                                @Html.DisplayFor(modelItem => item.ExternalTxnId)
+                            </div>
+                        }
+                        i++;
+                    }
+                }
+            }
+        }
+        else
+        {
+            <span>No payments exist for this account.</span>
+        }
+
+    </div>
+
+</div>

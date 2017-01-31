@@ -1,0 +1,105 @@
+﻿@model GenomeNext.Data.EntityModel.GNNotificationLog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<script src="//cdn.ckeditor.com/4.4.5/full-all/ckeditor.js"></script>
+
+
+<h2>
+    <span class="glyphicon glyphicon-envelope gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "NotificationLogs", new RouteValueDictionary(new { id = Request["organizationId"] }), "info", "chevron-left")
+        @Html.Raw("&nbsp;")
+        @Html.BootstrapActionButton("Re-Send", "Resend", "NotificationLogs", new RouteValueDictionary(new { id = Model.Id, organizationId = Request["organizationId"] }), "warning", "envelope", null)
+    </span>
+</h2>
+
+
+@Html.BootstrapRowSpacer()
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.BootstrapRowSpacer()
+            <dl class="dl-horizontal">
+                <dt>
+                    Topic
+                </dt>
+
+                <dd>
+                    @Html.BootstrapActionButton(Model.GNNotificationTopic.Code, "Details", "NotificationTopics", new RouteValueDictionary(new { id = Model.GNNotificationTopicId }), null, "envelope", null)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Sender)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Sender)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Addressee)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Addressee)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Subject)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Subject)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Message)
+                </dt>
+
+                <dd>
+                    <div class="col-md-11">
+                        <textarea name="Message" id="Message" rows="20" cols="50" disabled>
+                            @Model.Message
+                        </textarea>
+                        <script type="text/javascript">
+                            CKEDITOR.config.toolbarCanCollapse = true;
+                            CKEDITOR.config.toolbarStartupExpanded = false;
+                            CKEDITOR.config.toolbar_Basic;
+                            CKEDITOR.replace('Message');
+                        </script>
+                    </div>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NotificationServiceResponse)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NotificationServiceResponse)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedBy)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreateDateTime)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CreateDateTime)
+                </dd>
+
+
+            </dl>
+        </div>
+    </div>
+}

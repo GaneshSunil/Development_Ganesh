@@ -1,0 +1,138 @@
+﻿@model GenomeNext.Data.EntityModel.GNSample
+
+@{
+    ViewBag.Title = "Create New Sample";
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/samples_white.png";
+    ViewData["ModuleCtl"] = "Samples";
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+
+    if (!string.IsNullOrEmpty(Request["analysisRequestId"]))
+    {
+        ViewData["customBackLink"] = true;
+        ViewData["customBackLinkModuleCtl"] = "AnalysisRequests";
+        ViewData["customBackLinkAction"] = "Edit";
+        ViewData["customBackLinkParam"] = Request["analysisRequestId"];
+        ViewData["customBackLinkText"] = "Back to Analysis";       
+    }
+
+    ViewBag.EnableSampleIndexImport = ((GenomeNext.Portal.Controllers.BaseController)this.ViewContext.Controller).EvalEnableSampleIndexImport();    
+}
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            var itemMinHeight = $("div.panel[class*='border-gn-dark-gray']:first").height() + 2;
+            $("#createNewItemPanel").css("min-height", itemMinHeight + "px");
+        });
+
+        function updateFields() {
+
+            var qualifier_code = $('#GNSampleQualifierGroupCode').val();
+            if (qualifier_code == 'RNA') {
+                document.getElementById('ReplicateBlock').style.display = '';
+                document.getElementById('GNSampleTypeId').style.display = 'none';
+                document.getElementById('GNSampleTypeId').value = '2';
+                document.getElementById('SequencingTypeBlock').style.display = 'none';
+                document.getElementById('GenderBlock').style.display = 'none';
+                $("input[name=Gender][value='U']").prop('checked', true);
+                document.getElementById('PairedEndedBlock').style.display = 'none';
+                $("input[name=IsPairEnded][value='true']").prop('checked', true);
+                document.getElementById('QualifierBlock').style.display = 'none';
+                $("input[name=GNSampleQualifierCode][value='DNA']").prop('checked', true);
+                document.getElementById("tipsDNA").style.display = 'none';
+                document.getElementById("tipsRNA").style.display = '';
+            }
+            else {
+                document.getElementById('GNReplicate').value = '0';
+                document.getElementById('ReplicateBlock').style.display = 'none';
+                document.getElementById('GNSampleTypeId').style.display = '';
+                document.getElementById('SequencingTypeBlock').style.display = '';
+                document.getElementById('GenderBlock').style.display = '';
+                document.getElementById('QualifierBlock').style.display = '';
+                document.getElementById('PairedEndedBlock').style.display = '';
+                document.getElementById("tipsDNA").style.display = '';
+                document.getElementById("tipsRNA").style.display = 'none';
+                $("input[name=GNSampleQualifierCode][value='DNA']").prop('checked', true);
+            }
+        }
+
+        window.onload = function () {
+            javascript: updateFields();
+        }
+    </script>
+}
+
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-xs-12 col-md-6">
+
+            @Html.Partial("~/Views/Samples/_CreatePartial.cshtml", Model)
+
+            @if ((bool)ViewBag.EnableSampleIndexImport)
+            {
+                using (Html.BeginGNPanel())
+                {
+                    //Heading
+                    using (Html.BeginGNPanelHeading("Sample Index Import", "save"))
+                    {
+                    }
+
+                    //Body
+                    using (Html.BeginGNPanelBody())
+                    {
+                        @Html.BootstrapActionButton("Import Sample Index", "Import", "BulkImport", null, "bg-gn-green white", "", glyphiconRight: true)
+                        <div class="text-muted small text-padded-top">Import an index file (MS Excel Spreadsheet) of samples already uploaded to the cloud.</div>
+                    }
+                }
+            }
+        </div>
+
+        <div id="tipsDNA" style="display:none" class="col-xs-12 col-md-6">
+
+            @{
+                ViewData["TipsPanelTitle"] = "Tips for Creating a Sample";
+                ViewData["TipsPanelImg"] = "~/Content/icons/samples.png";
+                ViewData["TipContentIntro"] = "";
+                ViewData["TipContentOutro"] = "";
+                ViewData["TipContent"] = new List<string>
+                {
+                    "Select Sample Type (RNA or DNA) from the dropdown. Use DNA to upload samples for Tumor/Normal studies.",
+                    "Enter the Name of your sample.",
+                    "Files must have any of the following extensions: 'gz', 'gzip'. Other extensions will be rejected.",
+                    
+                    
+                    "Select the Sequencing Type from the dropdown",
+                    "Optional: Indicate the subject’s gender in order to build a pedigree. Pedigree cannot be established without a gender selection.",
+                    "Select the Read Type, which should be given by the sequencer of the FASTQ files.",
+                    "Select the Sample Type (Germline or Tumor). If uploading a “Normal” sample for a tumor/normal analysis, tag the “normal” sample as Germline."
+                };
+            }
+            @Html.Partial("~/Views/Shared/_TipsPanelPartial.cshtml", null, ViewData)
+
+        </div>
+        <div id="tipsRNA" class="col-xs-12 col-md-6">
+
+            @{
+                ViewData["TipsPanelTitle"] = "Tips for Creating a Sample";
+                ViewData["TipsPanelImg"] = "~/Content/icons/samples.png";
+                ViewData["TipContentIntro"] = "";
+                ViewData["TipContentOutro"] = "";
+                ViewData["TipContent"] = new List<string>
+                {
+                    "Select Sample Type (RNA or DNA) from the dropdown. Use DNA to upload samples for Tumor/Normal studies.",
+                    "Enter the Name of your sample.",
+                    "Files must have any of the following extensions: 'gz', 'gzip'. Other extensions will be rejected.",
+                    
+                    "We recommend you create one Sample for each set of paired end or single end files per individual. Once all samples have been created, you will be able to tag them as Replicates and add them to appropriate groups when creating the analysis experiment."
+                };
+            }
+            @Html.Partial("~/Views/Shared/_TipsPanelPartial.cshtml", null, ViewData)
+
+        </div>
+
+    </div>
+}

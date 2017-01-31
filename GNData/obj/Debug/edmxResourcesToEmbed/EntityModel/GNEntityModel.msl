@@ -1,0 +1,1398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GenomeNextDataEntityModelStoreContainer" CdmEntityContainer="GNEntityModelContainer">
+    <EntitySetMapping Name="GNAccounts">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNAccount)">
+        <MappingFragment StoreEntitySet="GNAccounts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TotalAmountPaid" ColumnName="TotalAmountPaid" />
+          <ScalarProperty Name="TotalAmountOwed" ColumnName="TotalAmountOwed" />
+          <ScalarProperty Name="DefaultDiscountType" ColumnName="DefaultDiscountType" />
+          <ScalarProperty Name="DefaultDiscountAmount" ColumnName="DefaultDiscountAmount" />
+          <ScalarProperty Name="BillingMode" ColumnName="BillingMode" />
+          <ScalarProperty Name="MaxBalanceAllowed" ColumnName="MaxBalanceAllowed" />
+          <ScalarProperty Name="AvailableCredits" ColumnName="AvailableCredits" />
+          <ScalarProperty Name="ValidBillingAgreementRequired" ColumnName="ValidBillingAgreementRequired" />
+          <ScalarProperty Name="GNAccountTypeId" ColumnName="GNAccountTypeId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNAnalysisRequests">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNAnalysisRequest)">
+        <MappingFragment StoreEntitySet="GNAnalysisRequests">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="RequestProgress" ColumnName="RequestProgress" />
+          <ScalarProperty Name="LatestRequestPhase" ColumnName="LatestRequestPhase" />
+          <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
+          <ScalarProperty Name="GNProjectId" ColumnName="GNProjectId" />
+          <ScalarProperty Name="AWSRegionSystemName" ColumnName="AWSRegionSystemName" />
+          <ScalarProperty Name="GNAnalysisRequestTypeCode" ColumnName="GNAnalysisRequestTypeCode" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="GNAnalysisAdaptorCode" ColumnName="GNAnalysisAdaptorCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNAnalysisResults">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNAnalysisResult)">
+        <MappingFragment StoreEntitySet="GNAnalysisResults">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Success" ColumnName="Success" />
+          <ScalarProperty Name="AnalysisStartDateTime" ColumnName="AnalysisStartDateTime" />
+          <ScalarProperty Name="AnalysisEndDateTime" ColumnName="AnalysisEndDateTime" />
+          <ScalarProperty Name="AWSRegionSystemName" ColumnName="AWSRegionSystemName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNCloudFileCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNCloudFileCategory)">
+        <MappingFragment StoreEntitySet="GNCloudFileCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="FileExtensions" ColumnName="FileExtensions" />
+          <ScalarProperty Name="FolderPath" ColumnName="FolderPath" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNCloudFiles">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNCloudFile)">
+        <MappingFragment StoreEntitySet="GNCloudFiles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FileURL" ColumnName="FileURL" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FolderPath" ColumnName="FolderPath" />
+          <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="GNCloudFileCategoryId" ColumnName="GNCloudFileCategoryId" />
+          <ScalarProperty Name="AWSRegionSystemName" ColumnName="AWSRegionSystemName" />
+          <ScalarProperty Name="QcStatsAvailable" ColumnName="QcStatsAvailable" />
+          <ScalarProperty Name="QcStatsReportLocation" ColumnName="QcStatsReportLocation" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNInvoiceDetails">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNInvoiceDetail)">
+        <MappingFragment StoreEntitySet="GNInvoiceDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="GNInvoiceId" ColumnName="GNInvoiceId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNInvoices">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNInvoice)">
+        <MappingFragment StoreEntitySet="GNInvoices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ExternalInvoiceNum" ColumnName="ExternalInvoiceNum" />
+          <ScalarProperty Name="InvoiceStartDate" ColumnName="InvoiceStartDate" />
+          <ScalarProperty Name="InvoiceEndDate" ColumnName="InvoiceEndDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TotalDiscountAmount" ColumnName="TotalDiscountAmount" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="NetTerms" ColumnName="NetTerms" />
+          <ScalarProperty Name="GNAccountId" ColumnName="GNAccountId" />
+          <ScalarProperty Name="InvoiceCycle" ColumnName="InvoiceCycle" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNPaymentMethods">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNPaymentMethod)">
+        <MappingFragment StoreEntitySet="GNPaymentMethods">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNPaymentMethodTypeId" ColumnName="GNPaymentMethodTypeId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LastFourDigits" ColumnName="LastFourDigits" />
+          <ScalarProperty Name="PCITokenId" ColumnName="PCITokenId" />
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UsedForRecurrentPayments" ColumnName="UsedForRecurrentPayments" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="GNAccountId" ColumnName="GNAccountId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNPayments">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNPayment)">
+        <MappingFragment StoreEntitySet="GNPayments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="ExternalTxnId" ColumnName="ExternalTxnId" />
+          <ScalarProperty Name="GNPaymentMethodId" ColumnName="GNPaymentMethodId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNTransactions">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNTransaction)">
+        <MappingFragment StoreEntitySet="GNTransactions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNInvoiceDetailId" ColumnName="GNInvoiceDetailId" />
+          <ScalarProperty Name="GNTransactionTypeId" ColumnName="GNTransactionTypeId" />
+          <ScalarProperty Name="GNProductId" ColumnName="GNProductId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ExternalTxnId" ColumnName="ExternalTxnId" />
+          <ScalarProperty Name="ValueUsed" ColumnName="ValueUsed" />
+          <ScalarProperty Name="ValueUnits" ColumnName="ValueUnits" />
+          <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNTransactionTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNTransactionType)">
+        <MappingFragment StoreEntitySet="GNTransactionTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNOrganizations">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNOrganization)">
+        <MappingFragment StoreEntitySet="GNOrganizations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GNContactId" ColumnName="GNContactId" />
+          <ScalarProperty Name="AWSConfigId" ColumnName="AWSConfigId" />
+          <ScalarProperty Name="UTCOffset" ColumnName="UTCOffset" />
+          <ScalarProperty Name="UTCOffsetDescription" ColumnName="UTCOffsetDescription" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="GNSettingsTemplateId" ColumnName="GNSettingsTemplateId" />
+          <ScalarProperty Name="Repository" ColumnName="Repository" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNTeams">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNTeam)">
+        <MappingFragment StoreEntitySet="GNTeams">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+          <ScalarProperty Name="GNContactId" ColumnName="GNContactId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNContacts">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNContact)">
+        <MappingFragment StoreEntitySet="GNContacts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="StreetAddress1" ColumnName="StreetAddress1" />
+          <ScalarProperty Name="StreetAddress2" ColumnName="StreetAddress2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="IsInviteAccepted" ColumnName="IsInviteAccepted" />
+          <ScalarProperty Name="TermsAcceptDateTime" ColumnName="TermsAcceptDateTime" />
+          <ScalarProperty Name="PrivacyPolicyAcceptDateTime" ColumnName="PrivacyPolicyAcceptDateTime" />
+          <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
+          <ScalarProperty Name="GNOrganizationId" ColumnName="GNOrganizationId" />
+          <ScalarProperty Name="IsSubscribedForNewsletters" ColumnName="IsSubscribedForNewsletters" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNTeamMembers">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNTeamMember)">
+        <MappingFragment StoreEntitySet="GNTeamMembers">
+          <ScalarProperty Name="GNTeamId" ColumnName="GNTeamId" />
+          <ScalarProperty Name="GNContactId" ColumnName="GNContactId" />
+          <ScalarProperty Name="AssignDate" ColumnName="AssignDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNProjects">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNProject)">
+        <MappingFragment StoreEntitySet="GNProjects">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNSamples">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNSample)">
+        <MappingFragment StoreEntitySet="GNSamples">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IsReady" ColumnName="IsReady" />
+          <ScalarProperty Name="IsPairEnded" ColumnName="IsPairEnded" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="GNOrganizationId" ColumnName="GNOrganizationId" />
+          <ScalarProperty Name="GNSampleTypeId" ColumnName="GNSampleTypeId" />
+          <ScalarProperty Name="GNSampleQualifierCode" ColumnName="GNSampleQualifierCode" />
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
+          <ScalarProperty Name="GNReplicateCode" ColumnName="GNReplicateCode" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNAnalysisTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNAnalysisType)">
+        <MappingFragment StoreEntitySet="GNAnalysisTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TypeValue" ColumnName="TypeValue" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNTags">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNTag)">
+        <MappingFragment StoreEntitySet="GNTags">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNEntityTags">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNEntityTag)">
+        <MappingFragment StoreEntitySet="GNEntityTags">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="GNEntityTypeId" ColumnName="GNEntityTypeId" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="TagDate" ColumnName="TagDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNProducts">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNProduct)">
+        <MappingFragment StoreEntitySet="GNProducts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="GNProductTypeId" ColumnName="GNProductTypeId" />
+          <ScalarProperty Name="SubscribeFrequency" ColumnName="SubscribeFrequency" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="MinRangeValue" ColumnName="MinRangeValue" />
+          <ScalarProperty Name="MaxRangeValue" ColumnName="MaxRangeValue" />
+          <ScalarProperty Name="ValueUnits" ColumnName="ValueUnits" />
+          <ScalarProperty Name="GNAccountTypeId" ColumnName="GNAccountTypeId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNProductTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNProductType)">
+        <MappingFragment StoreEntitySet="GNProductTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsEligibleForDiscount" ColumnName="IsEligibleForDiscount" />
+          <ScalarProperty Name="CanSubscribe" ColumnName="CanSubscribe" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNEntityTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNEntityType)">
+        <MappingFragment StoreEntitySet="GNEntityTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AWSConfigs">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.AWSConfig)">
+        <MappingFragment StoreEntitySet="AWSConfigs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AWSAccessKeyId" ColumnName="AWSAccessKeyId" />
+          <ScalarProperty Name="AWSSecretAccessKey" ColumnName="AWSSecretAccessKey" />
+          <ScalarProperty Name="AWSRegionSystemName" ColumnName="AWSRegionSystemName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AWSResources">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.AWSResource)">
+        <MappingFragment StoreEntitySet="AWSResources">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ARN" ColumnName="ARN" />
+          <ScalarProperty Name="AWSConfigId" ColumnName="AWSConfigId" />
+          <ScalarProperty Name="AWSResourceTypeId" ColumnName="AWSResourceTypeId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AWSResourceTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.AWSResourceType)">
+        <MappingFragment StoreEntitySet="AWSResourceTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNSampleTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNSampleType)">
+        <MappingFragment StoreEntitySet="GNSampleTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TypeValue" ColumnName="TypeValue" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AWSRegions">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.AWSRegion)">
+        <MappingFragment StoreEntitySet="AWSRegions">
+          <ScalarProperty Name="AWSRegionSystemName" ColumnName="AWSRegionSystemName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNAnalysisStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNAnalysisStatus)">
+        <MappingFragment StoreEntitySet="GNAnalysisStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="PercentComplete" ColumnName="PercentComplete" />
+          <ScalarProperty Name="IsError" ColumnName="IsError" />
+          <ScalarProperty Name="GNAnalysisResultId" ColumnName="GNAnalysisResultId" />
+          <ScalarProperty Name="GNAnalysisRequestId" ColumnName="GNAnalysisRequestId" />
+          <ScalarProperty Name="AnalysisPhase" ColumnName="AnalysisPhase" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNContactRoles">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNContactRole)">
+        <MappingFragment StoreEntitySet="GNContactRoles">
+          <ScalarProperty Name="GNContactId" ColumnName="GNContactId" />
+          <ScalarProperty Name="AspNetRoleId" ColumnName="AspNetRoleId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNEntityAudits">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNEntityAudit)">
+        <MappingFragment StoreEntitySet="GNEntityAudits">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="GNEntityTypeId" ColumnName="GNEntityTypeId" />
+          <ScalarProperty Name="GNEntityAuditTypeId" ColumnName="GNEntityAuditTypeId" />
+          <ScalarProperty Name="GNContactId" ColumnName="GNContactId" />
+          <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
+          <ScalarProperty Name="ValueOld" ColumnName="ValueOld" />
+          <ScalarProperty Name="ValueNew" ColumnName="ValueNew" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNEntityAuditTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNEntityAuditType)">
+        <MappingFragment StoreEntitySet="GNEntityAuditTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNSampleRelationships">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNSampleRelationship)">
+        <MappingFragment StoreEntitySet="GNSampleRelationships">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNLeftSampleId" ColumnName="GNLeftSampleId" />
+          <ScalarProperty Name="GNRightSampleId" ColumnName="GNRightSampleId" />
+          <ScalarProperty Name="GNSampleRelationshipTypeId" ColumnName="GNSampleRelationshipTypeId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNSampleRelationshipTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNSampleRelationshipType)">
+        <MappingFragment StoreEntitySet="GNSampleRelationshipTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="MaxRelationships" ColumnName="MaxRelationships" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNLogs">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNLog)">
+        <MappingFragment StoreEntitySet="GNLogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Server" ColumnName="Server" />
+          <ScalarProperty Name="Thread" ColumnName="Thread" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Logger" ColumnName="Logger" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Exception" ColumnName="Exception" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNInviteCodes">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNInviteCode)">
+        <MappingFragment StoreEntitySet="GNInviteCodes">
+          <ScalarProperty Name="InviteCode" ColumnName="InviteCode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FreeCreditAllowance" ColumnName="FreeCreditAllowance" />
+          <ScalarProperty Name="UseCount" ColumnName="UseCount" />
+          <ScalarProperty Name="UseMaxAllowed" ColumnName="UseMaxAllowed" />
+          <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNPaymentMethodTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNPaymentMethodType)">
+        <MappingFragment StoreEntitySet="GNPaymentMethodTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNAccountProductSubscriptions">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNAccountProductSubscription)">
+        <MappingFragment StoreEntitySet="GNAccountProductSubscriptions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNAccountId" ColumnName="GNAccountId" />
+          <ScalarProperty Name="GNProductId" ColumnName="GNProductId" />
+          <ScalarProperty Name="CurrentValueUsed" ColumnName="CurrentValueUsed" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="SubscribeFrequency" ColumnName="SubscribeFrequency" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNNotificationTopics">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNNotificationTopic)">
+        <MappingFragment StoreEntitySet="GNNotificationTopics">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="MessageTemplatePath" ColumnName="MessageTemplatePath" />
+          <ScalarProperty Name="IsSubscriptionOptional" ColumnName="IsSubscriptionOptional" />
+          <ScalarProperty Name="NotifyObjectCreator" ColumnName="NotifyObjectCreator" />
+          <ScalarProperty Name="SendingCondition" ColumnName="SendingCondition" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNNotificationLogs">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNNotificationLog)">
+        <MappingFragment StoreEntitySet="GNNotificationLogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNNotificationTopicId" ColumnName="GNNotificationTopicId" />
+          <ScalarProperty Name="GNNotificationTopicCode" ColumnName="GNNotificationTopicCode" />
+          <ScalarProperty Name="Addressee" ColumnName="Addressee" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="NotificationServiceResponse" ColumnName="NotificationServiceResponse" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNAccountTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNAccountType)">
+        <MappingFragment StoreEntitySet="GNAccountTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNPurchaseOrders">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNPurchaseOrder)">
+        <MappingFragment StoreEntitySet="GNPurchaseOrders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ExternalPONum" ColumnName="ExternalPONum" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="GNAccountId" ColumnName="GNAccountId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNAccountThresholds">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNAccountThreshold)">
+        <MappingFragment StoreEntitySet="GNAccountThresholds">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ThresholdAmount" ColumnName="ThresholdAmount" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="ThresholdType" ColumnName="ThresholdType" />
+          <ScalarProperty Name="ThresholdInterval" ColumnName="ThresholdInterval" />
+          <ScalarProperty Name="GNAccountId" ColumnName="GNAccountId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNAnalysisRequestGNSamples">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNAnalysisRequestGNSample)">
+        <MappingFragment StoreEntitySet="GNAnalysisRequestGNSamples">
+          <ScalarProperty Name="GNSampleId" ColumnName="GNSampleId" />
+          <ScalarProperty Name="GNAnalysisRequestId" ColumnName="GNAnalysisRequestId" />
+          <ScalarProperty Name="AffectedIndicator" ColumnName="AffectedIndicator" />
+          <ScalarProperty Name="TargetIndicator" ColumnName="TargetIndicator" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNAnalysisSampleAffectedIndicators">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNAnalysisSampleAffectedIndicator)">
+        <MappingFragment StoreEntitySet="GNAnalysisSampleAffectedIndicators">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNPurchaseOrderGNInvoice">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNPurchaseOrderGNInvoice)">
+        <MappingFragment StoreEntitySet="GNPurchaseOrderGNInvoice">
+          <ScalarProperty Name="PurchaseOrders_Id" ColumnName="PurchaseOrders_Id" />
+          <ScalarProperty Name="Invoices_Id" ColumnName="Invoices_Id" />
+          <ScalarProperty Name="TotalApplied" ColumnName="TotalApplied" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNNotificationTopicSubscribers">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNNotificationTopicSubscriber)">
+        <MappingFragment StoreEntitySet="GNNotificationTopicSubscribers">
+          <ScalarProperty Name="GNNotificationTopicId" ColumnName="GNNotificationTopicId" />
+          <ScalarProperty Name="GNContactId" ColumnName="GNContactId" />
+          <ScalarProperty Name="AddresseeType" ColumnName="AddresseeType" />
+          <ScalarProperty Name="IsSubscribed" ColumnName="IsSubscribed" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNNotificationTopicAddressees">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNNotificationTopicAddressee)">
+        <MappingFragment StoreEntitySet="GNNotificationTopicAddressees">
+          <ScalarProperty Name="GNNotificationTopicId" ColumnName="GNNotificationTopicId" />
+          <ScalarProperty Name="AspNetRoleId" ColumnName="AspNetRoleId" />
+          <ScalarProperty Name="AddresseeType" ColumnName="AddresseeType" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNNotificationSenders">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNNotificationSender)">
+        <MappingFragment StoreEntitySet="GNNotificationSenders">
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNSampleRelationshipTypeMappings">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNSampleRelationshipTypeMapping)">
+        <MappingFragment StoreEntitySet="GNSampleRelationshipTypeMappings">
+          <ScalarProperty Name="NameLeftRelationship" ColumnName="NameLeftRelationship" />
+          <ScalarProperty Name="NameRightRelationship" ColumnName="NameRightRelationship" />
+          <ScalarProperty Name="GenderRightRelationship" ColumnName="GenderRightRelationship" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNBulkImportStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNBulkImportStatus)">
+        <MappingFragment StoreEntitySet="GNBulkImportStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FileURIType" ColumnName="FileURIType" />
+          <ScalarProperty Name="FileURI" ColumnName="FileURI" />
+          <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+          <ScalarProperty Name="FileMimeType" ColumnName="FileMimeType" />
+          <ScalarProperty Name="TotalRecordCount" ColumnName="TotalRecordCount" />
+          <ScalarProperty Name="ImportedRecordCount" ColumnName="ImportedRecordCount" />
+          <ScalarProperty Name="FailedRecordCount" ColumnName="FailedRecordCount" />
+          <ScalarProperty Name="DuplicateRecordCount" ColumnName="DuplicateRecordCount" />
+          <ScalarProperty Name="TeamsCreatedCount" ColumnName="TeamsCreatedCount" />
+          <ScalarProperty Name="ProjectsCreatedCount" ColumnName="ProjectsCreatedCount" />
+          <ScalarProperty Name="AnalysesCreatedCount" ColumnName="AnalysesCreatedCount" />
+          <ScalarProperty Name="SamplesCreatedCount" ColumnName="SamplesCreatedCount" />
+          <ScalarProperty Name="FilesCreatedCount" ColumnName="FilesCreatedCount" />
+          <ScalarProperty Name="ImportStartDateTime" ColumnName="ImportStartDateTime" />
+          <ScalarProperty Name="ImportEndDateTime" ColumnName="ImportEndDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNBulkImportLogs">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNBulkImportLog)">
+        <MappingFragment StoreEntitySet="GNBulkImportLogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RecordRowId" ColumnName="RecordRowId" />
+          <ScalarProperty Name="IsError" ColumnName="IsError" />
+          <ScalarProperty Name="IsDuplicate" ColumnName="IsDuplicate" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="GNBulkImportStatusId" ColumnName="GNBulkImportStatusId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNBulkImportStaging">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNBulkImportStaging)">
+        <MappingFragment StoreEntitySet="GNBulkImportStaging">
+          <ScalarProperty Name="ROW_IDX" ColumnName="ROW_IDX" />
+          <ScalarProperty Name="TEAM_NAME" ColumnName="TEAM_NAME" />
+          <ScalarProperty Name="PROJECT_NAME" ColumnName="PROJECT_NAME" />
+          <ScalarProperty Name="ANALYSIS_NAME" ColumnName="ANALYSIS_NAME" />
+          <ScalarProperty Name="ANALYSIS_TYPE" ColumnName="ANALYSIS_TYPE" />
+          <ScalarProperty Name="ANALYSIS_ADAPTOR" ColumnName="ANALYSIS_ADAPTOR" />
+          <ScalarProperty Name="ANALYSIS_GROUP_NAME" ColumnName="ANALYSIS_GROUP_NAME" />
+          <ScalarProperty Name="SAMPLE_NAME" ColumnName="SAMPLE_NAME" />
+          <ScalarProperty Name="SAMPLE_TYPE" ColumnName="SAMPLE_TYPE" />
+          <ScalarProperty Name="SAMPLE_GENDER" ColumnName="SAMPLE_GENDER" />
+          <ScalarProperty Name="SAMPLE_READ_TYPE" ColumnName="SAMPLE_READ_TYPE" />
+          <ScalarProperty Name="SAMPLE_QUALIFIER" ColumnName="SAMPLE_QUALIFIER" />
+          <ScalarProperty Name="FILE_BUCKET" ColumnName="FILE_BUCKET" />
+          <ScalarProperty Name="FILE_KEY" ColumnName="FILE_KEY" />
+          <ScalarProperty Name="FILE_SIZE" ColumnName="FILE_SIZE" />
+          <ScalarProperty Name="AUTO_START" ColumnName="AUTO_START" />
+          <ScalarProperty Name="GNBulkImportStatusId" ColumnName="GNBulkImportStatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNSettingsTemplates">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNSettingsTemplate)">
+        <MappingFragment StoreEntitySet="GNSettingsTemplates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNSettingsTemplateConfigs">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNSettingsTemplateConfig)">
+        <MappingFragment StoreEntitySet="GNSettingsTemplateConfigs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNSettingsTemplateFields">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNSettingsTemplateField)">
+        <MappingFragment StoreEntitySet="GNSettingsTemplateFields">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ConfigType" ColumnName="ConfigType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AWSComputeEnvironments">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.AWSComputeEnvironment)">
+        <MappingFragment StoreEntitySet="AWSComputeEnvironments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="VPC" ColumnName="VPC" />
+          <ScalarProperty Name="Subnet" ColumnName="Subnet" />
+          <ScalarProperty Name="AvailZone" ColumnName="AvailZone" />
+          <ScalarProperty Name="MaxInstanceRequiredPerAnalysis" ColumnName="MaxInstanceRequiredPerAnalysis" />
+          <ScalarProperty Name="MaxInstanceExpectedCount" ColumnName="MaxInstanceExpectedCount" />
+          <ScalarProperty Name="IPAvailCount" ColumnName="IPAvailCount" />
+          <ScalarProperty Name="InstanceRunningCount" ColumnName="InstanceRunningCount" />
+          <ScalarProperty Name="InstancePendingCount" ColumnName="InstancePendingCount" />
+          <ScalarProperty Name="AWSConfigId" ColumnName="AWSConfigId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNNotificationSuppressionLists">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNNotificationSuppressionList)">
+        <MappingFragment StoreEntitySet="GNNotificationSuppressionLists">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Subtype" ColumnName="Subtype" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="NotifiedAdminOn" ColumnName="NotifiedAdminOn" />
+          <ScalarProperty Name="AdminNotes" ColumnName="AdminNotes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNTemplates">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNTemplate)">
+        <MappingFragment StoreEntitySet="GNTemplates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GNOrganizationId" ColumnName="GNOrganizationId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNTemplateGenes">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNTemplateGene)">
+        <MappingFragment StoreEntitySet="GNTemplateGenes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNTemplateId" ColumnName="GNTemplateId" />
+          <ScalarProperty Name="GeneCode" ColumnName="GeneCode" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="GNGeneId" ColumnName="GNGeneId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNAnalysisRequestGNTemplates">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNAnalysisRequestGNTemplate)">
+        <MappingFragment StoreEntitySet="GNAnalysisRequestGNTemplates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNAnalysisRequestId" ColumnName="GNAnalysisRequestId" />
+          <ScalarProperty Name="GNTemplateId" ColumnName="GNTemplateId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNGenes">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNGene)">
+        <MappingFragment StoreEntitySet="GNGenes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GeneCode" ColumnName="GeneCode" />
+          <ScalarProperty Name="Chromosome" ColumnName="Chromosome" />
+          <ScalarProperty Name="CytoBand" ColumnName="CytoBand" />
+          <ScalarProperty Name="Isoform" ColumnName="Isoform" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNSampleQualifiers">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNSampleQualifier)">
+        <MappingFragment StoreEntitySet="GNSampleQualifiers">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GNSampleQualifierGroupCode" ColumnName="GNSampleQualifierGroupCode" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNAnalysisRequestTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNAnalysisRequestType)">
+        <MappingFragment StoreEntitySet="GNAnalysisRequestTypes">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNSampleQualifierGroups">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNSampleQualifierGroup)">
+        <MappingFragment StoreEntitySet="GNSampleQualifierGroups">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNSharedPurchaseOrderOrganizations">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNSharedPurchaseOrderOrganization)">
+        <MappingFragment StoreEntitySet="GNSharedPurchaseOrderOrganizations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AmountBilledOnInvoice" ColumnName="AmountBilledOnInvoice" />
+          <ScalarProperty Name="GNPurchaseOrderId" ColumnName="GNPurchaseOrderId" />
+          <ScalarProperty Name="GNInvoiceId" ColumnName="GNInvoiceId" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNAnalysisRequestGroups">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNAnalysisRequestGroup)">
+        <MappingFragment StoreEntitySet="GNAnalysisRequestGroups">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GNAnalysisRequestId" ColumnName="GNAnalysisRequestId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNAnalysisRequestGroupComparisons">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNAnalysisRequestGroupComparison)">
+        <MappingFragment StoreEntitySet="GNAnalysisRequestGroupComparisons">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNAnalysisRequestId" ColumnName="GNAnalysisRequestId" />
+          <ScalarProperty Name="GNAnalysisRequestControlGroupId" ColumnName="GNAnalysisRequestControlGroupId" />
+          <ScalarProperty Name="GNAnalysisRequestComparisonGroupId" ColumnName="GNAnalysisRequestComparisonGroupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNAnalysisAdaptors">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNAnalysisAdaptor)">
+        <MappingFragment StoreEntitySet="GNAnalysisAdaptors">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNBillingAccounts">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNBillingAccount)">
+        <MappingFragment StoreEntitySet="GNBillingAccounts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNAccountTypeId" ColumnName="GNAccountTypeId" />
+          <ScalarProperty Name="GNOrganizationId" ColumnName="GNOrganizationId" />
+          <ScalarProperty Name="BillingMode" ColumnName="BillingMode" />
+          <ScalarProperty Name="MaxBalanceAllowed" ColumnName="MaxBalanceAllowed" />
+          <ScalarProperty Name="TotalAmountOwed" ColumnName="TotalAmountOwed" />
+          <ScalarProperty Name="AvailableCredits" ColumnName="AvailableCredits" />
+          <ScalarProperty Name="ValidBillingAgreementRequired" ColumnName="ValidBillingAgreementRequired" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNBillingInvoices">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNBillingInvoice)">
+        <MappingFragment StoreEntitySet="GNBillingInvoices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNBillingAccountId" ColumnName="GNBillingAccountId" />
+          <ScalarProperty Name="ExternalInvoiceNum" ColumnName="ExternalInvoiceNum" />
+          <ScalarProperty Name="InvoiceStartDate" ColumnName="InvoiceStartDate" />
+          <ScalarProperty Name="InvoiceEndDate" ColumnName="InvoiceEndDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TotalDiscountAmount" ColumnName="TotalDiscountAmount" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="TotalPaid" ColumnName="TotalPaid" />
+          <ScalarProperty Name="NetTerms" ColumnName="NetTerms" />
+          <ScalarProperty Name="InvoiceCycle" ColumnName="InvoiceCycle" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNBillingInvoiceDetails">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNBillingInvoiceDetail)">
+        <MappingFragment StoreEntitySet="GNBillingInvoiceDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNBillingInvoiceId" ColumnName="GNBillingInvoiceId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNBillingPaymentMethods">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNBillingPaymentMethod)">
+        <MappingFragment StoreEntitySet="GNBillingPaymentMethods">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNBillingAccountId" ColumnName="GNBillingAccountId" />
+          <ScalarProperty Name="GNPaymentMethodTypeId" ColumnName="GNPaymentMethodTypeId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LastFourDigits" ColumnName="LastFourDigits" />
+          <ScalarProperty Name="PCITokenId" ColumnName="PCITokenId" />
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UsedForRecurrentPayments" ColumnName="UsedForRecurrentPayments" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNBillingPurchaseOrders">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNBillingPurchaseOrder)">
+        <MappingFragment StoreEntitySet="GNBillingPurchaseOrders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ExternalPONum" ColumnName="ExternalPONum" />
+          <ScalarProperty Name="TotalCredits" ColumnName="TotalCredits" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNBillingPurchaseOrderInvoices">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNBillingPurchaseOrderInvoice)">
+        <MappingFragment StoreEntitySet="GNBillingPurchaseOrderInvoices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNBillingPurchaseOrderId" ColumnName="GNBillingPurchaseOrderId" />
+          <ScalarProperty Name="GNBillingInvoiceId" ColumnName="GNBillingInvoiceId" />
+          <ScalarProperty Name="TotalApplied" ColumnName="TotalApplied" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNBillingPaymentInvoices">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNBillingPaymentInvoice)">
+        <MappingFragment StoreEntitySet="GNBillingPaymentInvoices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TotalApplied" ColumnName="TotalApplied" />
+          <ScalarProperty Name="GNBillingInvoiceId" ColumnName="GNBillingInvoiceId" />
+          <ScalarProperty Name="GNBillingPaymentId" ColumnName="GNBillingPaymentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNBillingPayments">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNBillingPayment)">
+        <MappingFragment StoreEntitySet="GNBillingPayments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNPaymentMethodId" ColumnName="GNPaymentMethodId" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="ExternalTxnId" ColumnName="ExternalTxnId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNBillingTransactions">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNBillingTransaction)">
+        <MappingFragment StoreEntitySet="GNBillingTransactions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNBillingInvoiceDetailId" ColumnName="GNBillingInvoiceDetailId" />
+          <ScalarProperty Name="GNProductId" ColumnName="GNProductId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ValueUsed" ColumnName="ValueUsed" />
+          <ScalarProperty Name="ValueUnits" ColumnName="ValueUnits" />
+          <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="GNTransactionTypeId" ColumnName="GNTransactionTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNBulkImportGroupStagings">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNBulkImportGroupStaging)">
+        <MappingFragment StoreEntitySet="GNBulkImportGroupStagings">
+          <ScalarProperty Name="ROW_IDX" ColumnName="ROW_IDX" />
+          <ScalarProperty Name="ANALYSIS_NAME" ColumnName="ANALYSIS_NAME" />
+          <ScalarProperty Name="CONTROL_GROUP_NAME" ColumnName="CONTROL_GROUP_NAME" />
+          <ScalarProperty Name="COMPARISON_GROUP_NAME" ColumnName="COMPARISON_GROUP_NAME" />
+          <ScalarProperty Name="GNBulkImportStatusId" ColumnName="GNBulkImportStatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNSampleStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNSampleStatus)">
+        <MappingFragment StoreEntitySet="GNSampleStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNSampleId" ColumnName="GNSampleId" />
+          <ScalarProperty Name="SampleName" ColumnName="SampleName" />
+          <ScalarProperty Name="Repository" ColumnName="Repository" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="PercentComplete" ColumnName="PercentComplete" />
+          <ScalarProperty Name="IsError" ColumnName="IsError" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNNewSampleBatches">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNNewSampleBatch)">
+        <MappingFragment StoreEntitySet="GNNewSampleBatches">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+          <ScalarProperty Name="GNSequencerJobId" ColumnName="GNSequencerJobId" />
+          <ScalarProperty Name="Repository" ColumnName="Repository" />
+          <ScalarProperty Name="Project" ColumnName="Project" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Qualifier" ColumnName="Qualifier" />
+          <ScalarProperty Name="ReadType" ColumnName="ReadType" />
+          <ScalarProperty Name="CreateAnalysisPerSample" ColumnName="CreateAnalysisPerSample" />
+          <ScalarProperty Name="AutoStartAnalysis" ColumnName="AutoStartAnalysis" />
+          <ScalarProperty Name="TotalSamples" ColumnName="TotalSamples" />
+          <ScalarProperty Name="TotalSamplesCompleted" ColumnName="TotalSamplesCompleted" />
+          <ScalarProperty Name="TotalNumberOfFastqFiles" ColumnName="TotalNumberOfFastqFiles" />
+          <ScalarProperty Name="TotalNumberOfFastqFilesCompleted" ColumnName="TotalNumberOfFastqFilesCompleted" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNNewSampleBatchStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNNewSampleBatchStatus)">
+        <MappingFragment StoreEntitySet="GNNewSampleBatchStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNNewSampleBatchId" ColumnName="GNNewSampleBatchId" />
+          <ScalarProperty Name="Repository" ColumnName="Repository" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PercentComplete" ColumnName="PercentComplete" />
+          <ScalarProperty Name="IsError" ColumnName="IsError" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="FilesBucket" ColumnName="FilesBucket" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNNewSampleBatchSamples">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNNewSampleBatchSamples)">
+        <MappingFragment StoreEntitySet="GNNewSampleBatchSamples">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNNewSampleBatchId" ColumnName="GNNewSampleBatchId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="FamilyId" ColumnName="FamilyId" />
+          <ScalarProperty Name="RelationId" ColumnName="RelationId" />
+          <ScalarProperty Name="Affected" ColumnName="Affected" />
+          <ScalarProperty Name="Proband" ColumnName="Proband" />
+          <ScalarProperty Name="AnalysisName" ColumnName="AnalysisName" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNSequencerJobs">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNSequencerJob)">
+        <MappingFragment StoreEntitySet="GNSequencerJobs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GNOrganizationId" ColumnName="GNOrganizationId" />
+          <ScalarProperty Name="Project" ColumnName="Project" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GNReplicates">
+      <EntityTypeMapping TypeName="IsTypeOf(GenomeNext.Data.EntityModel.GNReplicate)">
+        <MappingFragment StoreEntitySet="GNReplicates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="GNContactGNAccount" TypeName="GenomeNext.Data.EntityModel.GNContactGNAccount" StoreEntitySet="GNAccounts">
+      <EndProperty Name="GNContact">
+        <ScalarProperty Name="Id" ColumnName="MailingContact_Id" />
+      </EndProperty>
+      <EndProperty Name="GNAccount">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="MailingContact_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNContactGNAccount1" TypeName="GenomeNext.Data.EntityModel.GNContactGNAccount1" StoreEntitySet="GNAccounts">
+      <EndProperty Name="GNContact">
+        <ScalarProperty Name="Id" ColumnName="BillingContact_Id" />
+      </EndProperty>
+      <EndProperty Name="GNAccount">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="BillingContact_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNContactGNProject" TypeName="GenomeNext.Data.EntityModel.GNContactGNProject" StoreEntitySet="GNProjects">
+      <EndProperty Name="GNContact">
+        <ScalarProperty Name="Id" ColumnName="ProjectLead_Id" />
+      </EndProperty>
+      <EndProperty Name="GNProject">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="ProjectLead_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNTeamGNProject" TypeName="GenomeNext.Data.EntityModel.GNTeamGNProject" StoreEntitySet="GNTeamGNProject">
+      <EndProperty Name="GNTeam">
+        <ScalarProperty Name="Id" ColumnName="Teams_Id" />
+      </EndProperty>
+      <EndProperty Name="GNProject">
+        <ScalarProperty Name="Id" ColumnName="Projects_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNSampleGNCloudFile" TypeName="GenomeNext.Data.EntityModel.GNSampleGNCloudFile" StoreEntitySet="GNSampleGNCloudFile">
+      <EndProperty Name="GNSample">
+        <ScalarProperty Name="Id" ColumnName="GNSampleGNCloudFile_GNCloudFile_Id" />
+      </EndProperty>
+      <EndProperty Name="GNCloudFile">
+        <ScalarProperty Name="Id" ColumnName="CloudFiles_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNAnalysisRequestGNAnalysisType" TypeName="GenomeNext.Data.EntityModel.GNAnalysisRequestGNAnalysisType" StoreEntitySet="GNAnalysisRequests">
+      <EndProperty Name="GNAnalysisType">
+        <ScalarProperty Name="Id" ColumnName="AnalysisType_Id" />
+      </EndProperty>
+      <EndProperty Name="GNAnalysisRequest">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNAnalysisResultGNCloudFile" TypeName="GenomeNext.Data.EntityModel.GNAnalysisResultGNCloudFile" StoreEntitySet="GNAnalysisResultGNCloudFile">
+      <EndProperty Name="GNAnalysisResult">
+        <ScalarProperty Name="Id" ColumnName="GNAnalysisResultGNCloudFile_GNCloudFile_Id" />
+      </EndProperty>
+      <EndProperty Name="GNCloudFile">
+        <ScalarProperty Name="Id" ColumnName="ResultFiles_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNContactGNAccount2" TypeName="GenomeNext.Data.EntityModel.GNContactGNAccount2" StoreEntitySet="GNAccounts">
+      <EndProperty Name="GNContact">
+        <ScalarProperty Name="Id" ColumnName="AccountOwner_Id" />
+      </EndProperty>
+      <EndProperty Name="GNAccount">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="AccountOwner_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNOrganizationGNAccount" TypeName="GenomeNext.Data.EntityModel.GNOrganizationGNAccount" StoreEntitySet="GNAccounts">
+      <EndProperty Name="GNOrganization">
+        <ScalarProperty Name="Id" ColumnName="Organization_Id" />
+      </EndProperty>
+      <EndProperty Name="GNAccount">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNAnalysisRequestGNAnalysisResult" TypeName="GenomeNext.Data.EntityModel.GNAnalysisRequestGNAnalysisResult" StoreEntitySet="GNAnalysisResults">
+      <EndProperty Name="GNAnalysisRequest">
+        <ScalarProperty Name="Id" ColumnName="AnalysisRequest_Id" />
+      </EndProperty>
+      <EndProperty Name="GNAnalysisResult">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="AnalysisRequest_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNPaymentGNInvoice" TypeName="GenomeNext.Data.EntityModel.GNPaymentGNInvoice" StoreEntitySet="GNPaymentGNInvoice">
+      <EndProperty Name="GNPayment">
+        <ScalarProperty Name="Id" ColumnName="Payments_Id" />
+      </EndProperty>
+      <EndProperty Name="GNInvoice">
+        <ScalarProperty Name="Id" ColumnName="Invoices_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNSettingsTemplateGNSettingsTemplateConfig" TypeName="GenomeNext.Data.EntityModel.GNSettingsTemplateGNSettingsTemplateConfig" StoreEntitySet="GNSettingsTemplateConfigs">
+      <EndProperty Name="GNSettingsTemplate">
+        <ScalarProperty Name="Id" ColumnName="GNSettingsTemplate_Id" />
+      </EndProperty>
+      <EndProperty Name="GNSettingsTemplateConfig">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNSettingsTemplateConfigGNSettingsTemplateField" TypeName="GenomeNext.Data.EntityModel.GNSettingsTemplateConfigGNSettingsTemplateField" StoreEntitySet="GNSettingsTemplateConfigs">
+      <EndProperty Name="GNSettingsTemplateField">
+        <ScalarProperty Name="Id" ColumnName="GNSettingsTemplateField_Id" />
+      </EndProperty>
+      <EndProperty Name="GNSettingsTemplateConfig">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNTransactionGNAnalysisRequest" TypeName="GenomeNext.Data.EntityModel.GNTransactionGNAnalysisRequest" StoreEntitySet="GNTransactions">
+      <EndProperty Name="GNAnalysisRequest">
+        <ScalarProperty Name="Id" ColumnName="GNAnalysisRequest_Id" />
+      </EndProperty>
+      <EndProperty Name="GNTransaction">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="GNAnalysisRequest_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNTransactionGNProject" TypeName="GenomeNext.Data.EntityModel.GNTransactionGNProject" StoreEntitySet="GNTransactions">
+      <EndProperty Name="GNProject">
+        <ScalarProperty Name="Id" ColumnName="GNProject_Id" />
+      </EndProperty>
+      <EndProperty Name="GNTransaction">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="GNProject_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNTransactionGNTeam" TypeName="GenomeNext.Data.EntityModel.GNTransactionGNTeam" StoreEntitySet="GNTransactions">
+      <EndProperty Name="GNTeam">
+        <ScalarProperty Name="Id" ColumnName="GNTeam_Id" />
+      </EndProperty>
+      <EndProperty Name="GNTransaction">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="GNTeam_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNAnalysisRequestGroupGNSample" TypeName="GenomeNext.Data.EntityModel.GNAnalysisRequestGroupGNSample" StoreEntitySet="GNAnalysisRequestGroupGNSample">
+      <EndProperty Name="GNAnalysisRequestGroup">
+        <ScalarProperty Name="Id" ColumnName="GNAnalysisRequestGroups_Id" />
+      </EndProperty>
+      <EndProperty Name="GNSample">
+        <ScalarProperty Name="Id" ColumnName="GNSamples_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNBillingPurchaseOrderGNBillingAccount" TypeName="GenomeNext.Data.EntityModel.GNBillingPurchaseOrderGNBillingAccount" StoreEntitySet="GNBillingPurchaseOrderGNBillingAccount">
+      <EndProperty Name="GNBillingPurchaseOrder">
+        <ScalarProperty Name="Id" ColumnName="GNBillingPurchaseOrders_Id" />
+      </EndProperty>
+      <EndProperty Name="GNBillingAccount">
+        <ScalarProperty Name="Id" ColumnName="GNBillingAccounts_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNBillingTransactionGNTeam" TypeName="GenomeNext.Data.EntityModel.GNBillingTransactionGNTeam" StoreEntitySet="GNBillingTransactions">
+      <EndProperty Name="GNTeam">
+        <ScalarProperty Name="Id" ColumnName="GNTeam_Id" />
+      </EndProperty>
+      <EndProperty Name="GNBillingTransaction">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="GNTeam_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNBillingTransactionGNAnalysisRequest" TypeName="GenomeNext.Data.EntityModel.GNBillingTransactionGNAnalysisRequest" StoreEntitySet="GNBillingTransactions">
+      <EndProperty Name="GNAnalysisRequest">
+        <ScalarProperty Name="Id" ColumnName="GNAnalysisRequest_Id" />
+      </EndProperty>
+      <EndProperty Name="GNBillingTransaction">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="GNAnalysisRequest_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNBillingTransactionGNProject" TypeName="GenomeNext.Data.EntityModel.GNBillingTransactionGNProject" StoreEntitySet="GNBillingTransactions">
+      <EndProperty Name="GNProject">
+        <ScalarProperty Name="Id" ColumnName="GNProject_Id" />
+      </EndProperty>
+      <EndProperty Name="GNBillingTransaction">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="GNProject_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNContactGNBillingAccount" TypeName="GenomeNext.Data.EntityModel.GNContactGNBillingAccount" StoreEntitySet="GNBillingAccounts">
+      <EndProperty Name="GNContact">
+        <ScalarProperty Name="Id" ColumnName="GNBillingContact_Id" />
+      </EndProperty>
+      <EndProperty Name="GNBillingAccount">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNBillingAccountGNContact" TypeName="GenomeNext.Data.EntityModel.GNBillingAccountGNContact" StoreEntitySet="GNBillingAccounts">
+      <EndProperty Name="GNContact">
+        <ScalarProperty Name="Id" ColumnName="GNMailingContact_Id" />
+      </EndProperty>
+      <EndProperty Name="GNBillingAccount">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNNewSampleBatchSamplesGNSample" TypeName="GenomeNext.Data.EntityModel.GNNewSampleBatchSamplesGNSample" StoreEntitySet="GNNewSampleBatchSamples">
+      <EndProperty Name="GNSample">
+        <ScalarProperty Name="Id" ColumnName="GNSample_Id" />
+      </EndProperty>
+      <EndProperty Name="GNNewSampleBatchSamples">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNSequencerJobGNProject" TypeName="GenomeNext.Data.EntityModel.GNSequencerJobGNProject" StoreEntitySet="GNSequencerJobs">
+      <EndProperty Name="GNProject">
+        <ScalarProperty Name="Id" ColumnName="GNProject_Id" />
+      </EndProperty>
+      <EndProperty Name="GNSequencerJob">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GNReplicateGNSample" TypeName="GenomeNext.Data.EntityModel.GNReplicateGNSample" StoreEntitySet="GNSamples">
+      <EndProperty Name="GNReplicate">
+        <ScalarProperty Name="Id" ColumnName="GNReplicate_Id" />
+      </EndProperty>
+      <EndProperty Name="GNSample">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

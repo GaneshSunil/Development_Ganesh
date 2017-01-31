@@ -1,0 +1,71 @@
+﻿@model GenomeNext.Data.EntityModel.GNProject
+
+@{
+    ViewBag.Title = "Create New Project";
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/projects_white.png";
+    ViewData["ModuleCtl"] = "Projects";
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+}
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+
+            var itemMinHeight = $("div.panel[class*='border-gn-dark-gray']:first").height() + 2;
+            $("#createNewItemPanel").css("min-height", itemMinHeight + "px");
+
+            var teamId = $("#TeamsList").val();
+            LoadProjectLeadsList(teamId);
+
+            $("#TeamsList").change(function () {
+                teamId = $("#TeamsList").val();
+                LoadProjectLeadsList(teamId);
+            });
+
+            $("#Name").focus();
+        });
+
+        function LoadProjectLeadsList(teamId) {
+            $.getJSON('@Url.Action("GetContactsForTeam", "Projects")?excludeRole=TEAM_MEMBER&teamId=' + teamId, null, function (data, textStatus, xhr) {
+                $("#ProjectLeadList").html("");
+                $.each(data, function (idx, val) {
+                    $("#ProjectLeadList").append("<option value='" + val.Id + "'>" + val.FullNameWithEmail + "</option>");
+                });
+            });
+        }
+
+    </script>
+}
+
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-xs-12 col-md-6">
+
+            @Html.Partial("~/Views/Projects/_CreatePartial.cshtml", Model)
+
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+
+            @{
+                ViewData["TipsPanelTitle"] = "Tips for Creating a Project";
+                ViewData["TipsPanelImg"] = "~/Content/icons/projects.png";
+                ViewData["TipContent"] = new List<string>
+                {
+                    "From the dropdown, select the name of the team, or click on <b>+ADD NEW TEAM</b> to create a new one.",
+                    "Then, select the Project Lead from the dropdown menu. Project Leads are generated from members in the Team selected and that have Project Manager, Team Manager, or Org Manager permissions.",
+                    "If you do not see the Project Lead in the dropdown menu, contact your Org Manager to invite a new user to your team. If you are the Org Manager, you can add a user to your team from the Team page, or invite a new user to your organization from the My Organization page.",
+                    "Lastly, enter the project description, then click Save."
+                };
+            }
+            @Html.Partial("~/Views/Shared/_TipsPanelPartial.cshtml", null, ViewData)
+
+        </div>
+
+    </div>
+}

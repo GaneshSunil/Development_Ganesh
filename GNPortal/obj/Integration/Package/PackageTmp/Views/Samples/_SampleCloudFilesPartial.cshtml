@@ -1,0 +1,226 @@
+﻿@model GenomeNext.Data.EntityModel.GNSample
+
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+}
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Files", "list-alt"))
+    {
+        <span class="badge">@Model.CloudFiles.Count()</span>
+    
+        <span class="pull-right">
+
+            
+            <div id="enable_action_icons">
+                <span class="small gn-light-gray">
+                    Files sorted by
+                </span>
+                <select class="header-dropdown" style="width:10em;" name="sortDropdown" id="sortDropdown" onchange="javascript: sortFiles(this.value);">
+                    <option value="Description" @(Request["sortFilesBy"] == "Description" ? "selected" : "")>File Name</option>
+                    <option value="FileSize" @(Request["sortFilesBy"] == "FileSize" ? "selected" : "")>Size (MB)</option>
+                    <option value="Date" @(Request["sortFilesBy"] == "Date" ? "selected" : "")>Upload Date</option>
+                </select>
+
+                @if (!isDelete && Model.CanEdit)
+                {
+                    <a href="javascript:enableEditActions();" title="Edit" alt="Edit">
+                        <span class="glyphicon glyphicon-cog white"></span>
+                    </a> 
+                }
+                    
+                <form name="sortFilesForm" id="sortFilesForm" method="get" action="@Url.Action("Details")">
+                    <input type="hidden" name="Id" id="Id" value="@Model.Id" />
+                    <input type="hidden" name="sortFilesBy" id="sortFilesBy" value="Description" />
+                </form>
+
+            </div>
+           
+            <div id="action_icons" style="display:none">
+                @Html.BootstrapActionIconLink("Upload New", "Create", "CloudFiles", new RouteValueDictionary(new { sampleId = ViewData["SampleId"], analysisRequestId = ViewData["AnalysisRequestId"] }), "white", "cloud-upload", "sm")
+
+                <span>&nbsp;</span>
+                <span>&nbsp;</span>
+
+                @if (Model.CloudFiles.Count > 0)
+                {
+                    <a href="javascript:confirmDownloadAll();" title="Download All Files" alt="Download All Files">
+                        <span class="glyphicon glyphicon-cloud-download white"></span>
+                    </a>
+
+                    <span>&nbsp;</span>
+                    <span>&nbsp;</span>
+
+                    <a href="javascript:confirmDeleteAll();" title="Delete All Files" alt="Delete All Files">
+                        <span class="glyphicon glyphicon-trash white"></span>
+                    </a>
+
+                    <span>&nbsp;</span>
+                    <span>&nbsp;</span>
+                }
+
+                <a href="javascript:enableEditActions();" title="Cancel" alt="Cancel">
+                    <span class="glyphicon glyphicon-chevron-right white"></span>
+                </a>
+            </div>
+
+            <div id="download_options" style="display:none">
+                <a href="javascript:downloadAllDisplayAlert()" class="btn white btn-sm" style="text-align:center" title="Confirm Download All" alt="Confirm Download All"><span class="glyphicon glyphicon-cloud-download"></span>&nbsp;Confirm Download All</a>
+                <a href="javascript:cancelDownloadAll()" class="btn white btn-sm" style="text-align:center" title="Cancel" alt="Cancel"><span class="glyphicon glyphicon-remove"></span>&nbsp;Cancel</a>
+            </div>
+
+            <div id="delete_options" style="display:none">
+                @Html.BootstrapActionButton("Confirm Delete All", "DeleteAllFiles", "Samples", new RouteValueDictionary(new { id = ViewData["SampleId"], analysisRequestId = ViewData["AnalysisRequestId"] }), "white", "trash", "sm")
+                <a href="javascript:cancelDeleteAll()" class="btn white btn-sm" style="text-align:center" title="Cancel" alt="Cancel"><span class="glyphicon glyphicon-remove"></span>&nbsp;Cancel</a>
+            </div>
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(true))
+    {
+        if (!Model.IsValidPairEnded)
+        {
+            <p align="center" class="alert-danger">
+                <span>Sample Paired-Endings are not valid<br />An equal number of files ending in '_R1' and '_R2' should exist.</span>
+            </p>
+        }
+        
+        if (!Model.IsValidSingleEnded)
+        {
+            <p align="center" class="alert-danger">
+                <span>File(s) are not valid<br />They must contain '_R1' in the name.</span>
+            </p>
+        }
+
+        if (Model.CloudFiles != null && Model.CloudFiles.Count() != 0)
+        {
+            <script language="javascript">
+                function confirmDelete(id)
+                {
+                    $('#' + id + '_download_icon').toggle();
+                    $('#' + id + '_delete_icon').toggle();
+                    $('#' + id + '_delete_confirm').toggle();
+                }
+            </script>
+
+            int i = 0;
+            var SortedModel = Model.CloudFiles.OrderBy(a => a.Description);
+            if (Request["sortFilesBy"] != null)
+            {
+                switch (Request["sortFilesBy"])
+                {
+                    case "Description":
+                        SortedModel = Model.CloudFiles.OrderBy(a => a.Description);
+                        break;
+                    case "FileSize":
+                        SortedModel = Model.CloudFiles.OrderBy(a => a.FileSize);
+                        break;
+                    case "Date":
+                        SortedModel = Model.CloudFiles.OrderBy(a => a.CreateDateTime);
+                        break;
+                    default:
+                        SortedModel = Model.CloudFiles.OrderBy(a => a.Description);
+                        break;
+                }
+            }
+
+            foreach (var item in SortedModel)
+            {    
+             
+                using (Html.BeginGNClickableListGroupItem(
+                    "#",
+                    (i % 2) != 0))
+                {
+                    <div class="col-md-10"
+                         onclick="window.location.href='@Url.Action("Download", "CloudFiles", new { id = item.Id, sampleId = ViewData["SampleId"], analysisRequestId = ViewData["AnalysisRequestId"] })'">
+
+                        <h6 class="flushLeft flushTop"><span class="glyphicon glyphicon-list-alt"></span> @item.Description</h6>
+                        <p style="font-size: 10px; margin-top: -5px; margin-bottom: -5px;">
+                            <b>@(Math.Round(item.FileSize / (1024.0 * 1024.0), 2) + " MB")</b>, @item.CloudFileCategory.Name, 
+                            @Html.Raw(TimeZoneInfo.ConvertTime(item.CreateDateTime.Value, contactForUser.GNOrganization.OrgTimeZoneInfo))
+                        </p>
+                    </div>
+                    <div class="col-md-2 text-right flushRight">
+                        @{
+                            var sampleId = ViewData["SampleId"];
+                            var link = "https://dev-gn-s3-01.s3.amazonaws.com/fastqc/" + sampleId + "/" + item.Id + "/fastqc_report.html";
+                        }
+                        
+                        <span id="@(@item.Id+"_download_icon")" title="Download">
+                            @Html.BootstrapActionIconLink("Download", "Download", "CloudFiles", new RouteValueDictionary(new { id = item.Id, sampleId = ViewData["SampleId"], analysisRequestId = ViewData["AnalysisRequestId"] }), "success", "cloud-download", "sm")
+                            &nbsp;
+                            @if (!item.QcStatsReportLocation.IsEmpty())
+                            {
+                                string icon = "check alert-success";
+                                string qctext = "QC Passed (download report)";
+                                if (item.QcStatsAvailable == false)
+                                {
+                                    icon = "check alert-danger";
+                                    qctext = "QC Failed (download report)";
+                                }
+                            
+                                @Html.BootstrapActionIconLink(qctext, "DownloadQcFile", "CloudFiles", new RouteValueDictionary(new { id = item.Id, sampleId = ViewData["SampleId"], analysisRequestId = ViewData["AnalysisRequestId"] }), "black", icon, "sm", false, false)
+                            }
+                        </span>
+
+                        &nbsp;
+
+                        @if (item.CanDelete)
+                        {
+                            <span id="@(item.Id+"_delete_icon")" title="Delete">
+                                <a href="javascript:confirmDelete('@item.Id')"><span class="glyphicon glyphicon-trash"></span></a>
+                            </span>
+
+                            <span id="@(item.Id+"_delete_confirm")" style="display:none">
+                                <span id="Confirm Delete">@Html.BootstrapActionButton("", "RemoveFromSample", "CloudFiles", new RouteValueDictionary(new { id = item.Id, sampleId = ViewData["SampleId"], analysisRequestId = ViewData["AnalysisRequestId"] }), "btn-danger white", "trash", "sm")</span>
+                                <a href="javascript:confirmDelete('@item.Id')"><span class="glyphicon glyphicon-remove" title="Cancel"></span></a>
+                            </span>
+                        }
+                    </div>
+                }
+                   
+    
+                i++;
+            }
+        }
+        else
+        {
+            <div class="list-group-item">
+                <h5>
+                    No FASTQ files found for this sample. &nbsp; @Html.BootstrapActionButton("Upload New", "Create", "CloudFiles", new RouteValueDictionary(new { sampleId = ViewData["SampleId"], analysisRequestId = ViewData["AnalysisRequestId"] }), "black", "cloud-upload", "sm")
+                </h5>
+            </div>
+        }
+    }
+}
+
+<div id="downloadAllAlertModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-gn-green">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title white">Download All Files in Sample</h4>
+            </div>
+            <div class="modal-body  bg-gn-light-gray">
+                <h5>
+                    To allow the download of all files, please make sure your browser has Javascript "enabled" and all Popup Blocker(s) "disabled" for this site.
+                    Due to the large file size of most genomic samples, please expect long download times.
+                </h5>
+            </div>
+            <div class="modal-footer text-center bg-gn-dark-gray clearfix col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <button type="button" class="btn bg-white gn-dark-gray pull-left" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <button type="button" class="btn bg-gn-green white pull-right" id="startDownloadAllBtn">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,837 @@
+2017-01-30 12:47:14,363 [10] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 12:47:25,106 [10] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 12:47:27,079 [10] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 12:47:32,827 [9] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 12:47:38,096 [9] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 12:48:55,409 [16] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 12:49:18,408 [9] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 12:56:48,940 [30] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 12:57:14,969 [31] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 12:57:24,280 [31] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 12:57:35,002 [32] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:02:37,223 [41] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:02:41,826 [38] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:02:47,464 [17] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:03:00,147 [43] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:03:14,953 [45] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:07:07,098 [50] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:07:10,180 [50] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:07:21,362 [47] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:10:10,360 [60] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:10:15,311 [60] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:12:01,420 [66] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:12:28,804 [60] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:12:35,187 [60] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:12:39,205 [60] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:12:52,198 [67] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:14:44,853 [69] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:14:55,209 [69] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:15:08,371 [69] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:15:15,442 [69] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:17:57,377 [76] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:18:12,886 [64] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:18:13,045 [80] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:18:16,480 [80] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:18:26,747 [78] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:18:30,613 [82] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:19:21,598 [76] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:19:26,459 [76] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:19:30,300 [85] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:19:34,749 [82] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:27:31,870 [95] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:27:35,410 [95] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:27:41,466 [92] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:27:41,512 [94] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:27:54,796 [92] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:28:04,540 [94] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:28:07,668 [95] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:28:29,827 [94] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:28:33,243 [94] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:31:07,771 [101] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:31:28,098 [100] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:31:28,143 [100] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:34:03,305 [15] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:34:13,869 [11] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:34:17,099 [10] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:34:45,391 [11] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:35:11,527 [11] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:35:14,439 [15] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:35:24,649 [11] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:35:28,153 [99] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:35:40,634 [99] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:35:40,687 [96] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:35:43,423 [11] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:35:48,600 [99] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:35:50,850 [99] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:36:35,275 [11] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:36:38,295 [11] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:36:42,121 [11] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:36:52,674 [11] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:36:56,026 [99] ERROR GenomeNext.Data.BaseEntityService`1 - Unable to create item.Cannot insert duplicate item
+System.Exception: Unable to create item.Cannot insert duplicate item ---> System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK__GNReplic__A25C5AA6918ED115'. Cannot insert duplicate key in object 'gn.GNReplicates'. The duplicate key value is (9 ).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 154
+   --- End of inner exception stack trace ---
+2017-01-30 13:36:56,100 [99] WARN  GenomeNext.Portal.Controllers.BaseController`1 - Unable to create item.Cannot insert duplicate item
+System.Exception: Unable to create item.Cannot insert duplicate item ---> System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK__GNReplic__A25C5AA6918ED115'. Cannot insert duplicate key in object 'gn.GNReplicates'. The duplicate key value is (9 ).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 154
+   --- End of inner exception stack trace ---
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 184
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__1c.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 205
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Portal.Controllers.BaseController`1.<Create>d__f.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNPortal\Controllers\BaseController.cs:line 203
+2017-01-30 13:37:10,855 [101] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:37:12,997 [97] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:37:43,957 [11] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:37:47,751 [101] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:37:52,681 [101] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:37:56,353 [11] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:37:58,606 [95] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:38:02,164 [11] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:38:06,333 [11] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:41:15,367 [97] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:41:27,876 [97] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:41:50,214 [97] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:41:53,751 [97] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:44:36,973 [88] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:44:49,566 [89] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:45:22,208 [89] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:53:52,240 [68] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:54:00,527 [68] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:54:04,859 [73] ERROR GenomeNext.Data.BaseEntityService`1 - Unable to create item. Cannot insert explicit value for identity column in table 'GNReplicates' when IDENTITY_INSERT is set to OFF..
+System.Exception: Unable to create item. Cannot insert explicit value for identity column in table 'GNReplicates' when IDENTITY_INSERT is set to OFF.. ---> System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Cannot insert explicit value for identity column in table 'GNReplicates' when IDENTITY_INSERT is set to OFF.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 154
+   --- End of inner exception stack trace ---
+2017-01-30 13:54:04,922 [73] WARN  GenomeNext.Portal.Controllers.BaseController`1 - Unable to create item. Cannot insert explicit value for identity column in table 'GNReplicates' when IDENTITY_INSERT is set to OFF..
+System.Exception: Unable to create item. Cannot insert explicit value for identity column in table 'GNReplicates' when IDENTITY_INSERT is set to OFF.. ---> System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Cannot insert explicit value for identity column in table 'GNReplicates' when IDENTITY_INSERT is set to OFF.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 154
+   --- End of inner exception stack trace ---
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 184
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__1c.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 205
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Portal.Controllers.BaseController`1.<Create>d__f.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNPortal\Controllers\BaseController.cs:line 203
+2017-01-30 13:57:06,736 [68] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 13:57:11,072 [66] ERROR GenomeNext.Data.BaseEntityService`1 - Unable to create item. Cannot insert explicit value for identity column in table 'GNReplicates' when IDENTITY_INSERT is set to OFF..
+System.Exception: Unable to create item. Cannot insert explicit value for identity column in table 'GNReplicates' when IDENTITY_INSERT is set to OFF.. ---> System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Cannot insert explicit value for identity column in table 'GNReplicates' when IDENTITY_INSERT is set to OFF.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 154
+   --- End of inner exception stack trace ---
+2017-01-30 13:57:11,134 [66] WARN  GenomeNext.Portal.Controllers.BaseController`1 - Unable to create item. Cannot insert explicit value for identity column in table 'GNReplicates' when IDENTITY_INSERT is set to OFF..
+System.Exception: Unable to create item. Cannot insert explicit value for identity column in table 'GNReplicates' when IDENTITY_INSERT is set to OFF.. ---> System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Cannot insert explicit value for identity column in table 'GNReplicates' when IDENTITY_INSERT is set to OFF.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 154
+   --- End of inner exception stack trace ---
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 184
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__1c.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 205
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Portal.Controllers.BaseController`1.<Create>d__f.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNPortal\Controllers\BaseController.cs:line 203
+2017-01-30 14:01:27,147 [69] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:08:08,832 [53] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:08:18,624 [53] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:08:30,134 [52] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:08:34,145 [57] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:08:37,928 [53] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:09:23,895 [53] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:09:29,400 [53] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:09:29,490 [55] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:10:02,516 [55] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:13:11,922 [60] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:13:15,657 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:13:24,989 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:13:28,669 [60] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:13:32,654 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:13:35,716 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:13:40,216 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:13:40,258 [62] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:13:52,121 [60] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:13:58,960 [62] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:14:01,312 [62] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:14:04,972 [61] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:14:07,301 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:14:13,673 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:14:16,007 [61] ERROR GenomeNext.Data.BaseEntityService`1 - Unable to create item.Cannot insert duplicate item
+System.Exception: Unable to create item.Cannot insert duplicate item ---> System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK__GNReplic__A25C5AA6918ED115'. Cannot insert duplicate key in object 'gn.GNReplicates'. The duplicate key value is (9 ).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 154
+   --- End of inner exception stack trace ---
+2017-01-30 14:14:16,080 [61] WARN  GenomeNext.Portal.Controllers.BaseController`1 - Unable to create item.Cannot insert duplicate item
+System.Exception: Unable to create item.Cannot insert duplicate item ---> System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK__GNReplic__A25C5AA6918ED115'. Cannot insert duplicate key in object 'gn.GNReplicates'. The duplicate key value is (9 ).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 154
+   --- End of inner exception stack trace ---
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 184
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__1c.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 205
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Portal.Controllers.BaseController`1.<Create>d__f.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNPortal\Controllers\BaseController.cs:line 203
+2017-01-30 14:14:28,185 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:14:30,380 [62] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:14:37,588 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:14:39,515 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:14:45,608 [60] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:14:45,688 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:14:47,417 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:14:50,052 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:14:55,222 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:14:55,266 [63] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:14:58,770 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:15:11,193 [61] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:15:13,320 [60] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:15:16,564 [60] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:15:18,743 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:15:24,081 [50] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:15:26,177 [61] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:15:29,337 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:15:31,265 [63] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:15:36,412 [60] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:15:39,224 [61] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:15:41,219 [61] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:15:43,692 [61] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:15:49,772 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:15:50,102 [56] WARN  GenomeNext.Portal.Controllers.BaseController`1 - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at GenomeNext.Data.BaseEntityService`1.GetSqlExceptionErrorMessage(Exception ex) in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 417
+   at GenomeNext.Data.BaseEntityService`1.<Update>d__21.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 241
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Update>d__28.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 269
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Portal.Controllers.BaseController`1.<Edit>d__16.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNPortal\Controllers\BaseController.cs:line 269
+2017-01-30 14:16:00,502 [63] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:16:00,822 [63] WARN  GenomeNext.Portal.Controllers.BaseController`1 - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at GenomeNext.Data.BaseEntityService`1.GetSqlExceptionErrorMessage(Exception ex) in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 417
+   at GenomeNext.Data.BaseEntityService`1.<Update>d__21.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 241
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Update>d__28.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 269
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Portal.Controllers.BaseController`1.<Edit>d__16.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNPortal\Controllers\BaseController.cs:line 269
+2017-01-30 14:16:05,880 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:16:05,943 [50] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:16:07,907 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:16:24,490 [61] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:16:30,254 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:16:32,432 [50] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:16:35,394 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:16:51,872 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:16:59,477 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:16:59,515 [27] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:17:06,581 [60] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:17:10,624 [56] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:17:18,660 [27] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:17:18,702 [60] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:17:21,295 [61] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:24:20,855 [66] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:56:15,607 [13] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:56:21,904 [8] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:56:22,325 [8] ERROR GenomeNext.Data.BaseEntityService`1 - Unable to create item.Cannot insert duplicate item
+System.Exception: Unable to create item.Cannot insert duplicate item ---> System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK__GNReplic__A25C5AA6918ED115'. Cannot insert duplicate key in object 'gn.GNReplicates'. The duplicate key value is (9 ).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 154
+   --- End of inner exception stack trace ---
+2017-01-30 14:56:22,339 [8] WARN  GenomeNext.Portal.Controllers.BaseController`1 - Unable to create item.Cannot insert duplicate item
+System.Exception: Unable to create item.Cannot insert duplicate item ---> System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK__GNReplic__A25C5AA6918ED115'. Cannot insert duplicate key in object 'gn.GNReplicates'. The duplicate key value is (9 ).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 154
+   --- End of inner exception stack trace ---
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 184
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__1c.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 205
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Portal.Controllers.BaseController`1.<Create>d__f.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNPortal\Controllers\BaseController.cs:line 203
+2017-01-30 14:56:32,970 [8] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 14:56:34,521 [13] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 17:38:49,985 [7] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 17:38:58,090 [9] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 17:38:59,997 [7] ERROR GenomeNext.Cloud.Storage.GNCloudStorageService - Exception of type 'Amazon.S3.AmazonS3Exception' was thrown.
+Amazon.S3.AmazonS3Exception: Exception of type 'Amazon.S3.AmazonS3Exception' was thrown. ---> Amazon.Runtime.Internal.HttpErrorResponseException: The remote server returned an error: (404) Not Found. ---> System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Amazon.Runtime.Internal.HttpRequest.GetResponse() in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\HttpHandler\HttpWebRequestFactory.cs:line 105
+   --- End of inner exception stack trace ---
+   at Amazon.Runtime.Internal.HttpRequest.GetResponse() in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\HttpHandler\HttpWebRequestFactory.cs:line 117
+   at Amazon.Runtime.Internal.HttpHandler`1.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\HttpHandler\HttpHandler.cs:line 89
+   at Amazon.Runtime.Internal.Unmarshaller.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\Unmarshaller.cs:line 49
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.RedirectHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\RedirectHandler.cs:line 62
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\ErrorHandler\ErrorHandler.cs:line 70
+   --- End of inner exception stack trace ---
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleException(IExecutionContext executionContext, HttpErrorResponseException exception) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\ErrorHandler\HttpErrorResponseExceptionHandler.cs:line 100
+   at Amazon.Runtime.Internal.ErrorHandler.ProcessException(IExecutionContext executionContext, Exception exception) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\ErrorHandler\ErrorHandler.cs:line 202
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\ErrorHandler\ErrorHandler.cs:line 76
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.RetryHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\RetryHandler\RetryHandler.cs:line 73
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericExceptionHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericExceptionHandler.cs:line 31
+   at Amazon.Runtime.Internal.GenericExceptionHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericExceptionHandler.cs:line 31
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\MetricsHandler.cs:line 40
+   at Amazon.Runtime.AmazonServiceClient.Invoke[TRequest,TResponse](TRequest request, IMarshaller`2 marshaller, ResponseUnmarshaller unmarshaller) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\AmazonServiceClient.cs:line 115
+   at Amazon.S3.AmazonS3Client.GetObjectMetadata(GetObjectMetadataRequest request) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet45\Amazon.S3\AmazonS3Client.cs:line 1565
+   at GenomeNext.Cloud.Storage.GNCloudStorageService.GetObjectMetadata(String sourceBucket, String sourceObjectKey) in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNCloud\Storage\GNCloudStorageService.cs:line 242
+2017-01-30 17:39:00,190 [7] WARN  GenomeNext.Cloud.Storage.GNCloudStorageService - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at GenomeNext.Cloud.Storage.GNCloudStorageService.GetObjectSize(String sourceBucket, String sourceObjectKey) in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNCloud\Storage\GNCloudStorageService.cs:line 286
+2017-01-30 17:39:00,375 [7] ERROR GenomeNext.Cloud.Storage.GNCloudStorageService - Exception of type 'Amazon.S3.AmazonS3Exception' was thrown.
+Amazon.S3.AmazonS3Exception: Exception of type 'Amazon.S3.AmazonS3Exception' was thrown. ---> Amazon.Runtime.Internal.HttpErrorResponseException: The remote server returned an error: (404) Not Found. ---> System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Amazon.Runtime.Internal.HttpRequest.GetResponse() in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\HttpHandler\HttpWebRequestFactory.cs:line 105
+   --- End of inner exception stack trace ---
+   at Amazon.Runtime.Internal.HttpRequest.GetResponse() in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\HttpHandler\HttpWebRequestFactory.cs:line 117
+   at Amazon.Runtime.Internal.HttpHandler`1.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\HttpHandler\HttpHandler.cs:line 89
+   at Amazon.Runtime.Internal.Unmarshaller.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\Unmarshaller.cs:line 49
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.RedirectHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\RedirectHandler.cs:line 62
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\ErrorHandler\ErrorHandler.cs:line 70
+   --- End of inner exception stack trace ---
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleException(IExecutionContext executionContext, HttpErrorResponseException exception) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\ErrorHandler\HttpErrorResponseExceptionHandler.cs:line 100
+   at Amazon.Runtime.Internal.ErrorHandler.ProcessException(IExecutionContext executionContext, Exception exception) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\ErrorHandler\ErrorHandler.cs:line 202
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\ErrorHandler\ErrorHandler.cs:line 76
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.RetryHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\RetryHandler\RetryHandler.cs:line 73
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericExceptionHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericExceptionHandler.cs:line 31
+   at Amazon.Runtime.Internal.GenericExceptionHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericExceptionHandler.cs:line 31
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\MetricsHandler.cs:line 40
+   at Amazon.Runtime.AmazonServiceClient.Invoke[TRequest,TResponse](TRequest request, IMarshaller`2 marshaller, ResponseUnmarshaller unmarshaller) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\AmazonServiceClient.cs:line 115
+   at Amazon.S3.AmazonS3Client.GetObjectMetadata(GetObjectMetadataRequest request) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet45\Amazon.S3\AmazonS3Client.cs:line 1565
+   at GenomeNext.Cloud.Storage.GNCloudStorageService.GetObjectMetadata(String sourceBucket, String sourceObjectKey) in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNCloud\Storage\GNCloudStorageService.cs:line 242
+2017-01-30 17:39:00,380 [9] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 17:39:00,419 [7] WARN  GenomeNext.Cloud.Storage.GNCloudStorageService - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at GenomeNext.Cloud.Storage.GNCloudStorageService.GetObjectSize(String sourceBucket, String sourceObjectKey) in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNCloud\Storage\GNCloudStorageService.cs:line 286
+2017-01-30 17:39:00,639 [7] ERROR GenomeNext.Cloud.Storage.GNCloudStorageService - Exception of type 'Amazon.S3.AmazonS3Exception' was thrown.
+Amazon.S3.AmazonS3Exception: Exception of type 'Amazon.S3.AmazonS3Exception' was thrown. ---> Amazon.Runtime.Internal.HttpErrorResponseException: The remote server returned an error: (404) Not Found. ---> System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Amazon.Runtime.Internal.HttpRequest.GetResponse() in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\HttpHandler\HttpWebRequestFactory.cs:line 105
+   --- End of inner exception stack trace ---
+   at Amazon.Runtime.Internal.HttpRequest.GetResponse() in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\HttpHandler\HttpWebRequestFactory.cs:line 117
+   at Amazon.Runtime.Internal.HttpHandler`1.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\HttpHandler\HttpHandler.cs:line 89
+   at Amazon.Runtime.Internal.Unmarshaller.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\Unmarshaller.cs:line 49
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.RedirectHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\RedirectHandler.cs:line 62
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\ErrorHandler\ErrorHandler.cs:line 70
+   --- End of inner exception stack trace ---
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleException(IExecutionContext executionContext, HttpErrorResponseException exception) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\ErrorHandler\HttpErrorResponseExceptionHandler.cs:line 100
+   at Amazon.Runtime.Internal.ErrorHandler.ProcessException(IExecutionContext executionContext, Exception exception) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\ErrorHandler\ErrorHandler.cs:line 202
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\ErrorHandler\ErrorHandler.cs:line 76
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.RetryHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\RetryHandler\RetryHandler.cs:line 73
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericHandler.cs:line 36
+   at Amazon.Runtime.Internal.GenericExceptionHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericExceptionHandler.cs:line 31
+   at Amazon.Runtime.Internal.GenericExceptionHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\GenericExceptionHandler.cs:line 31
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeSync(IExecutionContext executionContext) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\Pipeline\Handlers\MetricsHandler.cs:line 40
+   at Amazon.Runtime.AmazonServiceClient.Invoke[TRequest,TResponse](TRequest request, IMarshaller`2 marshaller, ResponseUnmarshaller unmarshaller) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet35\Amazon.Runtime\AmazonServiceClient.cs:line 115
+   at Amazon.S3.AmazonS3Client.GetObjectMetadata(GetObjectMetadataRequest request) in d:\Jenkins\workspace\build-sdkandtools\sdk\src\AWSSDK_DotNet45\Amazon.S3\AmazonS3Client.cs:line 1565
+   at GenomeNext.Cloud.Storage.GNCloudStorageService.GetObjectMetadata(String sourceBucket, String sourceObjectKey) in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNCloud\Storage\GNCloudStorageService.cs:line 242
+2017-01-30 17:39:00,669 [7] WARN  GenomeNext.Cloud.Storage.GNCloudStorageService - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at GenomeNext.Cloud.Storage.GNCloudStorageService.GetObjectSize(String sourceBucket, String sourceObjectKey) in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNCloud\Storage\GNCloudStorageService.cs:line 286
+2017-01-30 17:39:06,110 [7] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 17:39:25,718 [9] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 17:39:32,941 [7] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 17:39:33,113 [16] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 17:39:35,621 [9] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-30 17:39:40,215 [7] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0

@@ -1,0 +1,34 @@
+﻿@model GenomeNext.Data.EntityModel.GNProject
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+}
+
+@if (isDelete)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger col-md-12">
+                <p>
+                    Are you sure you want to delete this Project?
+                </p>
+            </div>
+        </div>
+    </div>
+
+    //Footer
+    using (Html.BeginGNPanelFooter())
+    {
+        <div class="pull-left">
+            @Html.BootstrapActionButton("Cancel", "Edit", "Projects", new RouteValueDictionary(new { id = Model.Id }), "bg-gn-medium-gray white", "remove")
+        </div>
+        <div class="pull-right">
+            @Html.BootstrapFormConfirmDeleteButton("Delete", "trash", "danger")
+        </div>
+    }
+
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+    }
+}

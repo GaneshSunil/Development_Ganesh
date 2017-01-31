@@ -1,0 +1,98 @@
+﻿@model GenomeNext.Data.EntityModel.GNProject
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+}
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Project Info", "info-sign"))
+    {
+        <span class="pull-right">
+            @{
+                GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+                if (User.IsInRole("GN_ADMIN") || contactForUser.IsInRole("ORG_MANAGER"))
+                {
+                    @Html.BootstrapActionIconLink("Audit Records", "Index", "Audit", new RouteValueDictionary(new { searchEntityId = Model.Id, searchEntityType = "PROJECT" }), "white", "eye-open", null, false, false)
+                    @Html.Raw("&nbsp;&nbsp;")
+                }
+            }
+
+            @if (!isDelete && Model.CanEdit)
+            {
+                @Html.BootstrapActionIconLink("Edit", "Edit", "Projects", new RouteValueDictionary(new { id = Model.Id }), "white", "cog", null, false, false)
+            }
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody())
+    {
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Teams.FirstOrDefault().Organization)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Teams.FirstOrDefault().Organization.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Teams)
+            </dt>
+
+            <dd>
+                @Html.ActionLink(Model.Teams.FirstOrDefault().Name, "Details", "Teams", new { id = Model.Teams.FirstOrDefault().Id }, null)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProjectLead)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProjectLead.FullNameWithEmail)
+            </dd>
+
+            @{
+                if(Model.GNSequencerJob != null)
+                {           
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GNSequencerJob.Id)
+                    </dt>
+
+                    <dd>
+                        @Html.ActionLink(Model.GNSequencerJob.Id.ToString(), "Details", "SequencerJobs", new { id = Model.GNSequencerJob.Id }, null)
+                    </dd>    
+                }
+            }
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            @{
+                ViewData["ViewMode"] = "Details";
+                ViewData["CreateDateTime"] = Model.CreateDateTime;
+            }
+            @Html.Partial("_AuditModelPartial", Model, ViewData)
+
+        </dl>
+    }
+
+    @Html.Partial("~/Views/Projects/_DeletePartial.cshtml", Model)
+}

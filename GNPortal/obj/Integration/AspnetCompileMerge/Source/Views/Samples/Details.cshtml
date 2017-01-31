@@ -1,0 +1,101 @@
+﻿@model GenomeNext.Data.EntityModel.GNSample
+
+@{
+    ViewBag.Title = Model.Name;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/samples_white.png";
+    ViewData["ModuleCtl"] = "Samples";
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+
+    if (!string.IsNullOrEmpty(Request["analysisRequestId"]))
+    {
+        ViewData["customBackLink"] = true;
+        ViewData["customBackLinkModuleCtl"] = "AnalysisRequests";
+        ViewData["customBackLinkAction"] = "Details";
+        ViewData["customBackLinkParam"] = Request["analysisRequestId"];
+        ViewData["customBackLinkText"] = "Back to Analysis";
+    }
+}
+
+@section scripts{
+
+    @Html.Partial("~/Views/Samples/_SampleCloudFilesPartial_Script.cshtml")
+
+    <script type="text/javascript">
+        function createRelationship() {
+
+            if ($("#GNSampleRelationshipTypes option:selected").text() == '-SELECT-')
+            {
+                $('#error_pedigree').toggle();
+                document.getElementById('error_pedigree').innerHTML = 'Please select a valid relationship from the dropdown next to the Plus sign.';
+                return;
+            }
+
+            //Set values
+            document.getElementById('GNSampleRelationshipTypeId').value = document.getElementById('GNSampleRelationshipTypes').value;
+
+            //Submit
+            document.getElementById('addNewRelationship').submit();
+
+        }
+
+        function sortFiles(by) {
+            document.getElementById('sortFilesBy').value = by;
+            document.getElementById('sortFilesForm').submit();
+        }
+
+        function showMoreData(box) {
+            $('#' + box + '_box').toggle();
+            $('#' + box + '_link').toggle();
+        }
+
+        function toggleBlocks()
+        {
+            $('#mainBlock').toggle();
+            $('#historyBlock').toggle();
+
+            $('#seeHistoryLink').toggle();
+            $('#hideHistoryLink').toggle();
+            $('#seeHistoryLink2').toggle();
+            $('#hideHistoryLink2').toggle();
+        }
+    </script>
+}
+
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            @Html.Partial("~/Views/Samples/_InfoPartial.cshtml", Model)
+            
+            @{
+                ViewData["AllowEdit"] = false;
+                ViewData["SampleId"] = Model.Id;
+                ViewData["AnalysisRequestId"] = Request["analysisRequestId"];
+            }
+            @Html.Partial("~/Views/Samples/_SampleCloudFilesPartial.cshtml", Model)
+
+        </div>
+
+        <div class="col-md-6">
+            <div id="mainBlock">
+                @Html.Partial("~/Views/Samples/_SamplePedigreePartial.cshtml", Model)
+
+                @Html.Partial("~/Views/Samples/_SampleAnalysesPartial.cshtml", Model)
+            </div>
+
+            <div id="historyBlock" style="display:none">
+                @{
+                    if (Model.GNNewSampleBatchSample != null)
+                    {
+                        @Html.Partial("~/Views/Samples/_SampleStatusPartial.cshtml", Model)
+                    }
+                }
+            </div>
+        </div>
+
+    </div>
+}

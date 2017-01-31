@@ -1,0 +1,71 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNSettingsTemplate>
+
+@{
+    ViewBag.Title = "Settings Templates";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-wrench gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Create New", "Create", "SettingsTemplate", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "plus")
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GNSettingsTemplateConfigs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GNOrganizations)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GNSettingsTemplateConfigs.Count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GNOrganizations.Count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)<br />
+                    @Html.DisplayFor(modelItem => item.CreateDateTime)
+                </td>
+                
+                <td>
+                    @Html.BootstrapActionIcon("View", "Details", "SettingsTemplate", new RouteValueDictionary(new { id = item.Id }), "success")
+                    @Html.BootstrapActionIcon("Edit", "Edit", "SettingsTemplate", new RouteValueDictionary(new { id = item.Id }), "edit")
+                    @if (item.GNSettingsTemplateConfigs.Count == 0 && item.GNOrganizations.Count == 0)
+                    {
+                        @Html.BootstrapActionIcon("Delete", "Delete", "SettingsTemplate", new RouteValueDictionary(new { id = item.Id }), "danger")
+                    }
+                </td>
+            </tr>
+        }
+
+
+    </table>
+</div>

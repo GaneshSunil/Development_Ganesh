@@ -1,0 +1,1 @@
+alter table gn.GNNotificationLogs add [Source] nvarchar(max)  NULL;

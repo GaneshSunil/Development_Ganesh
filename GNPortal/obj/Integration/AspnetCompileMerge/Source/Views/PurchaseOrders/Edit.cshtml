@@ -1,0 +1,117 @@
+﻿@model GenomeNext.Data.EntityModel.GNPurchaseOrder
+
+@{
+    ViewBag.Title = "Edit Purchase Order";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h2>
+        <span class="glyphicon glyphicon-th gn-green"></span>
+        @ViewBag.Title
+
+        <span class="pull-right">
+            @if (!string.IsNullOrEmpty(Request["invoiceId"]))
+            {
+                @Html.BootstrapActionButton("Back to Invoice", "Edit", "Invoices", new RouteValueDictionary(new { id = Request["invoiceId"] }), "info", "chevron-left")
+            }
+            else
+            {
+                @Html.BootstrapActionButton("Back to List", "Index", "PurchaseOrders", null, "info", "chevron-left")
+            }
+            @Html.BootstrapFormSaveButton()
+        </span>
+    </h2>
+
+    @Html.BootstrapRowSpacer()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CreatedBy)
+        @Html.HiddenFor(model => model.CreateDateTime)
+        @Html.Hidden("invoiceId", Request["invoiceId"])
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Account.Organization.Name)
+                @Html.HiddenFor(model => model.GNAccountId)
+                @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PurchaseOrderInvoices, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.BootstrapActionButton("Add Invoice", "Index", "Invoices", new RouteValueDictionary(new { purchaseOrderId = Model.Id }),"success","plus","sm")
+                @foreach (var purchaseOrderInvoice in Model.PurchaseOrderInvoices)
+                {
+                    <div>
+                        <div class="badge bg-gn-green-light">
+                            @Html.ActionLink(purchaseOrderInvoice.Invoice.Name, "Details", "Invoices", new { id = purchaseOrderInvoice.Invoices_Id }, null)
+                        </div>
+                        @Html.BootstrapActionButton(null, "RemoveInvoiceFromPurchaseOrder", "PurchaseOrders", new RouteValueDictionary(new { purchaseOrderId = purchaseOrderInvoice.PurchaseOrders_Id, invoiceId = purchaseOrderInvoice.Invoices_Id }),"danger","trash","sm",false,"center",false)
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExternalPONum, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ExternalPONum, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ExternalPONum, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.StartDate, new { @class = "form-control datepicker" })
+                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.EndDate, new { @class = "form-control datepicker" })
+                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TotalApplied, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.TotalApplied)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Balance, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Balance)
+            </div>
+        </div>
+
+        @{
+            ViewData["ViewMode"] = "Edit";
+            ViewData["CreatedBy"] = Model.CreatedByContact;
+            ViewData["CreateDateTime"] = Model.CreateDateTime;
+        }
+        @Html.Partial("_AuditModelPartial", null, ViewData)
+
+
+    </div>
+}

@@ -1,0 +1,262 @@
+﻿@model GenomeNext.Data.EntityModel.GNAccount
+@{
+    ViewBag.Title = "Edit Account";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<h2>
+    <span class="glyphicon glyphicon-euro gn-green"></span>
+    @ViewBag.Title
+
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "OrgAccounts", null, "info", "chevron-left")
+        @Html.BootstrapFormSaveButton()
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CreatedBy)
+        @Html.HiddenFor(model => model.CreateDateTime)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Organization, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.DisplayFor(model => model.Organization.Name)
+                    @Html.HiddenFor(model => model.Organization.Id)
+                    @Html.HiddenFor(model => model.Organization.GNContactId)
+                    @Html.ValidationMessageFor(model => model.Organization, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GNAccountTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("GNAccountTypeId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GNAccountTypeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BillingMode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("BillingMode", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BillingMode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DefaultDiscountType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DefaultDiscountType", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DefaultDiscountType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.FormFieldFor(model => model.DefaultDiscountAmount,true,null,2,10)
+        @Html.FormFieldFor(model => model.MaxBalanceAllowed, true, null, 2, 10)
+        @Html.FormFieldFor(model => model.ValidBillingAgreementRequired, true, null, 2, 10)
+        @Html.FormFieldFor(model => model.TotalAmountPaid, false, null, 2, 10)
+        @Html.FormFieldFor(model => model.TotalAmountOwed, false, null, 2, 10)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AccountOwner, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.DisplayFor(model => model.AccountOwner.FullNameWithEmail)
+                    @Html.EditorFor(model => model.AccountOwnerId)
+                    @Html.ValidationMessageFor(model => model.AccountOwner.Id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BillingContact, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.DisplayFor(model => model.BillingContact.FullNameWithEmail)
+                    @Html.EditorFor(model => model.BillingContactId)
+                    @Html.ValidationMessageFor(model => model.BillingContactId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MailingContact, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.DisplayFor(model => model.MailingContact.FullNameWithEmail)
+                    @Html.EditorFor(model => model.MailingContactId)
+                    @Html.ValidationMessageFor(model => model.MailingContactId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        @{
+            ViewData["ViewMode"] = "Edit";
+            ViewData["CreatedBy"] = Model.CreatedByContact;
+            ViewData["CreateDateTime"] = Model.CreateDateTime;
+        }
+        @Html.Partial("_AuditModelPartial", null, ViewData)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PaymentMethods, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                <p>
+                    @Html.BootstrapActionButton("Add Payment Method", "Create", "PaymentMethods", new RouteValueDictionary(new { accountId = Model.Id }), "info", "plus", "sm")
+                </p>
+
+                @if (Model.PaymentMethods != null && Model.PaymentMethods.Count != 0)
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-gn">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PaymentMethods.FirstOrDefault().PaymentMethodType)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PaymentMethods.FirstOrDefault().Description)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PaymentMethods.FirstOrDefault().IsDefault)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PaymentMethods.FirstOrDefault().IsActive)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PaymentMethods.FirstOrDefault().UsedForRecurrentPayments)
+                                </th>
+                                <th class="col-md-3"></th>
+                            </tr>
+
+                            @foreach (var item in Model.PaymentMethods)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PaymentMethodType.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IsDefault)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IsActive)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UsedForRecurrentPayments)
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.BootstrapActionButton("View", "Details", "PaymentMethods", new RouteValueDictionary(new { id = item.Id, accountId = Model.Id }), "success", "th", "sm")
+                                        @Html.BootstrapActionButton("Edit", "Edit", "PaymentMethods", new RouteValueDictionary(new { id = item.Id, accountId = Model.Id }), "warning", "cog", "sm")
+                                        @Html.BootstrapActionButton("Delete", "Delete", "PaymentMethods", new RouteValueDictionary(new { id = item.Id, accountId = Model.Id }), "danger", "trash", "sm")
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            No payment methods exist for this Account.
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+@{
+    /*
+        <div class="form-group">
+            @Html.LabelFor(model => model.AccountProductSubscriptions, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                <p>
+                    @Html.BootstrapActionButton("Create Subscription", "Create", "OrgAccountProductSubscriptions", new RouteValueDictionary(new { accountId = Model.Id }), "info", "plus", "sm")
+                </p>
+
+                @if (Model.AccountProductSubscriptions != null && Model.AccountProductSubscriptions.Count != 0)
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-gn">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.AccountProductSubscriptions.FirstOrDefault().CreateDateTime)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.AccountProductSubscriptions.FirstOrDefault().Product)
+                                </th>
+                                <th>
+                                    Dates
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.AccountProductSubscriptions.FirstOrDefault().SubscribeFrequency)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.AccountProductSubscriptions.FirstOrDefault().CurrentValueUsed)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.AccountProductSubscriptions.FirstOrDefault().IsActive)
+                                </th>
+                                <th class="col-md-3"></th>
+                            </tr>
+
+                            @foreach (var item in Model.AccountProductSubscriptions.OrderByDescending(id => id.CreateDateTime))
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CreateDateTime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Product.Name)
+                                    </td>
+                                    <td>
+                                        @item.StartDate.ToShortDateString()
+                                        -
+                                        @item.EndDate.ToShortDateString()
+                                    </td>
+                                    <td>
+                                        @(((GenomeNext.Data.EntityModel.GNAccountProductSubscription.SubscriptionFrequencyInterval)item.SubscribeFrequency).ToString())
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CurrentValueUsed)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IsActive)
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.BootstrapActionButton("View", "Details", "OrgAccountProductSubscriptions", new RouteValueDictionary(new { id = item.Id, accountId = Model.Id }), "success", "th", "sm")
+                                        @Html.BootstrapActionButton("Edit", "Edit", "OrgAccountProductSubscriptions", new RouteValueDictionary(new { id = item.Id, accountId = Model.Id }), "warning", "cog", "sm")
+                                        @Html.BootstrapActionButton("Delete", "Delete", "OrgAccountProductSubscriptions", new RouteValueDictionary(new { id = item.Id, accountId = Model.Id }), "danger", "trash", "sm")
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            No subscriptions exist for this Account.
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+     */
+} 
+
+    </div>
+}

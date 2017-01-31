@@ -1,0 +1,104 @@
+﻿@model GenomeNext.Data.EntityModel.GNContact
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/profile.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/profile_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/profile_white_green.png";
+    ViewData["ModuleHasActionBar"] = true;
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "My Profile";
+}
+
+@section ModuleIndexHeadingActionBar{
+        <div class="pull-right" style="padding-top:20px;">
+            @Html.BootstrapActionIconLink("Edit Profile", "EditMyProfile", "Account", null, "white", "cog", null,true,true)
+        </div>
+}
+
+@section ModuleIndexContent{
+
+<div class="col-md-12 panel form-horizontal bg-white">
+
+    @Html.BootstrapRowSpacer()
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <dl class="dl-horizontal col-md-6">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.GNOrganization)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.GNOrganization.Name)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.GNOrganization.OrgMainContact)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.GNOrganization.OrgMainContact.FullName)
+                    (@Html.DisplayFor(model => model.GNOrganization.OrgMainContact.Email))
+                </dd>
+                
+
+                @Html.DisplayFieldFor(model => model.Title)
+                @Html.DisplayFieldFor(model => model.FirstName)
+                @Html.DisplayFieldFor(model => model.LastName)
+                @Html.DisplayFieldFor(model => model.Email)
+                @Html.DisplayFieldFor(model => model.Phone)
+                @Html.DisplayFieldFor(model => model.Fax)
+                @Html.DisplayFieldFor(model => model.Website)
+
+            </dl>
+            <dl class="dl-horizontal col-md-6">
+
+                @Html.DisplayFieldFor(model => model.StreetAddress1)
+                @Html.DisplayFieldFor(model => model.StreetAddress2)
+                @Html.DisplayFieldFor(model => model.City)
+                @Html.DisplayFieldFor(model => model.State)
+                @Html.DisplayFieldFor(model => model.Zip)
+                <dt>
+                    @Html.DisplayNameFor(model => model.TermsAcceptDateTime)
+                </dt>
+                <dd>
+                    @TimeZoneInfo.ConvertTime(Model.TermsAcceptDateTime.GetValueOrDefault(), contactForUser.GNOrganization.OrgTimeZoneInfo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PrivacyPolicyAcceptDateTime)
+                </dt>
+                <dd>
+                    @TimeZoneInfo.ConvertTime(Model.PrivacyPolicyAcceptDateTime.GetValueOrDefault(), contactForUser.GNOrganization.OrgTimeZoneInfo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.GNContactRoles)
+                </dt>
+
+                <dd>
+                    @if (Model.GNContactRoles != null && Model.GNContactRoles.Count != 0)
+                    {
+                        foreach (var contactRole in Model.GNContactRoles)
+                        {
+                            @contactRole.AspNetRole.Name
+                            <br />
+                        }
+                    }
+                    else
+                    {
+                        @("No Roles Assigned.")
+                    }
+                </dd>
+
+            </dl>
+
+        </div>
+    </div>
+
+</div>
+
+}

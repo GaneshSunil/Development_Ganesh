@@ -1,0 +1,176 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+@{
+
+    if (Model.AnalysisStatus.Count == 0)
+    {
+        var display_errors = "none";
+        if (Request["ErrorMessage"] != null && Request["ErrorMessage"] != "")
+        {
+            display_errors = "";
+        }
+        <p class="bg-danger alert-danger" align="center" id="error_pedigree" style="padding:10px;display:@display_errors">
+            <span id="error_message">@(Request["ErrorMessage"] != null ? Request["ErrorMessage"] : "")</span>
+        </p>
+        <center style="margin:5px;">
+            <div class="bg-gn-light-gray border-gn-medium-gray" style="padding:5px;width:400px;">
+                @Html.Raw("Add a new group")
+                @Html.TextBox("GroupValue")
+                <span style="padding:5px;" class="glyphicon glyphicon-floppy-disk btn-success" onclick="javascript: createNewGroup()"></span>
+            </div>
+        </center>
+
+
+        <form name="FormNewGroup" id="FormNewGroup" method="get" action="@Url.Action("AddNewGroup")">
+            <input type="hidden" name="analysisRequestId" id="GNLeftSampleId" value="@Model.Id" />
+            <input type="hidden" name="NewGroupName" id="NewGroupName" value="" />
+        </form>
+    }
+
+    if (Model.GNAnalysisRequestGroups != null && Model.GNAnalysisRequestGroups.Count != 0)
+    {
+        if (Model.GNAnalysisRequestGroups.Count ==1 )
+        {
+
+            <center>
+                <p class="bg-danger alert-danger border-gn-red" align="center" id="error_group_association" style="width:450px;margin-bottom:5px;padding:5px;margin-top:35px;">
+                    <span>Please create at least one more group.</span>
+                </p>
+            </center>
+        }
+        
+        int i = 0;
+        foreach (var item in Model.GNAnalysisRequestGroups)
+        {
+                <div class=" list-group-item clearfix" style="padding:5px;">
+                    <div>
+                    <div id="group_@item.Id" class="col-md-12  border-gn-dark-gray" style="padding:0px;">
+                        <div class="col-md-12 bg-gn-medium-gray white">
+                            <span class="col-md-10" style="padding:5px;">&nbsp;<span>@item.Name</span></span>
+                                
+                                <div class="col-md-2 pull-right" style="padding:5px;">
+
+                                @if (Model.AnalysisStatus.Count == 0)
+                                { 
+                                    <span id="confirm_remove_@item.Id">
+                                        @Html.BootstrapActionIconLink("Associate Existing Samples", "List", "Samples", new RouteValueDictionary(new { analysisRequestId = Model.Id, GNSampleTypeId = Model.AnalysisType.Id, GNSampleQualifierCode = "RNA", GroupId = item.Id }), "bg-clear white", "link")
+                                        &nbsp;
+                                        @Html.BootstrapActionIconLink("Create New Sample", "Create", "Samples", new RouteValueDictionary(new { analysisRequestId = Model.Id, analysisTypeId = Model.AnalysisType.Id, GNSampleQualifierCode = "RNA", GroupId = item.Id }), "bg-clear white", "plus")
+                                        &nbsp;
+                                        <a href="javascript:toggleConfirmDeletion('@item.Id')" class="bg-clear white" style="text-align:center" title="Remove from Group" alt="Remove from Group"><span class="glyphicon glyphicon-trash"></span></a>
+                                    </span>
+                                    
+                                    <span id="remove_@item.Id" style="display:none">
+                                        &nbsp;&nbsp;
+                                        @Html.BootstrapActionIconLink("Delete this group", "RemoveGroup", "AnalysisRequests", new RouteValueDictionary(new { analysisRequestId = Model.Id, GroupId = item.Id }), "bg-clear white", "trash")
+                                        &nbsp;
+                                        <a href="javascript:toggleConfirmDeletion('@item.Id')" class="bg-clear white" style="text-align:center" title="Cancel" alt="Cancel"><span class="glyphicon glyphicon-remove"></span></a>
+                                    </span>
+                                }
+                                </div>
+                            </div>
+
+                        @if(item.GNSamples.Count > 0)
+                        {
+                            <center>                            
+                            <div class="alert alert-info small" roleinfoalert" style="width:450px;margin-bottom:2px;padding:5px;margin-top:35px;">
+                                @if ((item.GNAnalysisRequestControlGroups.Count + item.GNAnalysisRequestComparisonGroups.Count) == 0)
+                                {
+                                    <div>This group is not set up as neither a control nor a comparison group.</div>
+                                }
+                                else
+                                {
+                                    if (item.GNAnalysisRequestControlGroups != null && item.GNAnalysisRequestControlGroups.Count != 0)
+                                    {
+                                        <div>This is a control group for @item.GNAnalysisRequestControlGroups.Count other group(s).</div>
+                                    }
+                                    if (item.GNAnalysisRequestComparisonGroups != null && item.GNAnalysisRequestComparisonGroups.Count != 0)
+                                    {
+                                        <div>This is a comparison group for @item.GNAnalysisRequestComparisonGroups.Count other group(s).</div>
+                                    }
+                                }                                
+                            </div>
+                            </center>
+                        }
+                        
+                        @if (item.GNSamples != null && item.GNSamples.Count != 0)
+                        {
+                            if (item.GNSamples.Count < 3 && Model.AnalysisStatus.Count == 0)
+                            {
+                                <center><div class="alert alert-warning small" role="alert" style="width:450px;margin-bottom:2px;padding:5px;margin-top:15px;">Although you can leave this group with this number of samples, we strongly recommend having at least three (3) samples for best results. <a href="http://support.genomenext.com/" target="_blank">Why?</a></div></center>
+                            }
+                            <div class="" style="padding:5px;">
+
+                                @foreach (var itemSample in item.GNSamples)
+                                {
+                                    <div class="col-md-12 border-gn-light-gray">
+
+                                        <div style="padding:0px;" class="col-md-10">
+                                            <img class="pull-left" style="height:14px;padding-right:6px;"
+                                                 src="@Url.Content("~/Content/icons/samples.png")" />
+                                            <p class="small text-inline">
+                                                <a href="@Url.Action("Details", "Samples", new RouteValueDictionary(new { id = itemSample.Id }))">
+                                                    @itemSample.Name (@itemSample.GNReplicateCode Replicates)
+                                                </a>
+                                                <br />@itemSample.SampleType.Name, @itemSample.ReadTypeDescription, @itemSample.CloudFiles.Count files
+                                            </p>
+
+                                        <p class="small text-inline alert-danger">
+                                            <br />
+                                            @if (itemSample.CloudFiles.Count == 0)
+                                            { <span class="glyphicon glyphicon-remove"></span><span>&nbsp;No files associated.</span><br /> }
+                                            @if (!itemSample.IsReady)
+                                            { <span class="glyphicon glyphicon-remove"></span><span>&nbsp;Marked as "incomplete upload".</span><br /> }
+                                            @if (!itemSample.IsValidPairEnded)
+                                            {<span class="glyphicon glyphicon-remove"></span><span>&nbsp;Invalid paired-end set of files.</span> }
+                                            @if (!itemSample.IsValidSingleEnded)
+                                            {<span class="glyphicon glyphicon-remove"></span><span>&nbsp;Invalid single-end set of files.</span> }
+                                        </p>
+                                    </div>
+                                                           
+                                    @if (Model.AnalysisStatus.Count == 0)
+                                    {
+                                        <div id="remove_@itemSample.Id" style="display:none">
+                                            <div class="col-md-2" style="padding:0;">
+                                                @Html.BootstrapActionIconLink("Confirm", "RemoveFromAnalysisRequest", "Samples", new RouteValueDictionary(new { id = itemSample.Id, analysisRequestId = Model.Id, GroupId = item.Id, returnToAnalysis = "true" }), "gray", "trash")
+                                                <a href="javascript:toggleConfirmDeletion('@itemSample.Id')" class="btn gray btn-sm" style="text-align:center" title="Cancel" alt="Cancel"><span class="glyphicon glyphicon-remove"></span></a>
+                                             </div>
+                                        </div>
+
+                                        <div id="confirm_remove_@itemSample.Id">                                        
+                                            <div class="col-md-2" style="padding:0;">
+                                                 @Html.BootstrapActionIconLink("See Sample Details", "Details", "Samples", new RouteValueDictionary(new { id = itemSample.Id }), "gray", "th-large", null, false, false, true)
+                                                <a href="javascript:toggleConfirmDeletion('@itemSample.Id')" class="btn gray btn-sm" style="text-align:center" title="Remove from Group" alt="Remove from Group"><span class="glyphicon glyphicon-trash"></span></a>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                i++;
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <center>
+                                <p class="bg-danger alert-danger" align="center" id="error_group_association" style="width:450px;margin-bottom:5px;padding:5px;margin-top:35px;">
+                                    <span>Each group must have at least 1 sample.</span>
+                                </p>
+                            </center>
+                        }
+                    </div>
+
+                    </div>
+
+                </div>
+                i++;
+            }
+        }
+        else
+        {
+            <center>
+                <p class="bg-danger alert-danger" align="center" id="error_group_association" style="width:450px;margin-bottom:5px;padding:5px;margin-top:35px;">
+                    <span>Please create at least two (2) groups.</span>
+                </p>
+            </center>
+        }
+}

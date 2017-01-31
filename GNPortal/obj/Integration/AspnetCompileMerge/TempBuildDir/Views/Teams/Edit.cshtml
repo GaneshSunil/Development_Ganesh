@@ -1,0 +1,34 @@
+﻿@model GenomeNext.Data.EntityModel.GNTeam
+
+@{
+    ViewBag.Title = Model.Name;
+    
+    var teamMembers = Model.TeamMembers.Where(tm => (!tm.Contact.IsInviteAccepted.HasValue || tm.Contact.IsInviteAccepted.Value));
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/teams_white.png";
+    ViewData["ModuleCtl"] = "Teams";
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+}
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            @Html.Partial("~/Views/Teams/_EditPartial.cshtml", Model)
+
+            @Html.Partial("~/Views/Teams/_TeamMembersPartial.cshtml", Model)
+
+        </div>
+
+        <div class="col-md-6">
+
+            @Html.Partial("~/Views/Teams/_TeamProjectsPartial.cshtml", Model)
+
+            @Html.Partial("~/Views/Teams/_TeamAnalysesPartial.cshtml", Model)
+
+        </div>
+
+    </div>
+}

@@ -1,0 +1,77 @@
+﻿@model GenomeNext.Data.EntityModel.GNLog
+
+@{
+    ViewBag.Title = "Log Detail";
+}
+
+
+<h2>
+    <span class="glyphicon glyphicon-list gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "Logs", null, "info", "chevron-right",null,true)
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="form-horizontal col-md-12">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Server)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Server)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Thread)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Thread)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Level)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logger)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logger)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Exception)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Exception)
+        </dd>
+
+    </dl>
+</div>

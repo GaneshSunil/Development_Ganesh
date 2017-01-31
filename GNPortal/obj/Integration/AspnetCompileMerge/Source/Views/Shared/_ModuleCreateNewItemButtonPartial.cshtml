@@ -1,0 +1,31 @@
+﻿
+@if ((bool)ViewBag.CanCreate)
+{
+
+    if (Request["display"] != null && Request["display"] == "list")
+    {
+    }
+    else
+    {
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 flushLeft clickable"
+             onclick="window.location.href='@Url.Action("Create")'">
+            <div id="createNewItemPanel" class="panel bg-gn-medium-gray @ViewBag.BoxHeightClass">
+                <div class="panel-body">
+                    <div id="createNewItemPanelLinkContainer" class="col-md-12 text-center">
+                        @Html.BootstrapRowSpacer()
+                        <img class="img-responsive col-xs-4 col-xs-offset-4 col-md-6 col-md-offset-3"
+                             src="@Url.Content((string)ViewData["ModuleIconWhitePath"])" />
+                        <div class="col-xs-12 col-md-12">
+                            <h5>
+                                <a href="@Url.Action("Create")" class="white" title="Create New" alt="Create New">
+                                    Create New @ViewData["ModuleItemName"]
+                                </a>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+}

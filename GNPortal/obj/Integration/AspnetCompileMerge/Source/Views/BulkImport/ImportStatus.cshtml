@@ -1,0 +1,109 @@
+﻿@model GenomeNext.Data.EntityModel.GNBulkImportStatus
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    if (Model.IsComplete)
+    {
+        ViewBag.Title = "Import Sample Index : Completed";
+    }
+    else
+    {
+        ViewBag.Title = "Import Sample Index : Processing";
+    }
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/samples_white.png";
+
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            autoPageRefresh(15);
+        });
+
+        function autoPageRefresh(refreshIntervalSecs) {
+            setTimeout("location.reload(true);", refreshIntervalSecs * 1000);
+        }
+    </script>
+}
+
+@section ModulePanelBody {
+
+
+    <div class="col-md-12 panel form-horizontal bg-white">
+
+        @Html.BootstrapRowSpacer()
+
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="dl-horizontal">
+            
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ImportStartDateTime)
+                    </dt>
+                    <dd>
+                        @if (Model.ImportStartDateTime.HasValue)
+                        {
+                            @Html.Raw(TimeZoneInfo.ConvertTime(Model.ImportStartDateTime.Value, contactForUser.GNOrganization.OrgTimeZoneInfo))
+                        }
+                        else
+                        {
+                            <span>Not yet started.</span>
+                        }
+                    </dd>
+
+
+                    @if (Model.IsComplete && Model.ImportEndDateTime.HasValue)
+                    {
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ImportEndDateTime)
+                        </dt>
+                        <dd>
+                            @Html.Raw(TimeZoneInfo.ConvertTime(Model.ImportEndDateTime.Value, contactForUser.GNOrganization.OrgTimeZoneInfo))
+                        </dd>
+                    }
+
+                    @Html.DisplayFieldFor(model => model.TotalRecordCount)
+                    @Html.DisplayFieldFor(model => model.ImportedRecordCount)
+                    @Html.DisplayFieldFor(model => model.FailedRecordCount)
+                    @Html.DisplayFieldFor(model => model.DuplicateRecordCount)
+                </dl>
+            </div>
+            <div class="col-md-6">
+                <dl class="dl-horizontal">
+                    @Html.DisplayFieldFor(model => model.TeamsCreatedCount)
+                    @Html.DisplayFieldFor(model => model.ProjectsCreatedCount)
+                    @Html.DisplayFieldFor(model => model.AnalysesCreatedCount)
+                    @Html.DisplayFieldFor(model => model.SamplesCreatedCount)
+                    @Html.DisplayFieldFor(model => model.FilesCreatedCount)
+                </dl>
+            </div>
+        </div>
+
+        @if (Model.BulkImportLogs.Count(l => l.IsError == true) != 0)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Import Errors</h5>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-gn">
+                            <tr>
+                                <th class="col-md-1">@Html.DisplayNameFor(model => Model.BulkImportLogs.FirstOrDefault().RecordRowId)</th>
+                                <th class="col-md-12">@Html.DisplayNameFor(model => Model.BulkImportLogs.FirstOrDefault().Message)</th>
+                            </tr>
+                            @foreach (var item in Model.BulkImportLogs.Where(l => l.IsError == true).OrderBy(l => l.RecordRowId))
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.RecordRowId)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Message)</td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+}

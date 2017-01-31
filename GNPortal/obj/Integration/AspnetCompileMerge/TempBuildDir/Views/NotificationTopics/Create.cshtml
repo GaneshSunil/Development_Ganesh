@@ -1,0 +1,161 @@
+﻿@model GenomeNext.Data.EntityModel.GNNotificationTopic
+
+@{
+    ViewBag.Title = "Create New Notification Topic";
+}
+
+<script src="//cdn.ckeditor.com/4.4.5/full-all/ckeditor.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <h2>
+        <span class="glyphicon glyphicon-envelope gn-green"></span>
+        @ViewBag.Title
+        <span class="pull-right">
+            @Html.BootstrapActionButton("Back to List", "Index", "NotificationTopics", null, "info", "chevron-left")
+            @Html.BootstrapFormSaveButton("Create")
+        </span>
+    </h2>
+
+    @Html.BootstrapRowSpacer()
+
+    <div class="form-horizontal">
+        <div class="col-md-6 well well-sm">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextArea("Description", null, 3, 40, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Format, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    <input type="radio" name="Format" id="Format" value="EMAIL" checked />E-mail&nbsp;
+                    <input type="radio" name="Format" id="Format" value="SMS" />SMS
+                    @Html.ValidationMessageFor(model => model.Format, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Priority, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    <input type="radio" name="Priority" id="Priority" value="LOW" />Low&nbsp;
+                    <input type="radio" name="Priority" id="Priority" value="NORMAL" checked />Normal&nbsp;
+                    <input type="radio" name="Priority" id="Priority" value="HIGH" />High
+                    @Html.ValidationMessageFor(model => model.Priority, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    <input type="radio" name="Status" id="Status" value="ACTIVE" checked />ACTIVE&nbsp;
+                    <input type="radio" name="Status" id="Status" value="DRAFT" />DRAFT
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SendingCondition, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.SendingCondition, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SendingCondition, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6 well well-sm">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Sender, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Sender", null, htmlAttributes: new { @class = "form-control", @style = "width:25em" })
+                    @Html.ValidationMessageFor(model => model.Sender, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("TO", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.CheckBoxFor(model => model.NotifyObjectCreatorBool, htmlAttributes: new { @checked = "checked" })
+                    @Html.LabelFor(model => model.NotifyObjectCreator, htmlAttributes: new { @style = "font-weight:normal" })
+                    @Html.ListBox("ToRolesList", null, htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("CC", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.ListBox("CCRolesList", null, htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("BCC", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.ListBox("BCCRolesList", null, htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.IsSubscriptionOptional, htmlAttributes: new { @class = "control-label col-md-5" })
+                <div class="col-md-5">
+                    <input type="radio" name="IsSubscriptionOptional" id="IsSubscriptionOptional" value="Y" />Yes&nbsp;
+                    <input type="radio" name="IsSubscriptionOptional" id="IsSubscriptionOptional" value="N" checked />No
+                    @Html.ValidationMessageFor(model => model.IsSubscriptionOptional, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 well well-sm">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-11">
+                    <textarea name="Message" id="Message" rows="10" cols="50"></textarea>
+                    <script>
+                        // Replace the <textarea id="editor1"> with a CKEditor
+                        // instance, using default configuration.
+
+                        CKEDITOR.config.toolbarCanCollapse = true;
+                        CKEDITOR.config.scayt_autoStartup = true;   //spell checker
+                        CKEDITOR.replace('Message');
+                    </script>
+                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }

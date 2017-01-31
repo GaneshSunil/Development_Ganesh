@@ -1,0 +1,96 @@
+﻿@model GenomeNext.Portal.Models.MyBillingBillsModel
+
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    Layout = "~/Views/Account/MyBilling.cshtml";
+    
+    ViewBag.SubTitle1 = "Bills";
+    ViewBag.SubTitle2 = "Track all bills created for this account";
+    ViewBag.IconName = "billing_bills";
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            selectMyBillingNavButton(3);
+        });
+    </script>
+}
+
+<div class="row">
+
+    <div class="col-md-12 flushRight">
+
+        @if (Model.MyAccount.Invoices != null && Model.MyAccount.Invoices.Count != 0)
+        {
+            using (Html.BeginGNPanel(true))
+            {
+                using (Html.BeginGNPanelHeading("Bills for this Account"))
+                {
+                    <span class="glyphicon glyphicon-question-sign" title="Click on each Invoice to open it and view its details."></span>
+                }
+
+                using (Html.BeginGNPanelBody(true))
+                {
+                    int i = 0;
+                    foreach (var item in Model.MyAccount.Invoices.OrderByDescending(inv=>inv.InvoiceEndDate))
+                    {
+                        using (Html.BeginGNClickableListGroupItem(Url.Action("MyBillingBillDetail", "Account", new { id = item.Id }), (i % 2) != 0))
+                        {
+                            <div class="col-md-2">
+                                <strong>Invoice #@Html.DisplayFor(modelItem => item.ExternalInvoiceNum)</strong>
+                                <div class="small" style="font-size:.7em;">
+                                    @TimeZoneInfo.ConvertTime(item.InvoiceStartDate, contactForUser.GNOrganization.OrgTimeZoneInfo).ToShortDateString()
+                                    <span>-</span>
+                                    @TimeZoneInfo.ConvertTime(item.InvoiceEndDate, contactForUser.GNOrganization.OrgTimeZoneInfo).ToShortDateString()
+                                </div>
+                                <div class="small" style="font-size:.7em;">
+                                    @Html.DisplayFor(modelItem => item.Status) :
+                                    NET @Html.DisplayFor(modelItem => item.NetTerms)
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-nowrap" style="margin-right:-20px;">
+                                <span class="badge bg-gn-green white text-padded col-md-10">
+                                    @Html.DisplayFor(modelItem => item.CreditsTotal)
+                                </span>
+                                <strong class="gn-dark-gray col-md-2 pull-right flushRight" style="padding-top:6px;">
+                                    -
+                                </strong>
+                                <span class="small text-muted text-center col-md-10" style="padding-top:3px;">
+                                    Credits/Payments
+                                </span>
+                            </div>
+                            <div class="col-md-3 text-nowrap">
+                                <span class="badge alert-danger text-padded col-md-10">
+                                    @Html.DisplayFor(modelItem => item.DebitsTotal)
+                                </span>
+                                <strong class="gn-dark-gray col-md-2 pull-right flushRight" style="padding-top:6px;">
+                                    =
+                                </strong>
+                                <span class="small text-muted text-center col-md-10" style="padding-top:3px;">
+                                    Charges
+                                </span>
+                            </div>
+                            <div class="col-md-2 text-nowrap flushLeft flushRight">
+                                @{var balanceClass = (item.Balance > 0.0) ? "alert-danger" : "bg-gn-green white";}
+                                <span class="badge @balanceClass text-padded col-md-12">
+                                    @Html.DisplayFor(modelItem => item.Balance)
+                                </span>
+                                <span class="small text-muted text-center col-md-12" style="padding-top:3px;">
+                                    Invoice Total
+                                </span>
+                            </div>
+                        }
+                        i++;
+                    }
+                }
+            }
+        }
+        else
+        {
+            <span>No invoices exist for this account.</span>
+        }
+    </div>
+
+</div>

@@ -1,0 +1,123 @@
+﻿@model GenomeNext.Data.EntityModel.GNOrganization
+
+@{
+    ViewBag.Title = "Edit Organization";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h2>
+        <span class="glyphicon glyphicon-th gn-green"></span>
+        @ViewBag.Title
+        <span class="pull-right">
+            @Html.BootstrapActionButton("Back to List", "Index", "Organizations", null, "info", "chevron-left")
+            @Html.BootstrapActionButton("View", "Details", "Organizations", new RouteValueDictionary(new { id = Model.Id }), "primary", "th", null)
+            @Html.BootstrapFormSaveButton()
+        </span>
+    </h2>
+
+    @Html.BootstrapRowSpacer()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.AWSConfigId)
+        @Html.HiddenFor(model => model.GNContactId)
+
+        @Html.BootstrapRowSpacer()
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AWSConfig, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.AWSConfig.AWSAccessKeyId, new { htmlAttributes = new { @class = "form-control" } })
+                <br/>
+                @Html.DisplayFor(model => model.AWSConfig.AWSRegionSystemName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AWSConfig, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GNSettingsTemplate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("GNSettingsTemplateId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GNSettingsTemplateId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UTCOffsetDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("UTCOffsetDescription", null, htmlAttributes: new { @class = "form-control" })
+                @Html.HiddenFor(model => model.UTCOffset)
+                @Html.ValidationMessageFor(model => model.UTCOffset, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Contacts, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="table-responsive col-md-12">
+                    <p>
+                        @Html.BootstrapActionButton("Create New Contact", "Create", "Contacts", new RouteValueDictionary(new { organizationId = Model.Id }), "info", "plus", "sm")
+                        @Html.BootstrapActionButton("Invite New Contact", "Invite", "Contacts", new RouteValueDictionary(new { organizationId = Model.Id }), "info", "envelope", "sm")   
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-gn">
+                            <tr>
+                                <th class="col-md-4">
+                                    Name
+                                </th>
+                                <th class="col-md-4">
+                                    Email
+                                </th>
+                                <th class="col-md-4"></th>
+                            </tr>
+
+                            @foreach (var item in Model.Contacts)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FullName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td class="text-center">
+                                        @if (item.Id != Model.GNContactId)
+                                        {
+                                            @Html.BootstrapActionButton("Primary", "MakePrimary", "Organizations", new RouteValueDictionary(new { contactId = item.Id, organizationId = Model.Id }), "info", "star", "sm")
+                                        }
+                                        @Html.BootstrapActionButton("View", "Details", "Contacts", new RouteValueDictionary(new { id = item.Id, organizationId = Model.Id }), "success", "user", "sm")
+                                        @Html.BootstrapActionButton("Edit", "Edit", "Contacts", new RouteValueDictionary(new { id = item.Id, organizationId = Model.Id }), "warning", "cog", "sm")
+                                        @Html.BootstrapActionButton("Delete", "Delete", "Contacts", new RouteValueDictionary(new { id = item.Id, organizationId = Model.Id }), "danger", "trash", "sm")
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

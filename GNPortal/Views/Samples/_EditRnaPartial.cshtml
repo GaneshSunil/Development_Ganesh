@@ -1,0 +1,225 @@
+﻿@model GenomeNext.Data.EntityModel.GNSample
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    using (Html.BeginGNPanel())
+    {
+        //Heading
+        using (Html.BeginGNPanelHeading("RNA Sample Info", "info-sign"))
+        {
+            <span class="pull-right">
+                @if (Model.CanDelete)
+                {
+                    @Html.BootstrapActionIconLink("Delete", "Delete", "Samples", new RouteValueDictionary(new { id = Model.Id, analysisRequestId = Request["analysisRequestId"] }), "white", "trash", null)    
+                }                
+            </span>
+        }
+        
+
+        //Body
+        using (Html.BeginGNPanelBody())
+        {
+                    
+            <script type="text/javascript">
+                function explain(id)
+                {
+                    $('#' + id).toggle();
+                }
+            </script>
+    
+    
+            @Styles.Render("~/Content/jquery-ui")
+            @Styles.Render("~/Content/tagit")
+            @Styles.Render("~/Content/tagitzendesk")
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/jquery-val")
+            @Scripts.Render("~/bundles/jquery-ui")
+            @Scripts.Render("~/bundles/tagit")
+            <script>
+                $(function () {
+                    var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'];
+
+                    //-------------------------------
+                    // Minimal
+                    //-------------------------------
+                    $('#myTags').tagit();
+
+                    //-------------------------------
+                    // Single field
+                    //-------------------------------
+                    $('#singleFieldTags').tagit({
+                        availableTags: sampleTags,
+                        // This will make Tag-it submit a single form value, as a comma-delimited field.
+                        singleField: true,
+                        singleFieldNode: $('#Tags'),
+
+                        removeConfirmation: true
+                    });
+
+                    // singleFieldTags2 is an INPUT element, rather than a UL as in the other
+                    // examples, so it automatically defaults to singleField.
+                    $('#singleFieldTags2').tagit({
+                        availableTags: sampleTags
+                    });
+
+                    //-------------------------------
+                    // Preloading data in markup
+                    //-------------------------------
+                    $('#myULTags').tagit({
+                        availableTags: sampleTags, // this param is of course optional. it's for autocomplete.
+                        // configure the name of the input field (will be submitted with form), default: item[tags]
+                        itemName: 'item',
+                        fieldName: 'tags'
+                    });
+
+                    //-------------------------------
+                    // Tag events
+                    //-------------------------------
+                    var eventTags = $('#eventTags');
+
+                    var addEvent = function (text) {
+                        $('#events_container').append(text + '<br>');
+                    };
+
+                    eventTags.tagit({
+                        availableTags: sampleTags,
+                        beforeTagAdded: function (evt, ui) {
+                            if (!ui.duringInitialization) {
+                                addEvent('beforeTagAdded: ' + eventTags.tagit('tagLabel', ui.tag));
+                            }
+                        },
+                        afterTagAdded: function (evt, ui) {
+                            if (!ui.duringInitialization) {
+                                addEvent('afterTagAdded: ' + eventTags.tagit('tagLabel', ui.tag));
+                            }
+                        },
+                        beforeTagRemoved: function (evt, ui) {
+                            addEvent('beforeTagRemoved: ' + eventTags.tagit('tagLabel', ui.tag));
+                        },
+                        afterTagRemoved: function (evt, ui) {
+                            addEvent('afterTagRemoved: ' + eventTags.tagit('tagLabel', ui.tag));
+                        },
+                        onTagClicked: function (evt, ui) {
+                            addEvent('onTagClicked: ' + eventTags.tagit('tagLabel', ui.tag));
+                        },
+                        onTagExists: function (evt, ui) {
+                            addEvent('onTagExists: ' + eventTags.tagit('tagLabel', ui.existingTag));
+                        }
+                    });
+
+                    //-------------------------------
+                    // Read-only
+                    //-------------------------------
+                    $('#readOnlyTags').tagit({
+                        readOnly: true
+                    });
+
+                    //-------------------------------
+                    // Tag-it methods
+                    //-------------------------------
+                    $('#methodTags').tagit({
+                        availableTags: sampleTags
+                    });
+
+                    //-------------------------------
+                    // Allow spaces without quotes.
+                    //-------------------------------
+                    $('#allowSpacesTags').tagit({
+                        availableTags: sampleTags,
+                        allowSpaces: true
+                    });
+
+                    //-------------------------------
+                    // Remove confirmation
+                    //-------------------------------
+                    $('#removeConfirmationTags').tagit({
+                        availableTags: sampleTags,
+                        removeConfirmation: true
+                    });
+
+                });
+            </script>
+    
+            <div class="form-horizontal col-md-12">
+
+                @Html.HiddenFor(model => model.CreatedBy)
+                @Html.HiddenFor(model => model.CreateDateTime)
+                @Html.HiddenFor(model => model.Tags)
+                @Html.HiddenFor(model => model.GNSampleQualifierCode)
+                @Html.HiddenFor(model => model.GNSampleTypeId)
+                @Html.HiddenFor(model => model.IsPairEnded)
+                @Html.HiddenFor(model => model.Gender)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GNOrganizationId, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DisplayFor(model => model.Organization.Name)
+                        @Html.HiddenFor(model => model.GNOrganizationId)
+                        @Html.ValidationMessageFor(model => model.GNOrganizationId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GNReplicateCode, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownList("GNReplicateCode", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.GNReplicateCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsReady, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.RadioButtonFor(model => model.IsReady, true)
+                        @Html.LabelFor(model => model.IsReady, "Yes")
+
+                        @Html.RadioButtonFor(model => model.IsReady, false)
+                        @Html.LabelFor(model => model.IsReady, "No. Partial upload")
+
+                        @Html.ValidationMessageFor(model => model.IsReady, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DisplayFor(model => model.Id)
+                        @Html.HiddenFor(model => model.Id)
+                    </div>
+                </div>
+
+                @{
+                    ViewData["ViewMode"] = "Edit";
+                    ViewData["CreateDateTime"] = Model.CreateDateTime;
+                    ViewData["LeftColWidth"] = "4";
+                    ViewData["RightColWidth"] = "8";
+                }
+                @Html.Partial("_AuditModelPartial", Model, ViewData)
+
+            </div>
+        }
+
+        //Footer
+        using (Html.BeginGNPanelFooter())
+        {
+            <div class="pull-left">
+                @Html.BootstrapActionButton("Cancel", "Details", "Samples", new RouteValueDictionary(new { id = Model.Id, analysisRequestId = Request["analysisRequestId"] }), "bg-gn-medium-gray white", "remove")
+            </div>
+            <div class="pull-right">
+                @Html.BootstrapFormSaveButton("Save", "floppy-disk", "bg-gn-green white")
+            </div>
+        }
+    }
+}

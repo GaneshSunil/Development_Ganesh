@@ -1,0 +1,109 @@
+﻿@model GenomeNext.Data.EntityModel.GNOrganization
+
+@{
+    ViewBag.Title = "Organization";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-th gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "Organizations", null, "info", "chevron-left")
+        @Html.BootstrapActionButton("Audit", "Index", "Audit", new RouteValueDictionary(new { searchEntityId = Model.Id, searchEntityType = "ORGANIZATION" }), "info", "eye-open", "sm")
+        @Html.BootstrapActionButton("Edit", "Edit", "Organizations", new RouteValueDictionary(new { id = Model.Id }), "warning", "cog", null)
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="form-horizontal">
+
+    @Html.BootstrapRowSpacer()
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GNSettingsTemplate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GNSettingsTemplate.Name) : @Html.DisplayFor(model => model.GNSettingsTemplate.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UTCOffset)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UTCOffset)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AWSConfig)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AWSConfig.AWSAccessKeyId)
+            <br />
+            @Html.DisplayFor(model => model.AWSConfig.AWSRegionSystemName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contacts)
+        </dt>
+
+        <dd>
+            <div class="table-responsive col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered table-gn">
+                        <tr>
+                            <th class="col-md-4">
+                                Name
+                            </th>
+                            <th class="col-md-4">
+                                Email
+                            </th>
+                            <th class="col-md-4"></th>
+                        </tr>
+
+                        @foreach (var item in Model.Contacts)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FullName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td class="text-center">
+                                    @if (item.Id != Model.GNContactId)
+                                    {
+                                        @Html.BootstrapActionButton("Primary", "MakePrimary", "Organizations", new RouteValueDictionary(new { contactId = item.Id, organizationId = Model.Id }), "info", "star", "sm")
+                                    }
+                                    @Html.BootstrapActionButton("View", "Details", "Contacts", new RouteValueDictionary(new { id = item.Id, organizationId = Model.Id }), "success", "user", "sm")
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </dd>
+
+    </dl>
+</div>

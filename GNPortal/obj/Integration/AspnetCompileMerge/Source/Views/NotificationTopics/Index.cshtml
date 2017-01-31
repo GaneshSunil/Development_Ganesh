@@ -1,0 +1,76 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNNotificationTopic>
+
+@{
+    ViewBag.Title = "Notification Topics";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-envelope gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Create New", "Create", "NotificationTopics", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "plus")
+    </span>
+</h2>
+
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th data-column-id="title">
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th data-column-id="format">
+                @Html.DisplayNameFor(model => model.Format)
+            </th>
+            <th data-column-id="status">
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th data-column-id="link" data-formatter="link" data-sortable="false"></th>
+        </tr>
+
+            @{ var row = -1; }
+        <tbody>
+            @foreach (var item in Model.OrderBy(a => a.Code))
+            {
+                row++;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Format)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td data-formatter="link">
+                        @Html.BootstrapActionIcon("View", "Details", "NotificationTopics", new RouteValueDictionary(new { id = item.Id }), "success")
+                        @Html.BootstrapActionIcon("Edit", "Edit", "NotificationTopics", new RouteValueDictionary(new { id = item.Id }), "warning")
+                        @if (item.GNNotificationTopicAddressees.Count == 0)
+                        {
+                            @Html.BootstrapActionIcon("Delete", "Delete", "NotificationTopics", new RouteValueDictionary(new { id = item.Id }), "danger")
+                        }
+                        else
+                        {
+                    <!--Html.BootstrapActionIcon("Subscribers", "Index", "NotificationTopicSubscribers", new RouteValueDictionary(new { GNNotificationTopicId = item.Id }), "primary")-->
+                            if (item.GNNotificationLogs.Count > 0)
+                            {
+                                @Html.BootstrapActionIcon("Logs", "Index", "NotificationLogs", new RouteValueDictionary(new { GNNotificationTopicId = item.Id }), "info")
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>

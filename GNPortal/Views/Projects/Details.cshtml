@@ -1,0 +1,28 @@
+﻿@model GenomeNext.Data.EntityModel.GNProject
+
+@{
+    ViewBag.Title = Model.Name;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/projects_white.png";
+    ViewData["ModuleCtl"] = "Projects";
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+}
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            @Html.Partial("~/Views/Projects/_InfoPartial.cshtml", Model)
+
+        </div>
+
+        <div class="col-md-6">
+
+            @Html.Partial("~/Views/Projects/_ProjectAnalysesPartial.cshtml", Model)
+
+        </div>
+
+    </div>
+}

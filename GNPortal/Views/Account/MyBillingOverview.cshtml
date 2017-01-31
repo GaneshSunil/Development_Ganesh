@@ -1,0 +1,100 @@
+﻿@model GenomeNext.Portal.Models.MyBillingOverviewModel
+
+@{
+    Layout = "~/Views/Account/MyBilling.cshtml";
+
+    ViewBag.SubTitle1 = "Billing Overview";
+    ViewBag.SubTitle2 = Model.MyAccount.Organization.Name;
+    ViewBag.IconName = "billing_overview";
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            selectMyBillingNavButton(0);
+        });
+    </script>
+}
+
+<div class="row col-md-12 flushLeft flushRight">
+
+    <!-- Month to Date -->
+    <div class="col-md-4 flushLeft">
+
+        <div class="col-md-12 flushLeft flushRight text-padded bg-gn-light-gray">
+            <h4 class="text-inline">Month to Date</h4>
+            <span class="pull-right text-padded-right">@(DateTime.Now.Month + "/1-" + DateTime.Now.Month + "/" + DateTime.Now.Day)</span>
+        </div>
+
+        @{
+            string myRemainingBudgetStyle = Model.MyRemainingBudget > 0 ? "gn-green" : (Model.MyRemainingBudget < 0 ? "gn-red" : "");
+        }
+        <div class="col-md-12 flushLeft flushRight text-padded-top">
+            <strong class="gn-green text-uppercase text-padded-left small">Available to Spend</strong>
+            <span class="pull-right text-padded-right @myRemainingBudgetStyle">@Html.DisplayFor(model => model.MyRemainingBudget)</span>
+        </div>
+
+        <div class="col-md-12 flushLeft flushRight text-padded-top">
+            <strong class="gn-green text-uppercase text-padded-left small">
+                Current Month Spend
+            </strong>
+            <span class="pull-right text-padded-right">@Html.DisplayFor(model => model.CurrentMonthSpend)</span>
+        </div>
+
+    </div>
+
+    @if (Model.MyAccount.BillingMode == GenomeNext.Data.EntityModel.GNAccount.BillingModeType.INVOICE.GetCode())
+    {
+        <!-- Total Balance -->
+        <div class="col-md-4">
+
+            <div class="col-md-12 flushLeft flushRight text-padded bg-gn-light-gray">
+                <h4 class="text-inline">Total Balance</h4>
+            </div>
+
+            <div class="col-md-12 flushLeft flushRight text-padded-top">
+                <strong class="gn-green text-uppercase text-padded-left small">Balance Past Due</strong>
+                <span class="pull-right text-padded-right" style="color:red;">@Html.DisplayFor(model => model.MyBalancePastDue)</span>
+            </div>
+
+            <div class="col-md-12 flushLeft flushRight text-padded-top">
+                <strong class="gn-green text-uppercase text-padded-left small">
+                    Last Month
+                </strong>
+                <span class="pull-right text-padded-right">@Html.DisplayFor(model => model.MyLastInvoice.Balance)</span>
+            </div>
+
+            <div class="col-md-12 flushLeft flushRight text-padded-top text-padded-bottom">
+                <strong class="gn-green text-uppercase text-padded-left small">
+                    Current Month
+                </strong>
+                <span class="pull-right text-padded-right">@Html.DisplayFor(model => model.MyCurrentInvoice.Balance)</span>
+            </div>
+
+            <div class="col-md-12 flushLeft flushRight text-padded-top" style="border-top:solid 1px rgb(67, 67, 67);">
+                <strong class="gn-green text-uppercase text-padded-left small">
+                    Total Amount Due
+                </strong>
+                <span class="pull-right text-padded-right">@Html.DisplayFor(model => model.MyAccount.Balance)</span>
+            </div>
+
+        </div>
+    }
+    
+    <!-- Storage -->
+    <div class="col-md-4 flushRight">
+
+        <div class="col-md-12 flushLeft flushRight text-padded bg-gn-light-gray">
+            <h4 class="text-inline">Storage</h4>
+        </div>
+
+        <div class="col-md-12 flushLeft flushRight text-padded-top">
+            <strong class="gn-green text-uppercase text-padded-left small">Current Storage</strong>
+            <span class="pull-right text-padded-right">@Math.Round(Model.MyStorageUsed, 3) @Model.StorageUnits</span>
+        </div>
+
+    </div>
+
+    @Html.BootstrapRowSpacer()
+
+</div>

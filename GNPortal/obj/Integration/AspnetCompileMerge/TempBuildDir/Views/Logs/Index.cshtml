@@ -1,0 +1,117 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNLog>
+
+@{
+    ViewBag.Title = "Logs";
+
+    //Setup Values for Searchable List Table/Control/Partials
+    int resultsColSpan = 7;
+    ViewData["ResultsColSpan"] = resultsColSpan;
+    ViewData["SearchListItemsCount"] = Model.Count();
+    ViewData["SearchTextOptions"] = new string[] { "All", "Server", "Thread", "Level", "Logger", "Message" };
+}
+
+
+<h2>
+    <span class="glyphicon glyphicon-list gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        <span class="small">Set Log Level (for this Server-only)</span>
+        <span class="small">
+            @{
+                string levelName = "";
+
+                foreach (var repo in log4net.LogManager.GetAllRepositories())
+                {
+                    foreach (var logger in repo.GetCurrentLoggers().OfType<log4net.Repository.Hierarchy.Logger>())
+                    {
+                        if (logger.Level != null && string.IsNullOrEmpty(levelName))
+                        {
+                            levelName = logger.Level.Name;
+                            break;
+                        }
+                    }
+                }
+            }
+            [@Html.Raw(levelName)]
+        </span>
+        <span class="btn-group">
+            @Html.BootstrapActionButton("All", "SetLogLevel", "Logs", new RouteValueDictionary(new { level = int.MinValue, levelName = "All" }), "primary")
+            @Html.BootstrapActionButton("Debug", "SetLogLevel", "Logs", new RouteValueDictionary(new { level = 30000, levelName = "Debug" }), "info")
+            @Html.BootstrapActionButton("Info", "SetLogLevel", "Logs", new RouteValueDictionary(new { level = 40000, levelName = "Info" }), "info")
+            @Html.BootstrapActionButton("Warn", "SetLogLevel", "Logs", new RouteValueDictionary(new { level = 60000, levelName = "Warn" }), "warning")
+            @Html.BootstrapActionButton("Error", "SetLogLevel", "Logs", new RouteValueDictionary(new { level = 70000, levelName = "Error" }), "danger")
+            @Html.BootstrapActionButton("Fatal", "SetLogLevel", "Logs", new RouteValueDictionary(new { level = 110000, levelName = "Fatal" }), "danger")
+            @Html.BootstrapActionButton("Off", "SetLogLevel", "Logs", new RouteValueDictionary(new { level = int.MaxValue, levelName = "Off" }), "default")
+        </span>
+    </span>
+</h2>
+
+@Html.Partial("_SearchListControlPartial")
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Server)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Thread)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Level)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Logger)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th></th>
+        </tr>
+
+        @if (Model != null && Model.Count() != 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr class="small">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Server)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Thread)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Level)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Logger)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Message)
+                    </td>
+                    <td>
+                        @Html.BootstrapActionButton("View", "Details", "Logs", new RouteValueDictionary(new { id = item.Id }), "success", "th-large", "sm")
+                    </td>
+                </tr>
+            }
+
+            @Html.Partial("_SearchListMoreResultsPartial")
+        }
+        else
+        {
+            <tr>
+                <td colspan="@resultsColSpan">
+                    No logs found.
+                </td>
+            </tr>
+        }
+
+
+    </table>
+</div>

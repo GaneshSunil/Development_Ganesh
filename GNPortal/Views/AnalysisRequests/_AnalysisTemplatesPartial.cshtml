@@ -1,0 +1,63 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+}
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Test Templates", "stats"))
+    {
+        <span class="badge">@Model.GNAnalysisRequestGNTemplates.Count</span>
+        <span class="pull-right">
+                <span class="pull-right">
+                    @Html.BootstrapActionIconLink("Annotation Analysis", "AnnotationAnalysis", "Reports", new RouteValueDictionary(new { analysisRequestId = Model.Id, projectId = Model.GNProjectId, teamId = Request["teamId"] }), "bg-clear white", "stats")
+                    &nbsp;
+                    @Html.BootstrapActionIconLink("Associate Existing Templates", "List", "Templates", new RouteValueDictionary(new { analysisRequestId = Model.Id, projectId = Model.GNProjectId, teamId = Request["teamId"] }), "bg-clear white", "link")
+                    &nbsp;
+                    @Html.BootstrapActionIconLink("Create New Templates", "Create", "Templates", new RouteValueDictionary(new { analysisRequestId = Model.Id, projectId = Model.GNProjectId, teamId = Request["teamId"] }), "bg-clear white", "plus")
+                </span>
+            
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(true))
+    {
+        if (Model.GNAnalysisRequestGNTemplates != null && Model.GNAnalysisRequestGNTemplates.Count != 0)
+        {
+            int i = 0;
+            foreach (var item in Model.GNAnalysisRequestGNTemplates)
+            {
+                using (Html.BeginGNClickableListGroupItem(
+                    Url.Action("Details", "Templates", new { id = item.GNTemplateId, analysisRequestId = Model.Id }),
+                    (i % 2) != 0))
+                {
+                    <span class="flushLeft flushTop text-inline">
+
+                        <span class="flushLeft flushTop small text-inline"><span class="glyphicon glyphicon-stats"></span> @item.GNTemplate.Name version @item.GNTemplate.Version</span>
+                        <p class="small text-inline">
+                            (@item.GNTemplate.GNTemplateGenes.Count gene(s))
+                        </p>
+
+                        <p class="small text-inline alert-danger">
+                            <br />
+                            @if (item.GNTemplate.GNTemplateGenes.Count == 0)
+                            { <span class="glyphicon glyphicon-remove"></span><span>&nbsp;No genes associated.</span><br /> }
+                        </p>
+                   </span>
+                }
+                i++;
+            }
+        }
+        else
+        {
+            <div class="list-group-item">
+                <h5>
+                    No Templates have been found for this Analysis.
+                </h5>
+            </div>
+        }
+    }
+}

@@ -1,0 +1,55 @@
+﻿@model GenomeNext.Data.EntityModel.GNSampleRelationship
+
+@{
+    ViewBag.Title = "Delete Relationship for ";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-tree-deciduous gn-green"></span>
+    @ViewBag.Title <b><i>@Html.DisplayFor(model => model.GNLeftSample.Name)</i></b>
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "SampleRelationships", new RouteValueDictionary(new { GNLeftSampleId = Request["GNLeftSampleId"] }), "info", "chevron-left")
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="form-horizontal">
+    @Html.HiddenFor(model => Request["GNLeftSampleId"], new { htmlAttributes = new { @class = "form-control" } })
+    @Html.HiddenFor(model => Request["GNRightSampleId"], new { htmlAttributes = new { @class = "form-control" } })
+
+
+    <h4>Please confirm you want to delete this record:</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GNRightSample.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GNRightSample.Name)
+        </dd>
+
+        <dt>
+            Relationship to the sample
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GNSampleRelationshipType.Name)
+        </dd>
+        
+        <dd>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("organizationId", Request["organizationId"])
+
+                <button type="submit" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    Delete
+                </button>
+            }
+        </dd>
+    </dl>
+</div>

@@ -1,0 +1,5 @@
+﻿INSERT INTO [dbo].[AspNetRoles] ([Id], [Name]) VALUES (N'eb3e3558-9068-40c6-809b-8012c29a5d37', N'GN_ADMIN')
+INSERT INTO [dbo].[AspNetRoles] ([Id], [Name]) VALUES (N'7c797503-7367-4bd5-ab0e-bd759ddd2142', N'ORG_MANAGER')
+INSERT INTO [dbo].[AspNetRoles] ([Id], [Name]) VALUES (N'4aa47339-9413-423a-8304-940308d91e36', N'TEAM_MANAGER')
+INSERT INTO [dbo].[AspNetRoles] ([Id], [Name]) VALUES (N'6af2d704-6cdf-4f12-b61a-7915fb5d0415', N'TEAM_MEMBER')
+INSERT INTO [dbo].[AspNetRoles] ([Id], [Name]) VALUES (N'8e73e782-0855-4785-9926-16f5a3829b8f', N'PROJECT_MANAGER')

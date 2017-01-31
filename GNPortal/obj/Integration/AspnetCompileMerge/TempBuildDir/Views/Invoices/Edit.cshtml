@@ -1,0 +1,391 @@
+﻿@model GenomeNext.Data.EntityModel.GNInvoice
+
+@{
+    ViewBag.Title = "Edit Invoice";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h2>
+        <span class="glyphicon glyphicon-euro gn-green"></span>
+        @ViewBag.Title
+
+        <span class="pull-right">
+            @Html.BootstrapActionButton("Back to List", "Index", "Invoices", null, "info", "chevron-left")
+            @Html.BootstrapFormSaveButton()
+        </span>
+    </h2>
+
+    @Html.BootstrapRowSpacer()
+
+    <div class="form-horizontal col-md-12">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CreatedBy)
+        @Html.HiddenFor(model => model.CreateDateTime)
+
+        @Html.BootstrapRowSpacer()
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DisplayFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GNAccountId, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownList("GNAccountId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.GNAccountId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ExternalInvoiceNum, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.ExternalInvoiceNum, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ExternalInvoiceNum, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InvoiceStartDate, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.InvoiceStartDate, new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.InvoiceStartDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InvoiceEndDate, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.InvoiceEndDate, new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.InvoiceEndDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @{
+                    ViewData["ViewMode"] = "Edit";
+                    ViewData["CreatedBy"] = Model.CreatedByContact;
+                    ViewData["CreateDateTime"] = Model.CreateDateTime;
+                    ViewData["LeftColWidth"] = "4";
+                    ViewData["RightColWidth"] = "8";
+                }
+                @Html.Partial("_AuditModelPartial", null, ViewData)
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Status, "Status", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownList("Status", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NetTerms, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.NetTerms, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NetTerms, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SubTotal, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DisplayFor(model => model.SubTotal)
+                        @Html.HiddenFor(model => model.SubTotal)
+                        @Html.ValidationMessageFor(model => model.SubTotal, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TotalDiscountAmount, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DisplayFor(model => model.TotalDiscountAmount)
+                        @Html.HiddenFor(model => model.TotalDiscountAmount)
+                        @Html.ValidationMessageFor(model => model.TotalDiscountAmount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-4 text-danger">
+                        Invoice Total
+                    </label>
+                    <div class="col-md-8">
+                        <span class="text-danger">
+                            @Html.DisplayFor(model => model.Total)
+                        </span>
+                        @Html.HiddenFor(model => model.Total)
+                        @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PaymentsTotal, htmlAttributes: new { @class = "control-label col-md-4 text-success" })
+                    <div class="col-md-8">
+                        <span class="text-success">
+                            (@Html.DisplayFor(model => model.PaymentsTotal))
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-4">
+                        Invoice Balance
+                    </label>
+                    <div class="col-md-8">
+                        @Html.DisplayFor(model => model.Balance)
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+            <!-- Invoice Details -->
+            <div class="col-md-12">
+
+                <h4>
+                    @Html.DisplayNameFor(model => model.InvoiceDetails)
+                    <span class="pull-right">
+                        @Html.BootstrapActionButton("Enter Invoice Detail", "Create", "InvoiceDetails", new RouteValueDictionary(new { invoiceId = Model.Id }), "info", "usd", "sm")
+                    </span>
+                </h4>
+
+                @if (Model.InvoiceDetails != null && Model.InvoiceDetails.Count != 0)
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-gn">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.InvoiceDetails.FirstOrDefault().CreateDateTime)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.InvoiceDetails.FirstOrDefault().Description)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.InvoiceDetails.FirstOrDefault().UnitPrice)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.InvoiceDetails.FirstOrDefault().Quantity)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.InvoiceDetails.FirstOrDefault().SubTotal)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.InvoiceDetails.FirstOrDefault().DiscountAmount)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.InvoiceDetails.FirstOrDefault().Total)
+                                </th>
+                                <th class="col-md-1"></th>
+                            </tr>
+
+                            @foreach (var item in Model.InvoiceDetails.OrderByDescending(id => id.CreateDateTime))
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CreateDateTime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                        <br />
+                                        @Html.DisplayFor(modelItem => item.Transactions.Count)
+                                        Transactions
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UnitPrice)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SubTotal)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DiscountAmount)
+                                        @Html.DisplayFor(modelItem => item.DiscountType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Total)
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.BootstrapActionButton("View", "Details", "InvoiceDetails", new RouteValueDictionary(new { id = item.Id, invoiceId = Model.Id }), "success", "th", "sm")
+                                        @Html.BootstrapActionButton("Edit", "Edit", "InvoiceDetails", new RouteValueDictionary(new { id = item.Id, invoiceId = Model.Id }), "warning", "cog", "sm")
+                                        @Html.BootstrapActionButton("Delete", "Delete", "InvoiceDetails", new RouteValueDictionary(new { id = item.Id, invoiceId = Model.Id }), "danger", "trash", "sm")
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            No detail line items exist for this Invoice.
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <!-- Payments -->
+            <div class="col-md-6">
+                <h4>
+                    @Html.DisplayNameFor(model => model.Payments)
+                    <span class="pull-right">
+                        @Html.BootstrapActionButton("Create New Payment", "Create", "Payments", new RouteValueDictionary(new { invoiceId = Model.Id }), "info", "usd", "sm")
+                    </span>
+                </h4>
+                @if (Model.Payments != null && Model.Payments.Count != 0)
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-gn">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => Model.Payments.FirstOrDefault().PaymentDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => Model.Payments.FirstOrDefault().TotalAmount)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => Model.Payments.FirstOrDefault().Invoices)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => Model.Payments.FirstOrDefault().ExternalTxnId)
+                                </th>
+                                <th class="col-md-1"></th>
+                            </tr>
+
+                            @foreach (var item in Model.Payments.OrderByDescending(id => id.CreateDateTime))
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PaymentDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TotalAmount)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Invoices.Count)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ExternalTxnId)
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.BootstrapActionButton("View", "Details", "Payments", new RouteValueDictionary(new { id = item.Id, invoiceId = Model.Id }), "success", "th", "sm")
+                                        @Html.BootstrapActionButton("Edit", "Edit", "Payments", new RouteValueDictionary(new { id = item.Id, invoiceId = Model.Id }), "warning", "cog", "sm")
+                                        @Html.BootstrapActionButton("Delete", "Delete", "Payments", new RouteValueDictionary(new { id = item.Id, invoiceId = Model.Id }), "danger", "trash", "sm")
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            No payments exist for this Invoice.
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <!-- Purchase Orders -->
+            <div class="col-md-6">
+                <h4>
+                    @Html.DisplayNameFor(model => model.PurchaseOrderInvoices)
+                    <span class="pull-right">
+                        @Html.BootstrapActionButton("Add Purchase Order", "Create", "PurchaseOrders", new RouteValueDictionary(new { invoiceId = Model.Id }), "info", "usd", "sm")
+                    </span>
+                </h4>
+                @if (Model.PurchaseOrderInvoices != null && Model.PurchaseOrderInvoices.Count != 0)
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-gn">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PurchaseOrderInvoices.FirstOrDefault().PurchaseOrder.ExternalPONum)
+                                </th>
+                                <th>
+                                    Valid thru
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PurchaseOrderInvoices.FirstOrDefault().PurchaseOrder.Total)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PurchaseOrderInvoices.FirstOrDefault().PurchaseOrder.TotalApplied)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PurchaseOrderInvoices.FirstOrDefault().PurchaseOrder.Balance)
+                                </th>
+                                <th class="col-md-1"></th>
+                            </tr>
+                            @foreach (var item in Model.PurchaseOrderInvoices)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PurchaseOrder.ExternalPONum)
+                                    </td>
+                                    <td>
+                                        @item.PurchaseOrder.StartDate.ToShortDateString()
+                                        -
+                                        @item.PurchaseOrder.EndDate.ToShortDateString()
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PurchaseOrder.Total)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PurchaseOrder.TotalApplied)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PurchaseOrder.Balance)
+                                    </td>
+                                    <td>
+                                        @Html.BootstrapActionButton("View", "Details", "PurchaseOrders", new RouteValueDictionary(new { id = item.PurchaseOrder.Id, invoiceId = Model.Id }), "success", "th-large", "sm")
+                                        @Html.BootstrapActionButton("Edit", "Edit", "PurchaseOrders", new RouteValueDictionary(new { id = item.PurchaseOrder.Id, invoiceId = Model.Id }), "warning", "cog", "sm")
+                                        <!--Html.BootstrapActionButton("Delete", "Delete", "PurchaseOrders", new RouteValueDictionary(new { id = item.PurchaseOrder.Id, invoiceId = Model.Id }), "danger", "trash", "sm")-->
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p>
+                        No purchase order exists for this invoice.
+                    </p>
+                }
+
+            </div>
+
+        </div>
+                
+    </div>
+}

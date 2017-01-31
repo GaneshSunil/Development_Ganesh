@@ -1,0 +1,81 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNBulkImportStatus>
+
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/samples.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/samples_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/samples_white_green.png";
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "My Sample Index Imports";
+}
+
+@section ModuleIndexContent{
+
+    @Html.BootstrapActionButton("New Import", "Import", "BulkImport", null, "bg-gn-dark-gray white pull-right", "save", "sm")
+
+    @Html.BootstrapRowSpacer()
+
+    @if (Model != null && Model.Count() != 0)
+    {
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-gn">
+                <tr>
+                    <th class="col-md-2">
+                        @Html.DisplayNameFor(model => model.CreateDateTime)
+                    </th>
+                    <th class="col-md-5">
+                        @Html.DisplayNameFor(model => model.FileURI)
+                    </th>
+                    <th class="col-md-1">
+                        @Html.DisplayNameFor(model => model.TotalRecordCount)
+                    </th>
+                    <th class="col-md-1">
+                        @Html.DisplayNameFor(model => model.ImportedRecordCount)
+                    </th>
+                    <th class="col-md-1">
+                        @Html.DisplayNameFor(model => model.DuplicateRecordCount)
+                    </th>
+                    <th class="col-md-1">
+                        @Html.DisplayNameFor(model => model.FailedRecordCount)
+                    </th>
+                    <th class="col-md-1"></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.Raw(TimeZoneInfo.ConvertTime(item.CreateDateTime.Value, contactForUser.GNOrganization.OrgTimeZoneInfo))
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FileURI)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalRecordCount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ImportedRecordCount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DuplicateRecordCount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FailedRecordCount)
+                        </td>
+                        <td class="text-center">
+                            @Html.BootstrapActionButton("View", "ImportStatus", "BulkImport", new RouteValueDictionary(new { id = item.Id }), "bg-gn-dark-gray white", "th-large", "sm")
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success white bg-gn-green">No Sample Imports Exist.</div>
+    }
+}

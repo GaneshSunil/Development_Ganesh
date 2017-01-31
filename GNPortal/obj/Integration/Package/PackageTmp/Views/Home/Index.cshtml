@@ -1,0 +1,223 @@
+﻿@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/dashboard.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/dashboard_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/dashboard_white_green.png";
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "Dashboard";
+
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+}
+
+@section scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            leftMenuSetup("DashboardMenu");
+        });
+    </script>
+}
+
+@section ModuleIndexContent{
+    
+    <div class="row">
+
+        <!-- First Column -->
+        <div id="DashboardMenu" class="col-md-3 hidden-xs hidden-sm">
+
+            @using (Html.BeginGNPanel())
+            {
+                using (Html.BeginGNPanelHeading("Analysis Launchpad"))
+                {
+                    <div class="pull-left text-padded-right">
+                        <img class="img-responsive" style="max-height:18px;"
+                             src="@Url.Content("~/Content/icons/samples_white.png")" />
+                    </div>
+                }
+
+                using (Html.BeginGNPanelBody(true))
+                {
+                    if (!contactForUser.IsInRole("COLLABORATOR"))
+                    {
+                        using (Html.BeginGNClickableListGroupItem(Url.Action("Create", "Samples")))
+                        {
+                            <img class="col-md-2 img-responsive" style="margin:0px;padding:0px;" src="~/Content/icons/samples.png">
+                                                            
+                            <h5 class="col-md-10 text-inline">Create Sample
+                                <br />
+                                <span class="small">
+                                    <a href="@Url.Action("Create", "Samples", new RouteValueDictionary(new { GNSampleQualifierGroupCode = "DNA" }))" style="color:black;">DNA</a>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <a href="@Url.Action("Create", "Samples", new RouteValueDictionary(new { GNSampleQualifierGroupCode = "RNA" }))" style="color:black;">RNA</a>
+                                </span>
+                            </h5>
+                        }                
+                        using (Html.BeginGNClickableListGroupItem(Url.Action("Create", "AnalysisRequests")))
+                        {
+                            <img class="col-md-2 img-responsive" style="margin:0px;padding:0px;"
+                                 src="@Url.Content("~/Content/icons/analyses.png")" />
+                                <h5 class="col-md-10 text-inline">Create Analysis
+                                <br />
+                                <span class="small">
+                                    <a href="@Url.Action("Create", "AnalysisRequests", new RouteValueDictionary(new { GNAnalysisRequestTypeCode = "DNA" }))" style="color:black;">DNA</a>
+                                    &nbsp;
+                                    <a href="@Url.Action("Create", "AnalysisRequests", new RouteValueDictionary(new { GNAnalysisRequestTypeCode = "TUMORNORMAL" }))" style="color:black;">Tumor-Normal</a>
+                                    &nbsp;
+                                    <a href="@Url.Action("Create", "AnalysisRequests", new RouteValueDictionary(new { GNAnalysisRequestTypeCode = "RNA" }))" style="color:black;">RNA</a>
+                                </span>
+                            </h5>
+                        }
+                    }
+
+                    <!-- Divider -->
+                    <div class="list-group-item bg-gn-light-gray" style="max-height:10px;margin:0px;padding:0px;">&nbsp;</div>
+
+                    using (Html.BeginGNClickableListGroupItem(Url.Action("Index", "Teams")))
+                    {
+                        <img class="col-md-2 img-responsive" style="margin:0px;padding:0px;"
+                             src="@Url.Content("~/Content/icons/teams.png")" />
+                        <h5 class="col-md-10 text-inline">My Teams</h5>
+                    }
+
+                    using (Html.BeginGNClickableListGroupItem(Url.Action("Index", "Projects")))
+                    {
+                        <img class="col-md-2 img-responsive" style="margin:0px;padding:0px;"
+                             src="@Url.Content("~/Content/icons/projects.png")" />
+                        <h5 class="col-md-10 text-inline">My Projects</h5>
+                    }
+                    
+                    using (Html.BeginGNClickableListGroupItem(Url.Action("Index", "AnalysisRequests")))
+                    {
+                        <img class="col-md-2 img-responsive" style="margin:0px;padding:0px;"
+                             src="@Url.Content("~/Content/icons/analyses.png")" />
+                        <h5 class="col-md-10 text-inline">My Analyses</h5>
+                    }
+                    
+                    if (!contactForUser.IsInRole("COLLABORATOR"))
+                    {
+                        using (Html.BeginGNClickableListGroupItem(Url.Action("Index", "Samples")))
+                        {
+                            <img class="col-md-2 img-responsive" style="margin:0px;padding:0px;"
+                                 src="@Url.Content("~/Content/icons/samples.png")" />
+                            <h5 class="col-md-10 text-inline">My Samples</h5>
+                        }
+                    }
+
+                    <!--
+                    if (!contactForUser.IsInRole("COLLABORATOR"))
+                    {
+                        using (Html.BeginGNClickableListGroupItem(Url.Action("Index", "SequencerJobs")))
+                        {
+                            <img class="col-md-2 img-responsive" style="margin:0px;padding:0px;"
+                                 src="@Url.Content("~/Content/icons/register.png")" />
+                            <h6 class="col-md-10 text-inline"><b>SEQUENCER JOBS</b>
+                                <span class="badge" title="@ViewData["myOpenSequencerJobs"] open job(s)">@ViewData["myOpenSequencerJobs"]</span>
+                            </h6>
+                        }
+                    }
+                        -->
+
+                    <!-- Divider -->
+                    <div class="list-group-item bg-gn-light-gray" style="max-height:10px;margin:0px;padding:0px;">&nbsp;</div>
+
+                    using (Html.BeginGNClickableListGroupItem(Url.Action("MyProfile", "Account")))
+                    {
+                        <img class="col-md-2 img-responsive" style="margin:0px;padding:0px;"
+                             src="@Url.Content("~/Content/icons/profile.png")" />
+                        <h5 class="col-md-10 text-inline">My Profile</h5>
+                    }
+
+                    if (contactForUser.IsInRole("ORG_MANAGER") || User.IsInRole("GN_ADMIN"))
+                    {
+                        using (Html.BeginGNClickableListGroupItem(Url.Action("MyBillingOverview", "Account")))
+                        {
+                            <img class="col-md-2 img-responsive" style="margin:0px;padding:0px;"
+                                 src="@Url.Content("~/Content/icons/billing.png")" />
+                            <h5 class="col-md-10 text-inline">My Billing</h5>
+                        }
+                    }
+                }
+            }
+
+        </div>
+
+        <!-- Second Column -->
+        <div class="col-md-5">
+
+            @using (Html.BeginGNPanel())
+            {
+                using (Html.BeginGNPanelHeading("Recent Analyses"))
+                {
+                    <div class="pull-left text-padded-right">
+                        <img class="img-responsive" style="max-height:18px;"
+                             src="@Url.Content("~/Content/icons/analyses_white.png")" />
+                    </div>
+                }
+
+                using (Html.BeginGNPanelBody(true))
+                {
+                    @Html.Partial("~/Views/Home/_AnalysisRequestDisplayListPartial.cshtml", ViewData["RecentAnalysisRequests"])
+                }
+            }
+            
+            @if (!contactForUser.IsInRole("COLLABORATOR"))
+            {
+                using (Html.BeginGNPanel())
+                {
+                    using (Html.BeginGNPanelHeading("Recent Samples"))
+                    {
+                        <div class="pull-left text-padded-right">
+                            <img class="img-responsive" style="max-height:18px;"
+                                 src="@Url.Content("~/Content/icons/samples_white.png")" />
+                        </div>
+                    }
+                
+                    using (Html.BeginGNPanelBody(true))
+                    {
+                        @Html.Partial("~/Views/Home/_SampleDisplayListPartial.cshtml", ViewData["RecentSamples"])
+                    }
+                }
+            }
+        </div>
+
+        <!-- Third Column -->
+        <div class="col-md-4">
+
+            @using (Html.BeginGNPanel())
+            {
+                using (Html.BeginGNPanelHeading("My Projects"))
+                {
+                    <div class="pull-left text-padded-right">
+                        <img class="img-responsive" style="max-height:18px;"
+                             src="@Url.Content("~/Content/icons/projects_white.png")" />
+                    </div>
+                }
+
+                using (Html.BeginGNPanelBody(true))
+                {
+                    @Html.Partial("~/Views/Home/_ProjectDisplayListPartial.cshtml", ViewData["MyProjects"])
+                }
+            }
+
+            @using (Html.BeginGNPanel())
+            {
+                using (Html.BeginGNPanelHeading("My Teams"))
+                {
+                    <div class="pull-left text-padded-right">
+                        <img class="img-responsive" style="max-height:18px;"
+                             src="@Url.Content("~/Content/icons/teams_white.png")" />
+                    </div>
+                }
+
+                using (Html.BeginGNPanelBody(true))
+                {
+                    @Html.Partial("~/Views/Home/_TeamDisplayListPartial.cshtml", ViewData["MyTeams"])
+                }
+            }
+
+
+        </div>
+    </div>
+}
+

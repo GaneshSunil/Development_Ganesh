@@ -1,0 +1,54 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/organization.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/organization_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/organization_white_green.png";
+    ViewData["ModuleHasActionBar"] = true;
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "System Error";
+}
+
+@section scripts{
+    @Html.Partial("~/Views/Error/_ErrorBackBtn_Script.cshtml")
+}
+
+@section ModuleIndexHeadingActionBar{
+    @Html.Partial("~/Views/Error/_ErrorBackBtn.cshtml")
+}
+
+@section ModuleIndexContent{
+
+    <div class="col-md-12 panel form-horizontal bg-white">
+
+        @Html.BootstrapRowSpacer()
+
+        <div class="row">
+            <div class="col-md-12 text-padded">
+                <div class="alert alert-error text-uppercase">
+
+                    <span>An unexpected error has occurred. Please contact the system administrator.</span>
+
+                    @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
+                    {
+                        <div>
+                            <p>
+                                <b>Exception:</b> @Model.Exception.Message<br />
+                                <b>Controller:</b> @Model.ControllerName<br />
+                                <b>Action:</b> @Model.ActionName
+                            </p>
+                            <div style="overflow:scroll">
+                                <pre>
+                                    @Model.Exception.StackTrace
+                                </pre>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+}

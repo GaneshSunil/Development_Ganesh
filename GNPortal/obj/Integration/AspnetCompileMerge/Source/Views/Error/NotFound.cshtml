@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/organization.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/organization_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/organization_white_green.png";
+    ViewData["ModuleHasActionBar"] = true;
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "Not Found";
+}
+
+@section scripts{
+    @Html.Partial("~/Views/Error/_ErrorBackBtn_Script.cshtml")
+}
+
+@section ModuleIndexHeadingActionBar{
+    @Html.Partial("~/Views/Error/_ErrorBackBtn.cshtml")
+}
+
+@section ModuleIndexContent{
+
+    <div class="col-md-12 panel form-horizontal bg-white">
+
+        @Html.BootstrapRowSpacer()
+
+        <div class="row">
+            <div class="col-md-12 text-padded">
+                <div class="alert alert-error text-uppercase">
+
+                    <span>The item you are looking for could not be found and/or no longer exists.</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}

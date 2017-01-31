@@ -1,0 +1,191 @@
+﻿@using CaptchaMvc.HtmlHelpers
+@model GenomeNext.Portal.Models.RegisterAccountViewModel
+@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/register.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/register_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/register_white_green.png";
+    ViewData["ModuleHasActionBar"] = true;
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "Account Registration - Get Started";
+
+    var formActionPath = HttpContext.Current.Request.Url.AbsolutePath + "Confirm";
+}
+
+@section ModuleIndexHeadingActionBar{
+}
+
+@section ModuleIndexContent{
+
+@using (Html.BeginForm("AccountConfirm", "Register", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    if (DateTime.Now.Month == 5 && DateTime.Now.Year == 2015)
+    {
+        <div class="alert alert-success small" role="alert">
+            <center>
+                As a proud presenter at the <a href="http://labroots.com/virtual-event/id/5" target="_blank">Genetics and Genomics 2015</a> event, GenomeNext is giving away
+                <br />
+                <span style="font-family:Georgia;font-size:36px;"><b>50% off</b></span>
+                <br />
+                on <b>all analyses</b> until the end of May
+            </center>
+        </div>
+    }
+
+    <div class="panel form-horizontal bg-white">
+
+        <div class="panel-body">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="well well-sm reg-left-info">
+
+                        <h3 class="col-md-12 text-center gn-green reg-left-info-heading">
+                            <span class="glyphicon glyphicon-th"></span>
+                            Organization
+                        </h3>
+
+                        @Html.BootstrapRowSpacer()
+
+                        @Html.FormFieldFor(model => model.OrgName)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UTCOffsetDescription, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("UTCOffsetDescription", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.UTCOffsetDescription, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        @Html.FormFieldFor(model => model.Phone)
+                        @Html.FormFieldFor(model => model.Fax)
+                        @Html.FormFieldFor(model => model.Website)
+                        @Html.FormFieldFor(model => model.StreetAddress1)
+                        @Html.FormFieldFor(model => model.StreetAddress2)
+                        @Html.FormFieldFor(model => model.City)
+                        @Html.FormFieldFor(model => model.State)
+                        @Html.FormFieldFor(model => model.Zip)
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+
+                    <h3 class="col-md-12 text-center gn-green reg-right-info-heading">
+                        <span class="glyphicon glyphicon-user"></span>
+                        Account Owner
+                    </h3>
+
+                    @Html.BootstrapRowSpacer()
+
+                    @Html.FormFieldFor(model => model.Title)
+                    @Html.FormFieldFor(model => model.FirstName)
+                    @Html.FormFieldFor(model => model.LastName)
+                    @Html.FormFieldFor(model => model.Email)
+                    @Html.Hidden("InviteCode", "CAPTCHAUSER")
+                    @Html.Hidden("TermsAndConditionsAccepted",true)
+                    @Html.Hidden("PrivacyPolicyAccepted",true)
+                    
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SignUpForNewsAndProducts, htmlAttributes: new { @class = "control-label col-md-4 small" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.SignUpForNewsAndProducts, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SignUpForNewsAndProducts, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class= "control-label col-md-4">Enter Code</label>
+                        <div class="col-md-8">
+                            <style>a:link { display:inline!important;text-transform:none!important;font-weight:bold;}
+                            </style>
+                            @Html.Captcha("↻ Try another", "Enter the text you see above:", 5, "required", true)
+                            @Html.ValidationMessage("CaptchaCode", "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @Html.Hidden("Password", "123456")
+                    @Html.Hidden("PasswordConfirm", "123456")
+
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-footer clearfix bg-gn-light-gray text-right">
+            @Html.BootstrapFormSaveButton("Continue", "chevron-right", "bg-gn-green white", true)
+        </div>
+    </div>
+}
+
+@Html.Partial("_TermsConditionsModalPartial")
+@Html.Partial("_PrivacyPolicyModalPartial")
+
+}
+
+@section scripts{
+
+    @Html.Partial("_TermsConditionsModalPartial_Script")
+    @Html.Partial("_PrivacyPolicyModalPartial_Script")
+
+    <script>
+        $(document).ready(function () {
+
+            InitInviteCodeValidation();
+
+            InitTermsAndConditions();
+            InitPrivacyPolicy();
+
+            $("form").submit(function (e) {
+
+                if (termsAndConditionsAccepted == false) {
+                    e.preventDefault();
+                    $(this).prop("checked", false);
+                    ShowTermsAndConditionsModal();
+                    return false;
+                }
+
+                if (privacyPolicyAccepted == false) {
+                    e.preventDefault();
+                    $(this).prop("checked", false);
+                    ShowPrivacyPolicyModal();
+                    return false;
+                }
+            });
+        });
+
+        function InitInviteCodeValidation() {
+            jQuery.validator.addMethod("ValidateInviteCode", function (value, element) {
+                if (value != null && $.trim(value) != "") {
+                    //Validate Invite Code
+                    var isValidInviteCode = false;
+
+                    var validateInviteCodeURL =
+                        '@Url.Action("ValidateInviteCode", "Register")' +
+                        '?inviteCode=' + value;
+
+                    $.ajax({
+                        url: validateInviteCodeURL,
+                        data: {},
+                        async: false,
+                        success:
+                            function (data) { isValidInviteCode = data['isValidInviteCode'] }
+                    });
+
+                    return isValidInviteCode;
+                }
+                else {
+                    return true;
+                }
+            }, "Invite Code is not valid.");
+
+            $("#InviteCode").rules("add", "ValidateInviteCode");
+        }
+
+    </script>
+}

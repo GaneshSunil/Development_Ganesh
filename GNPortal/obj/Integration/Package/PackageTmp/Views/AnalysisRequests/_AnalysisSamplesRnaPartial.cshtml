@@ -1,0 +1,86 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+}
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+
+    //Heading
+    using (Html.BeginGNPanelHeading("Groups", "th-large"))
+    {
+        if (Model.GNAnalysisRequestGroups.Count != 0)
+        {
+            <span class="badge">@Model.GNAnalysisRequestGroups.Count</span>
+        }
+        <span class="pull-right">
+
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(true))
+    {
+
+        <ul class="nav nav-tabs">
+            @{
+                var samples_class = "active";
+                var comparison_class = "";
+                var help_class = "";
+                switch(Request["tab"])
+                {
+                    case "ComparisonSetup":
+                        samples_class = "";
+                        comparison_class = "active";
+                        help_class = "";
+                        break;
+                    case "Help":
+                        samples_class = "";
+                        comparison_class = "active";
+                        help_class = "active";
+                        break;
+                    case "Samples":
+                    default:
+                        samples_class = "active";
+                        comparison_class = "";
+                        help_class = "";
+                        break;
+                        
+                }
+            }
+
+            <li role="presentation" class="@samples_class">
+                 @Html.BootstrapActionButton("Samples", "Details", "AnalysisRequests", new RouteValueDictionary(new { id = Model.Id, tab = "Samples" }), "bg-clear", "drop")
+            </li>
+
+            <li role="presentation" class="@comparison_class">                                      
+                 @Html.BootstrapActionButton("Comparison Setup", "Details", "AnalysisRequests", new RouteValueDictionary(new { id = Model.Id, tab = "ComparisonSetup" }), "bg-clear", "cog")
+
+            <li role="presentation" class="@help_class">
+                @Html.BootstrapActionButton("Help", "Details", "AnalysisRequests", new RouteValueDictionary(new { id = Model.Id, tab = "Help" }), "bg-clear", "question-sign")
+            </li>
+            
+        </ul>
+
+        switch (Request["tab"])
+        {
+            case "ComparisonSetup":
+                @Html.Partial("_AnalysisSamplesRnaPartialGroups")
+                break;
+            case "Help":
+                @Html.Partial("_AnalysisSamplesRnaPartialHelp")
+                break;
+            case "Samples":
+            default:
+                @Html.Partial("_AnalysisSamplesRnaPartialSamples")
+                break;
+
+        }
+
+        
+
+
+    }
+}

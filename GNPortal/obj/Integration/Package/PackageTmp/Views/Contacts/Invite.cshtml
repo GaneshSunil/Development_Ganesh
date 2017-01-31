@@ -1,0 +1,88 @@
+﻿@using GenomeNext.Data.EntityModel
+@using GenomeNext.Data.IdentityModel
+@model GenomeNext.Data.EntityModel.GNContact
+
+@{
+    ViewBag.Title = "Invite Contact";
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/profile_white.png";
+    ViewData["ModuleCtl"] = "Contacts";
+    
+    if (!string.IsNullOrEmpty(Request["teamId"]))
+    {
+        ViewData["customBackLink"] = true;
+        ViewData["customBackLinkModuleCtl"] = "Teams";
+        ViewData["customBackLinkAction"] = "Details";
+        ViewData["customBackLinkParam"] = Request["teamId"];
+        ViewData["customBackLinkText"] = "Back";
+    }
+    else if (!string.IsNullOrEmpty(Request["organizationId"]) && User.IsInRole("GN_ADMIN"))
+    {
+        ViewData["customBackLink"] = true;
+        ViewData["customBackLinkModuleCtl"] = "Organizations";
+        ViewData["customBackLinkAction"] = "Details";
+        ViewData["customBackLinkParam"] = Request["organizationId"];
+        ViewData["customBackLinkText"] = "Back";
+    }
+    else if (!string.IsNullOrEmpty(Request["organizationId"]))
+    {
+        ViewData["customBackLink"] = true;
+        ViewData["customBackLinkModuleCtl"] = "Account";
+        ViewData["customBackLinkAction"] = "MyOrganization";
+        ViewData["customBackLinkParam"] = Request["organizationId"];
+        ViewData["customBackLinkText"] = "Back";
+    }
+    else
+    {
+        ViewData["customBackLink"] = true;
+        ViewData["customBackLinkModuleCtl"] = "Contacts";
+        ViewData["customBackLinkAction"] = "Index";
+        //ViewData["customBackLinkParam"] = Request["organizationId"];
+        ViewData["customBackLinkText"] = "Back";        
+    }
+
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+}
+
+@section ModulePanelBody {
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.BootstrapRowSpacer()
+
+            @Html.FormFieldFor(model => model.GNOrganization.Name, false, null, 3, 9, false, "Organization")
+            @Html.HiddenFor(model => model.GNOrganizationId)
+            @Html.HiddenFor(model => model.IsSubscribedForNewsletters, htmlAttributes: new { @value = "false" })
+            
+            @Html.FormFieldFor(model => model.Email, true, null, 3, 9)
+            @Html.FormFieldFor(model => model.FirstName, true, null, 3, 9)
+            @Html.FormFieldFor(model => model.LastName, true, null, 3, 9)
+
+            <div class="form-group">
+                <div class="control-label col-md-3">
+                    @Html.LabelFor(model => model.GNContactRoles, htmlAttributes: new { @class = " text-right" })
+                    <a href="http://support.genomenext.com/customer/portal/articles/1784257-what-permissions-can-i-set-for-users-on-my-account-" target="_blank">
+                        <span class="glyphicon glyphicon-question-sign" title="Help with Roles"></span>
+                    </a>
+                </div>
+                <div class="col-md-9">
+                    @Html.ListBox("AspNetRoleList", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.GNContactRoles, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">&nbsp;</label>
+                <div class="col-md-10">
+                    @Html.BootstrapFormSaveButton("Next", "chevron-right", "success", true)
+                </div>
+            </div>
+
+        </div>
+    }
+}

@@ -1,0 +1,43 @@
+﻿@model GenomeNext.Data.EntityModel.GNInviteCode
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-envelope gn-green"></span>
+    @ViewBag.Title
+
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "InviteCodes", null, "info", "chevron-left")
+        @Html.BootstrapActionButton("Edit", "Edit", "InviteCodes", new RouteValueDictionary(new { id = Model.InviteCode }), "warning", "cog")
+    </span>
+</h2>
+@Html.BootstrapRowSpacer()
+
+@using (Html.BeginForm())
+{
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.BootstrapRowSpacer()
+
+                <dl class="dl-horizontal">
+
+                    @Html.DisplayFieldFor(model => model.InviteCode)
+                    @Html.DisplayFieldFor(model => model.Description)
+                    @Html.DisplayFieldFor(model => model.UseCount)
+                    @Html.DisplayFieldFor(model => model.UseMaxAllowed)
+                    @Html.DisplayFieldFor(model => model.ExpireDate)
+                    @Html.DisplayFieldFor(model => model.FreeCreditAllowance)
+
+                    @{
+                        ViewData["ViewMode"] = "Details";
+                        ViewData["CreatedBy"] = Model.CreatedByContact;
+                        ViewData["CreateDateTime"] = Model.CreateDateTime;
+                    }
+                    @Html.Partial("_AuditModelPartial", null, ViewData)
+
+                </dl>   
+            </div>
+    </div>
+}

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNAnalysisAdaptor>
+
+@{
+    ViewBag.Title = "Analysis Adaptors";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-tint gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Create New", "Create", "AnalysisAdaptor", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "plus")
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th class="col-md-4">
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="col-md-2"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.BootstrapActionButton("Edit", "Edit", "AnalysisAdaptor", new RouteValueDictionary(new { id = item.Code }), "warning", "cog", "sm")
+                    @Html.BootstrapActionButton("Delete", "Delete", "AnalysisAdaptor", new RouteValueDictionary(new { id = item.Code }), "danger", "trash", "sm")
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -1,0 +1,126 @@
+﻿@using GenomeNext.Data.EntityModel
+
+<div class="col-md-12 bg-gn-medium-gray white" style="padding-top: 3px;padding-bottom: 3px;">
+
+    <div class="container" style="padding:0px;">
+
+        <div class="col-md-7 ellipsis">
+
+            @{
+                GNTeam currentTeam = ViewBag.CurrentTeam;
+            }
+            @if (currentTeam != null)
+            {
+                <span title="Team">
+                    <span class="glyphicon glyphicon-user"></span>
+                    @Html.ActionLink(currentTeam.Name, "Details", "Teams", new { id = currentTeam.Id }, new { @class = "white" })
+                    <span>&nbsp;</span>
+                    <span>&nbsp;</span>
+                </span>
+            }
+
+            @{
+                GNProject currentProject = ViewBag.CurrentProject;
+            }
+            @if (currentProject != null)
+            {
+                <span title="Project">
+                    <span class="glyphicon glyphicon-folder-open"></span>
+                    @Html.ActionLink(currentProject.Name, "Details", "Projects", new { id = currentProject.Id }, new { @class = "white" })
+                    <span>&nbsp;</span>
+                    <span>&nbsp;</span>
+                </span>
+            }
+
+            @{
+                GNAnalysisRequest currentAnalysisRequest = ViewBag.CurrentAnalysisRequest;
+            }
+            @if (currentAnalysisRequest != null)
+            {
+                <span title="Analysis Request">
+                    <span class="glyphicon glyphicon-indent-left"></span>
+                    @Html.ActionLink(currentAnalysisRequest.Description, "Details", "AnalysisRequests", new { id = currentAnalysisRequest.Id, projectId = Request["projectId"], teamId = Request["teamId"] }, new { @class = "white" })
+                    <span>&nbsp;</span>
+                    <span>&nbsp;</span>
+                </span>
+            }
+
+            @{
+                GNSample currentSample = ViewBag.CurrentSample;
+            }
+            @if (currentSample != null)
+            {
+                <span title="Sample">
+                    <span class="glyphicon glyphicon-tint"></span>
+                    @Html.ActionLink(currentSample.Name, "Details", "Samples", new { id = currentSample.Id }, new { @class = "white" })
+                    <span>&nbsp;</span>
+                    <span>&nbsp;</span>
+                </span>
+            }
+        </div>
+
+        <div class="col-md-5 text-right">
+
+            @{
+                GNContact currentContact = ViewBag.ContactForUser;
+                List<GenomeNext.Data.EntityModel.GNOrganization> organizationsForUser = ViewBag.OrganizationsForUser;
+            }
+            @if (currentContact != null)
+            {
+                <span class="glyphicon glyphicon-briefcase"></span>
+                @Html.ActionLink(currentContact.FullName, "MyProfile", "Account", null, new { @class = "white" })
+
+                <span>&nbsp;</span>
+                <span>&nbsp;</span>
+
+                <a href="#" class="dropdown-toggle white gn-green-hover" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-globe"></span>
+                    <span>@currentContact.GNOrganization.Name</span>
+                    <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu bg-gn-light-gray pull-right" role="menu">
+                    <li class="text-nowrap text-left text-padded-bottom bg-gn-light-gray">
+                        @Html.BootstrapActionIconLink("Go to My Organization", "MyOrganization", "Account",
+                              null, "gn-dark-gray text-left", "globe", "sm", displayText: true)
+                    </li>
+                    <li class="text-nowrap text-left bg-gn-light-gray">
+                        @if (currentContact.IsInRole("GN_ADMIN")
+                                    || currentContact.IsInRole("ORG_MANAGER")
+                                    || currentContact.IsInRole("TEAM_MANAGER"))
+                        {
+                            @Html.BootstrapActionIconLink("Invite Users to My Organization", "Invite", "Contacts",
+                                         new RouteValueDictionary(new { organizationId = currentContact.GNOrganizationId }),
+                                              "gn-dark-gray text-left", "envelope", null, false, true)
+                        }
+                    </li>
+                    @if (organizationsForUser.Count > 1)
+                    {
+                        <li class="divider bg-gn-medium-gray"></li>
+                        <li class="text-nowrap text-left text-padded-left gn-dark-gray">
+                        </li>
+                        <span class="glyphicon glyphicon-transfer text-padded-left"></span>
+                        @Html.Raw("Change My Organization (select one):")
+                    }
+                    @foreach (GenomeNext.Data.EntityModel.GNOrganization item in organizationsForUser)
+                    {
+                        <li class="text-nowrap text-left text-padded-top">
+                            @Html.BootstrapActionIconLink(item.Name, "SetDefaultOrganization", "Account",
+                                     new RouteValueDictionary(new
+                                     {
+                                         organizationId = item.Id,
+                                         aspNetUserId = currentContact.AspNetUserId,
+                                         returnUrl = Request.Url.AbsoluteUri
+                                     }),
+                                    "gn-dark-gray text-left", "globe", "sm", displayText: true)
+                        </li>
+                    }
+                </ul>
+
+            }
+
+        </div>
+
+    </div>
+
+</div>

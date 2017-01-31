@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+    @RenderSection("scripts", required: false)
+    @Html.Partial("_DigiCertPartial_Script")
+}
+
+@Html.BootstrapRowSpacer()
+
+@if (DateTime.Now.Month == 5 && DateTime.Now.Year == 2015)
+{
+    <div class="alert alert-success small col-md-12" role="alert">
+        <center>
+            As a proud presenter at the <a href="http://labroots.com/virtual-event/id/5" target="_blank">Genetics and Genomics 2015</a> event, GenomeNext is giving away
+            <br />
+            <span style="font-family:Georgia;font-size:36px;"><b>50% off</b></span>
+            <br />
+            on <b>all analyses</b> until the end of May
+        </center>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <img class="img-responsive col-md-4 col-xs-offset-0 col-sm-offset-2 col-md-offset-4"
+                src="@Url.Content("~/Images/gn-logo-transparent.png")" />
+        </div>
+    </div>
+}
+
+
+         @Html.BootstrapRowSpacer()
+
+         <div class="row">
+
+             <div class="col-md-6 col-md-offset-3">
+
+                 <div class="row">
+                     <div class="col-md-12">
+                         @RenderSection("LoggedOutContent", required: true)
+                     </div>
+                 </div>
+
+                 @Html.BootstrapRowSpacer()
+
+                 <div class="row">
+                     <div class="col-md-12">
+                         @Html.Partial("_DigiCertPartial")
+                     </div>
+                 </div>
+             </div>
+
+         </div>

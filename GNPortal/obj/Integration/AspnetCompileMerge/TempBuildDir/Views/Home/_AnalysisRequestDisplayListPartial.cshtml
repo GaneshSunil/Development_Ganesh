@@ -1,0 +1,63 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNAnalysisRequest>
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+}
+@if (Model != null && Model.Count() != 0)
+{
+    foreach (var item in Model)
+    {
+        using (Html.BeginGNClickableListGroupItem(Url.Action("Details", "AnalysisRequests", new { id = item.Id })))
+        {
+            <div class="col-md-12 flushLeft">
+                <img class="pull-left"
+                     style="margin:0px;padding:0px 5px 0px 0px;max-height:25px;max-width:25px;"
+                     src="@Url.Content("~/Content/icons/analyses.png")" />
+                <strong>@item.Description</strong>
+
+                <div class="pull-right">
+                    <span class="badge small"><span class="small">@item.GNAnalysisRequestTypeCode</span></span>
+                </div>
+
+                <div class="flushRight">
+                    <span class="badge bg-white gn-dark-gray flushLeft pull-left"
+                          style="margin-left:25px !important;">
+                        @(item.CurrentProgress)% :
+                        @switch (item.CurrentStatusShort.ToUpper())
+                        {
+                            case "ERROR":
+                                <span class="text-danger">@item.CurrentStatusShort.ToUpper()</span>
+                                break;
+                            case "COMPLETE":
+                                <span class="text-success">@item.CurrentStatusShort.ToUpper()</span>
+                                break;
+                            default:
+                            <span>@item.CurrentStatusShort.ToUpper()</span>
+                                break;
+                        }
+                    </span>
+                    @if (item.RequestDateTime.HasValue)
+                    {
+                        <span class="badge bg-white gn-dark-gray flushRight pull-right">
+                            @TimeZoneInfo.ConvertTime(item.RequestDateTime.GetValueOrDefault(), contactForUser.GNOrganization.OrgTimeZoneInfo)
+                        </span>
+                    }
+                </div>
+           </div>
+        }
+    }
+}
+else
+{
+    if ((bool)ViewBag.CanCreateAnalysisRequest)
+    {
+        <div class="list-group-item">
+            @Html.BootstrapActionIconLink("Create your first analysis", "Create", "AnalysisRequests", null, null, "plus", null, false, true)
+        </div>
+    }
+    else
+    {
+        <div class="list-group-item">
+            No analysis requests found.
+        </div>
+    }
+}

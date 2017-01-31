@@ -1,0 +1,89 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNAccount>
+
+@{
+    ViewBag.Title = "Accounts";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-euro gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Create New", "Create", "OrgAccounts", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "plus")
+    </span>
+</h2>
+
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Organization.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BillingMode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DefaultDiscountAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Invoices)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchaseOrders)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Balance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailableCredits)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Organization.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountType.Description)
+                </td>
+                <td>
+                    @if (item.BillingMode == GenomeNext.Data.EntityModel.GNAccount.BillingModeType.INVOICE.GetCode())
+                    {
+                        @GenomeNext.Data.EntityModel.GNAccount.BillingModeType.INVOICE.GetName()
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Invoices.Count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseOrders.Count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DefaultDiscountAmount)
+                    @Html.DisplayFor(modelItem => item.DefaultDiscountType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Balance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AvailableCreditsDisplay)
+                </td>
+                <td>
+                    @Html.BootstrapActionButton("View", "Details", "OrgAccounts", new RouteValueDictionary(new { id = item.Id }), "success", "th-large", "sm")
+                    @Html.BootstrapActionButton("Edit", "Edit", "OrgAccounts", new RouteValueDictionary(new { id = item.Id }), "warning", "cog", "sm")
+                    @Html.BootstrapActionButton("Audit", "Index", "Audit", new RouteValueDictionary(new { searchEntityId = item.Id, searchEntityType = "ORG_ACCOUNT" }), "info", "eye-open", "sm")
+                    @Html.BootstrapActionButton("Delete", "Delete", "OrgAccounts", new RouteValueDictionary(new { id = item.Id }), "danger", "trash", "sm")
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

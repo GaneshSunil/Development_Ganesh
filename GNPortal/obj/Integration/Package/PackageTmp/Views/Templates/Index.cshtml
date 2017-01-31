@@ -1,0 +1,63 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNTemplate>
+
+@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/teams.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/teams_white_green.png";
+    ViewData["ModuleItemName"] = "Template";
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "Test Templates";
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    //Setup Values for Searchable List Table/Control/Partials
+    ViewData["SearchListItemsCount"] = Model.Count();
+    if (User.IsInRole("GN_ADMIN"))
+    {
+        ViewData["SearchTextOptions"] = new string[] { "All", "Organization", "Team Name", "Team Lead" };
+    }
+    else
+    {
+        ViewData["SearchTextOptions"] = new string[] { "All", "Team Name", "Team Lead" };
+    }
+}
+
+@section ModuleIndexContent{
+
+    @if (Model != null && Model.Count() != 0)
+    {
+        foreach (var item in Model)
+        {
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 flushLeft clickable"
+                 onclick="window.location.href='@Url.Action("Details", new { id=item.Id})'">
+                <div class="panel border-gn-green @ViewBag.BoxHeightClass">
+                    <div class="panel-heading bg-gn-green">
+                        <span class="pull-right">
+                            @if (true) //item.CanEdit)
+                            {
+                                @Html.BootstrapActionIconLink("Edit", "Edit", "Templates", new RouteValueDictionary(new { id = item.Id }), "white", "cog", "sm", false, false)
+                            }
+                        </span>
+                        <h3 class="panel-title white ellipsis" style="width:225px;">
+                            <img class="pull-left" style="height:18px;padding-right:6px;" src="@Url.Content("~/Content/icons/teams_white.png")" />
+                            @item.Name (v.@item.Version)
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        @if (User.IsInRole("GN_ADMIN"))
+                        {
+                            <div class="col-md-12">
+                                <h5 class="gn-dark-gray flushLeft flushTop ellipsis" style="width:225px;"><span class="glyphicon glyphicon-th"></span> @item.GNOrganization.Name</h5>
+                            </div>
+                        }
+                        <div class="col-md-12">
+                            <h5><strong class="label bg-gn-light-gray gn-dark-gray">@item.GNTemplateGenes.Count</strong> Gene@((@item.GNTemplateGenes.Count != 1) ? "s" : "")</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @Html.Partial("_SearchListMoreResultsPartial")
+    }
+}

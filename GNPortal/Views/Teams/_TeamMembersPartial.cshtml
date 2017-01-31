@@ -1,0 +1,83 @@
+﻿@model GenomeNext.Data.EntityModel.GNTeam
+
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+}
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Team Members"))
+    {
+        <img class="pull-left"
+             style="margin:0px;padding:0px 10px 0px 0px;max-height:30px;max-width:30px;"
+             src="@Url.Content("~/Content/icons/contacts_white.png")" />
+        <span class="badge">@Model.TeamMembers.Count()</span>
+        <span class="pull-right">
+        @if (contactForUser.IsInRole("GN_ADMIN")
+                                || contactForUser.IsInRole("ORG_MANAGER")
+                                || contactForUser.IsInRole("TEAM_MANAGER"))
+        {
+            @Html.BootstrapActionIconLink("Invite", "Invite", "Contacts",
+                                        new RouteValueDictionary(new { organizationId = Model.OrganizationId, teamId = Model.Id }),
+                                        "text-uppercase white", "envelope", null, false, false)
+        }
+        @if (Model.CanEdit)
+        {
+            <span>&nbsp;</span>
+            @Html.BootstrapActionIconLink("Manage", "Index", "Contacts", new RouteValueDictionary(new { teamId = Model.Id }), "white", "cog", null, false, false)
+        }
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(true))
+    {
+        if (Model.TeamMembers != null && Model.TeamMembers.Count() != 0)
+        {
+            int i = 0;
+            foreach (var item in Model.TeamMembers)
+            {
+                string viewContactURL = "#";
+                if (ViewBag.CanViewContact != null && (bool)ViewBag.CanViewContact)
+                {
+                    viewContactURL = Url.Action("Details", "Contacts", new { id = item.Contact.Id, teamId = item.Team.Id });
+                }
+
+                using (Html.BeginGNClickableListGroupItem(
+                    viewContactURL,
+                    (i % 2) != 0))
+                {
+                    <img class="pull-left flushTop"
+                         style="margin:0px;padding:0px 10px 0px 0px;max-height:30px;max-width:30px;"
+                         src="@Url.Content("~/Content/icons/contacts.png")" />
+                    <h5 class="flushLeft flushTop" style="padding-top:3px !important">
+                        @item.Contact.FullName
+                    </h5>
+                    <p class="small text-inline">
+                        Assigned to team as
+                        <span class="text-muted text-uppercase">@((item.GNContactId == Model.TeamLead.Id) ? "Lead" : "Member")</span>
+                    </p>
+                    <p class="small text-inline text-padded-right">
+                        on <span class="text-muted text-uppercase">@item.AssignDate.ToShortDateString()</span>
+                    </p>
+                    if (item.CreatedByContact != null)
+                    {
+                        <p class="small text-inline text-padded-right">
+                            by <span class="text-muted text-uppercase">@item.CreatedByContact.FullName</span>
+                        </p>
+                    }
+                }
+                i++;
+            }
+        }
+        else
+        {
+            <div class="list-group-item">
+                <h5>
+                    Members have not been assigned to this team.
+                </h5>
+            </div>
+        }
+    }
+}

@@ -1,0 +1,49 @@
+﻿@model GenomeNext.Data.EntityModel.GNTeam
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+}
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Team Info", "info-sign"))
+    {
+        <span class="pull-right">
+            @{
+                GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+                if (User.IsInRole("GN_ADMIN") || contactForUser.IsInRole("ORG_MANAGER"))
+                {
+                    @Html.BootstrapActionIconLink("Audit Records", "Index", "Audit", new RouteValueDictionary(new { searchEntityId = Model.Id, searchEntityType = "TEAM" }), "white", "eye-open", null, false, false)
+                    @Html.Raw("&nbsp;&nbsp;")
+                }
+            }
+
+            @if (!isDelete && Model.CanEdit)
+            {
+                @Html.BootstrapActionIconLink("Edit", "Edit", "Teams", new RouteValueDictionary(new { id = Model.Id }), "white", "cog", null, false, false)
+            }
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody())
+    {
+        <dl class="dl-horizontal">
+
+            @Html.DisplayFieldFor(model => model.Organization.Name, "Organization")
+            @Html.DisplayFieldFor(model => model.Name)
+            @Html.DisplayFieldFor(model => model.TeamLead.FullNameWithEmail, "Team Lead")
+
+            @{
+                ViewData["ViewMode"] = "Details";
+                ViewData["CreateDateTime"] = Model.CreateDateTime;
+            }
+            @Html.Partial("_AuditModelPartial", (GenomeNext.Data.Metadata.Audit.AuditModel)Model, ViewData)
+
+        </dl>
+    }
+
+    @Html.Partial("~/Views/Teams/_DeletePartial.cshtml", Model)
+}

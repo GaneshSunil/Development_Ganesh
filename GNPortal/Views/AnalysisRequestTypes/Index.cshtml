@@ -1,0 +1,42 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNAnalysisRequestType>
+
+@{
+    ViewBag.Title = "Analysis Request Types";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-tint gn-green"></span>
+    @ViewBag.Title
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="col-md-1"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.BootstrapActionButton("View", "Details", "AnalysisRequestTypes", new RouteValueDictionary(new { id = item.Code }), "success", "th-large", "sm")
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

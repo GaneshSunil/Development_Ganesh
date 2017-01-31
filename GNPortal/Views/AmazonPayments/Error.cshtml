@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/billing.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/billing_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/billing_white_green.png";
+    ViewData["ModuleHasActionBar"] = true;
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "Payments Processing Error";
+    int errorCode = 0;
+    int.TryParse(Request["ERROR_CODE"], out errorCode);
+
+    GenomeNext.Data.EntityModel.GNContact currentContact = ViewBag.ContactForUser;
+}
+
+@section ModuleIndexHeadingActionBar{
+    <div class="pull-right" style="padding-top:20px;">
+        <a href="#" class="text-uppercase white gn-green-hover" onclick="javascript:history.back();">
+            Back
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+}
+
+@section ModuleIndexContent{
+
+    <div class="col-md-12 panel form-horizontal bg-white">
+
+        @Html.BootstrapRowSpacer()
+
+        <div class="row">
+            <div class="col-md-12 text-padded">
+                <div class="alert alert-error text-uppercase">
+                    @if (errorCode == GenomeNext.Portal.Controllers.AmazonPaymentsController.BILLING_CONTACT_ERROR_CODE
+                        && currentContact != null
+                        && currentContact.GNOrganization != null
+                        && currentContact.GNOrganization.Account != null
+                        && currentContact.GNOrganization.Account.BillingContact != null)
+                    {
+                        <h5 class="gn-green text-inline flushLeft flushTop">Billing Contact:</h5>
+                        @currentContact.GNOrganization.Account.BillingContact.FullNameWithEmail
+                    }
+
+                    <br />
+                    <br />
+                    <span class="text-danger">
+                        @GenomeNext.Portal.Controllers.AmazonPaymentsController.ERROR_MSG(errorCode)
+                    </span>
+
+                    <br/>
+                    <br />
+                    Please visit 
+                    @Html.ActionLink("My Organization", "MyOrganization", "Account",null, new { @class="gn-green"})
+                    or
+                    @Html.ActionLink("My Billing", "MyBillingOverview", "Account",null, new { @class = "gn-green" })
+                    to correct this issue.
+                </div>
+            </div>
+        </div>
+
+    </div>
+}

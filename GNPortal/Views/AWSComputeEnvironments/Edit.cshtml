@@ -1,0 +1,47 @@
+﻿@model GenomeNext.Data.EntityModel.AWSComputeEnvironment
+
+@{
+    ViewBag.Title = "Edit AWS Compute Environment";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h2>
+        <span class="glyphicon glyphicon-cloud gn-green"></span>
+        @ViewBag.Title
+
+        <span class="pull-right">
+            @Html.BootstrapActionButton("Back to List", "Index", "AWSComputeEnvironments", null, "info", "chevron-left")
+            @Html.BootstrapFormSaveButton()
+        </span>
+    </h2>
+
+    @Html.BootstrapRowSpacer()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.FormFieldFor(model => model.Id, false, labelCols: 2, fieldCols: 10)
+        @Html.FormFieldFor(model => model.AWSConfigId, false, labelCols: 2, fieldCols: 10)
+        @Html.FormFieldFor(model => model.VPC, labelCols: 2, fieldCols: 10)
+        @Html.FormFieldFor(model => model.Subnet, labelCols: 2, fieldCols: 10)
+        @Html.FormFieldFor(model => model.AvailZone, labelCols: 2, fieldCols: 10)
+        @Html.FormFieldFor(model => model.MaxInstanceRequiredPerAnalysis, labelCols: 2, fieldCols: 10)
+        @Html.FormFieldFor(model => model.MaxInstanceExpectedCount, labelCols: 2, fieldCols: 10)
+        @Html.FormFieldFor(model => model.IPAvailCount, false, labelCols: 2, fieldCols: 10)
+        @Html.FormFieldFor(model => model.InstanceRunningCount, false, labelCols: 2, fieldCols: 10)
+        @Html.FormFieldFor(model => model.InstancePendingCount, false, labelCols: 2, fieldCols: 10)
+
+        @{
+            ViewData["ViewMode"] = "Edit";
+            ViewData["CreatedBy"] = Model.CreatedByContact;
+            ViewData["CreateDateTime"] = Model.CreateDateTime;
+            //ViewData["LeftColWidth"] = "4";
+            //ViewData["RightColWidth"] = "8";
+        }
+        @Html.Partial("_AuditModelPartial", null, ViewData)
+
+    </div>
+}

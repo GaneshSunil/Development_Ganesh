@@ -1,0 +1,60 @@
+﻿@using GenomeNext.Data.EntityModel
+@using GenomeNext.Data.IdentityModel
+@model GenomeNext.Data.IdentityModel.AspNetUser
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    using (Html.BeginGNPanel())
+    {
+        //Heading
+        using (Html.BeginGNPanelHeading("System Info", "wrench"))
+        {
+        }
+
+        //Body
+        using (Html.BeginGNPanelBody())
+        {
+        
+            <dl class="dl-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.UserName)
+                @Html.HiddenFor(model => model.Email)
+                @Html.HiddenFor(model => model.PhoneNumber)
+                @Html.HiddenFor(model => model.EmailConfirmed)
+                @Html.HiddenFor(model => model.PhoneNumberConfirmed)
+                @Html.Hidden("organizationId", Request["organizationId"])
+                @Html.Hidden("Password", ".")
+                @Html.Hidden("PasswordConfirm", ".")
+                @Html.HiddenFor(model => model.IsAdmin)
+
+
+
+                @Html.FormFieldFor(model => model.TwoFactorEnabled, true, null, 5, 7, true, null)
+                @Html.FormFieldFor(model => model.LockoutEndDateUtc, true, null, 5, 7, true, null)
+                @Html.FormFieldFor(model => model.LockoutEnabled, true, null, 5, 7, true, null)
+                @Html.FormFieldFor(model => model.AccessFailedCount, true, null, 5, 7, true, null)
+                @Html.FormFieldFor(model => model.PasswordHash, true, null, 5, 7, true, null)
+                @Html.FormFieldFor(model => model.SecurityStamp, true, null, 5, 7, true, null)
+            </dl>
+        }
+
+        //Footer
+        using (Html.BeginGNPanelFooter())
+        {
+            <div class="pull-left">
+                @Html.BootstrapActionButton("Cancel", "Details", "Users", new RouteValueDictionary(new { id = Model.Id }), "bg-gn-medium-gray white", "remove")
+            </div>
+            <div class="pull-right">
+                @Html.BootstrapFormSaveButton("Save", "floppy-disk", "bg-gn-green white")
+            </div>
+        }
+    }
+}

@@ -1,0 +1,66 @@
+﻿@model GenomeNext.Data.EntityModel.GNSampleRelationship
+
+@{
+    ViewBag.Title = "Pedigree";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GNSampleRelationship</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AffectedIndicator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AffectedIndicator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GNLeftSample.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GNLeftSample.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GNRightSample.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GNRightSample.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GNSampleRelationshipType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GNSampleRelationshipType.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

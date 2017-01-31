@@ -1,0 +1,41 @@
+﻿@model GenomeNext.Data.EntityModel.GNContact
+
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Personal Information", "user"))
+    {
+        <span class="pull-right">
+            @{
+                GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+                if (User.IsInRole("GN_ADMIN") || contactForUser.IsInRole("ORG_MANAGER"))
+                {
+                    @Html.BootstrapActionIconLink("Audit Records", "Index", "Audit", new RouteValueDictionary(new { searchActor = Model.Id }), "white", "eye-open", null, false, false)
+                        @Html.Raw("&nbsp;&nbsp;")
+                }
+            }
+
+            @if (Model.CanEdit)
+            {
+                @Html.BootstrapActionIconLink("Edit", "Edit", "Contacts", new RouteValueDictionary(new { id = Model.Id }), "white", "cog", null, false, false)
+            }
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody())
+    {
+        <dl class="dl-horizontal">
+
+            @Html.DisplayFieldFor(model => model.Id)
+            @Html.DisplayFieldFor(model => model.GNOrganization.Name, "Organization")
+            @Html.DisplayFieldFor(model => model.Title)
+            @Html.DisplayFieldFor(model => model.FirstName)
+            @Html.DisplayFieldFor(model => model.LastName)
+
+        </dl>
+    }
+
+}

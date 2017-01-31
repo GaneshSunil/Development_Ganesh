@@ -1,0 +1,118 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    using (Html.BeginGNPanel())
+    {
+        //Heading
+        using (Html.BeginGNPanelHeading("Analysis Request Info", "info-sign"))
+        {
+            <span class="pull-right">
+                @Html.BootstrapActionIconLink("Delete", "Delete", "AnalysisRequests", new RouteValueDictionary(new { id = Model.Id, projectId = Request["projectId"], teamId = Request["teamId"] }), "white", "trash", null)
+            </span>
+        }
+
+        //Body
+        using (Html.BeginGNPanelBody())
+        {               
+            <script type="text/javascript">
+                function explain(id)
+                {
+                    $('#' + id).toggle();
+                }
+            </script>
+    
+            <div class="form-horizontal col-md-12">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.CreateDateTime)
+                @Html.HiddenFor(model => model.CreatedBy)
+                @Html.HiddenFor(model => model.AWSRegionSystemName)
+                
+                @Html.HiddenFor(model => model.GNAnalysisRequestTypeCode)
+                
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DisplayFor(model => model.Id)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Project.Teams.FirstOrDefault().Organization, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DisplayFor(model => model.Project.Teams.FirstOrDefault().Organization.Name)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Project.Teams, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.ActionLink(Model.Project.Teams.FirstOrDefault().Name, "Details", "Teams", new { id = Model.Project.Teams.FirstOrDefault().Id }, null)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GNProjectId, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownList("GNProjectId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.GNProjectId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AnalysisType, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @if(Model.GNAnalysisRequestGNSamples.Count > 0)
+                    {
+                        <div class="col-md-4">                        
+                            @Html.ValueFor(model => model.AnalysisType.Name)
+                            @Html.HiddenFor(model => model.AnalysisTypeId)
+                        </div>
+                        var Message = "Once an Analysis has Samples associated, the type is locked to prevent having mixed types submitted on the same process. To change the type, please remove all related Samples first.";
+                        <div class="col-md-4">
+                            <span class="glyphicon glyphicon-question-sign bg-warning" title="@(Message)"></span>&nbsp;<a href="javascript:explain('unable_to_edit_gender')" style="font-size:8pt;font-weight:bold;text-transform:none;">Why readonly type?</a><br /><span id="unable_to_edit_gender" style="display:none;font-size:8pt;color:gray;">@(Message)</span>
+                        </div>
+                    }
+                    else
+                    {                        
+                        <div class="col-md-8">
+                            @Html.DropDownList("AnalysisTypeId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.AnalysisType, "", new { @class = "text-danger" })
+                        </div>
+                    }
+                </div>
+
+                @{
+                    ViewData["ViewMode"] = "Edit";
+                    ViewData["CreateDateTime"] = Model.CreateDateTime;
+                    ViewData["LeftColWidth"] = "4";
+                    ViewData["RightColWidth"] = "8";
+                }
+                @Html.Partial("_AuditModelPartial", Model, ViewData)
+
+            </div>
+        }
+
+        //Footer
+        using (Html.BeginGNPanelFooter())
+        {
+            <div class="pull-left">
+                @Html.BootstrapActionButton("Cancel", "Details", "AnalysisRequests", new RouteValueDictionary(new { id = Model.Id, projectId = Request["projectId"], teamId = Request["teamId"] }), "bg-gn-medium-gray white", "remove")
+            </div>
+            <div class="pull-right">
+                @Html.BootstrapFormSaveButton("Save", "floppy-disk", "bg-gn-green white")
+            </div>
+        }
+    }
+}

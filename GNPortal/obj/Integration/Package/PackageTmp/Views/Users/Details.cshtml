@@ -1,0 +1,32 @@
+﻿@using GenomeNext.Data.EntityModel
+@using GenomeNext.Data.IdentityModel
+@model GenomeNext.Data.IdentityModel.AspNetUser
+
+@{
+    ViewBag.Title = Model.UserName;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/contacts_white.png";
+    ViewData["ModuleCtl"] = "Users";
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+}
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            @Html.Partial("~/Views/Users/_InfoPartial.cshtml", Model)
+
+            @Html.Partial("~/Views/Users/_UserSystemInfoPartial.cshtml", Model)
+
+        </div>
+
+        <div class="col-md-6">
+
+            @Html.Partial("~/Views/Users/_UserContactsPartial.cshtml", Model)
+            
+        </div>
+
+    </div>
+}

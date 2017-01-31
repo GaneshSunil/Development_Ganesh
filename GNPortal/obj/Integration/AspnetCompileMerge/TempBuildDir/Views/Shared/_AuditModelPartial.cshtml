@@ -1,0 +1,101 @@
+﻿@model GenomeNext.Data.Metadata.Audit.AuditModel
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+}
+@if (ViewData["ViewMode"] == "Details")
+{
+    if (ViewData["CreatedBy"] != null)
+    {
+        <dt>
+            Created By
+        </dt>
+
+        <dd>
+            @Html.Raw(((GenomeNext.Data.EntityModel.GNContact)ViewData["CreatedBy"]).FullName)
+        </dd>
+    }
+    else if (Model.CreatedByContact != null)
+    {
+        <dt>
+            Created By
+        </dt>
+
+        <dd>
+            @Model.CreatedByContact.FullName
+        </dd>
+    }
+
+    if (ViewData["CreateDateTime"] != null)
+    {
+        <dt>
+            Create Date/Time
+        </dt>
+
+        <dd>
+            @Html.Raw(TimeZoneInfo.ConvertTime((DateTime)ViewData["CreateDateTime"], contactForUser.GNOrganization.OrgTimeZoneInfo))
+        </dd>
+    }
+    else if (Model.CreateDateTime.HasValue)
+    {
+        <dt>
+            Create Date/Time
+        </dt>
+
+        <dd>
+            @Html.Raw(TimeZoneInfo.ConvertTime(Model.CreateDateTime.Value, contactForUser.GNOrganization.OrgTimeZoneInfo))
+        </dd>
+    }
+}
+else
+{
+    if (string.IsNullOrEmpty((string)ViewData["LeftColWidth"]))
+    {
+        ViewData["LeftColWidth"] = "2";
+    }
+
+    if (string.IsNullOrEmpty((string)ViewData["RightColWidth"]))
+    {
+        ViewData["RightColWidth"] = "10";
+    }
+
+    if (ViewData["CreatedBy"] != null)
+    {
+        <div class="form-group">
+            <label class='control-label col-md-@ViewData["LeftColWidth"]'>Created By</label>
+            <div class='col-md-@ViewData["RightColWidth"]'>
+                @Html.Raw(((GenomeNext.Data.EntityModel.GNContact)ViewData["CreatedBy"]).FullName)
+                @Html.Hidden("CreatedBy", ((GenomeNext.Data.EntityModel.GNContact)ViewData["CreatedBy"]).Id)
+            </div>
+        </div>
+    }
+    else if (Model.CreatedByContact != null)
+    {
+        <div class="form-group">
+            <label class='control-label col-md-@ViewData["LeftColWidth"]'>Created By</label>
+            <div class='col-md-@ViewData["RightColWidth"]'>
+                @Model.CreatedByContact.FullName
+            </div>
+        </div>
+    }
+
+    if (ViewData["CreateDateTime"] != null)
+    {
+        <div class="form-group">
+            <label class='control-label col-md-@ViewData["LeftColWidth"]'>Create Date/Time</label>
+            <div class='col-md-@ViewData["RightColWidth"]'>
+                @Html.Raw(TimeZoneInfo.ConvertTime((DateTime)ViewData["CreateDateTime"], contactForUser.GNOrganization.OrgTimeZoneInfo))
+                @Html.Hidden("CreateDateTime", ViewData["CreateDateTime"])
+            </div>
+        </div>
+    }
+    else if (Model.CreateDateTime.HasValue)
+    {
+
+        <div class="form-group">
+            <label class='control-label col-md-@ViewData["LeftColWidth"]'>Create Date/Time</label>
+            <div class='col-md-@ViewData["RightColWidth"]'>
+                @Html.Raw(TimeZoneInfo.ConvertTime(Model.CreateDateTime.Value, contactForUser.GNOrganization.OrgTimeZoneInfo))
+            </div>
+        </div>
+    }
+}

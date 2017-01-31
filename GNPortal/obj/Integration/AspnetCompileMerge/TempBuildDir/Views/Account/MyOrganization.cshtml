@@ -1,0 +1,180 @@
+﻿@model GenomeNext.Data.EntityModel.GNOrganization
+@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/organization.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/organization_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/organization_white_green.png";
+    ViewData["ModuleHasActionBar"] = true;
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "My Organization";
+
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+    List<GenomeNext.Data.EntityModel.GNOrganization> organizationsForUser = ViewBag.OrganizationsForUser;
+}
+
+@section ModuleIndexHeadingActionBar{
+    @if (organizationsForUser != null && organizationsForUser.Count != 0)
+    {
+        <div class="pull-right" style="padding-top:20px;">
+            <a href="#" class="dropdown-toggle text-uppercase white gn-green-hover" data-toggle="dropdown">
+                <span>Change Organization</span>
+                <span class="caret"></span>
+            </a>
+
+            <ul class="dropdown-menu" role="menu">
+                @foreach (GenomeNext.Data.EntityModel.GNOrganization item in organizationsForUser)
+                {
+                    <li class="text-nowrap text-left text-padded">
+                        @Html.BootstrapActionIconLink(item.Name, "SetDefaultOrganization", "Account", 
+                            new RouteValueDictionary(new { organizationId = item.Id, aspNetUserId = contactForUser.AspNetUserId }), 
+                            "gn-dark-gray text-left", "globe", "sm",displayText:true)
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+}
+
+@section ModuleIndexContent{
+
+<div class="col-md-12 panel form-horizontal bg-white">
+
+    @Html.BootstrapRowSpacer()
+
+    <div class="row">
+        <div class="col-md-12">
+            <dl class="dl-horizontal col-md-10">
+
+                @Html.DisplayFieldFor(model => model.Name)
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrgMainContact)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.OrgMainContact.FullName)
+                    (@Html.DisplayFor(model => model.OrgMainContact.Email))
+                </dd>
+
+                @Html.DisplayFieldFor(model => model.UTCOffsetDescription)
+            </dl>
+            <dl class="dl-horizontal col-md-2">
+                @{
+                    if (User.IsInRole("GN_ADMIN") || contactForUser.IsInRole("ORG_MANAGER"))
+                    {
+                        @Html.BootstrapActionButton("Audit Records", "Index", "Audit", null, "btn bg-gn-green small text-uppercase white", "eye-open")
+                    }
+                }
+            </dl>
+        </div>
+        <div class="col-md-12">
+                <dl class="dl-horizontal col-md-12">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Contacts)
+                    </dt>
+
+                    <dd>
+                        @using (Html.BeginGNPanel())
+                        {
+
+                            using (Html.BeginGNPanelHeading("Organization Contacts"))
+                            {
+                                <img class="pull-left" style="height:18px;padding-right:6px;"
+                                     src="@Url.Content("~/Content/icons/contacts_white.png")" />
+                                <span class="badge">@Model.Contacts.Count()</span>
+                                <span class="pull-right" style="font-size:.9em;">
+                                    @Html.BootstrapActionIconLink("Search", "Index", "Contacts",
+                                 new RouteValueDictionary(new { organizationId = Model.Id }),
+                                 "text-uppercase white text-padded-right", "search", null, false, true)
+
+                                    @if (contactForUser.IsInRole("GN_ADMIN")
+                                    || contactForUser.IsInRole("ORG_MANAGER")
+                                    || contactForUser.IsInRole("TEAM_MANAGER"))
+                                    {
+                                        @Html.BootstrapActionIconLink("Manage", "Index", "Contacts",
+                                         new RouteValueDictionary(new { organizationId = Model.Id }),
+                                              "text-uppercase white", "pencil", null, false, true)
+                                        
+                                        @Html.Raw("&nbsp;&nbsp;&nbsp;")
+                                        
+                                        @Html.BootstrapActionIconLink("Invite", "Invite", "Contacts",
+                                         new RouteValueDictionary(new { organizationId = Model.Id }),
+                                         "text-uppercase white", "envelope", null, false, true)
+                                    }
+                                </span>
+                            }
+
+                            using (Html.BeginGNPanelBody(true))
+                            {
+                                int i = 0;
+                                foreach (var item in Model.Contacts)
+                                {
+                                    string viewContactURL = "#";
+                                    if (ViewBag.CanViewContact != null && (bool)ViewBag.CanViewContact)
+                                    {
+                                        viewContactURL = Url.Action("Details", "Contacts", new { id = item.Id });
+                                    }
+
+                                    using (Html.BeginGNClickableListGroupItem(
+                                        "#",
+                                        (i % 2) != 0))
+                                    {
+                                        <div class="col-md-12">
+                                            <div class="col-md-6"
+                                                 onclick="window.location.href='@viewContactURL'">
+                                                <img class="pull-left" style="height:45px;padding-right:10px;"
+                                                     src="@Url.Content("~/Content/icons/contacts.png")" />
+                                                <h4 class="flushTop">@item.FullName</h4>
+                                                <h5>@item.Email</h5>
+                                            </div>
+                                            @if (contactForUser.IsInRole("GN_ADMIN")
+                                            || contactForUser.IsInRole("ORG_MANAGER"))
+                                            {
+                                                <div class="col-md-6 small text-right">
+                                                    Set as:
+                                                    <span>&nbsp;</span>
+                                                    @if (Model.Account.AccountOwner == null || item.Id != Model.Account.AccountOwner.Id)
+                                                    {
+                                                        @Html.BootstrapActionIconLink("Account Owner", "SetAsAccountOwner", "Account", new RouteValueDictionary(new { organizationId = Model.Id, contactId = item.Id }), "gn-green", "globe", displayText: true)
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="glyphicon glyphicon-globe"></span>
+                                                        <span>Account Owner</span>
+                                                    }
+                                                    <span>&nbsp;</span>
+                                                    @if (Model.Account.BillingContact == null || item.Id != Model.Account.BillingContact.Id)
+                                                    {
+                                                        @Html.BootstrapActionIconLink("Billing Contact", "SetAsBillingContact", "Account", new RouteValueDictionary(new { organizationId = Model.Id, contactId = item.Id }), "gn-green", "usd", displayText: true)
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="glyphicon glyphicon-usd"></span>
+                                                        <span>Billing Contact</span>
+                                                    }
+                                                    <span>&nbsp;</span>
+                                                    @if (Model.Account.MailingContact == null || item.Id != Model.Account.MailingContact.Id)
+                                                    {
+                                                        @Html.BootstrapActionIconLink("Mailing Contact", "SetAsMailingContact", "Account", new RouteValueDictionary(new { organizationId = Model.Id, contactId = item.Id }), "gn-green", "envelope", displayText: true)
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="glyphicon glyphicon-envelope"></span>
+                                                        <span>Mailing Contact</span>
+                                                    }
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                    i++;
+                                }
+
+                            }
+                        }
+                    </dd>
+
+                </dl>
+        </div>
+    </div>
+</div>
+}

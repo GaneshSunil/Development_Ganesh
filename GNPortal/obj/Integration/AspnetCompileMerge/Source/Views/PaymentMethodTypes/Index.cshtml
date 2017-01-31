@@ -1,0 +1,60 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNPaymentMethodType>
+
+@{
+    ViewBag.Title = "Payment Method Types";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-euro gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Create New", "Create", "PaymentMethodTypes", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "plus")
+    </span>
+</h2>
+
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDateTime)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDateTime)
+                </td>
+                <td>
+                    @Html.BootstrapActionButton("View", "Details", "PaymentMethodTypes", new RouteValueDictionary(new { id = item.Id }), "success", "th-large", "sm")
+                    @Html.BootstrapActionButton("Edit", "Edit", "PaymentMethodTypes", new RouteValueDictionary(new { id = item.Id }), "warning", "cog", "sm")
+                    @Html.BootstrapActionButton("Delete", "Delete", "PaymentMethodTypes", new RouteValueDictionary(new { id = item.Id }), "danger", "trash", "sm")
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

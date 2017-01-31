@@ -1,0 +1,75 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNSequencerJob>
+
+@{
+    ViewBag.Title = "Sequencer Jobs";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-th-list gn-green"></span>
+    @ViewBag.Title
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th class="col-md-3">
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th class="col-md-3">
+                @Html.DisplayNameFor(model => model.Project)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDateTime)
+            </th>
+            <th class="col-md-2">
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th class="col-md-1">
+                Samples
+            </th>
+            <th class="col-md-1"></th>
+        </tr>
+
+        @if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td class="small">
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td class="small">
+                        @Html.BootstrapActionIconLink(item.Project, "Details", "Projects", new RouteValueDictionary(new { id = item.GNProject.Id }), "success", "folder-open", "sm", false, true)
+                    </td>
+                    <td class="small">
+                        @Html.DisplayFor(modelItem => item.CreateDateTime)
+                    </td>
+                    <td class="small">
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td align="right small">
+                        @{
+
+                            @Html.Raw("N/A");
+
+                        }
+                    </td>
+                    <td>
+                        @Html.BootstrapActionButton("View", "Details", "SequencerJobs", new RouteValueDictionary(new { id = item.Id }), "success", "th-large", "sm")
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td class="small" colspan="6">No records found</td>
+            </tr>
+        }
+        
+
+    </table>
+
+</div>

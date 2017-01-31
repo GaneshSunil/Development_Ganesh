@@ -1,0 +1,102 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNInvoice>
+
+@{
+    ViewBag.Title = "Invoices";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-euro gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @if (!string.IsNullOrEmpty(Request["purchaseOrderId"]))
+        {
+            @Html.BootstrapActionButton("Back to Purchase Order", "Edit", "PurchaseOrders", new RouteValueDictionary(new { id = Request["purchaseOrderId"] }), "info", "plus")
+        }
+        else
+        {
+            @Html.BootstrapActionButton("Create New", "Create", "Invoices", null, "info", "plus")
+        }
+    </span>
+</h2>
+
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th class="col-md-2">
+                @Html.DisplayNameFor(model => model.Account.Organization)
+            </th>
+            <th class="col-md-3">
+                Invoice #
+            </th>
+            <th>
+                Invoice Date
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NetTerms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Payments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Balance)
+            </th>
+            <th class="col-md-3">
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Account.Organization.Name)
+                </td>
+                <td>
+                    <div class="small"><strong>@Html.DisplayFor(modelItem => item.ExternalInvoiceNum)</strong></div>
+                    <div class="small">@Html.DisplayFor(modelItem => item.Id)</div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InvoiceStartDate)
+                    -
+                    @Html.DisplayFor(modelItem => item.InvoiceEndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NetTerms)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentsTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Balance)
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(Request["purchaseOrderId"]))
+                    {
+                        @Html.BootstrapActionButton(null, "AddToInvoiceToPurchaseOrder", "PurchaseOrders", new RouteValueDictionary(new { invoiceId = item.Id, purchaseOrderId = Request["purchaseOrderId"] }), "success", "plus", "sm", false, "center", false)
+                    }
+                    else
+                    {
+                        @Html.BootstrapActionButton("View", "Details", "Invoices", new RouteValueDictionary(new { id = item.Id }), "success", "th-large", "sm")
+                        @Html.BootstrapActionButton("Edit", "Edit", "Invoices", new RouteValueDictionary(new { id = item.Id }), "warning", "cog", "sm")
+                        @Html.BootstrapActionButton("Delete", "Delete", "Invoices", new RouteValueDictionary(new { id = item.Id }), "danger", "trash", "sm")
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

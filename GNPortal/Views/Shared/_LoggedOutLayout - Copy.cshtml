@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+    @RenderSection("scripts", required: false)
+    @Html.Partial("_DigiCertPartial_Script")
+}
+
+@Html.BootstrapRowSpacer()
+
+<div class="row">
+    <div class="col-md-12">
+        <img class="img-responsive col-md-4 col-xs-offset-0 col-sm-offset-2 col-md-offset-4"
+             src="@Url.Content("~/Images/gn-logo-transparent.png")" />
+    </div>
+</div>
+
+@Html.BootstrapRowSpacer()
+
+<div class="row">
+
+    <div class="col-md-6 col-md-offset-3">
+
+        <div class="row">
+            <div class="col-md-12">
+                @RenderSection("LoggedOutContent", required: true)
+            </div>
+        </div>
+
+        @Html.BootstrapRowSpacer()
+
+        <div class="row">
+            <div class="col-md-12">
+                @Html.Partial("_DigiCertPartial")
+            </div>
+        </div>
+    </div>
+
+        </div>

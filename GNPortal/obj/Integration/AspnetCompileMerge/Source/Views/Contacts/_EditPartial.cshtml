@@ -1,0 +1,72 @@
+﻿@model GenomeNext.Data.EntityModel.GNContact
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    using (Html.BeginGNPanel())
+    {
+        //Heading
+        using (Html.BeginGNPanelHeading("Edit Contact", "user"))
+        {
+        }
+
+        //Body
+        using (Html.BeginGNPanelBody())
+        {
+            <dl class="dl-horizontal col-md-6">
+
+                @Html.FormFieldFor(model => model.Id, false)
+                @Html.BootstrapRowSpacer()
+                @Html.FormFieldFor(model => model.Title, true, null, 5, 7)
+                @Html.FormFieldFor(model => model.FirstName, true, null, 5, 7)
+                @Html.FormFieldFor(model => model.LastName, true, null, 5, 7)
+
+                @Html.BootstrapRowSpacer()
+
+                @Html.FormFieldFor(model => model.Email, true, null, 5, 7)
+                @Html.FormFieldFor(model => model.Phone, true, null, 5, 7)
+                @Html.FormFieldFor(model => model.Fax, true, null, 5, 7)
+                @Html.FormFieldFor(model => model.Website, true, null, 5, 7)
+
+
+
+            </dl>
+
+
+            <dl class="dl-horizontal col-md-6">
+                @Html.BootstrapRowSpacer()
+                @Html.FormFieldFor(model => model.StreetAddress1, true, null, 5, 7)
+                @Html.FormFieldFor(model => model.StreetAddress2, true, null, 5, 7)
+                @Html.FormFieldFor(model => model.City, true, null, 5, 7)
+                @Html.FormFieldFor(model => model.State, true, null, 5, 7)
+                @Html.FormFieldFor(model => model.Zip, true, null, 5, 7)
+
+                @Html.BootstrapRowSpacer()
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GNContactRoles, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.ListBox("AspNetRoleList", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.GNContactRoles, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @Html.FormFieldFor(model => model.IsInviteAccepted)
+
+            </dl>
+        }
+
+
+        //Footer
+        using (Html.BeginGNPanelFooter())
+        {
+            <div class="pull-left">
+                @Html.BootstrapActionButton("Cancel", "Details", "Contacts", new RouteValueDictionary(new { id = Model.Id }), "bg-gn-medium-gray white", "remove")
+            </div>
+            <div class="pull-right">
+                @Html.BootstrapFormSaveButton("Save", "floppy-disk", "bg-gn-green white")
+            </div>
+        }
+    }
+}

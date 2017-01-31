@@ -1,0 +1,127 @@
+﻿@model IEnumerable<GenomeNext.Data.IdentityModel.AspNetUser>
+
+@{
+    ViewBag.Title = "Users";
+
+    //Setup Values for Searchable List Table/Control/Partials
+    int resultsColSpan = 6;
+    ViewData["ResultsColSpan"] = resultsColSpan;
+    ViewData["SearchListItemsCount"] = Model.Count();
+    ViewData["SearchTextOptions"] = new string[] { "All", "Username", "Email" };
+}
+
+@Html.BootstrapRowSpacer()
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Users", ""))
+    {
+        <img class="pull-left" style="height:18px;padding-right:6px;"
+             src="@Url.Content("~/Content/icons/contacts_white.png")" />
+        <span class="badge">@Model.Count()</span>
+        <span class="pull-right" style="font-size:.9em;margin-top:-5px;">
+            @if (!string.IsNullOrEmpty(Request["teamId"]))
+            {
+                        @Html.BootstrapActionButton("Back to Team", "Edit", "Teams", new RouteValueDictionary(new { id = Request["teamId"] }), "text-uppercase white", "chevron-left")
+                        @Html.Raw("&nbsp;")
+                        @Html.BootstrapActionButton("Create New", "Create", "Users", new RouteValueDictionary(new { organizationId = Request["organizationId"], teamId = Request["teamId"] }), "text-uppercase white", "plus")
+            }
+            else if (!string.IsNullOrEmpty(Request["organizationId"]))
+            {
+                @Html.BootstrapActionButton("Back to Organization", "Edit", "Organizations", new RouteValueDictionary(new { id = Request["organizationId"] }), "text-uppercase white", "chevron-left")
+                        @Html.Raw("&nbsp;")
+                        @Html.BootstrapActionButton("Create New", "Create", "Users", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "text-uppercase white", "plus")
+            }
+            else
+            {
+                @Html.BootstrapActionButton("Create New", "Create", "Users", null, "text-uppercase white", "plus")
+            }
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(true))
+    {
+        <div class="list-group-item bg-gn-medium-gray">
+            @Html.Partial("_SearchListControlPartial")
+        </div>
+
+        if (Model != null && Model.Count() != 0)
+        {
+            ViewData["SearchListItemsCount"] = Model.Count();
+            int i = 0;
+            int m = 0;
+            foreach (var item in Model)
+            {
+                m++;
+                using (Html.BeginGNClickableListGroupItem(
+                    "#",
+                    (i % 2) != 0))
+                {
+                    <div id="item_@m" class="col-md-6">
+                        <div class="col-md-12 flushLeft flushRight">
+                            <img class="pull-left"
+                                 style="height:18px;padding-right:6px;"
+                                 src="@Url.Content("~/Content/icons/contacts.png")" />
+
+                            <h5 class="flushLeft flushTop text-inline">
+                                @item.UserName
+                            </h5>
+                        </div>
+                        <p class="small text-inline">
+                            <a href="mailto:@(item.Email)">@item.Email</a>, <b>@item.ContactCount</b> contact@(item.ContactCount != 1 ? "s" : "")
+                        </p>
+                    </div>
+
+                    <div class="col-md-5" style="vertical-align:bottom">
+                        <div class="small text-inline">
+                            @if(item.EmailConfirmed){
+                                <span><span class="glyphicon glyphicon-ok"></span>&nbsp;Email confirmed</span>
+                            }
+                            else
+                            {
+                                <span><span class="glyphicon glyphicon-remove"></span>&nbsp;Email not confirmed</span>
+                            }
+                            <br />
+                            @if(item.IsAdmin){
+                                <span><span class="glyphicon glyphicon-star"></span>&nbsp;Is Admin</span>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="col-md-1 flushRight">
+                        @if (string.IsNullOrEmpty(Request["organizationId"]))
+                        {
+                            @Html.BootstrapActionIconLink("View", "Details", "Users", new RouteValueDictionary(new { id = item.Id }), "", "th-large", "sm")
+                            @Html.Raw("&nbsp;")
+                            @Html.BootstrapActionIconLink("Edit", "Edit", "Users", new RouteValueDictionary(new { id = item.Id }), "", "cog", "sm")
+
+                            if (item.ContactCount == 0)
+                            {
+                                @Html.Raw("&nbsp;")
+                                @Html.BootstrapActionIconLink("Delete", "Delete", "Users", new RouteValueDictionary(new { id = item.Id }), "", "trash", "sm")
+                            }
+                        }
+                        else
+                        {
+                            @Html.BootstrapActionIconLink("Select", "Create", "Contacts", new RouteValueDictionary(new { aspNetUserId = item.Id, organizationId = Request["organizationId"], teamId = Request["teamId"] }), "btn-lg gn-green", "unchecked", null, false, true)
+                        }
+                    </div>
+                }
+                i++;
+
+            }
+        }
+        else
+        {
+            <div class="list-group-item">
+                <h5>
+                    No Users found.
+                </h5>
+            </div>
+        }
+
+        @Html.Partial("_SearchListMoreResultsPartial")
+    }
+}

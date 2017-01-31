@@ -1,0 +1,54 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.AWSConfig>
+
+@{
+    ViewBag.Title = "AWS Configurations";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-cloud gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Create New", "Create", "AWSConfigs", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "plus")
+    </span>
+</h2>
+
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AWSAccessKeyId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AWSSecretAccessKey)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AWSRegion.AWSRegionSystemName)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AWSAccessKeyId)
+                    </td>
+                    <td>
+                        @item.getMaskedAWSSecretAccessKey()
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AWSRegion.AWSRegionSystemName)
+                    </td>
+                    <td>
+                        @Html.BootstrapActionIcon("View", "Details", "AWSConfigs", new RouteValueDictionary(new { id = item.Id }), "success")
+                        @Html.BootstrapActionIcon("Edit", "Edit", "AWSConfigs", new RouteValueDictionary(new { id = item.Id }), "warning")
+                        @Html.BootstrapActionIcon("Delete", "Delete", "AWSConfigs", new RouteValueDictionary(new { id = item.Id }), "danger")
+                    </td>
+                </tr>
+            }
+
+        </table>
+</div>

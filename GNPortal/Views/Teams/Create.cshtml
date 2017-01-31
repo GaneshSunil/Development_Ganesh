@@ -1,0 +1,50 @@
+﻿@model GenomeNext.Data.EntityModel.GNTeam
+
+@{
+    ViewBag.Title = "Create New Team";
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/teams_white.png";
+    ViewData["ModuleCtl"] = "Teams";
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+}
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            var itemMinHeight = $("div.panel[class*='border-gn-dark-gray']:first").height() + 2;
+            $("#createNewItemPanel").css("min-height", itemMinHeight + "px");
+
+            $("#Name").focus();
+        });
+
+    </script>
+}
+
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-xs-12 col-md-6">
+
+            @Html.Partial("~/Views/Teams/_CreatePartial.cshtml", Model)
+
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+
+            @{
+                ViewData["TipsPanelTitle"] = "Tips for Creating a Team";
+                ViewData["TipsPanelImg"] = "~/Content/icons/teams.png";
+                ViewData["TipContent"] = new List<string>
+                {
+                    "Enter the Team Name and select the Team Lead from the dropdown menu. Team Leads are generated from members in your organization that have Team Manager or Org Manager permissions.",
+                    "If you do not see the Team Lead in the dropdown menu, contact your Org Manager to invite a new user, or you can invite a new user from the My Organization page if you have the appropriate permissions for your organization."
+                };
+            }
+            @Html.Partial("~/Views/Shared/_TipsPanelPartial.cshtml",null,ViewData)
+
+        </div>
+
+    </div>
+}

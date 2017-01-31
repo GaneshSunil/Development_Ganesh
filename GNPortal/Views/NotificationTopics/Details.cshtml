@@ -1,0 +1,220 @@
+﻿@model GenomeNext.Data.EntityModel.GNNotificationTopic
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<script src="//cdn.ckeditor.com/4.4.5/full-all/ckeditor.js"></script>
+
+
+<h2>
+    <span class="glyphicon glyphicon-envelope gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "NotificationTopics", null, "info", "chevron-left")
+        @Html.BootstrapActionButton("Edit", "Edit", "NotificationTopics", new RouteValueDictionary(new { id = Model.Id }), "warning")
+   <!--Html.BootstrapActionButton("Subscribers", "Index", "NotificationTopicSubscribers", new RouteValueDictionary(new { GNNotificationTopicId = Model.Id, IsSubscribed="Y" }), "primary")-->
+        @Html.BootstrapActionButton("Logs", "Index", "NotificationLogs", new RouteValueDictionary(new { GNNotificationTopicId = Model.Id }), "info")
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="col-md-6 well well-sm">
+
+            <div class="form-group">
+                @Html.BootstrapRowSpacer()
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Code)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Code)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Title)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Format)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Format)
+                    </dd>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Priority)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Priority)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Subject)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Subject)
+                    </dd>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Status)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SendingCondition)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SendingCondition)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CreatedByContact.FullName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CreateDateTime)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CreateDateTime)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+
+        <div class="col-md-6 well well-sm">
+                <div class="form-group">
+                    @Html.BootstrapRowSpacer()
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Sender)
+                        </dt>
+
+                        <dd>
+                            @Html.Display("SenderName")
+                        </dd>
+
+                        <dt>
+                            To
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.NotifyObjectCreatorBool)
+                            @Html.LabelFor(model => model.NotifyObjectCreator, htmlAttributes: new { @style = "font-weight:normal" })
+                            @Html.ListBox("SelectedToRolesList", null, htmlAttributes: new { @class = "form-control" })
+                        </dd>
+
+                        <dt>
+                            CC
+                        </dt>
+
+                        <dd>
+                            @Html.ListBox("SelectedCCRolesList", null, htmlAttributes: new { @class = "form-control" })
+                        </dd>
+
+                        <dt>
+                            BCC
+                        </dt>
+
+                        <dd>
+                            @Html.ListBox("SelectedBCCRolesList", null, htmlAttributes: new { @class = "form-control" })
+                        </dd>
+
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.IsSubscriptionOptional, htmlAttributes: new { @class = "control-label col-md-5" })
+                            <div class="col-md-5">
+                                @Html.DisplayFor(model => model.IsSubscriptionOptionalText)
+                            </div>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        
+            <div class="col-md-6 well well-sm">  
+                <h5>Test any changes made by sending a sample</h5>              
+                <div class="form-group col-md-12">
+                    
+                    @if(Request["SampleSent"] != null && Request["SampleSent"] == "1" && Request["SampleEmail"] != "")
+                    {
+                         <div class="alert alert-success"><div class="glyphicon glyphicon-ok"></div>&nbsp;The e-mail sample has been sent to <b>@Request["SampleEmail"]</b>.</div>
+                    }
+                    E-mail
+                    <input type="text" name="InputEmailForSample" id="InputEmailForSample" />
+                    <a href="javascript:sendSample();" class="btn btn-info " style="text-align:center" title="Send Sample">
+                        <span class="glyphicon glyphicon-envelope"></span>&nbsp;Send Sample
+                    </a>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+
+
+        <div class="col-md-12 well well-sm">
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Message)
+                </dt>
+
+                <dd>
+                    <div class="col-md-11">
+                        <textarea name="Message" id="Message" rows="20" cols="50" disabled>
+                            @Model.Message
+                        </textarea>
+                        <script type="text/javascript">
+                            CKEDITOR.config.toolbarCanCollapse = true;
+                            CKEDITOR.config.toolbarStartupExpanded = false;
+                            CKEDITOR.config.toolbar_Basic;
+                            CKEDITOR.replace('Message');
+                        </script>
+                    </div>
+                </dd>
+            </dl>
+
+        </div>
+        }
+
+@section scripts {
+    <script>
+        function sendSample()
+        {
+            document.getElementById('EmailForSample').value = document.getElementById('InputEmailForSample').value;
+            document.getElementById('SendSampleForm').submit();
+        }
+    </script>
+}
+<form name="SendSampleForm" id="SendSampleForm" method="post" action="@Url.Action("SendSample")">
+    <input type="hidden" name="EmailForSample" id="EmailForSample" />
+    <input type="hidden" name="Id" id="Id" value="@Model.Id" />
+</form>

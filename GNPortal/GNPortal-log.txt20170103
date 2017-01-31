@@ -1,0 +1,53 @@
+2016-12-29 20:38:23,870 [15] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 20:38:31,076 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 20:38:39,028 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 20:39:40,781 [8] WARN  GenomeNext.App.AnalysisRequestService - Unable to read message from GN_BAM_VIEWER queue.
+System.Exception: Unable to read message from GN_BAM_VIEWER queue. ---> System.NotSupportedException: The given path's format is not supported.
+   at System.Security.Util.StringExpressionSet.CanonicalizePath(String path, Boolean needFullPath)
+   at System.Security.Util.StringExpressionSet.CreateListFromExpressions(String[] str, Boolean needFullPath)
+   at System.Security.Permissions.FileIOPermission.AddPathList(FileIOPermissionAccess access, AccessControlActions control, String[] pathListOrig, Boolean checkForDuplicates, Boolean needFullPath, Boolean copyPathList)
+   at System.Security.Permissions.FileIOPermission.AddPathList(FileIOPermissionAccess access, String[] pathListOrig, Boolean checkForDuplicates, Boolean needFullPath, Boolean copyPathList)
+   at System.Security.Permissions.FileIOPermission..ctor(FileIOPermissionAccess access, String[] pathList, Boolean checkForDuplicates, Boolean needFullPath)
+   at System.IO.File.InternalGetLastWriteTimeUtc(String path, Boolean checkHost)
+   at System.IO.File.GetLastWriteTime(String path)
+   at GenomeNext.App.AnalysisRequestService.WaitForBamViewerResponse(Guid analysisId) in f:\GitHub\webapp\GNApp\AnalysisService.cs:line 1813
+   --- End of inner exception stack trace ---
+2016-12-29 20:45:39,614 [23] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 20:46:23,858 [23] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 20:49:28,221 [15] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 20:49:28,220 [31] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 20:49:40,877 [9] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 20:49:45,060 [9] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 20:53:33,903 [31] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 20:53:48,903 [21] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 20:53:55,906 [31] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:01:02,833 [20] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:01:02,975 [25] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:02:23,167 [23] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:03:35,091 [23] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:03:42,385 [23] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:05:43,575 [17] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:05:43,575 [15] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:06:59,869 [17] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:07:30,055 [15] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:07:31,063 [17] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:07:45,726 [25] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:09:16,422 [15] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:09:16,422 [25] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:09:32,226 [17] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:12:04,545 [25] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:12:04,693 [15] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:12:48,791 [25] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:14:04,703 [15] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:14:47,494 [17] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:14:49,614 [24] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:14:54,082 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:14:57,793 [24] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:15:00,436 [15] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:15:04,967 [24] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:17:06,159 [24] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:17:56,649 [24] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:18:00,817 [19] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:18:22,479 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:18:24,637 [16] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0
+2016-12-29 21:18:27,085 [8] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0

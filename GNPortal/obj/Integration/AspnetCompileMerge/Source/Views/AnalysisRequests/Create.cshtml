@@ -1,0 +1,84 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+@{
+    ViewBag.Title = "Create New Analysis";
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/analyses_white.png";
+    ViewData["ModuleCtl"] = "AnalysisRequests";
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+}
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            var itemMinHeight = $("div.panel[class*='border-gn-dark-gray']:first").height() + 2;
+            $("#createNewItemPanel").css("min-height", itemMinHeight + "px");
+        });
+
+        $('input').bind('keypress', function (event) {
+            var regex = new RegExp("^[a-z A-Z0-9_\-]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
+        function updateFields() {
+            
+            var qualifier_code = $('#GNAnalysisRequestTypeCode').val();
+            
+            if (qualifier_code != 'RNA')
+            {
+                document.getElementById('AnalysisTypeBlock').style.display = '';
+                document.getElementById('AnalysisTypeId').value = '2';
+
+                document.getElementById('AdaptorBlock').style.display = 'none';
+                document.getElementById('GNAnalysisAdaptorCode').value = 'NONE';
+            }
+            else
+            {
+                document.getElementById('AnalysisTypeBlock').style.display = 'none';
+                document.getElementById('AnalysisTypeId').value = '2';
+
+                document.getElementById('AdaptorBlock').style.display = '';
+            }
+        }
+
+        window.onload = function () {
+            javascript: updateFields();
+        }
+    </script>
+}
+
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-xs-12 col-md-6">
+
+            @Html.Partial("~/Views/AnalysisRequests/_CreatePartial.cshtml", Model)
+
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+
+            @{
+                ViewData["TipsPanelTitle"] = "Tips for Creating an Analysis";
+                ViewData["TipsPanelImg"] = "~/Content/icons/analyses.png";
+                ViewData["TipContentIntro"] = "Analysis Requests are used to gather the samples that will constitute your analysis. We recommend that you create your Samples and upload your sample files prior to creating your analysis request.";
+                ViewData["TipContent"] = new List<string>
+                {
+                    "Select the Team Project from the dropdown menu.",
+                    "Enter a short description for your analysis.",
+                    "Finally, indicate what Analysis Type you are creating from the dropdown menu and select <b>Next</b>.",
+                    "You will be able to choose the samples for your analysis from the next screen."
+                };
+            }
+            @Html.Partial("~/Views/Shared/_TipsPanelPartial.cshtml", null, ViewData)
+
+        </div>
+
+    </div>
+}

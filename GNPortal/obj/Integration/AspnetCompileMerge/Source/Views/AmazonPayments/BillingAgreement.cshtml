@@ -1,0 +1,164 @@
+﻿@model String
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Billing Agreement";
+    string AmznEnv = System.Configuration.ConfigurationManager.AppSettings["AmazonPayments.Environment"];
+    string ClientID = System.Configuration.ConfigurationManager.AppSettings["AmazonPayments.ClientID." + AmznEnv];
+    string MerchantID = System.Configuration.ConfigurationManager.AppSettings["AmazonPayments.MerchantID." + AmznEnv];
+    string WidgetsJSURL = System.Configuration.ConfigurationManager.AppSettings["AmazonPayments.WidgetsJSURL." + AmznEnv];
+}
+
+<h2>@ViewBag.Title</h2>
+
+@section styles{
+<style>
+</style>
+}
+
+@section scriptsHead{
+    <script type='text/javascript'>
+        window.onAmazonLoginReady = function () {
+            amazon.Login.setClientId("@ClientID");
+        };
+    </script>
+    <script type='text/javascript' src='@WidgetsJSURL?sellerId=@MerchantID'>
+    </script>
+}
+
+@section scripts{
+
+<script type='text/javascript'>
+
+    $(document).ready(function () {
+
+        $("#SubmitButton").hide();
+
+        RenderAddressBook();
+    });
+
+    var amazonBillingAgreementId = null;
+    var buyerBillingAgreementConsentStatus = false;
+
+    function RenderAddressBook() {
+        //Address Book Widget
+        new OffAmazonPayments.Widgets.AddressBook({
+            sellerId: '@MerchantID',
+            agreementType: 'BillingAgreement',
+
+            onReady: function (billingAgreement) {
+                amazonBillingAgreementId = billingAgreement.getAmazonBillingAgreementId();
+            },
+            onAddressSelect: function (billingAgreement) {
+                RenderWallet();
+            },
+            design: {
+                designMode: 'smartphoneCollapsible',
+                padding: '8'
+            },
+            onError: function (error) {
+                // your error handling code
+            }
+        }).bind("AmazonAddressWidget");
+    }
+
+    function RenderWallet() {
+        new OffAmazonPayments.Widgets.Wallet({
+            sellerId: '@MerchantID',
+            // amazonBillingAgreementId obtained from the AddressBook widget
+            amazonBillingAgreementId: amazonBillingAgreementId,
+            design: {
+                designMode: 'smartphoneCollapsible',
+                padding: '8'
+            },
+            onPaymentSelect: function (billingAgreement) {
+                RenderBillingAgreementConsent();
+            },
+            onError: function (error) {
+                // your error handling code
+            }
+        }).bind("AmazonWalletWidget");
+    }
+
+    function RenderBillingAgreementConsent() {
+        var billingAgreementDetailsObj = null;
+        var getBillingAgreementDetailsURL = "@Url.Action("GetBillingAgreementDetails", "AmazonPayments")" + "?billingAgreementId=" + amazonBillingAgreementId;
+        $.getJSON(getBillingAgreementDetailsURL, null, function (data, textStatus, jqXHR) {
+            billingAgreementDetailsObj = data;
+        });
+
+        new OffAmazonPayments.Widgets.Consent({
+            sellerId: '@MerchantID',
+            // amazonBillingAgreementId obtained from the Amazon Address Book widget.
+            amazonBillingAgreementId: amazonBillingAgreementId,
+            design: {
+                designMode: 'smartphoneCollapsible',
+                padding: '8'
+            },
+            onReady: function (billingAgreementConsentStatus) {
+
+                // Called after widget renders
+                buyerBillingAgreementConsentStatus = billingAgreementConsentStatus.getConsentStatus();
+
+                if (buyerBillingAgreementConsentStatus == "true") {
+                    $("#SubmitButton").show();
+                }
+                else {
+                    $("#SubmitButton").hide();
+                }
+            },
+            onConsent: function (billingAgreementConsentStatus) {
+
+                buyerBillingAgreementConsentStatus = billingAgreementConsentStatus.getConsentStatus();
+
+                if (buyerBillingAgreementConsentStatus == "true")
+                {
+                    $("#SubmitButton").show();
+                }
+                else {
+                    $("#SubmitButton").hide();
+                }
+            },
+            onError: function (error) {
+                // your error handling code
+            }
+        }).bind("AmazonConsentWidget");
+    }
+
+    function Submit() {
+        $("#billingAgreementId").val(amazonBillingAgreementId);
+        $("#BillingAgreementForm").submit();
+    }
+</script>
+}
+
+<div class="row">
+
+    <div id="SelectAddressWalletWithConsent" class="col-md-6">
+
+        <div id="AmazonAddressWidget"></div>
+
+        @Html.BootstrapRowSpacer()
+
+        <div id="AmazonWalletWidget"></div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div id="AmazonConsentWidget"></div>
+
+        @Html.BootstrapRowSpacer()
+
+        <div id="SubmitButton">
+            <button class="btn btn-success" onclick="Submit();">
+                Submit
+            </button>
+            @using (Html.BeginForm("BillingAgreement", "AmazonPayments", FormMethod.Post, new { @id = "BillingAgreementForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("billingAgreementId", Model)
+            }
+        </div>
+    </div>
+</div>

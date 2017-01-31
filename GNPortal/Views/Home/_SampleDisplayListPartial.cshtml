@@ -1,0 +1,37 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNSample>
+
+@if (Model != null && Model.Count() != 0)
+{
+    foreach (var item in Model)
+    {
+        using (Html.BeginGNClickableListGroupItem(Url.Action("Details", "Samples", new { id = item.Id })))
+        {
+            <span>
+                <img class="pull-left"
+                     style="margin:0px;padding:0px 5px 0px 0px;max-height:25px;max-width:25px;"
+                     src="@Url.Content("~/Content/icons/samples.png")" />
+                <strong>@item.Name</strong>
+            </span>
+            <span class="badge bg-white gn-dark-gray pull-right flushRight">
+                <div class="pull-right">
+                    <span class="badge small"><span class="small">@item.GNSampleQualifierCode</span></span>
+                </div>
+            </span>
+        }
+    }
+}
+else
+{
+    if ((bool)ViewBag.CanCreateSample)
+    {
+        <div class="list-group-item">
+            @Html.BootstrapActionIconLink("Add your first sample", "Create", "Samples", null, null, "plus", null, false, true)
+        </div>
+    }
+    else
+    {
+        <div class="list-group-item">
+            No samples found.
+        </div>
+    }
+}

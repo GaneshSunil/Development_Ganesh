@@ -1,0 +1,60 @@
+﻿@model GenomeNext.Data.EntityModel.AWSConfig
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-cloud gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @if (!string.IsNullOrEmpty(Request["organizationId"]))
+        {
+            @Html.BootstrapActionButton("Back to List", "Index", "AWSConfigs", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "chevron-left")
+            @Html.Raw("&nbsp;")
+            @Html.BootstrapActionButton("Edit", "Edit", "AWSConfigs", new RouteValueDictionary(new { id = Model.Id, organizationId = Request["organizationId"] }), "warning", "cog", null)
+        }
+        else
+        {
+            @Html.BootstrapActionButton("Back to List", "Index", "AWSConfigs", null, "info", "chevron-left")
+            @Html.Raw("&nbsp;")
+            @Html.BootstrapActionButton("Edit", "Edit", "AWSConfigs", new RouteValueDictionary(new { id = Model.Id }), "warning", "cog", null)
+        }
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.BootstrapRowSpacer()
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.AWSAccessKeyId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AWSAccessKeyId)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AWSSecretAccessKey)
+                </dt>
+
+                <dd>
+                    @Model.getMaskedAWSSecretAccessKey()
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AWSRegion.AWSRegionSystemName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AWSRegion.AWSRegionSystemName)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+}

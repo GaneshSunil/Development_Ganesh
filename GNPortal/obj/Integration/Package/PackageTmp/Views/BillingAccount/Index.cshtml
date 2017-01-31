@@ -1,0 +1,73 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNBillingAccount>
+
+@{
+    ViewBag.Title = "Accounts";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-euro gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Create New", "Create", "BillingAccount", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "plus")
+    </span>
+</h2>
+
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GNOrganization.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GNBillingInvoices)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GNBillingPurchaseOrders)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalAmountOwed)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="col-md-3">
+                    <span>@Html.DisplayFor(modelItem => item.GNOrganization.Name)</span>
+                    <br />
+                    <h6>
+                        @Html.DisplayFor(modelItem => item.GNAccountType.Description)
+                        @if (item.BillingMode == GenomeNext.Data.EntityModel.GNAccount.BillingModeType.INVOICE.GetCode())
+                        {
+                            @Html.Raw(", "); @GenomeNext.Data.EntityModel.GNAccount.BillingModeType.INVOICE.GetName()
+                        }
+                    </h6>
+                </td>
+                
+                <td class="col-md-2">
+                    @Html.DisplayFor(modelItem => item.GNBillingInvoices.Count)
+                </td>
+
+                <td class="col-md-2">
+                    @Html.DisplayFor(modelItem => item.GNBillingPurchaseOrders.Count)
+                </td>
+                
+                <td class="col-md-2">
+                    @Html.DisplayFor(modelItem => item.TotalAmountOwed)
+                </td>
+                
+                <td class="col-md-3">
+                    @Html.BootstrapActionButton("View", "Details", "BillingAccount", new RouteValueDictionary(new { id = item.Id }), "success", "th-large", "sm")
+                    @Html.BootstrapActionButton("Edit", "Edit", "BillingAccount", new RouteValueDictionary(new { id = item.Id }), "warning", "cog", "sm")
+                    @Html.BootstrapActionButton("Audit", "Index", "Audit", new RouteValueDictionary(new { searchEntityId = item.Id, searchEntityType = "BILLING_ACCOUNT" }), "info", "eye-open", "sm")
+                    @Html.BootstrapActionButton("Delete", "Delete", "BillingAccount", new RouteValueDictionary(new { id = item.Id }), "danger", "trash", "sm")
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -1,0 +1,115 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+@{
+
+
+    @Styles.Render("~/Content/jquery-ui")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-val")
+    @Scripts.Render("~/bundles/jquery-ui")
+
+
+
+    var display_errors = "none";
+    if (Request["ErrorMessage"] != null && Request["ErrorMessage"] != "")
+    {
+        display_errors = "";
+    }
+
+    <center>
+        <p class="bg-danger alert-danger" align="center" id="error_group_association" style="width:450px;margin-bottom:2px;padding:5px;margin-top:5px;display:@display_errors">
+            <span id="error_group_association_message">@(Request["ErrorMessage"] != null ? Request["ErrorMessage"] : "")</span>
+        </p>
+    </center>
+
+    <form name="FormNewAssociation" id="FormNewAssociation" method="get" action="@Url.Action("AddGroupsAssociation")">
+        <input type="hidden" name="analysisRequestId" id="analysisRequestId" value="@Model.Id" />
+        <input type="hidden" name="ControlGroupId" id="ControlGroupId" />
+        <input type="hidden" name="ComparisonGroupId" id="ComparisonGroupId" />
+    </form>
+
+
+    <center style="margin:5px;">
+        @if(Model.AnalysisStatus.Count == 0)
+        { 
+        <div class="bg-gn-light-gray border-gn-medium-gray" style="padding:5px;width:500px;height:55px;margin-bottom:20px;">
+            <div>
+                <div class="col-md-5 gn-dark-gray">Control Group</div>
+                <div class="col-md-5 gn-dark-gray">Comparison Group</div>
+                <div class="col-md-2 gn-dark-gray"></div>
+
+                <div class="col-md-5 gn-dark-gray">
+                    @{
+                        var SortedModel = Model.GNAnalysisRequestGroups.Where(a => a.GNSamples.Count > 0); //.OrderBy(Name);
+                    }
+
+                    <select id="controlgroup" class="dropdown" style="width:12em;">
+                        @foreach (var item in SortedModel)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-5 gn-dark-gray">
+                    <select id="comparisongroup" class="dropdown" style="width:12em;">
+                        @foreach (var item in SortedModel)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+
+                <span style="padding:5px;margin-top:7px;" class="glyphicon glyphicon-plus-sign btn-success" onclick="javascript:createNewAssociation()"></span>
+            </div>
+
+        </div>
+        }
+
+        @if (Model.GNAnalysisRequestGroupComparisons.Count > 0)
+        {
+            <div class="border-gn-medium-gray" style="width:500px;">
+                <div class="bg-gn-light-gray" style="padding:5px;height:30px;margin-bottom:5px;  border-bottom: 1px solid #999; border-spacing:15px;">
+                    <div class="col-md-5">Control Group</div>
+                    <div class="col-md-5">Comparison Group</div>
+                    <div class="col-md-2"></div>
+                </div>
+            
+            @{
+                foreach (var item in Model.GNAnalysisRequestGroupComparisons)
+                {
+                    <div class="bg-white small" style="height:20px;margin-bottom:5px;border-bottom: 1px solid #DDD;">
+                        <div class="col-md-5">@item.GNAnalysisRequestControlGroup.Name</div>
+                        <div class="col-md-5">@item.GNAnalysisRequestComparisonGroup.Name</div>
+
+                        @if (Model.AnalysisStatus.Count == 0)
+                        {
+                            <div class="ellipsis" id="remove_@item.Id" style="display:none;margin-right:-10px;">
+                                <div class="col-md-2" style="margin-top:-5px;padding:0;">
+                                    @Html.BootstrapActionIcon("Confirm", "DeleteGroupsAssociation", "AnalysisRequests", new RouteValueDictionary(new { analysisRequestId = Model.Id, controlGroupId = item.GNAnalysisRequestControlGroupId, comparisonGroupId = item.GNAnalysisRequestComparisonGroupId, returnToAnalysis = "true", tab = "ComparisonSetup" }), "btn gray btn-sm", "trash")
+                                    <a href="javascript:toggleConfirmDeletion('@item.Id')" class="btn gray btn-sm" style="text-align:center" title="Cancel" alt="Cancel"><span class="glyphicon glyphicon-remove"></span></a>
+                                </div>
+                            </div>
+
+                            <div class="ellipsis" id="confirm_remove_@item.Id" style="margin-right:0px;">
+                                <div class="col-md-2" style="margin-top:-5px;">
+                                    <a href="javascript:toggleConfirmDeletion('@item.Id')" class="btn gray btn-sm" style="text-align:center" title="Remove from Group" alt="Remove from Group"><span class="glyphicon glyphicon-trash"></span></a>
+                                </div>
+                            </div>
+                        }
+                                
+                    </div>
+                }
+            }
+            </div>
+        }
+        else
+        {
+            <center>
+                <p class="bg-danger alert-danger" align="center" id="error_group_association" style="width:450px;margin-bottom:15px;padding:5px;margin-top:15px;">
+                    <span>At least one comparison set per group is required.</span>
+                </p>
+            </center>
+        }
+    </center>
+}

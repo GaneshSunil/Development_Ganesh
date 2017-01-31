@@ -1,0 +1,83 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNProject>
+
+@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/projects.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/projects_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/projects_white_green.png";
+    ViewData["ModuleItemName"] = "Project";
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+    
+    ViewBag.Title = "Projects";
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    //Setup Values for Searchable List Table/Control/Partials
+    ViewData["SearchListItemsCount"] = Model.Count();
+    if (User.IsInRole("GN_ADMIN"))
+    {
+        ViewData["SearchTextOptions"] = new string[] { "All", "Organization", "Team Name", "Project Name", "Project Lead" };
+    }
+    else
+    {
+        ViewData["SearchTextOptions"] = new string[] { "All", "Team Name", "Project Name", "Project Lead" };
+    }
+}
+
+@section ModuleIndexContent{
+
+    @if (Model != null && Model.Count() != 0)
+    {
+        int i= 0;
+        foreach (var item in Model)
+        {
+            i++;
+            <div id="item_@i" class="col-xs-12 col-sm-3 col-md-3 col-lg-3 flushLeft clickable"
+                 onclick="window.location.href='@Url.Action("Details", new { id=item.Id})'">
+                <div class="panel border-gn-green @ViewBag.BoxHeightClass">
+                    <div class="panel-heading bg-gn-green">
+                        <span class="pull-right">
+                            @if (item.CanEdit)
+                            {
+                                @Html.BootstrapActionIconLink("Edit", "Edit", "Projects", new RouteValueDictionary(new { id = item.Id }), "white", "cog", "sm", false, false)
+                            }
+                        </span>
+                        <h3 class="panel-title white ellipsis" style="width:225px;">
+                            <img class="pull-left" style="height:18px;padding-right:6px;"
+                                 src="@Url.Content("~/Content/icons/projects_white.png")" />
+                            @item.Name
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+
+                        @if (User.IsInRole("GN_ADMIN"))
+                        {
+                            <div class="col-md-12">
+                                <h5 class="gn-dark-gray flushLeft flushTop ellipsis" style="width:225px;">
+                                    <span class="glyphicon glyphicon-th"></span> @item.Teams.FirstOrDefault().Organization.Name
+                                </h5>
+                            </div>
+                        }
+                        <div class="col-md-12">
+                            <h5 class="gn-dark-gray flushLeft flushTop ellipsis" style="width:225px;">
+                                <span class="glyphicon glyphicon-th-large"></span> @item.Teams.FirstOrDefault().Name
+                            </h5>
+                        </div>
+                        <div class="col-md-12">
+                            <h5 class="gn-dark-gray flushLeft flushTop ellipsis" style="width:225px;">
+                                <span class="glyphicon glyphicon-user"></span> @item.ProjectLead.FullName (Lead)
+                            </h5>
+                        </div>
+                        <div class="col-md-12">
+                            <h5><strong class="label bg-gn-light-gray gn-dark-gray">@item.AnalysisRequests.Count</strong> @((item.AnalysisRequests.Count != 1) ? "Analyses" : "Analysis")</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @Html.Partial("_SearchListMoreResultsPartial")
+    }
+    else
+    {
+        <span>No projects found. Please create a new project or contact a user with the proper privileges.</span>
+    }
+}

@@ -1,0 +1,80 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+@{
+    ViewBag.Title = Model.Description;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/analyses_white.png";
+    ViewData["ModuleCtl"] = "AnalysisRequests";
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+}
+
+@section scripts{
+    <script>
+        var savingIndicators = false;
+
+        $(document).ready(function () {
+
+            InitSaveIndicatorHandlers();
+        });
+
+        function InitSaveIndicatorHandlers() {
+            $("select").change(function () {
+                SaveAffectedIndicator($(this));
+            });
+
+            $("input[type='radio']").click(function () {
+                if ($(this).attr('name') == 'TargetIndicator' && $(this).is(":checked")) {
+                    SaveTargetIndicator($(this));
+                }
+            });
+        }
+
+        function SaveAffectedIndicator(thisObj) {
+            if (thisObj.attr("id").substr(0, "AffectedIndicator".length) == "AffectedIndicator") {
+                var sampleId = thisObj.attr("id").substr("AffectedIndicator_".length, thisObj.attr("id").length);
+                var affectedIndicator = thisObj.val();
+
+                var url = '@Url.Action("SaveAffectedIndicator", "AnalysisRequests", new { analysisRequestId = Model.Id})'
+                    + "&sampleId=" + sampleId
+                    + "&affectedIndicator=" + affectedIndicator;
+
+                savingIndicators = true;
+                $.getJSON(url, null, function (data, textStatus, jqXHR) {
+                    savingIndicators = false;
+                });
+            }
+        }
+
+        function SaveTargetIndicator(thisObj) {
+            var sampleId = thisObj.val();
+
+            var url = '@Url.Action("SaveTargetIndicator", "AnalysisRequests", new { analysisRequestId = Model.Id })'
+                + "&sampleId=" + sampleId;
+
+            savingIndicators = true;
+            $.getJSON(url, null, function (data, textStatus, jqXHR) {
+                savingIndicators = false;
+            });
+        }
+    </script>
+}
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            @Html.Partial("~/Views/AnalysisRequests/_EditPartial.cshtml", Model)
+
+        </div>
+
+        <div class="col-md-6">
+            @{ ViewData["isEdit"] = true; }
+
+            @Html.Partial("~/Views/AnalysisRequests/_EditAnalysisSamplesPartial.cshtml", Model)
+
+        </div>
+
+    </div>
+}

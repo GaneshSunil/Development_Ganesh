@@ -1,0 +1,41 @@
+﻿@{
+    int start = 0;
+    if (!string.IsNullOrEmpty(Request["start"]))
+    {
+        start = int.Parse(Request["start"]);
+    }
+
+    int end = 10;
+    if (!string.IsNullOrEmpty(ViewBag.customEnd))
+    {
+        end = int.Parse(ViewBag.customEnd);
+    }
+
+    if (!string.IsNullOrEmpty(Request["end"]))
+    {
+        end = int.Parse(Request["end"]);
+    }
+
+    int increment = 10;
+    if (!string.IsNullOrEmpty(ViewBag.customIncrement))
+    {
+        end = int.Parse(ViewBag.customIncrement);
+    }
+
+    int more = increment + end;
+
+    if (((int)ViewData["SearchListItemsCount"]) == end)
+    {
+        <div class="warning text-center" style="cursor:pointer"
+             onclick="loadMoreSearchResults(@start, @more, 'item_@end')">
+            <a class="text-success" href="#">
+                <h5>
+                    <span style="margin-top:200px">
+                        More Results<br />
+                        <span class="glyphicon glyphicon-refresh"></span>
+                    </span>
+                </h5>
+            </a>
+        </div>
+    }
+}

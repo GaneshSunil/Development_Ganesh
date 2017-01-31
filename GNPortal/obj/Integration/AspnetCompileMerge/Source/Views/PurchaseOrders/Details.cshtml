@@ -1,0 +1,111 @@
+﻿@model GenomeNext.Data.EntityModel.GNPurchaseOrder
+
+@{
+    ViewBag.Title = "Purchase Order";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-th gn-green"></span>
+    @ViewBag.Title
+
+    <span class="pull-right">
+        @if (!string.IsNullOrEmpty(Request["invoiceId"]))
+        {
+            @Html.BootstrapActionButton("Back to Invoice", "Edit", "Invoices", new RouteValueDictionary(new { id = Request["invoiceId"] }), "info", "chevron-left")
+        }
+        else
+        {
+            @Html.BootstrapActionButton("Back to List", "Index", "PurchaseOrders", null, "info", "chevron-left")
+        }
+        @Html.BootstrapActionButton("Edit", "Edit", "PurchaseOrders", new RouteValueDictionary(new { id = Model.Id, invoiceId = Request["invoiceId"] }), "warning", "cog")
+    </span>
+</h2>
+@Html.BootstrapRowSpacer()
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.BootstrapRowSpacer()
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Account)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Account.Organization.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PurchaseOrderInvoices)
+                </dt>
+
+                <dd>
+                    @foreach (var purchaseOrderInvoice in Model.PurchaseOrderInvoices)
+                    {
+                        <div>
+                            @Html.ActionLink(purchaseOrderInvoice.Invoice.Name, "Details", "Invoices", new { id = purchaseOrderInvoice.Invoices_Id }, null)
+                        </div>
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ExternalPONum)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ExternalPONum)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.StartDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.EndDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Total)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Total)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TotalApplied)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TotalApplied)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Balance)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Balance)
+                </dd>
+
+                @{
+                    ViewData["ViewMode"] = "Details";
+                    ViewData["CreatedBy"] = Model.CreatedByContact;
+                    ViewData["CreateDateTime"] = Model.CreateDateTime;
+                }
+                @Html.Partial("_AuditModelPartial", null, ViewData)
+
+
+            </dl>
+        </div>
+    </div>
+}

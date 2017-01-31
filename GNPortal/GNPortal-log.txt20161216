@@ -1,0 +1,1 @@
+2016-12-16 09:42:50,356 [44] WARN  GenomeNext.Billing.AccountService - 4e61b3d0-636e-408e-a916-cde0358dd50dlastInvoice.Balance: 0; currentInvoice.Balance: 16500; acct.Balance: 16500; balancePastDue: 0

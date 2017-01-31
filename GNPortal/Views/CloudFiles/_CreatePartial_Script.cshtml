@@ -1,0 +1,397 @@
+﻿@model GenomeNext.Data.EntityModel.GNCloudFile
+
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+}
+
+<script type="text/javascript">
+
+    var KB = 1024;
+    var MB = 1024 * KB;
+    var GB = 1024 * MB;
+    var TB = 1024 * GB;
+
+    var BEST_PART_SIZE = 200 * MB;
+
+    var bucket = "@ViewBag.s3Bucket";
+    var awsAccessKeyId = "@ViewBag.awsAccessKeyId";
+    var endpointUrl = 'https://' + bucket + '.s3.amazonaws.com';
+
+    var uploadStartTime = null;
+
+    var duplicateFileNamesCancelPending = [];
+    var duplicateFileNamesCanceled = [];
+
+    $(document).ready(function () {
+
+        $("#uploadBtns").hide();
+
+        //toggle buttons
+        $("#backBtn").show();
+        $("#cancelAllBtn").hide();
+        $("#uploadBtn").show();
+        $("#uploadBtnStatus").hide();
+
+        //build uploader
+        buildUploader();
+
+        //set back button
+        $("#backBtn").click(function () {
+            ReturnToSample();
+        });
+
+        //set cancel all button
+        $("#cancelAllBtn").click(function () {
+            $("#uploaderCtl").fineUploaderS3('cancelAll');
+            ReturnToSample();
+        });
+
+        //upload button click
+        $("#uploadBtn").click(function () {
+
+            $("#UploadFilesForm").validate();
+
+            if ($("#UploadFilesForm").valid()) {
+
+                //toggle buttons
+                $("#backBtn").hide();
+                $("#cancelAllBtn").show();
+                $("#uploadBtn").hide();
+                $("#uploadBtnStatus").show();
+
+                uploadStartTime = (new Date()).getTime();
+
+                //initiate upload
+                $("#uploaderCtl").fineUploaderS3('uploadStoredFiles');
+            }
+        });
+    });
+
+    function ReturnToSample() {
+        window.location.href = '@Url.Action("Details", "Samples", new { id = ViewBag.SampleId,analysisRequestId=ViewBag.AnalysisRequestId })';
+    }
+
+    function StartAnalysis() {
+        window.location.href = '@Url.Action("StartAnalysis", "AnalysisRequests", new { analysisRequestId = ViewBag.AnalysisRequestId })';
+    }
+
+    function buildUploader() {
+
+        //setup fine uploader
+        $("#uploaderCtl").fineUploaderS3({
+            debug: false,
+            autoUpload: false,
+            request: {
+                endpoint: endpointUrl,
+                accessKey: awsAccessKeyId
+            },
+            objectProperties: {
+                key: function (fileId) {
+
+                    var fileKey = "@Model.CloudFileCategory.FolderPath";
+
+                    var uploads = $("#uploaderCtl").fineUploaderS3('getUploads');
+                    var upload = uploads[fileId];
+
+                    @if(!string.IsNullOrEmpty(ViewBag.SampleId))
+                    {
+                            @Html.Raw("fileKey += '/" + ViewBag.SampleId + "/' + upload.uuid + '/' + upload.name;");
+                    }
+                    else
+                    {
+                            @Html.Raw("fileKey += '/' + upload.uuid + '/' + upload.name;");
+                    }
+
+                    return fileKey;
+                },
+                serverSideEncryption: true
+            },
+            signature: {
+                endpoint: '@Url.Action("SignRequest", "S3FileUpload")'
+            },
+            uploadSuccess: {
+                endpoint: '@Url.Action("UploadSuccess", "S3FileUpload")'
+            },
+            maxConnections: 10,
+            chunking: {
+                enabled: true,
+                concurrent: {
+                    enabled: true
+                },
+                partSize: BEST_PART_SIZE
+            },
+            resume: {
+                enabled: true
+            },
+            iframeSupport: {
+                localBlankPagePath: '/success.html'
+            },
+            retry: {
+                autoAttemptsDelay: 10,
+                enableAuto: true,
+                maxAutoAttempts: 5
+            },
+            deleteFile: {
+                enabled: false
+            },
+            validation: {
+                allowedExtensions: ['gz', 'gzip'],
+                stopOnFirstInvalidFile: true
+            },
+            messages: {
+                noFilesError: "No files to upload. Please select one or more files by clicking the button 'Select File(s) and then click 'Upload'",
+            },
+            editFilename: true,
+            formatFileName: function (fileOrBlobName) {
+                return fileOrBlobName;
+            },
+            display: {
+                prependFiles: true,
+                fileSizeOnSubmit: true
+            }
+        })
+        //handle complete event
+        .on("complete", function (event, id, name, responseJSON) {
+
+            @if(!string.IsNullOrEmpty(ViewBag.SampleId))
+            {
+                @Html.Raw("var url = '" + Url.Action("CreateViaJSON", "CloudFiles", new { sampleId=ViewBag.SampleId}) + "'");
+            }
+            else
+            {
+                @Html.Raw("var url = '" + Url.Action("CreateViaJSON", "CloudFiles") + "'");
+            }
+
+            var cloudFile = responseJSON["complete"];
+            cloudFile.GNCloudFileCategoryId = $("#GNCloudFileCategoryId").val();
+            cloudFile.AWSRegionSystemName = '@ViewBag.awsRegionSystemName';
+
+            $.post(url, cloudFile, function (data, textStatus, jqXHR) {
+                //alert("upload completed!!\n" + JSON.stringify(data));
+            });
+        })
+        //handle totalProgress event
+        .on("totalProgress", function (event, totalUploadedBytes, totalBytes, xhr, isError) {
+
+            $("#totalProgressBar").removeClass("progress-bar-danger");
+            $("#totalProgressBar").removeClass("progress-bar-success");
+            $("#totalProgressBar").addClass("progress-bar-success");
+
+            var totalPercentComplete = parseInt((totalUploadedBytes / totalBytes) * 100, 0);
+            if (isNaN(totalPercentComplete)) totalPercentComplete = 0;
+            $("#totalProgressBar").attr("aria-valuenow", totalPercentComplete);
+            $("#totalProgressBar").css("width", totalPercentComplete + "%");
+
+            var elapsedTime = (new Date()).getTime() - uploadStartTime;
+            var uploadRate = elapsedTime / totalUploadedBytes;
+            var timeRemaining = (uploadRate * (totalBytes - totalUploadedBytes) * 1.0) / (60.0 * 1000.0);
+            timeRemaining = (isNaN(timeRemaining) || timeRemaining <= 0.0) ? 0.0 : timeRemaining;
+
+            if (totalPercentComplete == 0 || totalPercentComplete == 100) {
+                timeRemaining = 0.0;
+
+                //toggle buttons
+                $("#uploadBtns").show();
+                $("#backBtn").show();
+                $("#cancelAllBtn").hide();
+                $("#uploadBtnStatus").hide();
+                $("#uploadBtn").show();
+            }
+            else {
+                //toggle buttons
+                $("#backBtn").hide();
+                $("#cancelAllBtn").show();
+                $("#uploadBtnStatus").show();
+                $("#uploadBtn").hide();
+            }
+
+            $("#UploadBytesTotalLabel").html((totalUploadedBytes / GB).toFixed(2));
+            $("#UploadTimeRemainingLabel").html(timeRemaining.toFixed(2));
+            $("#UploadPercentCompleteLabel").html(totalPercentComplete);
+        })
+        //handle allComplete event
+        .on("allComplete", function (event, succeeded, failed) {
+
+            if (failed.length == 0) {
+                //build / show successful files modal dialog
+                $("#successfulFileUploadCount").html(succeeded.length + " ");
+
+                $("#successfulFileUploadInfo").html(
+                    "<strong>Total GB:</strong> " + $("#UploadBytesTotalLabel").html() + "<br/>" +
+                    "<strong>Total # Files:</strong> " + succeeded.length);
+
+                $("#returnToSampleBtn").click(function () {
+                    ReturnToSample();
+                });
+
+                $("#startAnalysisBtn").click(function () {
+                    StartAnalysis();
+                });
+
+                $("#successfulFileUploadsModal").modal();
+            }
+            else {
+                //hide successful uploads
+                for (var i = 0; i < succeeded.length; i++) {
+                    var fileId = succeeded[i];
+                    $("li[qq-file-id='" + fileId + "']").hide();
+                }
+
+                //change progress bar color
+                $("#totalProgressBar").removeClass("progress-bar-danger");
+                $("#totalProgressBar").removeClass("progress-bar-success");
+                $("#totalProgressBar").addClass("progress-bar-danger");
+
+                //build / show failed files modal dialog
+                $("#failedFileUploadCount").html(failed.length + " ");
+
+                var failedFileUploadInfo = "";
+                for (var i = 0; i < failed.length; i++) {
+                    var fileId = failed[i];
+                    failedFileUploadInfo += "<div>" + $("#uploaderCtl").fineUploaderS3('getName', fileId); +"</div>";
+                }
+                $("#failedFileUploadInfo").html(failedFileUploadInfo);
+
+                $("#failedFileUploadsModal").modal();
+            }
+        })
+        //handle cancel event
+        .on("cancel", function (event, id, name, errorReason, req) {
+
+            if (duplicateFileNamesCancelPending[name] != undefined
+                && duplicateFileNamesCancelPending[name] != null
+                && duplicateFileNamesCancelPending[name] != 0) {
+                var fileToCancel = duplicateFileNamesCancelPending[name];
+                duplicateFileNamesCanceled[fileToCancel.name] = fileToCancel;
+                duplicateFileNamesCancelPending[fileToCancel.name] = null;
+                cancelPendingFiles();
+            }
+
+            return true;
+        })
+        //handle validate event
+        .on("validate", function (event, file, buttonContainer) {
+
+            var isDuplicateFile = isFileDuplicate(file);
+
+            if (isDuplicateFile) {
+                $("#duplicateFileError").removeClass("hide");
+                $("#duplicateFileError").addClass("show");
+                $("#duplicateFileNames").html("<br/>" + file.name);
+            }
+            else {
+                $("#duplicateFileError").removeClass("show");
+                $("#duplicateFileError").addClass("hide");
+            }
+
+            return !isDuplicateFile;
+        })
+        //handle error event
+        .on("error", function (event, id, name, errorReason, req) {
+            //toggle buttons
+            $("#backBtn").show();
+            $("#cancelAllBtn").hide();
+            $("#uploadBtnStatus").hide();
+            $("#uploadBtn").show();
+        });
+    }
+
+    function isFileDuplicate(newFile) {
+        var isDuplicate = false;
+
+        var allUploads = getAllUploads();
+
+        for (var i = allUploads.length - 1; i >= 0; i--) {
+
+            var file = allUploads[i];
+
+            if (file.status.toUpperCase() != 'CANCELED'
+                && file.status.toUpperCase() != 'REJECTED'
+                && file.status.toUpperCase() != 'SUBMITTING') {
+
+                if (file.name == newFile.name) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+        }
+
+        return isDuplicate;
+    }
+
+    function getAllUploads() {
+        var allUploads = getSampleCloudFiles();
+
+        var newUploads = $("#uploaderCtl").fineUploaderS3('getUploads');
+
+        if (newUploads != null && newUploads.length != 0) {
+            allUploads = allUploads.concat(newUploads);
+        }
+
+        return allUploads;
+    }
+
+    var sampleCloudFiles = null;
+
+    function getSampleCloudFiles() {
+        if (sampleCloudFiles == null) {
+            @Html.Raw("var url = '" + Url.Action("GetCloudFilesForSample", "CloudFiles", new { sampleId = ViewBag.SampleId }) + "'");
+
+            $.ajax({
+                url: url,
+                data: {},
+                async: false,
+                success:
+                    function (data) {
+                        if (data == null) {
+                            sampleCloudFiles = [];
+                        }
+                        else {
+                            sampleCloudFiles = data;
+                        }
+                    }
+            });
+
+        }
+
+        return sampleCloudFiles;
+    }
+</script>
+
+<script type="text/template" id="qq-template">
+    <div class="qq-uploader-selector qq-uploader">
+        <div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
+            <span>Drop files here to upload</span>
+        </div>
+        <div class="qq-upload-button-selector qq-upload-button qq-upload-button-gn">
+            <div>
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+                <span style="white-space:nowrap">&nbsp;Select File(s)</span>
+            </div>
+        </div>
+        <span class="qq-drop-processing-selector qq-drop-processing">
+            <span>Processing dropped files...</span>
+            <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
+        </span>
+        <ul class="qq-upload-list-selector qq-upload-list qq-upload-list-gn">
+            <li>
+                <div class="qq-progress-bar-container-selector">
+                    <div class="qq-progress-bar-selector qq-progress-bar"></div>
+                </div>
+                <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
+                <span class="qq-edit-filename-icon-selector">
+                    <span class="glyphicon glyphicon-floppy-disk gn-dark-gray"></span>
+                </span>
+                <span class="qq-upload-file-selector qq-upload-file gn-dark-gray"></span>
+                <input class="qq-edit-filename-selector qq-edit-filename col-md-12 form-control" tabindex="0" type="text">
+                <span class="qq-upload-size-selector qq-upload-size"></span>
+                <a class="qq-upload-continue-selector qq-upload-continue" href="#">Continue</a>
+                <a class="qq-upload-pause-selector qq-upload-pause" href="#">Pause</a>
+                <a class="qq-upload-cancel-selector qq-upload-cancel" href="#">Cancel</a>
+                <a class="qq-upload-retry-selector qq-upload-retry" href="#">Retry</a>
+                <a class="qq-upload-delete-selector qq-upload-delete" href="#">Delete</a>
+                <span class="qq-upload-status-text-selector qq-upload-status-text"></span>
+            </li>
+        </ul>
+    </div>
+</script>

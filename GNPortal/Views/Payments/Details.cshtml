@@ -1,0 +1,74 @@
+﻿@model GenomeNext.Data.EntityModel.GNPayment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-euro gn-green"></span>
+    @ViewBag.Title
+
+    <span class="pull-right">
+        @if (!string.IsNullOrEmpty(Request["invoiceId"]))
+        {
+            @Html.BootstrapActionButton("Back to Invoice", "Edit", "Invoices", new RouteValueDictionary(new { id = Request["invoiceId"] }), "info", "chevron-left")
+        }
+        else
+        {
+            @Html.BootstrapActionButton("Back to List", "Index", "Payments", null, "info", "chevron-left")
+        }
+        @Html.BootstrapActionButton("Edit", "Edit", "Payments", new RouteValueDictionary(new { id = Model.Id }), "warning", "cog")
+    </span>
+</h2>
+@Html.BootstrapRowSpacer()
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.BootstrapRowSpacer()
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Invoice)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Invoice.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TotalAmount)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TotalAmount)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PaymentDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PaymentDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ExternalTxnId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ExternalTxnId)
+                </dd>
+
+                @{
+            ViewData["ViewMode"] = "Details";
+            ViewData["CreatedBy"] = Model.CreatedByContact;
+            ViewData["CreateDateTime"] = Model.CreateDateTime;
+                }
+                @Html.Partial("_AuditModelPartial", null, ViewData)
+
+            </dl>
+        </div>
+    </div>
+}

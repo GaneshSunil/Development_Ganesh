@@ -1,0 +1,72 @@
+﻿@model GenomeNext.Data.EntityModel.GNCloudFile
+
+@{
+    GenomeNext.Data.EntityModel.GNSample thisSample = ViewBag.Sample;
+    var title = "Upload Sample Files";
+    ViewBag.Title = title;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/samples_white.png";
+    
+    
+    ViewData["customBackLink"] = true;
+    ViewData["customBackLinkModuleCtl"] = "Samples";
+    ViewData["customBackLinkAction"] = "Details";
+    ViewData["customBackLinkParam"] = thisSample.Id;
+    ViewData["customBackLinkText"] = "Back to Sample";    
+    
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+
+}
+
+@section scripts
+                {
+    @Scripts.Render("~/bundles/fineuploader")
+
+    @Html.Partial("~/Views/CloudFiles/_CreatePartial_Script.cshtml", Model)
+}
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-xs-12 col-md-6">
+
+            @Html.Partial("~/Views/CloudFiles/_CreatePartial.cshtml", Model)
+
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+
+            @{
+                ViewData["TipsPanelTitle"] = "Tips for Uploading Sample Files";
+                ViewData["TipsPanelImg"] = "~/Content/icons/samples.png";
+
+                if (Request.Browser.Type.ToUpper().Contains("IE") || Request.Browser.Type.ToUpper().Contains("INTERNETEXPLORER"))
+                {
+                    ViewData["TipContentIntro"] = "<span class=\"glyphicon glyphicon-exclamation-sign\"></span>&nbsp;Since you are using Internet Explorer, please upload no more than 100 files at a time; You can also try using other browsers such as <a href=\"https://www.google.com/intl/en/chrome/browser/desktop/index.html#brand=CHMB&utm_campaign=en&utm_source=en-ha-na-us-sk&utm_medium=ha\" target=\"_blank\" title=\"Google Chrome\">Chrome</a> or <a href=\"https://www.mozilla.org/en-US/firefox/new/\" target=\"_blank\" title=\"Mozilla FireFox\">Firefox</a>.";
+                }
+
+                ViewData["TipContent"] = new List<string>
+                {
+                    "<b>Tips to Add:</b><ol><li>Click <b>Select File(s)</b> button.",
+                    "From your file browser window, select all the files to upload.",
+                    "You can rename a file by clicking on its name.",
+                    "Files must be in .gz or .gzip format. At this time, we do not support other extension names.",
+                    "Click Upload button, and that’s it.</li></ol>",
+                    "<b>IMPORTANT: DO NOT LEAVE THIS PAGE UNTIL THE UPLOAD IS COMPLETED.</b> "+
+                    "<br/>A message will be displayed with upload results once completed."+
+                    "<ul><li>There is no size limit, but please make sure you have a reliable Internet connection and sufficient bandwidth during the upload process.",
+                    "Please make sure your device does not go to sleep or turn off during the upload process.",
+                    "If any errors are detected with a specific file, we will retry the upload up to 5 times.",
+                    "If errors are detected, a summary will be shown at the end.",
+                    "You can cancel the upload at any time by clicking Cancel button.",
+                    "If you have a large set of genomic samples that you would like to upload to our solution (more than 1TB), we recommend you contact us so we can assist by providing you with additional upload options.",
+                    "<a href='http://support.genomenext.com/customer/portal/articles/1793660-tips-for-upload' target='_blank'>View more Tips for Upload</a></li></ul>"
+                };
+            }
+            @Html.Partial("~/Views/Shared/_TipsPanelPartial.cshtml", null, ViewData)
+
+        </div>
+
+    </div>
+}

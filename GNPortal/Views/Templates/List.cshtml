@@ -1,0 +1,135 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNTemplate>
+@{    
+    ViewBag.Title = "Templates";
+
+    if (User.IsInRole("GN_ADMIN"))
+    {
+        ViewData["SearchTextOptions"] = new string[] { "Template Name" };
+    }
+    else
+    {
+        ViewData["SearchTextOptions"] = new string[] { "Template Name" };
+    }    
+}
+
+@Html.BootstrapRowSpacer()
+
+<div class="panel panel-border-gn-green clearfix">
+    
+        @if (!string.IsNullOrEmpty(Request["analysisRequestId"]))
+        {
+            <div class="panel-heading bg-gn-green clearfix">
+
+                <h2 class="col-xs-12 col-sm-10 col-md-10 col-lg-10 white" style="margin-top:10px !important;">
+                    <img class="pull-left" style="height:35px;padding-right:10px;"
+                         src="~/Content/icons/analyses_white.png" />
+                    @ViewBag.AnalysisName Template Selection
+                </h2>
+
+                <h5 class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-right" style="margin-top:17px !important;">
+                    @Html.BootstrapActionIcon("Continue", "Details", "AnalysisRequests", new RouteValueDictionary(new { id = Request["analysisRequestId"] }), "bg-clear text-uppercase text-nowrap white", "chevron-right", null, true, "center", true)
+                </h5>
+            </div>
+
+            @Html.BootstrapRowSpacer()
+        }
+   
+
+        @using (Html.BeginGNPanel(false))
+        {
+            //Heading
+            using (Html.BeginGNPanelHeading("Templates", ""))
+            {
+                <img class="pull-left" style="height:18px;padding-right:6px;"
+                     src="@Url.Content("~/Content/icons/samples_white.png")" />
+                <span class="badge">@Model.Count()</span>
+                
+            }
+
+            //Body
+            using (Html.BeginGNPanelBody(true))
+            {
+                <script type="text/javascript">
+                    function explainNotReady(id) {
+                        $('#' + id).toggle();
+                    }
+                </script>
+
+                <div class="list-group-item bg-gn-medium-gray">
+                    @Html.Partial("_SearchListControlPartial")
+                </div>
+
+                ViewData["SearchListItemsCount"] = 0;
+                if (Model != null && Model.Count() != 0)
+                {
+                    ViewData["SearchListItemsCount"] = Model.Count();
+                    int i = 0;
+                    foreach (var item in Model)
+                    {
+                        string leftColStyle = "col-md-2 text-center";
+                        string rightColStyle = "col-md-10";
+                        
+                        using (Html.BeginGNClickableListGroupItem(
+                            "#",
+                            (i % 2) != 0))
+                        {
+                            string onClickRowLink = "";
+                            
+                            <div class="@leftColStyle">                                
+                                @if (item.GNTemplateGenes.Count() > 0)
+                                {
+                                    if (((GenomeNext.Data.EntityModel.GNAnalysisRequest)ViewBag.AnalysisRequest).GNAnalysisRequestGNTemplates.Count(s => s.GNTemplateId == item.Id) == 0)
+                                    {
+                                        onClickRowLink = "javascript:window.location.href='";
+                                        onClickRowLink += Url.Action("AddToAnalysisRequest", "Templates", new { id = item.Id, analysisRequestId = ViewBag.AnalysisRequestId });
+                                        onClickRowLink += "'";
+                                        @Html.BootstrapActionIconLink("", "AddToAnalysisRequest", "Templates", new RouteValueDictionary(new { id = item.Id, analysisRequestId = ViewBag.AnalysisRequestId }), "btn-lg gn-green", "unchecked")
+                                    }
+                                    else
+                                    {
+                                        onClickRowLink = "javascript:window.location.href='";
+                                        onClickRowLink += Url.Action("RemoveFromAnalysisRequest", "Templates", new { id = item.Id, analysisRequestId = ViewBag.AnalysisRequestId });
+                                        onClickRowLink += "'";
+                                        @Html.BootstrapActionIconLink("", "RemoveFromAnalysisRequest", "Templates", new RouteValueDictionary(new { id = item.Id, analysisRequestId = ViewBag.AnalysisRequestId }), "btn-lg gn-green", "check")
+                                    }
+                                }
+                                else
+                                {
+                                    <span class="glyphicon glyphicon-exclamation-sign bg-warning" title="This Template has no genes associated."></span><br /><span class="small">Not ready.</span>
+                                    <a href="javascript:explainNotReady('not_ready_box_@item.Id')" style="font-size:8pt;font-weight:bold;">Why?</a><br /><span id="not_ready_box_@item.Id" style="display:none;font-size:8pt;color:gray;">This Template has no genes associated.</span>
+                                }
+                            </div>
+                            <div class="@rightColStyle" onclick="@onClickRowLink">
+                                <div class="col-md-12 flushLeft flushRight">
+                                    <img class="pull-left"
+                                         style="height:18px;padding-right:6px;"
+                                         src="@Url.Content("~/Content/icons/samples.png")" />
+
+                                    <h5 class="flushLeft flushTop text-inline">
+                                        @item.Name
+                                    </h5>
+                                </div>
+                                <p class="small text-inline">
+                                    <b>@item.GNTemplateGenes.Count()</b> genes, associated to @item.GNAnalysisRequestGNTemplates.Count() analyses
+                                 
+                                    <span class="text-muted">Template ID: @item.Id</span>
+                                </p>
+                            </div>
+                        }
+                        i++;
+
+                    }
+                }
+                else
+                {
+                    <div class="list-group-item">
+                        <h5>
+                            No Templates found.
+                        </h5>
+                    </div>
+                }
+                @Html.Partial("_SearchListMoreResultsPartial")
+            }
+        }
+
+</div>

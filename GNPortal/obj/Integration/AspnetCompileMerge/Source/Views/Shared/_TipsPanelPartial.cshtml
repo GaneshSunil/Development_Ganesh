@@ -1,0 +1,51 @@
+﻿<div class="col-md-12 flushLeft">
+    <div id="createNewItemPanel" class="panel">
+        <div class="panel-heading bg-gn-dark-gray">
+            <h3 class="panel-title flushLeft white">
+                <span class="glyphicon glyphicon-question-sign"></span>
+                <span>@ViewData["TipsPanelTitle"]</span>
+            </h3>
+        </div>
+        <div class="panel-body bg-gn-light-gray">
+            <div id="createNewItemPanelLinkContainer" class="col-md-12">
+
+                <img class="img-responsive col-xs-4 col-md-5 text-padded-top pull-right"
+                     src="@Url.Content((string)ViewData["TipsPanelImg"])" />
+
+                @if (ViewData["TipContentIntro"] != null)
+                {
+                    <p class="small text-padded-left text-padded-top">@Html.Raw((string)ViewData["TipContentIntro"])</p>
+                    <ul class="small text-padded-left">
+                        @foreach (var tipContentStr in (List<string>)ViewData["TipContent"])
+                        {
+                            <li>@Html.Raw(tipContentStr)</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <ul class="small text-padded-left text-padded-top">
+                        @foreach (var tipContentStr in (List<string>)ViewData["TipContent"])
+                        {
+                            <li>@Html.Raw(tipContentStr)</li>
+                        }
+                    </ul>
+                }
+
+                @if (ViewData["TipContentOutro"] != null)
+                {
+                    <p class="small text-padded-left">@Html.Raw((string)ViewData["TipContentOutro"])</p>
+                }
+
+                @{
+                    string moreHelpAndSupportURL = "http://support.genomenext.com";
+                }
+                @if(ViewData["MoreHelpAndSupportURL"] != null && !string.IsNullOrEmpty((string)ViewData["MoreHelpAndSupportURL"]))
+                {
+                    moreHelpAndSupportURL = (string)ViewData["MoreHelpAndSupportURL"];
+                }
+                <a href="@moreHelpAndSupportURL" target="_blank" class="text-padded-left">More Help &amp; Support <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+    </div>
+</div>

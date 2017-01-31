@@ -1,0 +1,46 @@
+﻿@model GenomeNext.Data.EntityModel.GNTemplate
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+}
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Test Template Info", "info-sign"))
+    {
+        <span class="pull-right">
+            @{
+                GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+                if (User.IsInRole("GN_ADMIN") || contactForUser.IsInRole("ORG_MANAGER"))
+                {
+                    @Html.BootstrapActionIconLink("Audit Records", "Index", "Audit", new RouteValueDictionary(new { searchEntityId = Model.Id, searchEntityType = "TEMPLATE" }), "white", "eye-open", null, false, false)
+                    @Html.Raw("&nbsp;&nbsp;")
+                }
+            }
+
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody())
+    {
+        <dl class="dl-horizontal">
+
+            @Html.DisplayFieldFor(model => model.GNOrganization.Name, "Organization")
+            @Html.DisplayFieldFor(model => model.Name)
+            @Html.DisplayFieldFor(model => model.Code, "Code")
+            @Html.DisplayFieldFor(model => model.Version, "Version")
+
+            @{
+        //    ViewData["ViewMode"] = "Details";
+        //   ViewData["CreateDateTime"] = Model.CreateDateTime;
+//        @Html.Partial("_AuditModelPartial", (GenomeNext.Data.Metadata.Audit.AuditModel)Model, ViewData)
+            }
+           
+        </dl>
+    }
+
+    //Html.Partial("~/Views/Templates/_DeletePartial.cshtml", Model)
+}

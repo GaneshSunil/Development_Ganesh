@@ -1,0 +1,82 @@
+﻿@using GenomeNext.Data.EntityModel
+@using GenomeNext.Data.IdentityModel
+@model GenomeNext.Data.IdentityModel.AspNetUser
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    using (Html.BeginGNPanel())
+    {
+        //Heading
+        using (Html.BeginGNPanelHeading("User Info", "info-sign"))
+        {
+            <span class="pull-right">
+                @if (Model.ContactCount == 0)
+                {
+                    @Html.BootstrapActionIconLink("Delete", "Delete", "Users", new RouteValueDictionary(new { id = Model.Id }), "white", "trash", null)
+                }
+            </span>
+        }
+
+        //Body
+        using (Html.BeginGNPanelBody())
+        {
+            <dl class="dl-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+                @Html.Hidden("organizationId", Request["organizationId"])
+                @Html.Hidden("Password", ".")
+                @Html.Hidden("PasswordConfirm", ".")
+
+                @Html.BootstrapRowSpacer()
+
+
+                @Html.FormFieldFor(model => model.Id, false)
+                @Html.FormFieldFor(model => model.UserName)
+                @Html.FormFieldFor(model => model.Email)
+                @Html.FormFieldFor(model => model.PhoneNumber)
+                @Html.FormFieldFor(model => model.EmailConfirmed)
+                @Html.FormFieldFor(model => model.PhoneNumberConfirmed)
+
+                @if (User.IsInRole("GN_ADMIN"))
+                {
+                    @Html.FormFieldFor(model => model.IsAdmin)
+                }
+                else
+                {
+                    @Html.FormFieldFor(model => model.IsAdmin, false)
+                }
+
+
+                @Html.HiddenFor(model => model.TwoFactorEnabled)
+                @Html.HiddenFor(model => model.LockoutEndDateUtc)
+                @Html.HiddenFor(model => model.LockoutEnabled)
+                @Html.HiddenFor(model => model.AccessFailedCount)
+                @Html.HiddenFor(model => model.PasswordHash)
+                @Html.HiddenFor(model => model.SecurityStamp)
+            </dl>
+        }
+
+        //Footer
+        using (Html.BeginGNPanelFooter())
+        {
+            <div class="pull-left col-md-4">
+                @Html.BootstrapActionButton("Cancel", "Details", "Users", new RouteValueDictionary(new { id = Model.Id }), "bg-gn-medium-gray white", "remove")
+            </div>
+
+            <div class="pull-left col-md-5 label label-primary">
+                @Html.BootstrapActionButton("Change Password", "ResetPasswordAsAdmin", "Account", new RouteValueDictionary(new { email = Model.Email }), "bg-gn-success white", "asterisk")
+            </div>
+        
+            <div class="pull-right col-md-3">
+                @Html.BootstrapFormSaveButton("Save", "floppy-disk", "bg-gn-green white")
+            </div>
+        }
+    }
+}

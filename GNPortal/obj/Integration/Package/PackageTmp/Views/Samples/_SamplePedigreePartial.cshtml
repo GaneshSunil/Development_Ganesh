@@ -1,0 +1,134 @@
+﻿@model GenomeNext.Data.EntityModel.GNSample
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+}
+
+
+@using (Html.BeginGNPanel())
+{    
+    //Heading
+    using (Html.BeginGNPanelHeading("Pedigree: Related samples", ""))
+    {
+        <img class="pull-left" style="height:18px;padding-right:6px;" src="@Url.Content("~/Content/icons/pedigrees_white.png")" />
+        if (Model != null)
+        {
+            if(Model.GNSampleLeftRelationships != null)
+            { 
+                <span class="badge">@Model.GNSampleLeftRelationships.Count</span>
+            }
+
+            GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+            if (ViewData["GNSampleRelationshipTypes"] != null && Model.Gender != "U" && ViewData["isEdit"] == null && !contactForUser.IsInRole("COLLABORATOR"))
+            {
+                <span class="pull-right">
+                    @Html.DropDownList("GNSampleRelationshipTypes", null, htmlAttributes: new { @class = "header-dropdown" })
+                    <a href="javascript:createRelationship()" title="Add">
+                        <span class="glyphicon glyphicon-plus white"></span>
+                    </a>
+                </span>
+            }
+            
+            <form name="addNewRelationship" id="addNewRelationship" method="get" action="@Url.Action("List")">
+                <input type="hidden" name="GNLeftSampleId" id="GNLeftSampleId" value="@Model.Id" />
+                <input type="hidden" name="addSampleRelationship" id="addSampleRelationship" value="1" />
+                <input type="hidden" name="GNOrganizationId" id="GNOrganizationId" value="@Model.Organization.Id" />
+                <input type="hidden" name="GNSampleTypeId" id="GNSampleTypeId" value="@Model.SampleType.Id" />
+                <input type="hidden" name="GNSampleRelationshipTypeId" id="GNSampleRelationshipTypeId" value="" />
+            </form>
+        }
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(true))
+    {
+        if (ViewData["isEdit"] != null && (bool)ViewData["isEdit"])
+        {
+            <div class="alert alert-warning" role="alert">
+                <span class="small">Do you need to add relationships but do not see the dropdown and plus sign enabled? Exit the edit mode for the sample first by saving the changes or cancelling to re-enable this feature.</span>
+            </div>
+        }
+
+        var display_errors = "none";
+        if (Request["PedigreeErrorMessage"] != null && Request["PedigreeErrorMessage"] != "")
+        {
+            display_errors = "";
+        }
+        <p class="bg-danger alert-danger" align="center" id="error_pedigree" style="padding:10px;font-weight:bold;display:@display_errors">
+            <span id="error_pedigree">@(Request["PedigreeErrorMessage"] != null ? Request["PedigreeErrorMessage"] : "")</span>
+        </p>
+
+        if (Model.Gender == "U")
+        {
+            <div style="padding:20px;">The Pedigree feature is disabled for samples with Undefined gender.</div>
+        }
+        else if (Model.GNSampleLeftRelationships != null && Model.GNSampleLeftRelationships.Count() != 0)
+        {
+            <script language="Javascript">
+                function confirmDeletePedigree(id)
+                {
+                    $('#' + id + '_icons').toggle();
+                    $('#' + id + '_delete_confirm').toggle();
+                }
+                function displayDetails(id)
+                {
+                    $('#' + id + '_details').toggle();
+                    $('#' + id + '_display_details_link').toggle();
+                    $('#' + id + '_hide_details_link').toggle();
+                }
+            </script>
+    
+            int i = 0;
+            foreach (var item in Model.GNSampleLeftRelationships)
+            {
+                using (Html.BeginGNClickableListGroupItem("#", (i % 2) != 0))
+                {
+                    <div class="col-md-10">
+                        <h5 class="flushLeft flushTop"><span class="glyphicon glyphicon-user"></span> @item.GNRightSample.Name (@item.GNSampleRelationshipType.Name)</h5>
+                        <div class="small" id="@(item.GNRightSample.Id+"_details")" style="display:none">
+                            @item.GNRightSample.GenderDescription, @item.GNRightSample.SampleType.Name, @item.GNRightSample.ReadTypeDescription, <b>@item.GNRightSample.CloudFiles.Count</b> files,
+                            <b>@item.GNRightSample.GNAnalysisRequestGNSamples.Count()</b> analyses
+                            <br /><span class="text-muted">Sample ID: @item.GNRightSample.Id</span>
+                            <br />@Html.BootstrapActionButton("Go to this sample", "Details", "Samples", new RouteValueDictionary(new { id = item.GNRightSample.Id }), "gray", "chevron-right", "sm ")
+                        </div>
+                    </div>
+                    
+                    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+                    
+                    if (!contactForUser.IsInRole("COLLABORATOR"))
+                    { 
+                        <div class="col-md-2 text-right flushRight">
+                            <span id="@(item.Id+"_delete_confirm")" style="display:none">
+                                @Html.BootstrapActionButton("", "RemovePedigree", "Samples", new RouteValueDictionary(new { relId = item.Id, leftSampleId = Model.Id, rightSampleId = item.GNRightSampleId }), "danger", "trash", "sm ")
+                                <a href="javascript:confirmDeletePedigree('@item.Id')"><span class="glyphicon glyphicon-remove"></span></a>
+                            </span>
+                            <span id="@(item.Id+"_icons")">
+                                <a href="javascript:displayDetails('@item.GNRightSample.Id')" id="@(item.GNRightSample.Id + "_display_details_link")" title="Show details"><span class="glyphicon glyphicon-chevron-down small"></span></a>
+                                <a href="javascript:displayDetails('@item.GNRightSample.Id')" id="@(item.GNRightSample.Id + "_hide_details_link")" style="display:none" title="Hide details"><span class="glyphicon glyphicon-chevron-up small"></span></a>
+                                <a href="javascript:confirmDeletePedigree('@item.Id')"><span class="glyphicon glyphicon-trash small"></span></a>
+                            </span>
+                        </div>
+                    }
+                }
+                i++;
+            }
+        }
+        else
+        {
+            <div style="padding:20px;">
+                No relationships found.
+                @{
+                    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+                    if (!contactForUser.IsInRole("COLLABORATOR"))
+                    {
+                        Html.Raw("To add related samples (i.e. Father, Mother, Children), select a relationship from the dropdown above and click the plus (+) button.");
+                    }
+                }
+            </div>
+        }      
+    
+    }
+
+}

@@ -1,0 +1,123 @@
+﻿@model GenomeNext.Data.EntityModel.GNNotificationTopic
+@{
+    ViewBag.Title = "Edit Notification Topic";
+}
+
+<script src="//cdn.ckeditor.com/4.4.5/full-all/ckeditor.js"></script>
+
+<h2>
+    <span class="glyphicon glyphicon-envelope gn-green"></span>
+    @ViewBag.Title
+
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "NotificationTopics", null, "info", "chevron-left")
+        @Html.BootstrapFormSaveButton()
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Format, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="radio" name="Format" id="Format" value="EMAIL" @(Model.Format.Trim() == "EMAIL" ? "checked" : "") />E-mail&nbsp;
+                <input type="radio" name="Format" id="Format" value="SMS" @(Model.Format.Trim() == "SMS" ? "checked" : "") />SMS
+                @Html.ValidationMessageFor(model => model.Format, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sender, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sender, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sender, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Priority, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="radio" name="Priority" id="Priority" value="LOW" @(Model.Priority == "LOW" ? "checked" : "") />Low&nbsp;
+                <input type="radio" name="Priority" id="Priority" value="NORMAL" @(Model.Priority == "NORMAL" ? "checked" : "") />Normal&nbsp;
+                <input type="radio" name="Priority" id="Priority" value="HIGH" @(Model.Priority == "HIGH" ? "checked" : "") />High
+                @Html.ValidationMessageFor(model => model.Priority, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                <textarea name="Message" id="Message" rows="10" cols="50">
+                    @Model.Message
+                </textarea>
+                <script>
+                    // Replace the <textarea id="editor1"> with a CKEditor
+                    // instance, using default configuration.
+                    CKEDITOR.config.toolbarCanCollapse = true;
+                    CKEDITOR.replace('Message');
+                </script>
+                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsSubscriptionOptional, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="radio" name="IsSubscriptionOptional" id="IsSubscriptionOptional" value="Y" @(Model.IsSubscriptionOptional == "Y" ? "checked" : "") />Yes&nbsp;
+                <input type="radio" name="IsSubscriptionOptional" id="IsSubscriptionOptional" value="N" @(Model.IsSubscriptionOptional == "N" ? "checked" : "") />No
+                @Html.ValidationMessageFor(model => model.IsSubscriptionOptional, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="radio" name="Status" id="Status" value="ACTIVE" @(Model.Status == "ACTIVE" ? "checked" : "") />ACTIVE&nbsp;
+                <input type="radio" name="Status" id="Status" value="DRAFT" @(Model.Status == "DRAFT" ? "checked" : "") />DRAFT
+                <input type="radio" name="Status" id="Status" value="ARCHIVED" @(Model.Status == "ARCHIVED" ? "checked" : "") />ARCHIVED
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+}

@@ -1,0 +1,186 @@
+2017-01-13 13:23:42,021 [13] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 1950; acct.Balance: 266245.353137302; balancePastDue: 0
+2017-01-13 13:23:49,009 [10] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 1950; acct.Balance: 266245.353137302; balancePastDue: 0
+2017-01-13 13:27:22,242 [18] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 1950; acct.Balance: 266245.353137302; balancePastDue: 0
+2017-01-13 13:27:41,864 [18] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 1950; acct.Balance: 266245.353137302; balancePastDue: 0
+2017-01-13 13:27:45,786 [19] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 1950; acct.Balance: 266245.353137302; balancePastDue: 0
+2017-01-13 13:27:57,870 [30] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 1950; acct.Balance: 266245.353137302; balancePastDue: 0
+2017-01-13 13:27:58,885 [30] ERROR GenomeNext.Data.BaseEntityService`1 - Unable to create item. Cannot insert the value NULL into column 'GNReplicateCode', table 'gn_db.gn.GNSamples'; column does not allow nulls. INSERT fails.. The statement has been terminated..
+System.Exception: Unable to create item. Cannot insert the value NULL into column 'GNReplicateCode', table 'gn_db.gn.GNSamples'; column does not allow nulls. INSERT fails.. The statement has been terminated.. ---> System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Cannot insert the value NULL into column 'GNReplicateCode', table 'gn_db.gn.GNSamples'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\webapp\GNData\EntityService\BaseEntityService.cs:line 121
+   --- End of inner exception stack trace ---
+2017-01-13 13:27:59,204 [30] ERROR GenomeNext.App.SampleService - Unable to create sample. Cannot insert the value NULL into column 'GNReplicateCode', table 'gn_db.gn.GNSamples'; column does not allow nulls. INSERT fails.. The statement has been terminated..
+System.Exception: Unable to create sample. Cannot insert the value NULL into column 'GNReplicateCode', table 'gn_db.gn.GNSamples'; column does not allow nulls. INSERT fails.. The statement has been terminated.. ---> System.Exception: Unable to create item. Cannot insert the value NULL into column 'GNReplicateCode', table 'gn_db.gn.GNSamples'; column does not allow nulls. INSERT fails.. The statement has been terminated.. ---> System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Cannot insert the value NULL into column 'GNReplicateCode', table 'gn_db.gn.GNSamples'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\webapp\GNData\EntityService\BaseEntityService.cs:line 121
+   --- End of inner exception stack trace ---
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\webapp\GNData\EntityService\BaseEntityService.cs:line 146
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.App.SampleService.<Insert>d__23.MoveNext() in f:\GitHub\webapp\GNApp\SampleService.cs:line 220
+   --- End of inner exception stack trace ---
+2017-01-13 13:27:59,326 [30] WARN  GenomeNext.Portal.Controllers.BaseController`1 - Unable to create sample. Cannot insert the value NULL into column 'GNReplicateCode', table 'gn_db.gn.GNSamples'; column does not allow nulls. INSERT fails.. The statement has been terminated..
+System.Exception: Unable to create sample. Cannot insert the value NULL into column 'GNReplicateCode', table 'gn_db.gn.GNSamples'; column does not allow nulls. INSERT fails.. The statement has been terminated.. ---> System.Exception: Unable to create item. Cannot insert the value NULL into column 'GNReplicateCode', table 'gn_db.gn.GNSamples'; column does not allow nulls. INSERT fails.. The statement has been terminated.. ---> System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Cannot insert the value NULL into column 'GNReplicateCode', table 'gn_db.gn.GNSamples'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\webapp\GNData\EntityService\BaseEntityService.cs:line 121
+   --- End of inner exception stack trace ---
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\webapp\GNData\EntityService\BaseEntityService.cs:line 146
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.App.SampleService.<Insert>d__23.MoveNext() in f:\GitHub\webapp\GNApp\SampleService.cs:line 220
+   --- End of inner exception stack trace ---
+   at GenomeNext.App.SampleService.<Insert>d__23.MoveNext() in f:\GitHub\webapp\GNApp\SampleService.cs:line 239
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__1c.MoveNext() in f:\GitHub\webapp\GNData\EntityService\BaseEntityService.cs:line 167
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Portal.Controllers.BaseController`1.<Create>d__f.MoveNext() in f:\GitHub\webapp\GNPortal\Controllers\BaseController.cs:line 203
+2017-01-13 13:29:21,428 [18] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 1950; acct.Balance: 266245.353137302; balancePastDue: 0
+2017-01-13 13:29:34,465 [26] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 1950; acct.Balance: 266245.353137302; balancePastDue: 0
+2017-01-13 13:29:41,599 [26] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 1950; acct.Balance: 266245.353137302; balancePastDue: 0
+2017-01-13 13:29:42,311 [26] ERROR GenomeNext.Cloud.CloudNoSQL.GNCloudNoSQLService - Unable to log audit trail.
+System.Exception: Unable to log audit trail. ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at GenomeNext.Cloud.CloudNoSQL.GNCloudNoSQLService.LogEvent(GNContact ExecutedBy, Guid entityId, String entityType, String IP, String action, String objectBefore, String objectAfter) in f:\GitHub\webapp\GNCloud\CloudNoSQL\GNCloudNoSQLService.cs:line 79
+   --- End of inner exception stack trace ---
+2017-01-13 13:29:42,581 [26] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 1950; acct.Balance: 266245.353137302; balancePastDue: 0

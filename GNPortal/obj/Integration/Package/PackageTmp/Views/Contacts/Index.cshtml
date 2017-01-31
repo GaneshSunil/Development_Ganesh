@@ -1,0 +1,198 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNContact>
+
+@{
+    ViewBag.Title = "Contacts";
+
+    //Setup Values for Searchable List Table/Control/Partials
+    int resultsColSpan = 5;
+    if (User.IsInRole("GN_ADMIN"))
+    {
+        resultsColSpan = 7;
+    }
+    ViewData["ResultsColSpan"] = resultsColSpan;
+    ViewData["SearchListItemsCount"] = Model.Count();
+    if (User.IsInRole("GN_ADMIN"))
+    {
+        ViewData["SearchTextOptions"] = new string[] { "All", "Organization", "Name", "Email" };
+    }
+    else
+    {
+        ViewData["SearchTextOptions"] = new string[] { "All", "Name", "Email" };        
+    }
+
+
+    string backLinkText = "";
+    string backLinkAction = "";
+    string backLinkCtl = "";
+    RouteValueDictionary backLinkRouteVals = null;
+    RouteValueDictionary createLinkRouteVals = null;
+    if (!string.IsNullOrEmpty(Request["teamId"]) && Guid.Parse(Request["teamId"]) != Guid.Empty)
+    {
+        backLinkText = "Back to Team"; backLinkAction = "Details"; backLinkCtl = "Teams";
+        backLinkRouteVals = new RouteValueDictionary(new { id = Request["teamId"] });
+        createLinkRouteVals = new RouteValueDictionary(new { teamId = Request["teamId"] });
+    }
+    else if (User.IsInRole("GN_ADMIN") && !string.IsNullOrEmpty(Request["organizationId"]))
+    {
+        backLinkText = "Back to Organization"; backLinkAction = "Details"; backLinkCtl = "Organizations";
+        backLinkRouteVals = new RouteValueDictionary(new { id = Request["organizationId"] });
+        createLinkRouteVals = new RouteValueDictionary(new { organizationId = Request["organizationId"] });
+    }
+    else if (User.IsInRole("GN_ADMIN") && !string.IsNullOrEmpty(Request["aspNetUserId"]) && Guid.Parse(Request["aspNetUserId"]) != Guid.Empty)
+    {
+        backLinkText = "Back to User"; backLinkAction = "Details"; backLinkCtl = "Users";
+        backLinkRouteVals = new RouteValueDictionary(new { id = Request["aspNetUserId"] });
+        createLinkRouteVals = new RouteValueDictionary(new { aspNetUserId = Request["aspNetUserId"] });
+    }
+}
+
+@Html.BootstrapRowSpacer()
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Contacts", ""))
+    {
+        <img class="pull-left" style="height:18px;padding-right:6px;"
+             src="@Url.Content("~/Content/icons/contacts_white.png")" />
+        <span class="badge">@Model.Count()</span>
+        <span class="pull-right" style="font-size:.9em;margin-top:-5px;">
+            @{
+                
+                if (User.IsInRole("GN_ADMIN"))
+                {
+                    if ((bool)ViewBag.CanCreate)
+                    {
+                        @Html.BootstrapActionButton("Download Subscribers", "DownloadSubscribedContacts", "Contacts", createLinkRouteVals, "text-uppercase white", "download")
+                    }
+                }
+                
+                if (!string.IsNullOrEmpty(backLinkText) && backLinkRouteVals != null && createLinkRouteVals != null)
+                {
+                    @Html.BootstrapActionButton(backLinkText, backLinkAction, backLinkCtl, backLinkRouteVals, "text-uppercase white", "chevron-left")
+                }
+
+                if ((bool)ViewBag.CanCreate)
+                {
+                    @Html.BootstrapActionButton("Invite", "Invite", "Contacts", createLinkRouteVals, "text-uppercase white", "envelope")
+                }
+
+                if (User.IsInRole("GN_ADMIN"))
+                {
+                    if ((bool)ViewBag.CanCreate)
+                    {
+                        @Html.BootstrapActionButton("Create New", "Create", "Contacts", createLinkRouteVals, "text-uppercase white", "plus")
+                    }
+                }
+            }
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(true))
+    {
+        <div class="list-group-item bg-gn-medium-gray">
+            @Html.Partial("_SearchListControlPartial")
+        </div>
+
+        if (Model != null && Model.Count() != 0)
+        {
+            ViewData["SearchListItemsCount"] = Model.Count();
+            int i = 0;
+            foreach (var item in Model)
+            {
+                string rightColStyle = "col-md-6";
+
+                using (Html.BeginGNClickableListGroupItem(
+                    "#",
+                    (i % 2) != 0))
+                {
+                    <div class="col-md-5">
+                        <div class="col-md-12 flushLeft flushRight">
+                            <img class="pull-left"
+                                 style="height:18px;padding-right:6px;"
+                                 src="@Url.Content("~/Content/icons/contacts.png")" />
+
+                            <h5 class="flushLeft flushTop text-inline">
+                                @item.FullName
+                            </h5>
+                        </div>
+                        <p class="small text-inline">
+                            <a href="mailto:@(item.Email)">@item.Email</a>, <b>@item.GNContactRoles.Count()</b> role@(item.GNContactRoles.Count() != 1 ? "s" : "") assigned
+                            @if (!string.IsNullOrEmpty(item.AspNetUserId) && item.AspNetUserId != Guid.Empty.ToString())
+                            {
+                                <div class="small text-inline">, linked to a user login</div>
+                            }
+                            else
+                            {
+                                <div class="small text-inline">, no user login found for this contact</div>
+                            }
+
+                            @if (User.IsInRole("GN_ADMIN"))
+                            {
+                                <br /><span class="small text-inline">Organization: @item.GNOrganization.Name</span>
+                            }
+                            
+                        </p>
+                    </div>
+
+                    <div class="col-md-4" style="vertical-align:bottom">
+                        <div class="small text-inline">
+                            Invite Accepted: @Html.DisplayFor(modelItem => item.IsInviteAcceptedText)
+                            <br />Subscribed for News: @Html.DisplayFor(modelItem => item.IsSubscribedForNewslettersText)
+                            <br /><span class="text-muted">Created on: </span>@item.CreateDateTime @(item.CreatedByContact != null ? "by " + item.CreatedByContact.FullName : "")
+                        </div>
+                    </div>
+    
+                    <div class="col-md-2 pull-right">
+                        <div>
+                            @if (!string.IsNullOrEmpty(Request["teamId"]) && Guid.Parse(Request["teamId"]) != Guid.Empty)
+                            {
+                                var routeVals = new RouteValueDictionary(createLinkRouteVals);
+                                routeVals.Add("contactId", item.Id);
+
+                                if (((GenomeNext.Data.EntityModel.GNTeam)ViewBag.Team).TeamMembers.Count(tm => tm.GNContactId == item.Id) == 0)
+                                {
+                                    @Html.BootstrapActionIconLink(null, "AddContactToTeam", "Contacts", routeVals, "success", "plus", "sm")
+                                }
+                                else
+                                {
+                                    @Html.BootstrapActionIconLink(null, "RemoveContactFromTeam", "Contacts", routeVals, "danger", "minus", "sm")
+                                }
+
+                            }
+                            else
+                            {
+                                if (item.CanView)
+                                {
+                                    @Html.BootstrapActionIconLink("View", "Details", "Contacts", new RouteValueDictionary(new { id = item.Id, organizationId = Request["organizationId"] }), null, "th-large", "sm")
+                                }
+                                <span>&nbsp;</span>
+                                if (item.CanEdit)
+                                {
+                                    @Html.BootstrapActionIconLink("Edit", "Edit", "Contacts", new RouteValueDictionary(new { id = item.Id, organizationId = Request["organizationId"] }), null, "cog", "sm")
+                                }
+                            }
+                        </div>
+                    </div>
+                }
+                i++;
+
+            }
+        }
+        else
+        {
+            <div class="list-group-item">
+                <h5>
+                    No Contacts found.
+                </h5>
+            </div>
+        }
+
+        @Html.Partial("_SearchListMoreResultsPartial")
+    }
+}
+
+
+
+

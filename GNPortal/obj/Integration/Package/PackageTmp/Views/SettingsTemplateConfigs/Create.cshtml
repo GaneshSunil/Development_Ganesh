@@ -1,0 +1,49 @@
+﻿@model GenomeNext.Data.EntityModel.GNSettingsTemplateConfig
+
+@{
+    ViewBag.Title = "Create New Settings Template";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h2>
+        <span class="glyphicon glyphicon-wrench gn-green"></span>
+        @ViewBag.Title
+        <span class="pull-right">
+            @Html.BootstrapActionButton("Back to Template", "Details", "SettingsTemplate", new RouteValueDictionary(new { id = Request["templateId"] }), "info", "chevron-left")
+            @Html.BootstrapFormSaveButton("Create")
+        </span>
+    </h2>
+
+    @Html.BootstrapRowSpacer()
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GNSettingsTemplate, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.DropDownList("GNSettingsTemplatesList", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GNSettingsTemplate.Id, "", new { @class = "text-danger" })
+            </div> 
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GNSettingsTemplateField, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.DropDownList("GNSettingsTemplateFieldsList", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GNSettingsTemplateField.Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Value, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                
+                    @Html.EditorFor(model => model.Value, new { htmlAttributes = new { @class = "form-control" } })
+                
+                @Html.ValidationMessageFor(model => model.Value, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+}

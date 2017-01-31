@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+}
+
+<h2>Admin Console</h2>
+
+@{
+    /*
+    var guidsList = ViewBag.guisList;
+
+    foreach (var item in guidsList)
+    {
+        @item<br/>
+    }*/
+}
+
+
+<div class="row">
+    <div class="col-md-6">
+
+        <h3>User Management</h3>
+        <ul>
+            <li>@Html.ActionLink("Users", "Index", "Users")</li>
+            <li>@Html.ActionLink("Roles", "Index", "Roles")</li>
+        </ul>
+
+        <h3>Organization Management</h3>
+        <ul>
+            <li>@Html.ActionLink("Invite Codes", "Index", "InviteCodes")</li>
+            <li>@Html.ActionLink("Organizations", "Index", "Organizations") (@Html.ActionLink("Contacts", "Index", "Contacts") | @Html.ActionLink("Teams", "Index", "Teams") | @Html.ActionLink("Projects", "Index", "Projects"))</li>
+            <li>Settings (@Html.ActionLink("Templates", "Index", "SettingsTemplate") | @Html.ActionLink("Fields", "Index", "SettingsTemplateFields"))</li>
+        </ul>
+
+        <h3>Analysis Management</h3>
+        <ul>
+            <li>@Html.ActionLink("Analysis Requests", "Index", "AnalysisRequests")</li>
+            <li>@Html.ActionLink("Analysis Types (Exome, Panel, etc.)", "Index", "AnalysisTypes")</li>
+            <li>@Html.ActionLink("Analysis Request Types (DNA, Tumor-Normal, etc.)", "Index", "AnalysisRequestTypes")</li>
+        </ul>
+
+
+        <h3>Sample Management</h3>
+        <ul>
+            <li>@Html.ActionLink("Samples", "Index", "Samples")</li>
+            <li>@Html.ActionLink("Sample Types (Exome, Panel, etc.)", "Index", "SampleTypes")</li>
+            <li>@Html.ActionLink("Sample Qualifier Groups (DNA, RNA, Protein)", "Index", "SampleQualifierGroups")</li>
+            <li>@Html.ActionLink("Sample Qualifiers (DNA, Tumor, etc.)", "Index", "SampleQualifiers")</li>
+            <li>@Html.ActionLink("Sample Relationship Types", "Index", "SampleRelationshipTypes")</li>
+            <li>@Html.ActionLink("Sample Relationship Types Mappings", "Index", "SampleRelationshipTypeMappings")</li>
+            <li>@Html.ActionLink("Sample Affected Indicators", "Index", "AnalysisSampleAffectedIndicator")</li>
+            <li>@Html.ActionLink("Cloud Files", "Index", "CloudFiles")</li>
+            <li>@Html.ActionLink("Cloud File Categories", "Index", "CloudFileCategories")</li>
+            <li>@Html.ActionLink("Genes", "Index", "Genes")</li>
+            <li>@Html.ActionLink("Replicates", "Index", "Replicates")</li>
+        </ul>
+
+        <h3>Capacity Monitoring</h3>
+        <ul>
+            <li>@Html.ActionLink("AWS Compute Environments", "Index", "AWSComputeEnvironments")</li>
+        </ul>
+
+
+    </div>
+
+    <div class="col-md-6">
+
+        <h3>Account &amp; Financial Management</h3>
+        <ul>
+            <li>@Html.ActionLink("Shared Purchase Orders", "Index", "SharedPurchaseOrderOrganizations")</li>
+            <li>@Html.ActionLink("Accounts", "Index", "OrgAccounts")</li>
+            <li>@Html.ActionLink("Invoices", "Index", "Invoices")</li>
+            <li>@Html.ActionLink("Purchase Orders", "Index", "PurchaseOrders")</li>
+            <li>@Html.ActionLink("Payments", "Index", "Payments")</li>
+        </ul>
+        <ul>
+            <li>@Html.ActionLink("Account Types", "Index", "AccountTypes")</li>
+            <li>@Html.ActionLink("Transaction Types", "Index", "TransactionTypes")</li>
+            <li>@Html.ActionLink("Products", "Index", "Products")</li>
+            <li>@Html.ActionLink("Product Types", "Index", "ProductTypes")</li>
+            <li>@Html.ActionLink("Payment Method Types", "Index", "PaymentMethodTypes")</li>
+        </ul>
+
+        <h3>AWS Management</h3>
+        <ul>
+            <li>@Html.ActionLink("AWS Configurations", "Index", "AWSConfigs")</li>
+            <li>@Html.ActionLink("AWS Regions", "Index", "AWSRegions")</li>
+            <li>@Html.ActionLink("AWS Resources", "Index", "AWSResources")</li>
+            <li>@Html.ActionLink("AWS Resource Types", "Index", "AWSResourceTypes")</li>
+        </ul>
+
+        <h3>Notifications</h3>
+        <ul>
+            <li>@Html.ActionLink("Notification Topics", "Index", "NotificationTopics")</li>
+            <li>@Html.ActionLink("Suppression Lists", "Index", "NotificationSuppressionLists")</li>
+            <li>@Html.ActionLink("Verified Senders", "Index", "NotificationSenders")</li>
+            <li>@Html.ActionLink("Notification Logs", "Index", "NotificationLogs")</li>
+        </ul>
+
+        <h3>Audit &amp; Logging</h3>
+        <ul>
+            <li>@Html.ActionLink("Audit Records", "Index", "Audit")</li>
+            <li>@Html.ActionLink("Logs", "Index", "Logs")</li>
+        </ul>
+
+    </div>
+</div>
+
+
+
+

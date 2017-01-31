@@ -1,0 +1,148 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Samples", ""))
+    {
+        <img class="pull-left" style="height:18px;padding-right:6px;" 
+             src="@Url.Content("~/Content/icons/samples_white.png")" />
+        if (Model.GNAnalysisRequestGNSamples.Count != 0)
+        {
+            <span class="badge">@Model.GNAnalysisRequestGNSamples.Count</span>
+        }
+
+        if (ViewData["isEdit"] == null)
+        { 
+            <span class="pull-right">
+                @Html.BootstrapActionIconLink("Associate Existing Samples", "List", "Samples", new RouteValueDictionary(new { analysisRequestId = Model.Id, GNSampleTypeId = Model.AnalysisTypeId, projectId = Request["projectId"], teamId = Request["teamId"] }), "bg-clear white", "link")
+                &nbsp;
+                @Html.BootstrapActionIconLink("Create New Sample", "Create", "Samples", new RouteValueDictionary(new { analysisRequestId = Model.Id, analysisTypeId = Model.AnalysisTypeId, projectId = Request["projectId"], teamId = Request["teamId"] }), "bg-clear white", "plus")
+            </span>
+       }
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(true))
+    {
+        if (ViewData["isEdit"] != null && (bool)ViewData["isEdit"])
+        {
+            <div class="alert alert-warning" role="alert">
+                <span class="small">To enable the options to add existing samples and/or create new samples, you need to exit the edit mode by saving the changes or cancelling.</span>
+            </div>
+        }
+        
+        if (!Model.IsValidSampleSetPairEndings)
+        {
+            <div class="list-group-item-danger">
+                <div class="text-padded">
+                    <strong>One or more Sample Paired-Endings are not valid</strong><br />An equal number of files ending in '_R1' and '_R2' should exist.
+                </div>
+            </div>
+        }
+        if (Model.GNAnalysisRequestGNSamples != null && Model.GNAnalysisRequestGNSamples.Count != 0)
+        {
+            int i = 0;
+            foreach (var item in Model.GNAnalysisRequestGNSamples.OrderBy(s=>s.GNSample.Name))
+            {
+                using (Html.BeginGNClickableListGroupItem(
+                    "#",
+                    (i % 2) != 0))
+                {
+                    <div class="col-md-12 flushLeft flushRight">
+                        <img class="pull-left"
+                             style="height:18px;padding-right:6px;"
+                             src="@Url.Content("~/Content/icons/samples.png")" />
+
+                        <h5 class="flushLeft flushTop text-inline">
+                            @item.GNSample.Name
+                        </h5>
+                        <span class="pull-right">
+                            @Html.BootstrapActionIconLink("View", "Details", "Samples", new RouteValueDictionary(new { id = item.GNSample.Id, analysisRequestId = Model.Id }), null, "th-large", "md")
+                            @Html.BootstrapActionIconLink("Remove", "RemoveFromAnalysisRequest", "Samples", new RouteValueDictionary(new { id = item.GNSample.Id, analysisRequestId = Model.Id, returnToAnalysis = true }), null, "remove", "md")
+                        </span>
+                    </div>
+                    <div class="col-md-12 flushLeft">
+                        <div class="small text-padded-bottom">
+                            @item.GNSample.SampleType.Name, @item.GNSample.ReadTypeDescription, @item.GNSample.CloudFiles.Count files, @item.GNSample.GNSampleLeftRelationships.Count relationships
+                        </div>
+                        @{
+                                    
+                        }
+
+                        <div class="small gn-dark-gray" style="font-weight:bold;">
+                            @if (Model.GNAnalysisRequestTypeCode == "TUMORNORMAL")
+                            {
+                                <input type="hidden" name="AffectedIndicator_@item.GNSampleId" id="AffectedIndicator_@item.GNSampleId" value="N" />
+                                <input type="hidden" name="TargetIndicator" id="TargetIndicator" value="false" />
+                            }
+                            else
+                            {
+                                string ai_U_Selected = (item.AffectedIndicator == "U") ? "selected" : "";
+                                string ai_N_Selected = (item.AffectedIndicator == "N") ? "selected" : "";
+                                string ai_Y_Selected = (item.AffectedIndicator == "Y") ? "selected" : "";
+                                string ti_Checked = (item.TargetIndicator == "Y") ? "checked" : "";
+
+                                <div>
+                                    Affected?
+                                    <select name="AffectedIndicator['@item.GNSampleId']" id="AffectedIndicator_@item.GNSampleId">
+                                        <option value="U" @ai_U_Selected>UNKNOWN</option>
+                                        <option value="N" @ai_N_Selected>NO</option>
+                                        <option value="Y" @ai_Y_Selected>YES</option>
+                                    </select>
+                                    <input type="radio" value="@item.GNSampleId" name="TargetIndicator" id="TargetIndicator" @ti_Checked />Proband
+                                </div>
+                            }
+
+
+                            
+                        </div>
+
+                    </div>
+                    if (item.UnImportedSampleRelationships != null && item.UnImportedSampleRelationships.Count != 0)
+                    {
+                        @Html.BootstrapRowSpacer()
+                        <div class="col-md-12 small flushLeft flushRight">
+                            <div class="panel border-gn-medium-gray">
+                                <div id="@(item.GNAnalysisRequestId+"_box")" class="list-group">
+                                    @foreach (var relative in item.UnImportedSampleRelationships)
+                                    {
+                                        using (Html.BeginGNClickableListGroupItem("#"))
+                                        {
+                                            <span class="glyphicon glyphicon-user"></span><span>&nbsp;@relative.GNSampleRelationshipType.Name: @relative.GNRightSample.Name</span>
+                                        }
+                                    }
+                                </div>
+                                <div class="panel-footer bg-gn-medium-gray white">
+                                    @Html.BootstrapActionIconLink("Import Additional Samples From Pedigree", "ImportPedigree", "SampleRelationships", new RouteValueDictionary(new { sampleId = item.GNSample.Id, analysisRequestId = Model.Id }), "white", "save", "sm", displayText: true)
+                                </div>
+                            </div>
+                        </div>
+    
+                        <p class="small text-inline alert-danger">
+                            <br />
+                            @if (item.GNSample.CloudFiles.Count == 0)
+                            { <span class="glyphicon glyphicon-remove"></span><span>&nbsp;No files associated.</span><br /> }
+                            @if (!item.GNSample.IsReady)
+                            { <span class="glyphicon glyphicon-remove"></span><span>&nbsp;Marked as "incomplete upload".</span><br /> }
+                            @if (!item.GNSample.IsValidPairEnded)
+                            {<span class="glyphicon glyphicon-remove"></span><span>&nbsp;Invalid paired-end set of files.</span> }
+                            @if (!item.GNSample.IsValidSingleEnded)
+                            {<span class="glyphicon glyphicon-remove"></span><span>&nbsp;Invalid single-end set of files.</span> }
+                       </p>
+
+                    }
+                }
+                i++;
+            }
+        }
+        else
+        {
+            <div align="center" class="list-group-item">
+                <h5>
+                    No Samples have been found for this Analysis.
+                </h5>
+            </div>
+        }
+    }
+}

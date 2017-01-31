@@ -1,0 +1,42 @@
+﻿@model GenomeNext.Data.EntityModel.GNContact
+
+@{
+    ViewBag.Title = Model.FullName;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/profile_white.png";
+    ViewData["ModuleCtl"] = "Contacts";
+
+    if (!string.IsNullOrEmpty(Request["organizationId"]) && User.IsInRole("GN_ADMIN"))
+    {
+        ViewData["customBackLink"] = true;
+        ViewData["customBackLinkModuleCtl"] = "Organizations";
+        ViewData["customBackLinkAction"] = "Details";
+        ViewData["customBackLinkParam"] = Request["organizationId"];
+        ViewData["customBackLinkText"] = "Back to Organization";    
+    }
+
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+}
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            @Html.Partial("~/Views/Contacts/_InfoPartial.cshtml", Model)
+
+            @Html.Partial("~/Views/Contacts/_ContactInfoPartial.cshtml", Model)
+
+        </div>
+
+        <div class="col-md-6">
+
+            @Html.Partial("~/Views/Contacts/_ContactRolesPartial.cshtml", Model)
+
+            @Html.Partial("~/Views/Contacts/_ContactActivityPartial.cshtml", Model)
+
+        </div>
+
+    </div>
+}

@@ -1,0 +1,44 @@
+﻿@model GenomeNext.Data.EntityModel.AWSComputeEnvironment
+
+@{
+    ViewBag.Title = "AWS Compute Environment";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-cloud gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "AWSComputeEnvironments", null, "info", "chevron-left")
+        @Html.BootstrapActionButton("Edit", "Edit", "AWSComputeEnvironments", new RouteValueDictionary(new { id = Model.Id }), "warning", "cog", null)
+    </span>
+</h2>
+@Html.BootstrapRowSpacer()
+@using (Html.BeginForm())
+{
+    <div class="col-md-12 form-horizontal">
+        <div class="form-group">
+            @Html.BootstrapRowSpacer()
+            <dl class="dl-horizontal">
+
+                @Html.DisplayFieldFor(model => model.Id)
+                @Html.DisplayFieldFor(model => model.AWSConfigId)
+                @Html.DisplayFieldFor(model => model.VPC)
+                @Html.DisplayFieldFor(model => model.Subnet)
+                @Html.DisplayFieldFor(model => model.AvailZone)
+                @Html.DisplayFieldFor(model => model.MaxInstanceRequiredPerAnalysis)
+                @Html.DisplayFieldFor(model => model.MaxInstanceExpectedCount)
+                @Html.DisplayFieldFor(model => model.IPAvailCount)
+                @Html.DisplayFieldFor(model => model.InstanceRunningCount)
+                @Html.DisplayFieldFor(model => model.InstancePendingCount)
+
+                @{
+                    ViewData["ViewMode"] = "Details";
+                    ViewData["CreatedBy"] = Model.CreatedByContact;
+                    ViewData["CreateDateTime"] = Model.CreateDateTime;
+                }
+                @Html.Partial("_AuditModelPartial", null, ViewData)
+
+            </dl>
+        </div>
+    </div>
+}

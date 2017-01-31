@@ -1,0 +1,166 @@
+﻿@using GenomeNext.Data.EntityModel
+@using GenomeNext.Data.IdentityModel
+@model GenomeNext.Data.EntityModel.GNContact
+
+
+@{
+    ViewBag.Title = "Create New Contact";
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/profile_white.png";
+    ViewData["ModuleCtl"] = "Contacts";
+
+    if (!string.IsNullOrEmpty(Request["organizationId"]))
+    {
+        ViewData["customBackLink"] = true;
+        ViewData["customBackLinkModuleCtl"] = "Organizations";
+        ViewData["customBackLinkAction"] = "Details";
+        ViewData["customBackLinkParam"] = Request["organizationId"];
+        ViewData["customBackLinkText"] = "Back to Organization";
+    }
+
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+}
+
+@section ModulePanelBody {
+            @using (Html.BeginForm())
+            {
+
+    <div class="row">
+
+        <div class="col-md-6">
+            @using (Html.BeginGNPanel())
+            {
+                //Heading
+                using (Html.BeginGNPanelHeading("User Information related to this Contact", "user"))
+                {
+                }
+
+                //Body
+                using (Html.BeginGNPanelBody())
+                {
+                    
+                @Html.AntiForgeryToken()
+
+                    <dl class="dl-horizontal col-md-12" style="padding:0;margin:0;">
+                        @Html.BootstrapRowSpacer()
+
+                        @Html.LabelFor(model => model.AspNetUserId, htmlAttributes: new { @class = "control-label col-md-3" })
+
+                        @if (Model.User != null)
+                        {
+                            @Html.DisplayFor(model => model.User.UserName)
+                            @Html.HiddenFor(model => model.User.Id)
+                            @Html.HiddenFor(model => model.User.Email)
+                            @Html.Hidden("User.Password", ".")
+                            @Html.Hidden("User.PasswordConfirm", ".")
+                            @Html.Hidden("Email", Model.User.Email)
+                            @Html.Raw("&nbsp;")
+                            @Html.BootstrapRowSpacer()
+
+
+                            <span class="col-md-3"></span>
+
+                            @Html.BootstrapActionButton("Select Different User", "Index", "Users", new RouteValueDictionary(new { organizationId = Model.GNOrganizationId, newContact = true }), null, "user", "sm")
+
+
+                        }
+                        else
+                        {
+                            @Html.BootstrapActionButton("Select Existing User", "Index", "Users", new RouteValueDictionary(new { organizationId = Model.GNOrganizationId, newContact = true }), null, "user", "sm")
+                            @Html.BootstrapActionButton("Create New User", "Create", "Users", new RouteValueDictionary(new { organizationId = Model.GNOrganizationId, newContact = true }), null, "plus", "sm")
+                            @Html.BootstrapRowSpacer()
+                            @Html.BootstrapRowSpacer()
+                        }
+                    </dl>
+                    @Html.BootstrapRowSpacer()
+                    @Html.BootstrapRowSpacer()
+                    @Html.BootstrapRowSpacer()
+                    @Html.BootstrapRowSpacer()
+                }
+
+        }
+    @Html.BootstrapRowSpacer()
+    </div>
+
+
+        <div class="col-md-6">
+
+                @using (Html.BeginGNPanel())
+                {
+                    //Heading
+                    using (Html.BeginGNPanelHeading("Name and Role(s)", "user"))
+                    {
+                    }
+
+                    //Body
+                    using (Html.BeginGNPanelBody())
+                    {
+                        <dl class="dl-horizontal col-md-12">
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+                            @Html.FormFieldFor(model => model.GNOrganization.Name, false, null, 4, 8, false, "Organization")
+                            @Html.HiddenFor(model => model.GNOrganizationId)
+                            @Html.BootstrapRowSpacer()
+
+                            @Html.FormFieldFor(model => model.FirstName, true, null, 4, 8)
+                            @Html.FormFieldFor(model => model.LastName, true, null, 4, 8)
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.GNContactRoles, htmlAttributes: new { @class = "control-label col-md-3" })
+                                <a href="http://support.genomenext.com/customer/portal/articles/1784257-what-permissions-can-i-set-for-users-on-my-account-" target="_blank"><span class="glyphicon glyphicon-question-sign col-md-1" title="Help with Roles"></span></a>
+                                <div class="col-md-8">
+                                    @Html.ListBox("AspNetRoleList", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.GNContactRoles, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Notify</label>                                
+                                <div class="col-md-8">
+                                    <span>
+                                        <input checked="checked" data-val="true" id="NotifyContact" name="NotifyContact" type="checkbox" value="true">
+                                        Let the user know s/he's been invited to join this Organization.
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-4"></label>
+                                <div class="col-md-8">
+                                    <span>
+                                        <input checked="checked" data-val="true" id="IsSubscribedForNewsletters" name="IsSubscribedForNewsletters" type="checkbox" value="true">
+                                        Is subscribed for newsletters.
+                                    </span>
+                                </div>
+                            </div>
+                        </dl>
+
+                    }
+
+                    //Footer
+                    using (Html.BeginGNPanelFooter())
+                    {
+                        if (Model.User != null)
+                        {                        
+                            <div id="edit_options">
+                                <div class="pull-left">
+                                    @Html.BootstrapActionButton("Cancel", "Index", "Contacts", new RouteValueDictionary(new { id = Model.Id }), "bg-gn-medium-gray white", "remove")
+                                </div>
+                                <div class="pull-right">
+                                    @Html.BootstrapFormSaveButton("Save", "floppy-disk", "bg-gn-green white")
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <span>Please select or create a user to complete the creation of the contact.</span>    
+                        }
+                    }
+            }
+            @Html.BootstrapRowSpacer()
+        </div>
+    </div>
+            }
+}

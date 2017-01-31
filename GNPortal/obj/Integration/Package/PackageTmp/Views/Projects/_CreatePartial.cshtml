@@ -1,0 +1,106 @@
+﻿@model GenomeNext.Data.EntityModel.GNProject
+
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    using (Html.BeginGNPanel())
+    {
+        //Heading
+        using (Html.BeginGNPanelHeading("Project Info", "info-sign"))
+        {
+        }
+
+        //Body
+        using (Html.BeginGNPanelBody())
+        {
+            <div class="form-horizontal col-md-12">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+
+                    @Html.Label("Organization", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @contactForUser.GNOrganization.Name
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Teams, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @if (ViewBag.TeamsSize > 0)
+                        {
+                            @Html.DropDownList("TeamsList", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Teams, "", new { @class = "text-danger" })
+                        }
+                        else
+                        {
+                            <span>No teams found.</span>
+                        }
+                        @if (ViewBag.CanCreateTeam != null && (bool)ViewBag.CanCreateTeam)
+                        {
+                            <div class="small">
+                                @Html.BootstrapActionIconLink("Add New Team", "Create", "Teams", new RouteValueDictionary(new { inProjectCreate = true }), glyphicon: "plus", displayText: true)
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProjectLead, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        <select class="form-control" id="ProjectLeadList" name="ProjectLeadList"></select>
+                        @Html.ValidationMessageFor(model => model.ProjectLead, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @Html.FormFieldFor(model => model.Name)
+                @Html.FormFieldFor(model => model.Description)
+
+            </div>
+        }
+
+        //Footer
+        using (Html.BeginGNPanelFooter())
+        {
+            <div class="pull-left">
+                @if (!string.IsNullOrEmpty(Request["teamId"]))
+                {
+                    @Html.BootstrapActionButton("Cancel", "Details", "Teams", new RouteValueDictionary(new { id = Request["teamId"] }), "bg-gn-medium-gray white", "remove")
+                }
+                else
+                {
+                    @Html.BootstrapActionButton("Cancel", "Index", "Projects", null, "bg-gn-medium-gray white", "remove")
+                }
+            </div>
+            <div class="pull-right col-md-8">
+                @if (ViewBag.TeamsSize > 0)
+                {
+                    <div class="pull-right">
+                        @Html.BootstrapFormSaveButton("Save", "floppy-disk", "bg-gn-green white")
+                    </div>
+                }
+                else
+                {
+                    <div class="pull-right">
+                        @if ((bool)ViewBag.CanCreateTeam)
+                        {
+                            @Html.BootstrapActionButton("Add New Team first", "Create", "Teams", new RouteValueDictionary(new { inProjectCreate = true }), "bg-gn-green white", "glyphicon glyphicon-plus", null, false, "left")
+                        }
+                        else
+                        {
+                            <div class="pull-right small">
+                                <span>A team needs to be assigned to the project. Please contact your organization manager to create one.</span>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        }
+    }
+}

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNNotificationSuppressionList>
+
+@{
+    ViewBag.Title = "Suppression Lists (Unsubscriptions, Bounces, Complaints)"; 
+    
+    int resultsColSpan = 4;
+    ViewData["ResultsColSpan"] = resultsColSpan;
+    ViewData["SearchListItemsCount"] = Model.Count();
+    ViewData["SearchTextOptions"] = new string[] { "All", "Category", "Email", "Subtype", "Type" };
+}
+
+<h2>
+    <span class="glyphicon glyphicon-envelope gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Create New", "Create", "NotificationSuppressionLists", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "plus")
+    </span>
+</h2>
+
+@Html.Partial("_SearchListControlPartial")
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category) ( @Html.DisplayNameFor(model => model.Type) , @Html.DisplayNameFor(model => model.Subtype) )
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NotifiedAdminOn)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                    @if(item.Type != null) {
+                        <span class="small">@Html.Raw("(")                     
+                            @Html.DisplayFor(modelItem => item.Type)
+                            @if(item.Subtype != null) { @Html.Raw(","); } 
+                            @Html.DisplayFor(modelItem => item.Subtype)
+                            @Html.Raw(")")
+                        </span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NotifiedAdminOn)
+                </td>
+                <td>
+                    @Html.BootstrapActionButton("View", "Details", "NotificationSuppressionLists", new RouteValueDictionary(new { Id = item.Id }), "success", "th-large", "sm")
+                    @Html.BootstrapActionButton("Edit", "Edit", "NotificationSuppressionLists", new RouteValueDictionary(new { Id = item.Id }), "warning", "cog", "sm")
+                    @Html.BootstrapActionButton("Delete", "Delete", "NotificationSuppressionLists", new RouteValueDictionary(new { Id = item.Id  }), "danger", "trash", "sm")
+                </td>
+            </tr>
+        }
+
+    </table>   
+
+    @if (Model != null && Model.Count() != 0)
+    {
+        @Html.Partial("_SearchListMoreResultsPartial")
+    }
+    
+</div>

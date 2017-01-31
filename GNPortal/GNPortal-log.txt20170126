@@ -1,0 +1,226 @@
+2017-01-26 13:50:57,961 [9] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 13:52:04,509 [8] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 13:52:12,971 [8] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 13:52:25,161 [8] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 13:52:25,264 [19] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 13:59:24,885 [20] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:00:04,324 [18] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:00:18,647 [18] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:01:31,370 [23] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:01:57,498 [21] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:02:04,123 [21] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:02:49,307 [23] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:03:01,614 [21] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:03:07,617 [21] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:09:48,063 [23] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:10:01,004 [28] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:10:08,621 [23] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:10:50,997 [23] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:11:01,976 [28] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:11:24,895 [25] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:11:37,639 [30] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:11:40,934 [25] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:17:46,173 [25] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:19:46,065 [27] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:19:57,978 [9] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:20:02,720 [13] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:20:14,885 [13] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:20:26,251 [27] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:21:45,509 [9] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:23:34,912 [8] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:23:37,461 [8] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:26:09,102 [17] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:28:27,552 [17] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:28:29,761 [17] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:28:37,181 [17] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:32:35,002 [17] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:32:37,408 [17] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:32:45,093 [34] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:33:51,222 [35] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:33:53,152 [17] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:33:59,466 [17] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:41:11,847 [43] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:41:28,155 [43] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:41:34,730 [42] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:41:44,493 [42] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:46:20,345 [42] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:46:26,307 [6] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:46:31,656 [36] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:46:42,016 [21] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:49:26,977 [33] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:49:41,738 [33] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:50:37,249 [33] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:50:37,703 [23] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:54:30,826 [49] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:55:06,564 [47] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:55:14,456 [51] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:55:39,527 [49] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:55:39,662 [47] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:56:05,402 [47] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:56:12,568 [53] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:57:02,072 [47] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:57:09,615 [54] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:57:27,186 [53] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:57:44,897 [54] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:59:09,510 [10] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:59:16,375 [48] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:59:47,411 [25] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:59:53,640 [25] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:59:53,730 [25] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 14:59:56,245 [54] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:00:00,500 [54] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:00:06,764 [48] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:00:09,668 [25] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:00:09,710 [54] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:00:12,850 [19] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:00:16,955 [48] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:00:19,359 [19] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:00:19,413 [25] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:00:28,513 [19] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:00:30,676 [25] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:00:30,713 [25] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:00:42,844 [54] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:00:46,345 [54] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:00:51,824 [54] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:07:10,777 [17] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:07:21,948 [28] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:07:22,044 [25] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:07:27,115 [37] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:07:31,772 [32] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:09:19,278 [34] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:47:03,590 [13] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:47:06,562 [8] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:47:06,926 [5] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:47:16,140 [5] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:47:25,887 [13] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:47:26,063 [5] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:47:30,450 [5] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:47:33,161 [5] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:47:35,162 [8] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:47:35,201 [16] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:47:38,588 [13] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:47:44,878 [8] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:47:44,956 [18] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:47:47,688 [8] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:51:19,711 [18] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:51:34,080 [25] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:51:34,119 [23] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:51:36,620 [18] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:51:43,505 [22] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:51:50,501 [23] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:51:50,604 [23] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:51:52,777 [22] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:51:59,844 [22] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:52:02,941 [26] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:52:02,981 [25] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:52:16,181 [26] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:52:26,186 [22] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:53:02,843 [25] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:53:09,873 [18] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:53:09,915 [25] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:53:11,863 [26] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:54:54,892 [29] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:55:03,488 [27] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:57:00,837 [32] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:57:05,892 [32] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:57:11,161 [32] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 15:57:40,691 [18] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 18:56:22,007 [41] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 18:56:26,408 [18] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 18:56:39,113 [40] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 18:56:53,139 [18] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:00:45,688 [30] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:02:56,608 [8] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:03:41,945 [32] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:04:02,500 [29] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:07:17,697 [29] WARN  GenomeNext.Portal.Controllers.BaseController`1 - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at GenomeNext.Data.BaseEntityService`1.GetSqlExceptionErrorMessage(Exception ex) in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 379
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 136
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__1c.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 167
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Portal.Controllers.BaseController`1.<Create>d__f.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNPortal\Controllers\BaseController.cs:line 203
+2017-01-26 19:07:38,692 [29] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:07:42,461 [30] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:08:11,809 [28] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:10:35,825 [5] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:10:47,244 [38] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:24:28,305 [19] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:24:34,029 [19] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:26:03,316 [16] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:26:19,202 [42] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:33:04,446 [13] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:33:27,029 [42] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:33:36,850 [42] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:33:43,562 [42] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:37:24,018 [42] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:38:03,492 [42] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:38:51,469 [42] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:40:58,875 [21] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:41:09,678 [19] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:42:09,926 [14] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:42:14,851 [14] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:42:23,033 [14] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:43:49,459 [28] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:51:55,994 [31] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:51:55,994 [14] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:52:13,083 [14] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:52:20,594 [31] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 19:54:05,854 [31] WARN  GenomeNext.Portal.Controllers.BaseController`1 - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at GenomeNext.Data.BaseEntityService`1.GetSqlExceptionErrorMessage(Exception ex) in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 383
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 140
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__1d.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 171
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Portal.Controllers.BaseController`1.<Create>d__f.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNPortal\Controllers\BaseController.cs:line 203
+2017-01-26 20:28:56,945 [7] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 20:29:08,055 [6] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 20:29:14,891 [6] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 20:30:10,620 [7] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 20:30:16,907 [7] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 20:33:13,157 [7] WARN  GenomeNext.Portal.Controllers.BaseController`1 - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at GenomeNext.Data.BaseEntityService`1.GetSqlExceptionErrorMessage(Exception ex) in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 411
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 168
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__1d.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 199
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Portal.Controllers.BaseController`1.<Create>d__f.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNPortal\Controllers\BaseController.cs:line 203
+2017-01-26 20:33:50,400 [24] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 20:33:50,400 [20] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 20:34:17,199 [8] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0
+2017-01-26 20:36:04,130 [24] WARN  GenomeNext.Portal.Controllers.BaseController`1 - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at GenomeNext.Data.BaseEntityService`1.GetSqlExceptionErrorMessage(Exception ex) in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 411
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__12.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 168
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Data.BaseEntityService`1.<Insert>d__1d.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNData\EntityService\BaseEntityService.cs:line 199
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at GenomeNext.Portal.Controllers.BaseController`1.<Create>d__f.MoveNext() in f:\GitHub\New_SRC\New_Webapp\webapp-development\GNPortal\Controllers\BaseController.cs:line 203
+2017-01-26 20:36:09,296 [8] WARN  GenomeNext.Billing.AccountService - 74fe3396-e50d-4ad5-806c-7ff29d79ffa1lastInvoice.Balance: 0; currentInvoice.Balance: 25800; acct.Balance: 290095.353137302; balancePastDue: 0

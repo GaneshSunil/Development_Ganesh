@@ -1,0 +1,81 @@
+﻿@model GenomeNext.Data.EntityModel.GNTeam
+@{
+    ViewBag.CanExportAnalysisReport = ((GenomeNext.Portal.Controllers.BaseController)this.ViewContext.Controller).EvalCanExportAnalysisReport();
+}
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Analyses"))
+    {
+        <img class="pull-left"
+             style="margin:0px;padding:0px 10px 0px 0px;max-height:30px;max-width:30px;"
+             src="@Url.Content("~/Content/icons/analyses_white.png")" />
+        <span class="badge">@Model.Projects.Sum(p => p.AnalysisRequests.Count)</span>
+        <span class="pull-right">
+            @if ((bool)ViewBag.CanExportAnalysisReport)
+            {
+                @Html.BootstrapActionIconLink("Export Analysis Report", "ExportAnalysisReport", "AnalysisRequests", new RouteValueDictionary(new { teamId = Model.Id }), "white", "list-alt", null, false, false)
+            }
+            @if (Model.CanEdit && Model.Projects.Count != 0)
+            {
+                <span>&nbsp;</span>
+                @Html.BootstrapActionIconLink("New Analysis", "Create", "AnalysisRequests", new RouteValueDictionary(new { teamId = Model.Id }), "white", "plus", null, false, false)
+            }
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(true))
+    {
+        if (Model.Projects != null && Model.Projects.Sum(p => p.AnalysisRequests.Count) != 0)
+        {
+            int i = 0;
+            foreach (var item in Model.Projects.SelectMany(p => p.AnalysisRequests).OrderByDescending(a => a.CreateDateTime).Take(5))
+            {
+                using (Html.BeginGNClickableListGroupItem(
+                    Url.Action("Details", "AnalysisRequests", new { id = item.Id, teamId = Model.Id }),
+                    (i % 2) != 0))
+                {
+                    <img class="pull-left flushTop"
+                            style="margin:0px;padding:0px 10px 0px 0px;max-height:30px;max-width:30px;"
+                            src="@Url.Content("~/Content/icons/analyses.png")" />
+                    <h5 class="flushLeft flushTop" style="padding-top:3px !important">
+                        @item.Description
+                    </h5>
+                    <p class="small text-inline text-padded-right">
+                    </p>
+                    <p class="small text-inline text-padded-right">
+                        <span class="text-muted text-uppercase">@(item.CurrentProgress + "%")</span> Complete
+                    </p>
+                    <p class="small text-inline">
+                        <span class="text-muted text-uppercase">@((item.AnalysisResult != null) ? item.AnalysisResult.ResultFiles.Count : 0)</span> Result Files
+                    </p>
+                    <p class="small text-inline">
+                        @Html.Raw((item.RequestDateTime.HasValue) ? " received on <span class=\"text-muted text-uppercase\">" + item.RequestDateTime.Value.ToShortDateString() + "</span>" : "")
+                        for Project <span class="text-muted text-uppercase">@item.Project.Name</span> 
+                    </p>
+                }
+                i++;
+            }
+        }
+        else
+        {
+            <div class="list-group-item">
+                <h5>
+                    Analyses have not been created for this team.
+                </h5>
+            </div>
+        }
+    }
+
+    if (Model.Projects != null && Model.Projects.Sum(p => p.AnalysisRequests.Count) > 5)
+    {
+        using (Html.BeginGNPanelFooter())
+        {
+            <div class="col-md-12 text-center">
+                @Html.ActionLink("View All Analyses", "Index", "AnalysisRequests", new { teamId = Model.Id }, null)
+            </div>
+        }        
+    }
+}

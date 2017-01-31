@@ -1,0 +1,1 @@
+﻿ALTER TABLE [gn].[GNCloudFiles] ALTER COLUMN [FileSize] BIGINT NOT NULL;

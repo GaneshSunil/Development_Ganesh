@@ -1,0 +1,35 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNTeam>
+
+@if (Model != null && Model.Count() != 0)
+{
+    foreach (var item in Model)
+    {
+        using (Html.BeginGNClickableListGroupItem(Url.Action("Details", "Teams", new { id = item.Id })))
+        {
+            <span>
+                <img class="pull-left"
+                     style="margin:0px;padding:0px 5px 0px 0px;max-height:25px;max-width:25px;"
+                     src="@Url.Content("~/Content/icons/teams.png")" />
+                <strong>@item.Name</strong>
+            </span>
+            <span class="badge bg-white gn-dark-gray pull-right flushRight">
+                @item.TeamLead.FullName
+            </span>
+        }
+    }
+}
+else
+{
+    if ((bool)ViewBag.CanCreateTeam)
+    {
+        <div class="list-group-item">
+            @Html.BootstrapActionIconLink("Add your first team", "Create", "Teams", null, null, "plus", null, false, true)
+        </div>
+    }
+    else
+    {
+        <div class="list-group-item">
+            You are not assigned to a team.    
+        </div>
+    }
+}

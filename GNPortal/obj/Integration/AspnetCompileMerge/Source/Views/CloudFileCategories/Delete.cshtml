@@ -1,0 +1,71 @@
+﻿@model GenomeNext.Data.EntityModel.GNCloudFileCategory
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-cloud gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "CloudFileCategories", null, "info", "chevron-right", null, true)
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="form-horizontal">
+
+    <h4>Please confirm you want to delete this record:</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FileExtensions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileExtensions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FolderPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FolderPath)
+        </dd>
+
+
+    <dd>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <button type="submit" class="btn btn-danger">
+                <span class="glyphicon glyphicon-trash"></span>
+                Delete
+            </button>
+        }
+    </dd>
+
+    </dl>
+
+</div>
+
+

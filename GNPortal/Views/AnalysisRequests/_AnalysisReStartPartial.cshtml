@@ -1,0 +1,29 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Re-Launch Analysis", "refresh"))
+    {
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody())
+    {
+        <script>
+            $(document).ready(function () {
+
+                $("a[title='Start']").click(function () {
+                    $(this).replaceWith("<button class='btn btn-primary'>Starting...</button>");
+                });
+            });
+        </script>
+
+        <p class="small">
+            This analysis request failed due to resources being unavailable, please try re-launching.
+        </p>
+        @Html.BootstrapActionButton("Start", "StartAnalysis", "AnalysisRequests", new RouteValueDictionary(new { analysisRequestId = Model.Id }), "bg-gn-green white", "play", null)
+    }
+
+}

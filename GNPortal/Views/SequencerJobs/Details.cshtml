@@ -1,0 +1,133 @@
+﻿@model GenomeNext.Data.EntityModel.GNSequencerJob
+
+@{
+    ViewBag.Title = "Details";
+
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+}
+
+<h2>
+    <span class="glyphicon glyphicon-envelope gn-green"></span>
+    @ViewBag.Title
+
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "SequencerJobs", null, "info", "chevron-left")
+    </span>
+</h2>
+@Html.BootstrapRowSpacer()
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal col-md-12" style="padding:10px;">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+
+        </dl>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Project)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Project)       
+                 @Html.BootstrapActionButton("View", "Details", "Projects", new RouteValueDictionary(new { id = Model.GNProject.Id }), "success", "folder-open", "sm")
+
+
+            </dd>
+        </dl>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CreateDateTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreateDateTime)
+            </dd>
+        </dl>
+
+            <div class="col-md-6">
+
+                <div class="panel-heading bg-gn-dark-gray">
+                    <h3 class="panel-title flushLeft white">
+                        <span>Samples on this batch (@Model.GNNewSampleBatches.FirstOrDefault().TotalSamples)</span>
+                        <br />
+                        <span class="small white">@Model.GNNewSampleBatches.FirstOrDefault().Type, @Model.GNNewSampleBatches.FirstOrDefault().Qualifier, @Model.GNNewSampleBatches.FirstOrDefault().ReadType.ToUpper()</span>
+                    </h3>
+                </div>
+
+                <dl class="dl-horizontal">
+                    @{
+                        int j = 0;
+                        foreach (var Batch in Model.GNNewSampleBatches)
+                        {
+                            foreach (var item in Batch.GNNewSampleBatchSamples)
+                            {
+                                using (Html.BeginGNClickableListGroupItem("#", (j % 2) != 0))
+                                {
+                                    <span class="pull-right">
+                                        @Html.BootstrapActionButton("View", "Details", "Samples", new RouteValueDictionary(new { id = item.GNSample.Id }), "success", "th-large", "sm")</span>
+                                    <span class="small">
+                                        @item.Name                                        
+                                        <br />
+                                        <b class="small">@item.GNSample.Id</b>
+                                    </span>
+                                    
+                                }
+                                j++;
+                            }
+                        }
+                    }
+                </dl>
+            </div>
+
+            <div class="col-md-1"></div>
+
+            <div class="col-md-5">
+                <div class="panel-heading bg-gn-dark-gray">
+                    <h3 class="panel-title flushLeft white">
+                        <span>Sequencer Job Status History</span>
+                    </h3>
+                </div>
+
+
+                <dl class="dl-horizontal">
+                    @{
+                        int i = 0;
+                        foreach (var Batch in Model.GNNewSampleBatches)
+                        {
+
+                            foreach (var item in Batch.GNNewSampleBatchStatus.OrderByDescending(a => a.PercentComplete))
+                            {
+                                using (Html.BeginGNClickableListGroupItem("#", (i % 2) != 0))
+                                {
+                                    <span class="small">
+                                        @if (item.IsError)
+                                        {
+                                            <span class="glyphicon glyphicon-remove-circle alert-danger"></span>
+                                        }
+                                        <b>@item.PercentComplete%</b>
+                                        @item.Status
+                                        <span class="gn-green">@Html.Raw(TimeZoneInfo.ConvertTime(item.CreateDateTime.Value, contactForUser.GNOrganization.OrgTimeZoneInfo))</span>
+                                        @if (item.IsError && User.IsInRole("GN_ADMIN"))
+                                        {
+                                            <br />
+                                            <span class="muted">@item.Message</span>
+                                        }
+                                    </span>
+                                }
+                                i++;
+                            }
+                        }
+                    }
+                </dl>
+            </div>
+    </div>
+}

@@ -1,0 +1,67 @@
+﻿@model GenomeNext.Data.EntityModel.GNOrganization
+
+@{
+    ViewBag.Title = "Delete Organization";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-th gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "Organizations", null, "info", "chevron-left")
+        @Html.BootstrapFormConfirmDeleteButton("Delete", "trash", "danger")
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="form-horizontal">
+
+    @Html.BootstrapRowSpacer()
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UTCOffset)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UTCOffset)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AWSConfig)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AWSConfig.AWSAccessKeyId)
+            <br />
+            @Html.DisplayFor(model => model.AWSConfig.AWSRegionSystemName)
+        </dd>
+
+        <dt>
+        </dt>
+        <dd>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+            }
+        </dd>
+
+    </dl>
+</div>

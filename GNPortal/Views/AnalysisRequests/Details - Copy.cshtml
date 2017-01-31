@@ -1,0 +1,364 @@
+<<<<<<< HEAD
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+@{
+    ViewBag.Title = Model.Description;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/analyses_white.png";
+    ViewData["ModuleCtl"] = "AnalysisRequests";
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    var canModifyItems = true;
+    
+    if(Model.AnalysisStatus.Count > 0) //launched
+    {
+        canModifyItems = false;
+    }
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            initStartAnalysisButtonHandlers();
+            initStatusHistory();
+
+            //set auto page refresh to every 15 seconds
+            if ((parseInt($("#CurrentProgress").val(), 10) < 100) 
+                && @Html.Raw(Model.IsFailedRequest ? "false" : "true") )
+            {
+                autoPageRefresh(15);
+            }
+        });
+
+        function initStartAnalysisButtonHandlers() {
+            $("a[title='Start']").click(function (e) {
+                if (savingIndicators == true) {
+                    e.preventDefault();
+                }
+                else {
+                    $(this).replaceWith("<button class='btn btn-primary'>Starting...</button>");
+                }
+            });
+        }
+
+        function initStatusHistory() {
+            $("#analysisStatusHistory").hide();
+
+            $("#analysisStatusHistoryToggleBtn").click(function (e) {
+                e.preventDefault();
+                $("#analysisStatusHistory").toggle();
+                if ($("#analysisStatusHistory").is(":visible")) {
+                    $("#analysisStatusHistoryToggleBtn").html("<span class=\"glyphicon glyphicon-minus\"></span>");
+                }
+                else {
+                    $("#analysisStatusHistoryToggleBtn").html("<span class=\"glyphicon glyphicon-plus\"></span>");
+                }
+            });
+        }
+
+        function autoRefresh_div()
+        {
+            $("status-body").load("load.html");// a function which will load data from other file after x seconds
+        }
+        function autoPageRefresh(refreshIntervalSecs) {
+           // alert('refreshing');
+           // setInterval('autoRefresh_div()', refreshIntervalSecs * 1000);
+            setTimeout("location.reload(true);", refreshIntervalSecs * 1000);
+        }
+
+        
+        function createNewGroup() 
+        {
+            if (document.getElementById('GroupValue').value.trim() == '')
+            {
+                $('#error_pedigree').toggle();
+                document.getElementById('error_message').innerHTML = 'Please enter a valid name for the new group.';
+                return;
+            }
+
+            //Set values
+            document.getElementById('NewGroupName').value = document.getElementById('GroupValue').value;
+
+            //Submit
+            document.getElementById('FormNewGroup').submit();
+        }
+
+        function createNewAssociation()
+        {
+            if (document.getElementById('controlgroup').value == document.getElementById('comparisongroup').value)
+            {
+                $('#error_group_association').toggle();
+                document.getElementById('error_group_association_message').innerHTML = 'Please select two different groups.';
+                return;
+            }
+            else
+            {
+                //Set values
+                document.getElementById('ControlGroupId').value = document.getElementById('controlgroup').value;
+                document.getElementById('ComparisonGroupId').value = document.getElementById('comparisongroup').value;
+
+                document.getElementById('FormNewAssociation').submit();
+            }
+        }
+
+        function toggleConfirmDeletion(id)
+        {
+            $('#confirm_remove_'+id).toggle();
+            $('#remove_'+id).toggle();         
+        }
+
+    </script>
+}
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            @Html.Partial("~/Views/AnalysisRequests/_InfoPartial.cshtml", Model)
+
+            @if (!Model.CanEdit)
+            {
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisStatusPartial.cshtml", Model)
+            }
+
+        </div>
+
+        <div class="col-md-6">
+            @{
+                bool is_running = false;
+            }
+
+            @if (!Model.CanStartAnalysis && Model.AnalysisResult == null && (Model.AnalysisStatus == null || Model.AnalysisStatus.Count == 0))
+            {
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisSummaryOfErrors.cshtml", Model)           
+            }
+            else if (Model.CurrentProgress == 0 && Model.CanEdit && Model.CanStartAnalysis && Model.AnalysisResult == null)
+            {
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisStartPartial.cshtml", Model)
+            }
+            else if ((Model.CurrentProgress == 0 && Model.AnalysisStatus.Count > 0 && !Model.IsFailedRequest)
+                    || (Model.CurrentProgress > 0 && Model.CurrentProgress < 100 && !Model.IsFailedRequest))
+            {
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisInProgress.cshtml", Model)
+                is_running = true;
+            }
+            
+            @if (Model.AnalysisResult != null && Model.AnalysisResult.ResultFiles.Count > 0)
+            { 
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisResultPartial.cshtml", Model)
+            }
+            else if (!is_running && (Model.CanReStartAnalysis || contactForUser.IsInRole("GN_ADMIN")) && (Model.AnalysisStatus != null && Model.AnalysisStatus.Count > 0))
+            {
+                if(Model.LatestRequestPhase != "TERTIARY")
+                {
+                    @Html.Partial("~/Views/AnalysisRequests/_AnalysisReStartPartial.cshtml", Model)
+                }
+                else
+                {
+                    @Html.Partial("~/Views/AnalysisRequests/_AnalysisResultPartial.cshtml", Model)
+                }
+            }
+            
+            @if(Model.GNAnalysisRequestTypeCode=="TUMORNORMAL")
+            {
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisSamplesTumorNormalPartial.cshtml", Model)
+            }
+            else if (Model.GNAnalysisRequestTypeCode == "RNA")
+            {
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisSamplesRnaPartial.cshtml", Model)
+            }
+            else
+            {
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisSamplesDnaPartial.cshtml", Model)
+            }
+
+        </div>
+
+    </div>
+=======
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+@{
+    ViewBag.Title = Model.Description;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/analyses_white.png";
+    ViewData["ModuleCtl"] = "AnalysisRequests";
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    var canModifyItems = true;
+    
+    if(Model.AnalysisStatus.Count > 0) //launched
+    {
+        canModifyItems = false;
+    }
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            initStartAnalysisButtonHandlers();
+            initStatusHistory();
+
+            //set auto page refresh to every 15 seconds
+            if ((parseInt($("#CurrentProgress").val(), 10) < 100) 
+                && @Html.Raw(Model.IsFailedRequest ? "false" : "true") )
+            {
+                autoPageRefresh(15);
+            }
+        });
+
+        function initStartAnalysisButtonHandlers() {
+            $("a[title='Start']").click(function (e) {
+                if (savingIndicators == true) {
+                    e.preventDefault();
+                }
+                else {
+                    $(this).replaceWith("<button class='btn btn-primary'>Starting...</button>");
+                }
+            });
+        }
+
+        function initStatusHistory() {
+            $("#analysisStatusHistory").hide();
+
+            $("#analysisStatusHistoryToggleBtn").click(function (e) {
+                e.preventDefault();
+                $("#analysisStatusHistory").toggle();
+                if ($("#analysisStatusHistory").is(":visible")) {
+                    $("#analysisStatusHistoryToggleBtn").html("<span class=\"glyphicon glyphicon-minus\"></span>");
+                }
+                else {
+                    $("#analysisStatusHistoryToggleBtn").html("<span class=\"glyphicon glyphicon-plus\"></span>");
+                }
+            });
+        }
+
+        function autoRefresh_div()
+        {
+            $("status-body").load("load.html");// a function which will load data from other file after x seconds
+        }
+        function autoPageRefresh(refreshIntervalSecs) {
+           // alert('refreshing');
+           // setInterval('autoRefresh_div()', refreshIntervalSecs * 1000);
+            setTimeout("location.reload(true);", refreshIntervalSecs * 1000);
+        }
+
+        
+        function createNewGroup() 
+        {
+            if (document.getElementById('GroupValue').value.trim() == '')
+            {
+                $('#error_pedigree').toggle();
+                document.getElementById('error_message').innerHTML = 'Please enter a valid name for the new group.';
+                return;
+            }
+
+            //Set values
+            document.getElementById('NewGroupName').value = document.getElementById('GroupValue').value;
+
+            //Submit
+            document.getElementById('FormNewGroup').submit();
+        }
+
+        function createNewAssociation()
+        {
+            if (document.getElementById('controlgroup').value == document.getElementById('comparisongroup').value)
+            {
+                $('#error_group_association').toggle();
+                document.getElementById('error_group_association_message').innerHTML = 'Please select two different groups.';
+                return;
+            }
+            else
+            {
+                //Set values
+                document.getElementById('ControlGroupId').value = document.getElementById('controlgroup').value;
+                document.getElementById('ComparisonGroupId').value = document.getElementById('comparisongroup').value;
+
+                document.getElementById('FormNewAssociation').submit();
+            }
+        }
+
+        function toggleConfirmDeletion(id)
+        {
+            $('#confirm_remove_'+id).toggle();
+            $('#remove_'+id).toggle();         
+        }
+
+    </script>
+}
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            @Html.Partial("~/Views/AnalysisRequests/_InfoPartial.cshtml", Model)
+
+            @if (!Model.CanEdit)
+            {
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisStatusPartial.cshtml", Model)
+            }
+
+        </div>
+
+        <div class="col-md-6">
+            @{
+                bool is_running = false;
+            }
+
+            @if (!Model.CanStartAnalysis && Model.AnalysisResult == null && (Model.AnalysisStatus == null || Model.AnalysisStatus.Count == 0))
+            {
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisSummaryOfErrors.cshtml", Model)           
+            }
+            else if (Model.CurrentProgress == 0 && Model.CanEdit && Model.CanStartAnalysis && Model.AnalysisResult == null)
+            {
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisStartPartial.cshtml", Model)
+            }
+            else if ((Model.CurrentProgress == 0 && Model.AnalysisStatus.Count > 0 && !Model.IsFailedRequest)
+                    || (Model.CurrentProgress > 0 && Model.CurrentProgress < 100 && !Model.IsFailedRequest))
+            {
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisInProgress.cshtml", Model)
+                is_running = true;
+            }
+            
+            @if (Model.AnalysisResult != null && Model.AnalysisResult.ResultFiles.Count > 0)
+            { 
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisResultPartial.cshtml", Model)
+            }
+            else if (!is_running && (Model.CanReStartAnalysis || contactForUser.IsInRole("GN_ADMIN")) && (Model.AnalysisStatus != null && Model.AnalysisStatus.Count > 0))
+            {
+                if(Model.LatestRequestPhase != "TERTIARY")
+                {
+                    @Html.Partial("~/Views/AnalysisRequests/_AnalysisReStartPartial.cshtml", Model)
+                }
+                else
+                {
+                    @Html.Partial("~/Views/AnalysisRequests/_AnalysisResultPartial.cshtml", Model)
+                }
+            }
+            
+            @if(Model.GNAnalysisRequestTypeCode=="TUMORNORMAL")
+            {
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisSamplesTumorNormalPartial.cshtml", Model)
+            }
+            else if (Model.GNAnalysisRequestTypeCode == "RNA")
+            {
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisSamplesRnaPartial.cshtml", Model)
+            }
+            else
+            {
+                @Html.Partial("~/Views/AnalysisRequests/_AnalysisSamplesDnaPartial.cshtml", Model)
+            }
+
+        </div>
+
+    </div>
+>>>>>>> refs/remotes/origin/develop
+}

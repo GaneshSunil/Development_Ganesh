@@ -1,0 +1,64 @@
+﻿<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#startDownloadAllBtn").click(function (e) {
+
+            e.preventDefault();
+
+            $("#downloadAllAlertModal").modal('hide');
+
+            $('#download_options').toggle();
+            $('#enable_action_icons').toggle();
+
+            downloadAll();
+        });
+    });
+
+    function enableEditActions()
+    {
+        $('#enable_action_icons').toggle();
+        $('#action_icons').toggle();
+    }
+
+    function confirmDownloadAll()
+    {
+        $('#action_icons').toggle();
+        $('#download_options').toggle();
+    }
+
+    function cancelDownloadAll()
+    {
+        $('#download_options').toggle();
+        $('#enable_action_icons').toggle();
+    }
+
+    function downloadAllDisplayAlert()
+    {
+        $("#downloadAllAlertModal").modal();
+    }
+
+    function downloadAll()
+    {
+        var batchDelay = 0;
+
+        $("span[title='Download'] a").each(function (idx, elem) {
+
+            batchDelay = idx * 1500;
+
+            setTimeout(function () {
+                window.open(elem.href);
+            },
+            batchDelay);
+        });
+    }
+
+    function confirmDeleteAll() {
+        $('#action_icons').toggle();
+        $('#delete_options').toggle();
+    }
+
+    function cancelDeleteAll() {
+        $('#delete_options').toggle();
+        $('#enable_action_icons').toggle();
+    }
+</script>

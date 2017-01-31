@@ -1,0 +1,39 @@
+﻿@model GenomeNext.Data.EntityModel.GNTemplate
+
+@{
+    ViewBag.Title = Model.Name;
+
+  //  var teamMembers = Model.TeamMembers.Where(tm => (!tm.Contact.IsInviteAccepted.HasValue || tm.Contact.IsInviteAccepted.Value));
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/teams_white.png";
+    ViewData["ModuleCtl"] = "Templates";
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+
+    if (!string.IsNullOrEmpty(Request["analysisRequestId"]))
+    {
+        ViewData["customBackLink"] = true;
+        ViewData["customBackLinkModuleCtl"] = "AnalysisRequests";
+        ViewData["customBackLinkAction"] = "Details";
+        ViewData["customBackLinkParam"] = Request["analysisRequestId"];
+        ViewData["customBackLinkText"] = "Back to Analysis";
+    }
+}
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            @Html.Partial("~/Views/Templates/_InfoPartial.cshtml", Model)
+
+        </div>
+
+        <div class="col-md-6">
+
+           @Html.Partial("~/Views/Templates/_GenesListPartial.cshtml", Model)
+
+        </div>
+
+    </div>
+}0

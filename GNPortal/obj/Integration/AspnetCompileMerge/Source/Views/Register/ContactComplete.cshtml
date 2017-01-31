@@ -1,0 +1,94 @@
+﻿@model GenomeNext.Data.EntityModel.GNContact
+@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/register.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/register_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/register_white_green.png";
+    ViewData["ModuleHasActionBar"] = true;
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "User Registration - Completed";
+}
+
+@section ModuleIndexHeadingActionBar{
+<div class="col-md-12 text-right" style="padding-top:15px;">
+    <h4>
+        @Html.BootstrapActionIconLink("Login", "Index", "Home", null, "white bg-clear", "chevron-right", glyphiconRight: true, displayText: true)
+    </h4>
+</div>
+}
+
+@section ModuleIndexContent{
+
+<div class="panel form-horizontal bg-white">
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <div class="well well-sm reg-left-info">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GNOrganization, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DisplayFor(model => model.GNOrganization.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                @Html.FormFieldFor(model => model.Title, false)
+                @Html.FormFieldFor(model => model.FirstName, false)
+                @Html.FormFieldFor(model => model.LastName, false)
+                @Html.FormFieldFor(model => model.Email, false)
+
+                <div class="form-group">
+                    <label class='control-label col-md-4'>@Html.DisplayNameFor(model => model.TermsAcceptDateTime)</label>
+                    <div class='col-md-8'>
+                        @if (Model.TermsAcceptDateTime.HasValue)
+                        {
+                            @TimeZoneInfo.ConvertTime(Model.TermsAcceptDateTime.GetValueOrDefault(), Model.GNOrganization.OrgTimeZoneInfo)
+                        }
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class='control-label col-md-4'>@Html.DisplayNameFor(model => model.PrivacyPolicyAcceptDateTime)</label>
+                    <div class='col-md-8'>
+                        @if (Model.PrivacyPolicyAcceptDateTime.HasValue)
+                        {
+                            @TimeZoneInfo.ConvertTime(Model.PrivacyPolicyAcceptDateTime.GetValueOrDefault(), Model.GNOrganization.OrgTimeZoneInfo)
+                        }
+                    </div>
+                </div>
+
+                @Html.BootstrapRowSpacer()
+                @Html.BootstrapRowSpacer()
+                @Html.BootstrapRowSpacer()
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            @Html.FormFieldFor(model => model.Phone, false)
+            @Html.FormFieldFor(model => model.StreetAddress1, false)
+            @Html.FormFieldFor(model => model.StreetAddress2, false)
+            @Html.FormFieldFor(model => model.City, false)
+            @Html.FormFieldFor(model => model.State, false)
+            @Html.FormFieldFor(model => model.Zip, false)
+
+            <div class="col-md-12 reg-right-info-heading">&nbsp;</div>
+            @Html.BootstrapRowSpacer()
+
+            <h4>Next Steps</h4>
+            <div class="col-md-12">
+                <span class="small">
+                    You are all set and can now perform Analysis Portal actions
+                    as a member of this Organization. Get started now by <a href="@Url.Action("Index","Home")">logging in</a>.
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+}

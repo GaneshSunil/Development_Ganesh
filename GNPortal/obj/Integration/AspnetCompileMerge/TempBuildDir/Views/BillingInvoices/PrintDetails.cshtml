@@ -1,0 +1,409 @@
+﻿@model GenomeNext.Data.EntityModel.GNInvoice
+@using GenomeNext.Data.EntityModel
+
+@{
+    ViewBag.Title = "Invoice";
+}
+
+<div style="margin-top:-100px">
+
+    <table>
+        <tr>
+            <td valign="top" class="small">
+                <img class="img-responsive col-md-3" src="~/Images/gn-logo-transparent.png" width="250">
+                <br />
+                <div style="margin-left:30px;margin-top:-5px;font-size:8px;">
+                    <br />
+                    Wendy Dueri <br />
+                    175 South 3rd Street Suite 200 <br />
+                    Columbus OH 43215 <br />
+                    billing@genomenext.com
+                </div>
+            </td>
+            <td width="400">
+                <div class="col-md-9">
+                    <h3>
+                        @ViewBag.Title #@Html.DisplayFor(model => model.ExternalInvoiceNum)
+                    </h3>
+
+                    <h5>
+                        <br />@Html.DisplayFor(model => model.Account.Organization.Name)
+                        <br />Billing Cycle: @Html.DisplayFor(model => model.InvoiceStartDate) - @Html.DisplayFor(model => model.InvoiceEndDate)
+                        <br />Due On:
+                        @{
+                            string dueDate = Model.InvoiceEndDate.AddDays(30).Date.ToString().Substring(0, 10);
+                        }
+                        @dueDate
+                    </h5>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+
+
+    @Html.BootstrapRowSpacer()
+
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal col-md-12">
+
+            @Html.BootstrapRowSpacer()
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <dl class="dl-horizontal">
+                        <table border="0">
+                            <tr>
+                                <td class="small" width="700" valign="top">
+                                    <div class="small">
+                                        Printed On
+                                        @{
+                                            GNContact currentContact = ViewBag.ContactForUser;                                            
+                                            var DateOnUserTimeZone = DateTime.Now.AddHours(-4);
+                                            
+                                        }
+                                        @Html.Raw(DateOnUserTimeZone) by @Html.Raw(currentContact.FullName)
+
+
+                                    </div>
+                                    
+                                    <div>
+                                        <br />
+                                        <table border="0">
+                                            <tr>
+                                                <td width="100">
+                                                    @Html.DisplayNameFor(model => model.NetTerms)<br />                                                    
+                                                    @Html.DisplayNameFor(model => model.SubTotal)<br />
+                                                    @Html.DisplayNameFor(model => model.TotalDiscountAmount)<br />
+                                                    Invoice @Html.DisplayNameFor(model => model.Total)<br />
+                                                    @Html.DisplayNameFor(model => model.PaymentsTotal)<br />
+                                                    Invoice @Html.DisplayNameFor(model => model.Balance)
+                                                </td>
+                                                <td align="right" width="100">
+                                                    @Html.DisplayFor(model => model.NetTerms)<br />
+                                                    @Html.DisplayFor(model => model.SubTotal)<br />
+                                                    (@Html.DisplayFor(model => model.TotalDiscountAmount))<br />
+                                                    @Html.DisplayFor(model => model.Total)<br />
+                                                    (@Html.DisplayFor(model => model.PaymentsTotal))<br />
+                                                    @Html.DisplayFor(model => model.Balance)
+                                                </td>
+                                            </tr>
+                                        </table>                                        
+                                    </div>
+                                </td>
+
+                                <td width="300" style="font-size:9px;" valign="top">
+                                    <div class="text-success small">
+                                        Make checks payable to:<br />
+                                        GenomeNext, LLC<br />
+                                        175 S. 3rd, St Suite 200,<br />
+                                        Columbus, OH 43215.<br /><br />
+
+                                        For Direct Deposit / ACH Payments:<br />
+                                        Capital One Banking<br />
+                                        Checking Account Number: 1360516659<br />
+                                        Routing Number: 255071981<br />
+                                        "Wire-Only" Routing Number: 065000090<br />
+                                        
+                                        <br /><b>Thank you for choosing GenomeNext.</b>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </dl>
+
+                </div>
+
+            </div>
+            
+            
+
+            <div class="row">
+
+                <!-- Invoice Details -->
+                <div class="col-md-12">
+                    
+                    @if (Model.InvoiceDetails != null && Model.InvoiceDetails.Count != 0)
+                    {
+                        <div class="col-md-10 alert-info label-info border-gn-dark-gray" style="padding-bottom:10px;">
+                           <h5>Spending by Type of Analysis</h5> 
+
+                            <div class="table-responsive small bg-white">
+                                <table border="1" cellspacing="5" cellpadding="5">
+                                    <tr style="font-weight:bold;">
+                                        <td align="left" width="500">
+                                            &nbsp; @Html.DisplayNameFor(model => model.InvoiceDetails.FirstOrDefault().Description)
+                                        </td>
+                                        <td align="right" width="80">
+                                            @Html.DisplayNameFor(model => model.InvoiceDetails.FirstOrDefault().UnitPrice)&nbsp;
+                                        </td>
+                                        <td align="right" width="80">
+                                            @Html.DisplayNameFor(model => model.InvoiceDetails.FirstOrDefault().Quantity)&nbsp;
+                                        </td>
+                                        <td align="right" width="80">
+                                            @Html.DisplayNameFor(model => model.InvoiceDetails.FirstOrDefault().SubTotal)&nbsp;
+                                        </td>
+                                        <td align="right" width="80">
+                                            Discount&nbsp;
+                                        </td>
+                                        <td align="right" width="80">
+                                            @Html.DisplayNameFor(model => model.InvoiceDetails.FirstOrDefault().Total)&nbsp;
+                                        </td>
+                                    </tr>
+
+                                    @foreach (var item in Model.InvoiceDetails.Where(a => a.Transactions.Count() > 0 && a.Total != 0).OrderByDescending(id => id.CreateDateTime))
+                                    {
+                                        <tr>
+                                            <td align="left">
+                                                &nbsp;&nbsp;@Html.DisplayFor(modelItem => item.Description)
+                                                (@Html.DisplayFor(modelItem => item.Transactions.Count)
+                                                @{
+                                        if (item.Transactions.Count == 1)
+                                        {
+                                            @Html.Raw("transaction")
+                                        }
+                                        else
+                                        {
+                                            @Html.Raw("transactions")
+                                        }
+                                                }
+                                                )
+
+                                                <span class="small">
+                                                    <ul class="small">
+                                                        @foreach (var tx in item.Transactions)
+                                                        {
+                                                            <li>@Html.Raw(tx.CreateDateTime) @Html.Raw("-") @Html.Raw(tx.Description)</li>
+                                                        }
+                                                    </ul>
+                                                </span>
+                                            </td>
+                                            <td align="right" valign="top">
+                                                @Html.DisplayFor(modelItem => item.UnitPrice)
+                                                &nbsp;
+                                            </td>
+                                            <td align="right" valign="top">
+                                                @String.Format("{0:0.00}", item.Quantity)
+                                                &nbsp;
+                                            </td>
+                                            <td align="right" valign="top">
+                                                @Html.DisplayFor(modelItem => item.SubTotal)
+                                                &nbsp;
+                                            </td>
+                                            <td align="right" valign="top">
+                                                @Html.DisplayFor(modelItem => item.DiscountAmount)
+                                                @Html.DisplayFor(modelItem => item.DiscountType)
+                                                &nbsp;
+                                            </td>
+                                            <td align="right" valign="top">
+                                                @Html.DisplayFor(modelItem => item.Total)
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+
+                        if (ViewBag.Teams.Count > 0)
+                        {
+                            @Html.BootstrapRowSpacer();
+    
+                        <div class="col-md-10 alert-info border-gn-dark-gray" style="padding-bottom:10px;">
+                            <h5>Spending by Team</h5>
+
+                            <div class="table-responsive small bg-white">
+                                <table border="1"  cellspacing="5" cellpadding="5">
+                                    <tr style="font-weight:bold;">
+                                        <td align="left" width="710">
+                                            &nbsp; @Html.DisplayNameFor(model => model.InvoiceDetails.FirstOrDefault().Description)
+                                        </td>
+                                        <td align="right" width="120">
+                                            # Transactions&nbsp;
+                                        </td>
+                                        <td align="right" width="120">
+                                            @Html.DisplayNameFor(model => model.InvoiceDetails.FirstOrDefault().Total)&nbsp;
+                                        </td>
+                                    </tr>
+
+                                    @foreach (var itemTeam in ViewBag.Teams)
+                                    {
+                                        <tr>
+                                            <td align="left">
+                                                &nbsp;&nbsp;@itemTeam.TeamName
+                                            </td>
+                                            <td align="right" valign="top">
+                                                @itemTeam.TotalTransactions
+                                                &nbsp;
+                                            </td>
+                                            <td align="right" valign="top">
+                                                $ @String.Format("{0:0.00}", itemTeam.TotalPrice)
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                          </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col-md-12">
+                                No detail line items exist for this Invoice.
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+
+            </div>
+
+            <table border="0">
+                <tr>
+                    <td valign="top" width="500">
+                        <div class="row">
+
+                            <!-- Payments -->
+                            <div class="col-md-6" style="margin-bottom:20px;">
+                                <h4>
+                                    @Html.DisplayNameFor(model => model.Payments)
+                                </h4>
+                                @if (Model.Payments != null && Model.Payments.Count != 0)
+                                {
+                                    <div class="table-responsive small">
+
+                                        <table border="1" cellspacing="5" cellpadding="5" class="small">
+                                            <tr style="font-weight:bold;">
+                                                <td align="center" width="100">
+                                                    @Html.DisplayNameFor(model => Model.Payments.FirstOrDefault().PaymentDate)
+                                                    &nbsp;
+                                                </td>
+                                                <td align="right" width="100">
+                                                    @Html.DisplayNameFor(model => Model.Payments.FirstOrDefault().TotalAmount)
+                                                    &nbsp;
+                                                </td>
+                                                <td align="center" width="100">
+                                                    @Html.DisplayNameFor(model => Model.Payments.FirstOrDefault().Invoices)
+                                                </td>
+                                                <td align="center" width="180">
+                                                    @Html.DisplayNameFor(model => Model.Payments.FirstOrDefault().ExternalTxnId)
+                                                </td>
+                                            </tr>
+
+                                            @foreach (var item in Model.Payments.OrderByDescending(id => id.CreateDateTime))
+                                            {
+                                                <tr>
+                                                    <td align="center" width="80">
+                                                        @Html.DisplayFor(modelItem => item.PaymentDate)
+                                                    </td>
+                                                    <td align="right" width="80">
+                                                        @Html.DisplayFor(modelItem => item.TotalAmount)
+                                                        &nbsp;
+                                                    </td>
+                                                    <td align="center" width="80">
+                                                        @Html.DisplayFor(modelItem => item.Invoices.Count)
+                                                        &nbsp;
+                                                    </td>
+                                                    <td align="center" width="180">
+                                                        @Html.DisplayFor(modelItem => item.ExternalTxnId)
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </table>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            No payments exist for this Invoice.
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                    </td>
+                    <td valign="top" width="500">
+                        <!-- Purchase Orders -->
+                        <div class="col-md-6" style="margin-bottom:20px;">
+                            <h4>
+                                @Html.DisplayNameFor(model => model.PurchaseOrderInvoices)
+                            </h4>
+                            @if (Model.PurchaseOrderInvoices != null && Model.PurchaseOrderInvoices.Count != 0)
+                            {
+                                <div class="table-responsive small">
+
+                                    <table border="1" cellspacing="5" cellpadding="5" class="small">
+                                        <tr style="font-weight:bold;">
+                                            <td align="center" width="80">
+                                                @Html.DisplayNameFor(model => model.PurchaseOrderInvoices.FirstOrDefault().PurchaseOrder.ExternalPONum)
+                                            </td>
+                                            <td align="center" width="150">
+                                                Valid thru
+                                            </td>
+                                            <td align="right" width="120">
+                                                @Html.DisplayNameFor(model => model.PurchaseOrderInvoices.FirstOrDefault().PurchaseOrder.Total)
+                                                &nbsp;
+                                            </td>
+                                            <td align="right" width="120">
+                                                @Html.DisplayNameFor(model => model.PurchaseOrderInvoices.FirstOrDefault().PurchaseOrder.TotalApplied)
+                                                &nbsp;
+                                            </td>
+                                            <td align="right" width="200">
+                                                @Html.DisplayNameFor(model => model.PurchaseOrderInvoices.FirstOrDefault().PurchaseOrder.Balance)
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        @foreach (var item in Model.PurchaseOrderInvoices)
+                                        {
+                                            <tr>
+                                                <td align="center">
+                                                    @Html.DisplayFor(modelItem => item.PurchaseOrder.ExternalPONum)
+                                                </td>
+                                                <td align="center" width=" 150">
+                                                    @item.PurchaseOrder.StartDate.ToShortDateString()
+                                                    -
+                                                    @item.PurchaseOrder.EndDate.ToShortDateString()
+                                                </td>
+                                                <td align="right">
+                                                    @Html.DisplayFor(modelItem => item.PurchaseOrder.Total)
+                                                    &nbsp;
+                                                </td>
+                                                <td align="right">
+                                                    @Html.DisplayFor(modelItem => item.PurchaseOrder.TotalApplied)
+                                                    &nbsp;
+                                                </td>
+                                                <td align="right">
+                                                    @Html.DisplayFor(modelItem => item.PurchaseOrder.Balance)
+                                                    &nbsp;
+                                                </td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                            }
+                            else
+                            {
+                                <p>
+                                    No purchase order exists for this invoice.
+                                </p>
+                            }
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    }
+</div>
+
+<script language="Javascript">
+    window.print();
+</script>

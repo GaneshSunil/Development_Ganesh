@@ -1,0 +1,23 @@
+﻿
+<div id="TermsAndConditionsModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-gn-green">
+                <h4 class="modal-title" style="color:white;">Terms &amp; Conditions</h4>
+            </div>
+            <div class="modal-body" style="max-height: 500px; overflow-y: scroll;">
+                <div id="TermsAndConditionsContent"></div>
+            </div>
+            <div class="modal-footer text-center bg-gn-light-gray">
+                <button id="TermsAndConditionsAcceptBtn" type="button" class="btn bg-gn-green white">
+                    <span class="glyphicon glyphicon-ok"></span>
+                    Accept
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="TermsAndConditionsContentSource" class="hide">
+    @Html.Partial("../About/TermsOfServiceContent")
+</div>

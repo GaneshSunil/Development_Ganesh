@@ -1,0 +1,23 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("We are working on this analysis", "info-sign"))
+    {
+
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody())
+    {
+        <div class="alert alert-success" role="alert">
+            The system is working on this analysis. As soon as it is completed, a notification will be sent to your e-mail address, and the result files will be displayed below this box.
+            <br /><br />
+            You do not need to stay on this page until the analysis request finishes. You can work on other tasks and even launch other analyses.            
+        </div>
+
+    }
+
+}

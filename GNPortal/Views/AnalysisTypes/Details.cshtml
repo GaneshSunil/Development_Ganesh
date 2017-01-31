@@ -1,0 +1,43 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisType
+
+@{
+    ViewBag.Title = "Analysis Type";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-tint gn-green"></span>
+    @ViewBag.Title
+
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "AnalysisTypes", null, "info", "chevron-left")
+        @Html.BootstrapActionButton("Edit", "Edit", "AnalysisTypes", new RouteValueDictionary(new { id = Model.Id }), "warning", "cog")
+    </span>
+</h2>
+@Html.BootstrapRowSpacer()
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.BootstrapRowSpacer()
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TypeValue)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TypeValue)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+}

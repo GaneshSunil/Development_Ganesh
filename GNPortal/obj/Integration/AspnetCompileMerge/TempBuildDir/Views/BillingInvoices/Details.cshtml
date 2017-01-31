@@ -1,0 +1,267 @@
+﻿@model GenomeNext.Data.EntityModel.GNBillingInvoice
+
+@{
+    ViewBag.Title = "Invoice";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-euro gn-green"></span>
+    @ViewBag.Title
+
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "BillingInvoices", null, "info", "chevron-left")
+        @Html.BootstrapActionButton("Edit", "Edit", "BillingInvoices", new RouteValueDictionary(new { id = Model.Id }), "warning", "cog")
+        @Html.BootstrapActionButton("Print", "PrintDetails", "BillingInvoices", new RouteValueDictionary(new { id = Model.Id }), "success", "print", null, false, "center", true, null, true, false, true)
+    </span>
+</h2>
+@Html.BootstrapRowSpacer()
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal col-md-12">
+
+        @Html.BootstrapRowSpacer()
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Id)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GNBillingAccount)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.GNBillingAccount.GNOrganization.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ExternalInvoiceNum)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ExternalInvoiceNum)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.InvoiceStartDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.InvoiceStartDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.InvoiceEndDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.InvoiceEndDate)
+                    </dd>
+
+                    @{
+                        ViewData["ViewMode"] = "Details";
+                        ViewData["CreatedBy"] = Model.CreatedByContact;
+                        ViewData["CreateDateTime"] = Model.CreateDateTime;
+                    }
+                    @Html.Partial("_AuditModelPartial", null, ViewData)
+
+                </dl>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <dl class="dl-horizontal">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Status)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NetTerms)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NetTerms)
+                    </dd>
+
+                    <dt class="text-danger">
+                        Invoice @Html.DisplayNameFor(model => model.Total)
+                    </dt>
+
+                    <dd class="text-danger">
+                        @Html.DisplayFor(model => model.Total)
+                    </dd>
+
+
+                </dl>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <!-- Invoice Details -->
+            <div class="col-md-12">
+
+                <h4>
+                    @Html.DisplayNameFor(model => model.GNBillingInvoiceDetails)
+                    <span class="pull-right">
+                        @Html.BootstrapActionButton("Enter Invoice Detail", "Create", "GNBillingInvoiceDetails", new RouteValueDictionary(new { invoiceId = Model.Id }), "info", "usd", "sm")
+                    </span>
+                </h4>
+
+                @if (Model.GNBillingInvoiceDetails != null && Model.GNBillingInvoiceDetails.Count != 0)
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-gn">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GNBillingInvoiceDetails.FirstOrDefault().Description)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GNBillingInvoiceDetails.FirstOrDefault().UnitPrice)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GNBillingInvoiceDetails.FirstOrDefault().Quantity)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GNBillingInvoiceDetails.FirstOrDefault().SubTotal)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GNBillingInvoiceDetails.FirstOrDefault().DiscountAmount)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GNBillingInvoiceDetails.FirstOrDefault().Total)
+                                </th>
+                                <th class="col-md-1"></th>
+                            </tr>
+
+                            @foreach (var item in Model.GNBillingInvoiceDetails.OrderByDescending(id => id.CreateDateTime))
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                        <br />
+                                        @Html.DisplayFor(modelItem => item.GNBillingTransactions.Count)
+                                        Transactions
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UnitPrice)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SubTotal)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DiscountAmount)
+                                        @Html.DisplayFor(modelItem => item.DiscountType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Total)
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.BootstrapActionButton("View", "Details", "GNBillingInvoiceDetails", new RouteValueDictionary(new { id = item.Id, invoiceId = Model.Id }), "success", "th", "sm")
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            No detail line items exist for this Invoice.
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            
+            <!-- Payments -->
+            <div class="col-md-6">
+                <h4>
+                    @Html.DisplayNameFor(model => model.GNBillingPaymentInvoices)
+                    <span class="pull-right">
+                        @Html.BootstrapActionButton("Create New Payment", "Create", "Payments", new RouteValueDictionary(new { invoiceId = Model.Id }), "info", "usd", "sm")
+                    </span>
+                </h4>
+                @if (Model.GNBillingPaymentInvoices != null && Model.GNBillingPaymentInvoices.Count != 0)
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-gn">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => Model.GNBillingPaymentInvoices.FirstOrDefault().GNBillingPayment.PaymentDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => Model.GNBillingPaymentInvoices.FirstOrDefault().GNBillingPayment.TotalAmount)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => Model.GNBillingPaymentInvoices.FirstOrDefault().GNBillingPayment.GNBillingPaymentInvoices)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => Model.GNBillingPaymentInvoices.FirstOrDefault().GNBillingPayment.ExternalTxnId)
+                                </th>
+                                <th class="col-md-1"></th>
+                            </tr>
+
+                            @foreach (var item in Model.GNBillingPaymentInvoices.OrderByDescending(id => id.GNBillingPayment.CreateDateTime))
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GNBillingPayment.PaymentDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GNBillingPayment.TotalAmount)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GNBillingPayment.GNBillingPaymentInvoices.Count)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GNBillingPayment.ExternalTxnId)
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.BootstrapActionButton("View", "Details", "Payments", new RouteValueDictionary(new { id = item.Id, invoiceId = Model.Id }), "success", "th", "sm")
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            No payments exist for this Invoice.
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+}

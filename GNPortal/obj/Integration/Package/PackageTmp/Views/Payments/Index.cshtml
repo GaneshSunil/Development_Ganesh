@@ -1,0 +1,79 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNPayment>
+
+@{
+    ViewBag.Title = "Payments";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-euro gn-green"></span>
+    @ViewBag.Title
+</h2>
+
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentMethod.PaymentMethodType.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Invoices)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExternalTxnId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDateTime)
+            </th>
+            <th></th>
+        </tr>
+
+        @if (Model != null && Model.Count() != 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentMethod.PaymentMethodType.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Invoices.Count)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExternalTxnId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateDateTime)
+                    </td>
+                    <td>
+                        @Html.BootstrapActionButton("View", "Details", "Payments", new RouteValueDictionary(new { id = item.Id }), "success", "th-large", "sm")
+                        @Html.BootstrapActionButton("Edit", "Edit", "Payments", new RouteValueDictionary(new { id = item.Id }), "warning", "cog", "sm")
+                        @Html.BootstrapActionButton("Delete", "Delete", "Payments", new RouteValueDictionary(new { id = item.Id }), "danger", "trash", "sm")
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6">
+                    No payments found.
+                </td>
+            </tr>
+        }
+    </table>
+</div>

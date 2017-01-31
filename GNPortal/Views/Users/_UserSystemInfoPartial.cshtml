@@ -1,0 +1,99 @@
+﻿@using GenomeNext.Data.EntityModel
+@using GenomeNext.Data.IdentityModel
+@model GenomeNext.Data.IdentityModel.AspNetUser
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+}
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("System Info", "wrench"))
+    {
+        <span class="pull-right">
+                @if (!string.IsNullOrEmpty(Request["organizationId"]))
+                {
+                    @Html.BootstrapActionIconLink("Edit", "Edit", "Users", new RouteValueDictionary(new { id = Model.Id, editSection = "si" }), "white", "cog", null, false, false)
+                }
+                else
+                {
+                    @Html.BootstrapActionIconLink("Edit", "Edit", "Users", new RouteValueDictionary(new { id = Model.Id, editSection = "si" }), "white", "cog", null, false, false)
+                }
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody())
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TwoFactorEnabled)
+            </dt>
+
+            <dd>
+                @if (Model.TwoFactorEnabled)
+                {
+                    <span class="glyphicon glyphicon-check"></span>
+                }
+                else
+                {
+                    <span class="glyphicon glyphicon-unchecked"></span>
+                }
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LockoutEndDateUtc)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LockoutEnabled)
+            </dt>
+
+            <dd>
+                @if (Model.LockoutEnabled)
+                {
+                    <span class="glyphicon glyphicon-check"></span>
+                }
+                else
+                {
+                    <span class="glyphicon glyphicon-unchecked"></span>
+                }
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AccessFailedCount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AccessFailedCount)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PasswordHash)
+            </dt>
+
+            <dd style="font-size:6pt;">
+                @Html.DisplayFor(model => model.PasswordHash)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SecurityStamp)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SecurityStamp)
+            </dd>
+
+
+        </dl>
+    }
+
+}

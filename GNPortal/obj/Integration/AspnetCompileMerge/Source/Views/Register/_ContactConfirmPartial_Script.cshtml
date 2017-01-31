@@ -1,0 +1,41 @@
+﻿<script>
+    $(document).ready(function () {
+
+        togglePasswordConfirmField();
+
+        $("#ContactConfirmBackBtn").click(function (e) {
+            e.preventDefault();
+            $("#Password").val("");
+            $("#PasswordConfirm").val("");
+            window.history.back();
+        });
+
+        $("#ContactConfirmSubmitBtn").click(function (e) {
+            e.preventDefault();
+            $('form[action=\'@(HttpContext.Current.Request.Url.AbsolutePath.Replace("Confirm","Submit"))\']').submit();
+        });
+
+        $('input').keypress(function (e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                $('form#ContactSubmitForm').submit();
+            }
+        });
+    });
+
+    function togglePasswordConfirmField()
+    {
+        if ($("#IsExistingUser").val() == "True") {
+            $("#PasswordConfirm").val(".");
+            $("#PasswordConfirm").hide();
+            $("label[for='PasswordConfirm']").html("");
+            $("#PasswordConfirm")
+                .after("<span class='small text-muted'>As an existing user of the GenomeNext Portal, please enter your login password to verify your identity.</span>");
+        }
+        else {
+            $("label[for='PasswordConfirm']").parent(".form-group").show();
+            $("#PasswordConfirm").val("");
+        }
+
+    }
+</script>

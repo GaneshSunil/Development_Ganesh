@@ -1,0 +1,47 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNNotificationSender>
+@{
+    ViewBag.Title = "Verified Notification Senders";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-envelope gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Create New", "Create", "NotificationSenders", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "plus")
+    </span>
+</h2>
+
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.BootstrapActionIcon("View", "Details", "NotificationSenders", new RouteValueDictionary(new { id = item.Sender }), "success")
+                    @Html.BootstrapActionIcon("Delete", "Delete", "NotificationSenders", new RouteValueDictionary(new { id = item.Sender }), "danger")
+                </td>
+            </tr>
+        }
+
+
+    </table>
+</div>

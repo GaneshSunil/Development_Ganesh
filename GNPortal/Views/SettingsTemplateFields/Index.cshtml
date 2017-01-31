@@ -1,0 +1,64 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNSettingsTemplateField>
+
+@{
+    ViewBag.Title = "Settings Template Fields";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-wrench gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Create New", "Create", "SettingsTemplateFields", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "plus")
+    </span>
+</h2>
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfigType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ConfigType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td class="col-md-5">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.BootstrapActionIcon("View", "Details", "SettingsTemplateFields", new RouteValueDictionary(new { id = item.Id }), "success")
+                    @Html.BootstrapActionIcon("Edit", "Edit", "SettingsTemplateFields", new RouteValueDictionary(new { id = item.Id }), "edit")
+                    @Html.BootstrapActionIcon("Delete", "Delete", "SettingsTemplateFields", new RouteValueDictionary(new { id = item.Id }), "danger")
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

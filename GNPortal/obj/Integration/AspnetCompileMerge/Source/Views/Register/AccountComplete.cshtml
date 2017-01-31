@@ -1,0 +1,119 @@
+﻿@model GenomeNext.Data.EntityModel.GNOrganization
+@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/register.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/register_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/register_white_green.png";
+    ViewData["ModuleHasActionBar"] = true;
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "Account Registration - Completed";
+}
+
+@section ModuleIndexHeadingActionBar{
+
+    <div class="col-md-12 text-right" style="padding-top:15px;">
+        <h4>
+            @Html.BootstrapActionIconLink("Login", "Index", "Home", null, "white bg-clear", "chevron-right",glyphiconRight:true,displayText:true)
+        </h4>
+    </div>
+
+}
+
+@section ModuleIndexContent{
+
+<div class="panel form-horizontal bg-white">
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <div class="well well-sm reg-left-info">
+
+                <h3 class="col-md-12 text-center gn-green reg-left-info-heading">
+                    <span class="glyphicon glyphicon-th"></span>
+                    Organization
+                </h3>
+
+                @Html.BootstrapRowSpacer()
+
+                @Html.FormFieldFor(model => model.Name, false)
+                @Html.FormFieldFor(model => model.UTCOffsetDescription, false)
+                @Html.FormFieldFor(model => model.OrgMainContact.Phone, false)
+                @Html.FormFieldFor(model => model.OrgMainContact.Fax, false)
+                @Html.FormFieldFor(model => model.OrgMainContact.Website, false)
+                @Html.FormFieldFor(model => model.OrgMainContact.StreetAddress1, false)
+                @Html.FormFieldFor(model => model.OrgMainContact.StreetAddress2, false)
+                @Html.FormFieldFor(model => model.OrgMainContact.City, false)
+                @Html.FormFieldFor(model => model.OrgMainContact.State, false)
+                @Html.FormFieldFor(model => model.OrgMainContact.Zip, false)
+
+                @Html.BootstrapRowSpacer()
+                @Html.BootstrapRowSpacer()
+                @Html.BootstrapRowSpacer()
+                @Html.BootstrapRowSpacer()
+                @Html.BootstrapRowSpacer()
+                @Html.BootstrapRowSpacer()
+                @Html.BootstrapRowSpacer()
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <h3 class="col-md-12 text-center gn-green reg-right-info-heading">
+                <span class="glyphicon glyphicon-user"></span>
+                Account Owner
+            </h3>
+
+            @Html.BootstrapRowSpacer()
+
+            @Html.FormFieldFor(model => model.OrgMainContact.Title, false)
+            @Html.FormFieldFor(model => model.OrgMainContact.FirstName, false)
+            @Html.FormFieldFor(model => model.OrgMainContact.LastName, false)
+            @Html.FormFieldFor(model => model.OrgMainContact.Email, false)
+
+            <div class="form-group">
+                <label class='control-label col-md-4'>@Html.DisplayNameFor(model => model.OrgMainContact.TermsAcceptDateTime)</label>
+                <div class='col-md-8'>
+                    @if (Model.OrgMainContact.TermsAcceptDateTime.HasValue)
+                    {
+                        @TimeZoneInfo.ConvertTime(Model.OrgMainContact.TermsAcceptDateTime.GetValueOrDefault(), Model.OrgTimeZoneInfo)
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <label class='control-label col-md-4'>@Html.DisplayNameFor(model => model.OrgMainContact.PrivacyPolicyAcceptDateTime)</label>
+                <div class='col-md-8'>
+                    @if (Model.OrgMainContact.PrivacyPolicyAcceptDateTime.HasValue)
+                    {
+                        @TimeZoneInfo.ConvertTime(Model.OrgMainContact.PrivacyPolicyAcceptDateTime.GetValueOrDefault(), Model.OrgTimeZoneInfo)
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-4">Next Steps</label>
+                <div class="col-md-7">
+                    @if (((GenomeNext.Data.IdentityModel.AspNetUser)ViewBag.userForMainOrgContact).EmailConfirmed)
+                    {
+                        <span class="small">
+                            As an existing user, get started right away by <a href="@Url.Action("Index","Home")">logging in</a>.
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="small">
+                            As a new user to GenomeNext, a verification email has been sent to you.
+                            Please click the verification link in this email to get started.
+                        </span>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+}

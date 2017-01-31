@@ -1,0 +1,58 @@
+﻿@model GenomeNext.Data.EntityModel.GNProject
+
+@{
+    ViewBag.Title = Model.Name;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/projects_white.png";
+    ViewData["ModuleCtl"] = "Projects";
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            var teamId = $("#TeamsList").val();
+            LoadProjectLeadsList(teamId);
+
+            $("#TeamsList").change(function () {
+                teamId = $("#TeamsList").val();
+                LoadProjectLeadsList(teamId);
+            });
+        });
+
+        function LoadProjectLeadsList(teamId) {
+            $.getJSON('@Url.Action("GetContactsForTeam", "Projects")?excludeRole=TEAM_MEMBER&teamId=' + teamId, null, function (data, textStatus, xhr) {
+                $("#ProjectLeadList").html("");
+                $.each(data, function (idx, val) {
+                    var selected = "";
+                    if (val.Id == '@Model.ProjectLeadId') {
+                        selected = "selected";
+                    }
+                    $("#ProjectLeadList").append("<option value='" + val.Id + "' " + selected + ">" + val.FullNameWithEmail + "</option>");
+                });
+            });
+        }
+
+    </script>
+}
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            @Html.Partial("~/Views/Projects/_EditPartial.cshtml", Model)
+
+        </div>
+
+        <div class="col-md-6">
+
+            @Html.Partial("~/Views/Projects/_ProjectAnalysesPartial.cshtml", Model)
+
+        </div>
+
+    </div>
+}

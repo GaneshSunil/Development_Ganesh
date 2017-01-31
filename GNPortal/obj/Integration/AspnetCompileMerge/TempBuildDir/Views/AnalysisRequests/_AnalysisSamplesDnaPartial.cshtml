@@ -1,0 +1,76 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+}
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Samples", ""))
+    {
+        <img class="pull-left" style="height:18px;padding-right:6px;" 
+             src="@Url.Content("~/Content/icons/samples_white.png")" />
+        if (Model.GNAnalysisRequestGNSamples.Count != 0)
+        {
+            <span class="badge">@Model.GNAnalysisRequestGNSamples.Count</span>
+        }
+        <span class="pull-right">
+            @if (!isDelete && Model.CanEdit)
+            {
+                <span class="pull-right">
+                    @Html.BootstrapActionIconLink("Configure Samples", "Edit", "AnalysisRequests", new RouteValueDictionary(new { id = Model.Id, projectId = Request["projectId"], teamId = Request["teamId"] }), "white", "cog", null, false, false)
+                    &nbsp;
+                    @Html.BootstrapActionIconLink("Associate Existing Samples", "List", "Samples", new RouteValueDictionary(new { analysisRequestId = Model.Id, GNSampleTypeId = Model.AnalysisType.Id, GNSampleQualifierCode="DNA", projectId = Model.GNProjectId, teamId = Request["teamId"] }), "bg-clear white", "link")
+                    &nbsp;
+                    @Html.BootstrapActionIconLink("Create New Sample", "Create", "Samples", new RouteValueDictionary(new { analysisRequestId = Model.Id, analysisTypeId = Model.AnalysisType.Id, projectId = Model.GNProjectId, teamId = Request["teamId"] }), "bg-clear white", "plus")
+                </span>
+            }
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(true))
+    {
+        if (Model.GNAnalysisRequestGNSamples != null && Model.GNAnalysisRequestGNSamples.Count != 0)
+        {
+            int i = 0;
+            foreach (var item in Model.GNAnalysisRequestGNSamples)
+            {
+                using (Html.BeginGNClickableListGroupItem(
+                    Url.Action("Details", "Samples", new { id = item.GNSample.Id, analysisRequestId = Model.Id }),
+                    (i % 2) != 0))
+                {
+                    <img class="pull-left" style="height:18px;padding-right:6px;" 
+                         src="@Url.Content("~/Content/icons/samples.png")" />
+                    <h5 class="flushLeft flushTop">@item.GNSample.Name</h5>
+                    <p class="small text-inline">
+                        @item.GNSample.SampleType.Name, @item.GNSample.ReadTypeDescription, @item.GNSample.CloudFiles.Count files. 
+                        Affected: @item.AffectedIndicatorDescription, Proband: @item.TargetIndicatorDescription
+                    </p>
+    
+                    <p class="small text-inline alert-danger">
+                        <br />
+                        @if (item.GNSample.CloudFiles.Count == 0)
+                        { <span class="glyphicon glyphicon-remove"></span><span>&nbsp;No files associated.</span><br /> }
+                        @if (!item.GNSample.IsReady)
+                        { <span class="glyphicon glyphicon-remove"></span><span>&nbsp;Marked as "incomplete upload".</span><br /> }
+                        @if (!item.GNSample.IsValidPairEnded)
+                        {<span class="glyphicon glyphicon-remove"></span><span>&nbsp;Invalid paired-end set of files.</span> }
+                        @if (!item.GNSample.IsValidSingleEnded)
+                        {<span class="glyphicon glyphicon-remove"></span><span>&nbsp;Invalid single-end set of files.</span> }
+                    </p>
+                }
+                i++;
+            }
+        }
+        else
+        {
+            <div class="list-group-item">
+                <h5>
+                    No Samples have been found for this Analysis.
+                </h5>
+            </div>
+        }
+    }
+}

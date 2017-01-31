@@ -1,0 +1,44 @@
+﻿<script>
+
+    var termsAndConditionsAccepted = false;
+
+    function InitTermsAndConditions() {
+        InitTermsAndConditionsValidation();
+    }
+
+    function InitTermsAndConditionsValidation() {
+        jQuery.validator.addMethod("ValidateTermsAndConditionsAccepted", function (value, element) {
+
+            var isValid = false;
+
+            if ($("#" + element.id).prop("checked") == true)
+            {
+                isValid = true;
+            }
+
+            return isValid;
+        }, "Terms & Conditions Must Be Accepted.");
+
+        $("#TermsAndConditionsAccepted").rules("add", "ValidateTermsAndConditionsAccepted");
+    }
+
+
+    function ShowTermsAndConditionsModal()
+    {
+        $("#TermsAndConditionsContent").html($("#TermsAndConditionsContentSource").html());
+        $("#TermsAndConditionsModal").modal('show');
+        $("#TermsAndConditionsAcceptBtn").click(function () {
+            AcceptTermsAndConditions();
+        });
+    }
+
+    function AcceptTermsAndConditions()
+    {
+        termsAndConditionsAccepted = true;
+        $("#TermsAndConditionsModal").modal('hide');
+        $("#TermsAndConditionsAccepted").prop("checked", true);
+
+        $("form").submit();
+    }
+
+</script>

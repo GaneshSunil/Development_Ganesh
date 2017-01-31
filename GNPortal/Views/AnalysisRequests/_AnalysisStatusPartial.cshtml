@@ -1,0 +1,138 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+@{
+    bool isDelete = (ViewBag.IsDelete != null) ? (bool)ViewBag.IsDelete : false;
+
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+}
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Status", "refresh"))
+    {
+        <span class="pull-right">
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(false, "status-body"))
+    {    
+        <dl class="dl-horizontal">
+            
+            <dt>Current Status</dt>
+            <dd>@(User.IsInRole("GN_ADMIN") ? Model.CurrentStatusLong : Model.CurrentStatusShort)</dd>
+
+
+            @if (Model.AnalysisResult != null && Model.TotalTimeLapse != "na" && Model.AnalysisResult.Success)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.AnalysisResult.AnalysisStartDateTime)
+                </dt>
+                <dd>
+                    @TimeZoneInfo.ConvertTime(Model.AnalysisResult.AnalysisStartDateTime, contactForUser.GNOrganization.OrgTimeZoneInfo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AnalysisResult.AnalysisEndDateTime)
+                </dt>
+                <dd>
+                    @TimeZoneInfo.ConvertTime(Model.AnalysisResult.AnalysisEndDateTime, contactForUser.GNOrganization.OrgTimeZoneInfo)
+                </dd>
+
+                <dt>Total time</dt>
+                <dd>@Model.TotalTimeLapse</dd>
+            }
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RequestProgress)
+            </dt>
+            <dd id="currentStatusPercentComplete">
+                
+                <div class="meter" style="margin-top: 0px !important;">
+                    <span style="width:@(Model.CurrentProgress)%;float:left!important;">
+                        @{
+                            var progress_bar_class = "small black";
+                            if(Model.CurrentProgress > 50)
+                            {
+                                progress_bar_class = "small white";
+                            }
+                        }
+                        <div class="@progress_bar_class" style="margin-top:-7px;margin-left:10px;font-weight:bold;width:300px;">
+                            @(Model.CurrentProgress)% : 
+                            @if (ViewBag.CorruptFilenameFound == "NA")
+                            {
+                                @Model.CurrentStatusShort
+                            }
+                            else
+                            {
+                                @ViewBag.CorruptFilenameFound
+                            }                            
+                        </div>
+                    </span>
+                    
+                </div>
+            </dd>
+            @Html.HiddenFor(model => model.CurrentProgress)
+
+        </dl>
+
+        if (User.IsInRole("GN_ADMIN"))
+        {
+            if(Model.AnalysisResult == null || Model.AnalysisResult.Success)
+            {
+                <div class="col-md-12 text-center">
+                    @Html.BootstrapActionButton("Mark As Failed Request", "MarkAsFailedRequest", "AnalysisRequests", new RouteValueDictionary(new { id = Model.Id }), "btn-danger white", "exclamation-sign", displayText: true)
+                </div>
+    
+                @Html.BootstrapRowSpacer()
+            }
+
+            if (Model.AnalysisStatus != null && Model.AnalysisStatus.Count != 0)
+            {
+                using (Html.BeginGNPanel(false))
+                {
+                    using (Html.BeginGNPanelHeading("Analysis Status History"))
+                    {
+                        <span class="pull-right">
+                            <a id="analysisStatusHistoryToggleBtn" href="#" class="white clickable">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </a>
+                        </span>
+                    }
+
+                    using (Html.BeginGNPanelBody(true))
+                    {
+                        <div id="analysisStatusHistory" style="display:none">
+                            @if (Model.AnalysisStatus != null)
+                            {
+                                int i = 0;
+                                foreach (var item in Model.AnalysisStatus.OrderByDescending(s => s.Id))
+                                {
+                                    using (Html.BeginGNClickableListGroupItem("#", (i % 2) != 0))
+                                    {
+                                        <span class="small">
+                                            @if (item.IsError)
+                                            {
+                                                <span class="glyphicon glyphicon-remove-circle alert-danger"></span>
+                                            }
+                                            <b>@Html.DisplayFor(modelItem => item.PercentComplete)%</b>, @Html.DisplayFor(modelItem => item.Status)
+                                            <span class="gn-green">@Html.Raw(TimeZoneInfo.ConvertTime(item.CreateDateTime.Value, contactForUser.GNOrganization.OrgTimeZoneInfo))</span>
+                                            @if (item.IsError && User.IsInRole("GN_ADMIN"))
+                                            {
+                                                <br/>
+                                                <span class="muted">@item.Message</span>
+                                            }
+                                        </span>
+                                    }
+                                    i++;
+                                }
+                            }
+                        </div>
+                    }
+                }
+            }
+        }
+    }
+
+}

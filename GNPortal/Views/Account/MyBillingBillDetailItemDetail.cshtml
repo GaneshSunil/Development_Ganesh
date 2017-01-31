@@ -1,0 +1,152 @@
+﻿@model GenomeNext.Portal.Models.MyBillingBillDetailItemDetailModel
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/billing_bills.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/billing_bills_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/billing_bills_white_green.png";
+    ViewData["ModuleHasActionBar"] = true;
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "Bill Item";
+}
+
+@section ModuleIndexHeadingActionBar{
+    <span class="pull-right" style="padding-top:20px;">
+        @Html.BootstrapActionIconLink("Back to My Bill", "MyBillingBillDetail", "Account", new RouteValueDictionary(new { id = Model.MyBillDetail.GNInvoiceId }), "white", "chevron-right",null,true,true)
+    </span>
+}
+
+@section ModuleIndexContent{
+
+    <div class="panel form-horizontal bg-white">
+
+        <div class="panel-body">
+
+            @using (Html.BeginGNPanel(false))
+            {
+                using (Html.BeginGNPanelHeading("Bill Item Details"))
+                {
+                }
+
+                using (Html.BeginGNPanelBody())
+                {
+                    <div class="col-md-6">
+
+                        <dl class="dl-horizontal">
+                            @Html.DisplayFieldFor(model => model.MyBillDetail.Invoice.Name, "Invoice")
+                            @Html.DisplayFieldFor(model => model.MyBillDetail.Description)
+                            @Html.DisplayFieldFor(model => model.MyBillDetail.UnitPrice)
+                            @Html.DisplayFieldFor(model => model.MyBillDetail.Quantity)
+                        </dl>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <dl class="dl-horizontal">
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.MyBillDetail.DiscountAmount)
+                            </dt>
+
+                            <dd>
+                                @if (Model.MyBillDetail.DiscountType == GenomeNext.Data.EntityModel.GNAccount.DiscountType.PERCENT.GetCode())
+                                {
+                                    @Html.DisplayFor(model => model.MyBillDetail.DiscountAmount)<span>%</span>
+                                }
+                                else
+                                {
+                                    <span>$</span>@Html.DisplayFor(model => model.MyBillDetail.DiscountAmount)
+                                }
+                            </dd>
+
+                            @Html.DisplayFieldFor(model => model.MyBillDetail.SubTotal)
+                            @Html.DisplayFieldFor(model => model.MyBillDetail.Total)
+
+                        </dl>
+
+                    </div>
+                }
+            }
+
+            @using (Html.BeginGNPanel(false))
+            {
+                using (Html.BeginGNPanelHeading("Transactions"))
+                {
+                }
+
+                using (Html.BeginGNPanelBody(true))
+                {
+                    if (Model.MyBillDetail.Transactions != null && Model.MyBillDetail.Transactions.Count != 0)
+                    {
+                
+                        int i = 0;
+                        foreach (var item in Model.MyBillDetail.Transactions.OrderByDescending(id => id.CreateDateTime))
+                        {
+                            using (Html.BeginGNClickableListGroupItem("#", (i % 2) != 0))
+                            {
+                                <div class="col-md-2">
+                                    <span class="badge white text-padded">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                        @TimeZoneInfo.ConvertTime(item.CreateDateTime.GetValueOrDefault(), contactForUser.GNOrganization.OrgTimeZoneInfo)
+                                    </span>
+                                </div>
+                                <div class="col-md-6 small">
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                    <div class="small text-muted">
+                                        @Html.DisplayFor(modelItem => item.TransactionType.Name)
+                                        @if (item.CreatedByContact != null)
+                                        {
+                                            <span>-</span>
+                                            @Html.DisplayFor(modelItem => item.CreatedByContact.FullName)
+                                        }
+                                    </div>
+                                    @if (item.Product != null && item.Product.Name != item.TransactionType.Name)
+                                    {
+                                        <div class="small text-muted">
+                                            @Html.DisplayFor(modelItem => item.Product.Name)
+                                        </div>
+                                    }
+                                </div>
+                                <div class="col-md-2 small text-muted text-nowrap">
+                                    @Math.Round(item.ValueUsed,6)
+                                    @Html.DisplayFor(modelItem => item.ValueUnits)
+                                </div>
+                                if (item.TotalPrice < 0)
+                                {
+                                    <div class="col-md-2 text-nowrap">
+                                        <span class="badge bg-gn-green text-padded col-md-12">
+                                            @Html.DisplayFor(modelItem => item.TotalPrice)
+                                        </span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-2 text-nowrap">
+                                        <span class="badge alert-danger text-padded col-md-12">
+                                            @Html.DisplayFor(modelItem => item.TotalPrice)
+                                        </span>
+                                    </div>
+                                }
+                            }
+                            i++;
+                        }
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-padded">
+                                    No transactions exist for this Bill Item.
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+
+        </div>
+    </div>
+}

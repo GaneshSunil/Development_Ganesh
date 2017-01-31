@@ -1,0 +1,108 @@
+﻿@model GenomeNext.Portal.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Create New User";
+
+    ViewData["ModuleIconPath"] = "~/Content/icons/profile_white.png";
+    ViewData["ModuleCtl"] = "Users";
+
+    if (!string.IsNullOrEmpty(Request["newUser"]))
+    {
+        ViewData["customBackLink"] = true;
+        ViewData["customBackLinkModuleCtl"] = "Contacts";
+        ViewData["customBackLinkAction"] = "Create";
+        ViewData["customBackLinkParam"] = Request["organizationId"];
+        ViewData["customBackLinkText"] = "Back";
+    }
+
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
+}
+
+@section ModulePanelBody {
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            @using (Html.BeginForm("CreateUser", "Users", FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                using (Html.BeginGNPanel())
+                {
+                    //Heading
+                    using (Html.BeginGNPanelHeading("New User", "user"))
+                    {
+                        
+                    }
+
+                    //Body
+                    using (Html.BeginGNPanelBody())
+                    {
+                        <dl class="dl-horizontal col-md-12">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            @Html.BootstrapRowSpacer()
+
+                            @if (!string.IsNullOrEmpty(Request["organizationId"]))
+                            {
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Organization</label>
+                                    <div class="col-md-8">
+                                        @ViewBag.Organization.Name
+                                    </div>
+                                </div>
+                            }
+                            
+                            @Html.BootstrapRowSpacer()
+                            
+                            @if (!string.IsNullOrEmpty(Request["organizationId"]))
+                            {
+                                @Html.Hidden("organizationId", Request["organizationId"])
+                            }
+
+                            @if (!string.IsNullOrEmpty(Request["teamId"]))
+                            {
+                                @Html.Hidden("teamId", Request["teamId"])
+                            }
+
+                            @Html.FormFieldFor(model => model.Email)
+                            @Html.FormFieldFor(model => model.EmailConfirmed)
+                            @Html.FormFieldFor(model => model.Password)
+                            @Html.FormFieldFor(model => model.PasswordConfirm)
+
+
+                            @if (User.IsInRole("GN_ADMIN"))
+                            {
+                                @Html.FormFieldFor(model => model.IsAdmin)
+                            }
+                        </dl>
+                    }
+
+
+                    //Footer
+                    using (Html.BeginGNPanelFooter())
+                    {
+                        <div id="edit_options">
+                            <div class="pull-left">
+                                @if (!string.IsNullOrEmpty(Request["newContact"]))
+                                {
+                                    @Html.BootstrapActionButton("Cancel", "Create", "Contacts", null, "bg-gn-medium-gray white", "remove");
+                                }
+                                else
+                                {
+                                    @Html.BootstrapActionButton("Cancel", "Index", "Users", null, "bg-gn-medium-gray white", "remove");
+                                }                                
+                            </div>
+                            <div class="pull-right">
+                                @Html.BootstrapFormSaveButton("Save", "floppy-disk", "bg-gn-green white")
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+}
+
+

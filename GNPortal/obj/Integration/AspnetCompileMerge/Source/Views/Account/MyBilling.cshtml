@@ -1,0 +1,146 @@
+﻿@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/billing.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/billing_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/billing_white_green.png";
+    ViewData["ModuleHasActionBar"] = true;
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "My Billing";
+}
+
+@section scriptsHead{
+
+    @RenderSection("scriptsHead", required: false)
+
+}
+
+@section scripts{
+
+    @RenderSection("scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            leftMenuSetup("MyBillingMenu");
+        });
+
+        function selectMyBillingNavButton(idx) {
+            $("#MyBillingMenu list-group-item").removeClass("active");
+            var leftMenuItem = $("#MyBillingMenu div div div").children(":eq("+idx+")");
+            leftMenuItem.addClass("active");
+            highlightLeftMenuItem(leftMenuItem);
+        }
+    </script>
+}
+
+@section styles{
+
+    @RenderSection("styles", required: false)
+}
+
+@section ModuleIndexHeadingActionBar{
+        <h5 class="gn-light-gray flushLeft text-inline">Billing Mode</h5>
+        <br/>
+        @if (Model.MyAccount.BillingMode == GenomeNext.Data.EntityModel.GNAccount.BillingModeType.INVOICE.GetCode())
+        {
+            <span class="white small">@GenomeNext.Data.EntityModel.GNAccount.BillingModeType.INVOICE.GetName()</span>
+        }
+
+        <br/>
+        <h5 class="gn-light-gray flushLeft text-inline">Billing Contact</h5>
+        <br />
+        @if (Model.MyAccount != null && Model.MyAccount.BillingContact != null)
+        {
+            <span class="white small">@Model.MyAccount.BillingContact.FullNameWithEmail</span>
+        }
+        else
+        {
+            <span class="white small">NOT ASSIGNED</span>
+        }
+}
+
+@section ModuleIndexContent{
+
+<div class="col-md-12 panel form-horizontal bg-white">
+
+    @Html.BootstrapRowSpacer()
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="row">
+
+                <div id="MyBillingMenu" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 flushRight">
+
+                    @using (Html.BeginGNPanel())
+                    {
+                        using (Html.BeginGNPanelBody(true))
+                        {
+                            using (Html.BeginGNClickableListGroupItem(Url.Action("MyBillingOverview", "Account", null)))
+                            {
+                                <img class="col-xs-12 col-sm-2 col-md-2 col-lg-2 img-responsive" style="margin:0px;padding:0px;"
+                                     src="@Url.Content("~/Content/icons/billing_overview.png")" />
+                                <h5 class="hidden-xs col-sm-10 col-md-10 col-lg-10 text-inline">Overview</h5>
+                                <h6 class="col-xs-12 hidden-sm hidden-md hidden-lg flushLeft text-center text-uppercase">Overview</h6>
+                            }
+
+                            using (Html.BeginGNClickableListGroupItem(Url.Action("MyBillingBuyCredits", "Account", null)))
+                            {
+                                <img class="col-xs-12 col-sm-2 col-md-2 col-lg-2 img-responsive" style="margin:0px;padding:0px;"
+                                     src="@Url.Content("~/Content/icons/billing_make_payment.png")" />
+                                <h5 class="hidden-xs col-sm-10 col-md-10 col-lg-10 text-inline">Buy Credits</h5>
+                                <h6 class="col-xs-12 hidden-sm hidden-md hidden-lg flushLeft text-center text-uppercase">Buy Credits</h6>
+                            }
+
+                            using (Html.BeginGNClickableListGroupItem(Url.Action("MyBillingPayments", "Account", null)))
+                            {
+                                <img class="col-xs-12 col-sm-2 col-md-2 col-lg-2 img-responsive" style="margin:0px;padding:0px;"
+                                     src="@Url.Content("~/Content/icons/billing_payments.png")" />
+                                <h5 class="hidden-xs col-sm-10 col-md-10 col-lg-10 text-inline">Payments</h5>
+                                <h6 class="col-xs-12 hidden-sm hidden-md hidden-lg flushLeft text-center text-uppercase">Payments</h6>
+                            }
+
+                            using (Html.BeginGNClickableListGroupItem(Url.Action("MyBillingBills", "Account", null)))
+                            {
+                                <img class="col-xs-12 col-sm-2 col-md-2 col-lg-2 img-responsive" style="margin:0px;padding:0px;"
+                                     src="@Url.Content("~/Content/icons/billing_bills.png")" />
+                                <h5 class="hidden-xs col-sm-10 col-md-10 col-lg-10 text-inline">Bills</h5>
+                                <h6 class="col-xs-12 hidden-sm hidden-md hidden-lg flushLeft text-center text-uppercase">Bills</h6>
+                            }
+                        }
+                    }
+
+                </div>
+
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 flushLeft flushRight">
+                        <div class="panel bg-gn-green">
+                            <div class="panel-body" style="padding-bottom:0px;margin-bottom:0px;">
+                                <div class="col-xs-8 col-sm-8 col-md-11 col-lg-11" style="padding-left:0px;">
+                                    <h4 class="white flushLeft flushTop">
+                                        @ViewBag.SubTitle1
+                                    </h4>
+                                    <h5 class="white flushLeft flushTop">
+                                        @ViewBag.SubTitle2
+                                    </h5>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-1 col-lg-1">
+                                    <img class="img-responsive col-md-12 flushLeft pull-right"
+                                         style="margin:0px;padding:0px;max-height:42px;max-width:42px;min-height:42px;min-width:42px;"
+                                         src="@Url.Content("~/Content/icons/"+ViewBag.IconName+"_white_green.png")" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @RenderBody()
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+}

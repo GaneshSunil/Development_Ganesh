@@ -1,0 +1,76 @@
+﻿@using GenomeNext.Portal.Models
+@model LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_LoggedOutLayout.cshtml";
+
+    ViewBag.Title = "Login : Secure Genomic Analysis Portal";
+}
+
+
+@section LoggedOutContent{
+
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        
+        using (Html.BeginGNPanel(isFlushLeft: false))
+        {
+            using (Html.BeginGNPanelHeading((string)ViewBag.Title))
+            {
+                <div class="pull-left text-padded-right">
+                    <img class="img-responsive" style="max-height:18px;"
+                         src="@Url.Content("~/Content/icons/login_white.png")" />
+                </div>
+            }
+
+            using (Html.BeginGNPanelBody())
+            {
+                <div class="form-horizontal col-xs-12 col-sm-9 col-md-12 col-lg-12 col-xs-offset-0 col-sm-offset-3 col-md-offset-0 col-lg-offset-0">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    @Html.FormFieldFor(m => m.Email)
+                    @Html.FormFieldFor(m => m.Password)
+
+                    <div class="col-md-8 col-md-offset-4 small text-padded-bottom">
+                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                    </div>
+                    <div class="col-md-8 col-md-offset-4 small">
+                        @Html.ActionLink("Need an account? Register Now.", "Account", "Register")
+                    </div>
+                </div>
+            }
+
+            using (Html.BeginGNPanelFooter())
+            {
+
+                <div class="text-center">
+                    @Html.BootstrapFormSaveButton("Login", "lock", "white bg-gn-green")
+                </div>
+
+                //If browser is IE 9 or lower, advice the user to upgrade or switch to a different one.
+                if ((Request.Browser.Type.ToUpper().Contains("IE") || Request.Browser.Type.ToUpper().Contains("INTERNETEXPLORER")) && Request.Browser.MajorVersion < 10)
+                {
+                    <br />
+                    <div class="warning bg-warning col-md-12 panel" style="padding:10px;">
+                        <span class="label label-warning col-md-12">Browser Upgrade Recommended</span>
+                        <span class="small">
+                            <br />You are using a browser version that is not fully supported by our portal (IE 9 or lower). While you can proceed and login, we cannot guarantee that all the features will work properly. We highly recommend upgrading to any of the following listed below.
+                            <br />
+                            <div class="text-center">
+                                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie" target="_blank" title="IE 10 or higher"><img src="~/Content/icons/browser-icon-ie.png" title="IE 10 or higher" border="0" width="30"></a>&nbsp;
+                                <a href="https://www.google.com/intl/en/chrome/browser/desktop/index.html#brand=CHMB&utm_campaign=en&utm_source=en-ha-na-us-sk&utm_medium=ha" target="_blank" title="Google Chrome"><img src="~/Content/icons/browser-icon-chrome.png" title="Google Chrome" border="0" width="30"></a>&nbsp;
+                                <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" title="Mozilla FireFox"><img src="~/Content/icons/browser-icon-firefox.png" title="Mozilla FireFox" border="0" width="30"></a>&nbsp;
+                                <a href="http://support.apple.com/downloads/#safari" target="_blank" title="Safari"><img src="~/Content/icons/browser-icon-safari.png" title="Safari" border="0" width="30"></a>
+                            </div>
+                        </span>
+                    </div>
+
+                }
+            }
+
+        }
+
+    }
+}
+

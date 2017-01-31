@@ -1,0 +1,87 @@
+﻿@model GenomeNext.Data.EntityModel.GNTransaction
+
+@{
+    ViewBag.Title = "Transaction";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-euro gn-green"></span>
+    @ViewBag.Title
+
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to Invoice Detail", "Edit", "InvoiceDetails", new RouteValueDictionary(new { id = Model.GNInvoiceDetailId }), "info", "chevron-left")
+        @Html.BootstrapActionButton("Edit", "Edit", "Transactions", new RouteValueDictionary(new { id = Model.Id }), "warning", "cog")
+    </span>
+</h2>
+@Html.BootstrapRowSpacer()
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.BootstrapRowSpacer()
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.InvoiceDetail.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvoiceDetail.Description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TransactionType.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TransactionType.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+
+                @if (Model.Product != null)
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Product.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Product.Name)
+                    </dd>
+                }
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ValueUsed)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ValueUsed)
+                    @Html.DisplayFor(model => model.ValueUnits)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ExternalTxnId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ExternalTxnId)
+                </dd>
+
+                @{
+                    ViewData["ViewMode"] = "Details";
+                    ViewData["CreatedBy"] = Model.CreatedByContact;
+                    ViewData["CreateDateTime"] = Model.CreateDateTime;
+                }
+                @Html.Partial("_AuditModelPartial", null, ViewData)
+
+            </dl>
+        </div>
+    </div>
+}

@@ -1,0 +1,111 @@
+﻿@model GenomeNext.Data.EntityModel.GNContact
+
+@{
+    ViewBag.Title = "Delete Contact";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-user gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+
+        @if (!string.IsNullOrEmpty(Request["teamId"]) && Guid.Parse(Request["teamId"]) != Guid.Empty)
+        {
+            @Html.BootstrapActionButton("Back to Team", "Edit", "Teams", new RouteValueDictionary(new { id = Request["teamId"] }), "info", "chevron-left")
+        }
+        else if (!string.IsNullOrEmpty(Request["organizationId"]))
+        {
+            @Html.BootstrapActionButton("Back to Organization Contacts", "Index", "Contacts", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "chevron-left")
+        }
+        else if (!string.IsNullOrEmpty(Request["aspNetUserId"]) && Guid.Parse(Request["aspNetUserId"]) != Guid.Empty)
+        {
+            @Html.BootstrapActionButton("Back to User", "Edit", "Users", new RouteValueDictionary(new { id = Request["aspNetUserId"] }), "info", "chevron-left")
+        }
+        else
+        {
+            @Html.BootstrapActionButton("Back to List", "Index", "Contacts", null, "info", "chevron-left")
+        }
+        @Html.BootstrapFormConfirmDeleteButton("Delete", "trash", "danger")
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="form-horizontal">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+    }
+
+    @Html.BootstrapRowSpacer()
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <dl class="dl-horizontal">
+
+                @if (User.IsInRole("GN_ADMIN"))
+                {
+                    @Html.DisplayFieldFor(model => model.AspNetUserId)
+                }
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.GNOrganization)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.GNOrganization.Name)
+                </dd>
+
+                @Html.DisplayFieldFor(model => model.Title)
+                @Html.DisplayFieldFor(model => model.FirstName)
+                @Html.DisplayFieldFor(model => model.LastName)
+                @Html.DisplayFieldFor(model => model.Phone)
+                @Html.DisplayFieldFor(model => model.Fax)
+                @Html.DisplayFieldFor(model => model.Email)
+                @Html.DisplayFieldFor(model => model.Website)
+
+            </dl>
+        </div>
+
+        <div class="col-md-6">
+
+            <dl class="dl-horizontal">
+
+                @Html.DisplayFieldFor(model => model.StreetAddress1)
+                @Html.DisplayFieldFor(model => model.StreetAddress2)
+                @Html.DisplayFieldFor(model => model.City)
+                @Html.DisplayFieldFor(model => model.State)
+                @Html.DisplayFieldFor(model => model.Zip)
+                @Html.DisplayFieldFor(model => model.IsInviteAccepted)
+                @Html.DisplayFieldFor(model => model.TermsAcceptDateTime)
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.GNContactRoles)
+                </dt>
+
+                <dd>
+                    @if (Model.GNContactRoles != null && Model.GNContactRoles.Count != 0)
+                    {
+                        foreach (var contactRole in Model.GNContactRoles)
+                        {
+                            if (contactRole.AspNetRole != null)
+                            {
+                                @contactRole.AspNetRole.Name
+                                <br />
+                            }
+                        }
+                    }
+                    else
+                    {
+                        @("No Roles Assigned.")
+                    }
+                </dd>
+            </dl>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.AWSComputeEnvironment>
+
+@{
+    ViewBag.Title = "AWS Compute Environments";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-cloud gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Create New", "Create", "AWSComputeEnvironments", null, "info", "plus")
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AWSConfig.AWSAccessKeyId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VPC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subnet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailZone)
+            </th>
+            <th>
+                Capacity
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AWSConfig.AWSAccessKeyId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VPC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subnet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AvailZone)
+                </td>
+                <td>
+                    <span class="label bg-warning gn-dark-gray">@Html.DisplayFor(modelItem => item.IPAvailCount)</span>
+                    @Html.DisplayNameFor(model => model.IPAvailCount)
+                    <br />
+                    <span class="label bg-gn-green white">@Html.DisplayFor(modelItem => item.MaxInstanceExpectedCount)</span>
+                    @Html.DisplayNameFor(model => model.MaxInstanceExpectedCount)
+                    <br />
+                    <span class="label bg-gn-dark-gray white">@Html.DisplayFor(modelItem => item.InstanceRunningCount)</span>
+                    @Html.DisplayNameFor(model => model.InstanceRunningCount)
+                    <br/>
+                    <span class="label bg-gn-light-gray gn-dark-gray">@Html.DisplayFor(modelItem => item.InstancePendingCount)</span>
+                    @Html.DisplayNameFor(model => model.InstancePendingCount)
+                </td>
+                <td>
+                    @Html.BootstrapActionButton("View", "Details", "AWSComputeEnvironments", new RouteValueDictionary(new { id = item.Id }), "success", "th-large", "sm",displayText:false)
+                    @Html.BootstrapActionButton("Edit", "Edit", "AWSComputeEnvironments", new RouteValueDictionary(new { id = item.Id }), "warning", "cog", "sm", displayText: false)
+                    @Html.BootstrapActionButton("Delete", "Delete", "AWSComputeEnvironments", new RouteValueDictionary(new { id = item.Id }), "danger", "trash", "sm", displayText: false)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

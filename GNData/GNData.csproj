@@ -1,0 +1,616 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{28ECE1C4-DB94-4B43-B297-F5611C700AF2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GenomeNext.Data</RootNamespace>
+    <AssemblyName>GNData</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Integration|AnyCPU'">
+    <OutputPath>bin\Integration\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EntityModel\AWSComputeEnvironment.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\AWSConfig.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\AWSRegion.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\AWSResource.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\AWSResourceType.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNAccount.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNAccountProductSubscription.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNAccountThreshold.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNAccountType.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNAnalysisAdaptor.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNAnalysisRequest.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNAnalysisRequestGNSample.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNAnalysisRequestGNTemplate.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNAnalysisRequestGroup.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNAnalysisRequestGroupComparison.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNAnalysisRequestType.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNAnalysisResult.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNAnalysisSampleAffectedIndicator.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNAnalysisStatus.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNAnalysisType.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNBillingAccount.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNBillingInvoice.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNBillingInvoiceDetail.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNBillingPayment.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNBillingPaymentInvoice.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNBillingPaymentMethod.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNBillingPurchaseOrder.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNBillingPurchaseOrderInvoice.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNBillingTransaction.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNBulkImportGroupStaging.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNBulkImportLog.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNBulkImportStaging.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNBulkImportStatus.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNCloudFile.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNCloudFileCategory.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNContact.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNContactRole.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNEntityAudit.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNEntityAuditType.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNEntityModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GNEntityModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNEntityModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNEntityModel.Designer.cs">
+      <DependentUpon>GNEntityModel.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="EntityModel\GNEntityTag.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNEntityType.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNGene.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNInviteCode.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNInvoice.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNInvoiceDetail.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNLog.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNNewSampleBatch.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNNewSampleBatchSamples.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNNewSampleBatchStatus.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNNotificationLog.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNNotificationSender.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNNotificationSuppressionList.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNNotificationTopic.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNNotificationTopicAddressee.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNNotificationTopicSubscriber.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNOrganization.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNPayment.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNPaymentMethod.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNPaymentMethodType.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNProduct.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNProductType.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNProject.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNPurchaseOrder.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNPurchaseOrderGNInvoice.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNReplicate.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNSample.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNSampleQualifier.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNSampleQualifierGroup.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNSampleRelationship.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNSampleRelationshipType.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNSampleRelationshipTypeMapping.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNSampleStatus.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNSampleType.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNSequencerJob.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNSettingsTemplate.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNSettingsTemplateConfig.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNSettingsTemplateField.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNSharedPurchaseOrderOrganization.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNTag.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNTeam.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNTeamMember.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNTemplate.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNTemplateGene.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNTransaction.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\GNTransactionType.cs">
+      <DependentUpon>GNEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityService\BaseEntityService.cs" />
+    <Compile Include="EntityService\GNEntityService.cs" />
+    <Compile Include="EntityService\IdentityEntityService.cs" />
+    <Compile Include="IdentityModel\ApplicationUser.cs" />
+    <Compile Include="IdentityModel\AspNetIdentityModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AspNetIdentityModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModel\AspNetIdentityModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AspNetIdentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModel\AspNetRole.cs">
+      <DependentUpon>AspNetIdentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModel\AspNetUser.cs">
+      <DependentUpon>AspNetIdentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModel\AspNetUserClaim.cs">
+      <DependentUpon>AspNetIdentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModel\AspNetUserLogin.cs">
+      <DependentUpon>AspNetIdentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModel\AspNetUserRoles.cs">
+      <DependentUpon>AspNetIdentityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityModel\GNIdentityDbContext.cs" />
+    <Compile Include="IdentityModel\AspNetIdentityModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AspNetIdentityModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Metadata\Audit\AuditModel.cs" />
+    <Compile Include="Metadata\EntityModel\AWSComputeEnvironmentMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNAnalysisAdaptorMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNSampleStatusMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNAudit.cs" />
+    <Compile Include="Metadata\EntityModel\GNBillingAccountMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNBulkImportLogMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNBulkImportStatusMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNAccountProductSubscriptionMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNAnalysisRequestGNSampleMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNAnalysisStatusMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNNotificationTopicSubscriberMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNPurchaseOrderGNInvoiceMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNPurchaseOrderMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNAccountThresholdMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNAccountTypeMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNInvoiceDetailMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNAccountMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNNotificationLogMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNNotificationTopicMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNProductTypeMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNProductMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNPaymentMethodTypeMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNPaymentMethodMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNPaymentMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNSampleQualifierMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNSampleQualifierGroupMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNSharedPurchaseOrderOrganizationMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNSettingsTemplateConfigMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNSampleRelationshipMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNSettingsTemplateFieldMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNSettingsTemplateMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNSequencerJobMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNTransactionTypeMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNTransactionMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNInvoiceMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNInviteCodeMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNAnalysisResultMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNContactRoleMetadata.cs" />
+    <Compile Include="Metadata\Security\SecureModel.cs" />
+    <Compile Include="Metadata\EntityModel\AWSConfigMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNAnalysisRequestMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNAnalysisTypeMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNCloudFileCategoryMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNCloudFileMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNContactMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNOrganizationMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNProjectMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNSampleMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNSampleTypeMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNTeamMemberMetadata.cs" />
+    <Compile Include="Metadata\EntityModel\GNTeamMetadata.cs" />
+    <Compile Include="Metadata\IdentityModel\AspNetUserMetadata.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="EntityModel\GNEntityModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GNEntityModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EntityModel\GNEntityModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GNEntityModel.Context.cs</LastGenOutput>
+      <DependentUpon>GNEntityModel.edmx</DependentUpon>
+    </None>
+    <None Include="EntityModel\GNEntityModel.edmx.diagram">
+      <DependentUpon>GNEntityModel.edmx</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EntityModel\GNEntityModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GNEntityModel.cs</LastGenOutput>
+      <DependentUpon>GNEntityModel.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="IdentityModel\AspNetIdentityModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AspNetIdentityModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="IdentityModel\AspNetIdentityModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AspNetIdentityModel.Context.cs</LastGenOutput>
+      <DependentUpon>AspNetIdentityModel.edmx</DependentUpon>
+    </None>
+    <None Include="IdentityModel\AspNetIdentityModel.edmx.diagram">
+      <DependentUpon>AspNetIdentityModel.edmx</DependentUpon>
+    </None>
+    <None Include="IdentityModel\AspNetIdentityModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AspNetIdentityModel.cs</LastGenOutput>
+      <DependentUpon>AspNetIdentityModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EntityModel\GNEntityModel.edmx.sql" />
+    <Content Include="EntityModel\Scripts\20150406\alter size of description column.sql" />
+    <Content Include="EntityModel\Scripts\20150406\New column gnAccounts.sql" />
+    <Content Include="EntityModel\Scripts\20150406\New column gnAnalysisStatus.sql" />
+    <Content Include="EntityModel\Scripts\20150502\New column gnAccounts.sql" />
+    <Content Include="EntityModel\Scripts\20150515\add new field gncontacts.sql" />
+    <Content Include="EntityModel\Scripts\20150615\new TemplateGene tables PKs FKs.sql" />
+    <Content Include="EntityModel\Scripts\20160309\2 - New data for new tables.sql" />
+    <Content Include="EntityModel\Scripts\20160309\3 - new fields for GNTransactions.sql" />
+    <Content Include="EntityModel\Scripts\20160309\4 - new RNA tables.sql" />
+    <Content Include="EntityModel\Scripts\20160309\New tables.sql" />
+    <Content Include="EntityModel\Scripts\201606\New Billing Module.sql" />
+    <Content Include="EntityModel\Scripts\201606\New field adaptor.txt" />
+    <Content Include="EntityModel\Scripts\20160816\GNCloudFiles 2 new fields.sql" />
+    <Content Include="EntityModel\Scripts\20160816\New entity GNSequencerJob.sql" />
+    <Content Include="EntityModel\Scripts\20160816\New field repository GNOrganizations.sql" />
+    <Content Include="EntityModel\Scripts\20160816\New fields BulkImport.sql" />
+    <Content Include="EntityModel\Scripts\20160816\New Sample Batch tables.sql" />
+    <Content Include="EntityModel\Scripts\20160816\New SampleStatus table.sql" />
+    <Content Include="EntityModel\Scripts\20160816\Replicates.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150106\alter table gnnotificationtopic - new field.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150106\new table gnnotificationsupressionlist.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10062014\CreateTable GNAnalysisRequestGNSamples.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10062014\CreateTable GNAnalysisSampleAffectedIndicators.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10082014\Alter GNCloudFile table to have BigInt for FileSize column.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10082014\Alter GNSampleRelationships DropColumn AffectedIndicator.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10082014\Rebuild table GNNotificationLogs.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10092014\AddStatusColumnToPayments.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10092014\CreateManyToManyRelationshipBetweenInvoiceAndPurchaseOrder.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10092014\GNAccountAddBillingModeAndRemoveIsPrePay.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10102014\AlterTable GNNotificationTopics.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10102014\CreateTable GNNotificationSender.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10102014\CreateTable GNNotificationTopicAddresse.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10102014\CreateTable GNNotificationTopicSubscribers.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10102014\UpdatePaymentMethodTypes.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10132014\AddColumnsToGNAccounts.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10132014\AddColumnsToGNInvoiceDetails.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10132014\AddColumnsToGNTransactions.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10132014\DropColumnFromGNProjects.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10132014\UpdatePaymentMethodTypes.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10142014\AlterTable GNNotificationAdressees modify PK.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10142014\AlterTable GNNotificationSubscribers Add Flag.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10142014\AlterTable GNNotificationTopics modify Description.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10152014\AlterTable GNContacts.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10152014\AlterTable GNNotificationLogs new field.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10152014\AlterTable GNNotificationTopicAddressees.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10152014\AlterTable GNNotificationTopics.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10152014\AlterTable GNNotificationTopicSubscribers Fix Field Spaces.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10162014\AlterTable GNContacts ADD PrivacyPolicy column.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10162014\AlterTable GNNotificationTopics fix field.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10162014\Insert Topics.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10162014\New Topic Analysis Completed OK.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10172014\Updates FileCategory Table.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10202014\Alter GNPaymentMethods.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\10222014\alter table notificationsubscribers.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141103\bug 133 fix - updates SQL.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141108\gn_db_20141108_DEV_3_BUILD_SEED_DATA.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141108\gn_db_20141108_PROD_1_BUILD_AspNetIdentityModel.edmx.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141108\gn_db_20141108_PROD_2_BUILD_GNEntityModel.edmx.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141108\gn_db_20141108_PROD_3_BUILD_SEED_DATA.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141124\NewNotificationTopic.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141124\NewRelationshipType.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141125\InsertValuesNewTable.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141125\NewTableRelationshipTypesMappings.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141126\AlterTable AspNetRoles.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141201\add_products_academic_nonprofit.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141202\db_entity_unique_constraints.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141203\db_entity_unique_constraints_20141203.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141203\notifications_look_and_feel_improvements.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141205\alter_gn_invite_codes_table.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141208\InsertValuesNewTable.sql" />
+    <Content Include="EntityModel\Scripts\v1.0\20141210\update_product_pricing.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20141211\bulk_import_tables.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20141216\aws_resource_types.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20141216\bulk_import_staging_table.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20141219\new tables SettingTemplates.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20141219\UpdateNotificationTopic.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20141222\fix new column GNOrganization.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20141222\gn.GNSettingsTemplates.data.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20141224\add_aws_compute_environments_table.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20141229\alter gnorganization default templateid.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20141231\add_column_to_bulk_import_staging_table.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20141231\update notification url.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150105\gn.GNSettingsTemplateConfigs and Fields.data.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150105\GNNotificationLogs add column.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150105\GNSettingsTemplateField add column.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150108\Notification Update ANALYSIS_RESULT_RECEIVED.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150108\Notification Update ANALYSIS_RETURNED_ERROR.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150108\Notification Update ANALYSIS_STATUS_UPDATE_RETURNED_ERROR.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150108\Notification Update NOTIFICATION_BOUNCES_COMPLAINTS_UPDATE.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150108\Notification Update ORG_ACCOUNT_REGISTRATION_COMPLETE.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150108\Notification Update USER_ACCOUNT_CHANGE_PASSWORD.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150108\Notification Update USER_ACCOUNT_CONFIRM_EMAIL.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150108\Notification Update USER_ACCOUNT_RESET_PASSWORD.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150108\Notification Update USER_ACCOUNT_SEND_INVITATION.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150109\tfs350 fix - panel update.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150324\Fix for result files label.sql" />
+    <Content Include="EntityModel\Scripts\v1.1\20150324\Tagging.sql" />
+    <Content Include="EntityModel\SeedData\gn_db_data_10_3_2014\gn_db_1_org.sql" />
+    <Content Include="EntityModel\SeedData\gn_db_data_10_3_2014\gn_db_2_non_billing.sql" />
+    <Content Include="EntityModel\SeedData\gn_db_data_10_3_2014\gn_db_3_billing.sql" />
+    <Content Include="IdentityModel\AspNetIdentityModel.edmx.sql" />
+    <Content Include="IdentityModel\dbo.AspNetRoles.data.sql" />
+    <Content Include="IdentityModel\dbo.AspNetUserRoles.data.sql" />
+    <Content Include="IdentityModel\dbo.AspNetUsers.data.sql" />
+    <Content Include="IdentityModel\Scripts\10142014\NewRoles.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GNUtility\GNUtility.csproj">
+      <Project>{8d489f4d-7827-4767-ba43-e71a190e741c}</Project>
+      <Name>GNUtility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EntityModel\Scripts\20160310\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

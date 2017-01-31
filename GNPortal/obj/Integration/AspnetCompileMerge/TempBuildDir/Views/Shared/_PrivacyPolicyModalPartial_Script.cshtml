@@ -1,0 +1,44 @@
+﻿<script>
+
+    var privacyPolicyAccepted = false;
+
+    function InitPrivacyPolicy() {
+        InitPrivacyPolicyValidation();
+    }
+
+    function InitPrivacyPolicyValidation() {
+        jQuery.validator.addMethod("ValidatePrivacyPolicyAccepted", function (value, element) {
+
+            var isValid = false;
+
+            if ($("#" + element.id).prop("checked") == true)
+            {
+                isValid = true;
+            }
+
+            return isValid;
+        }, "Privacy Policy Must Be Accepted.");
+
+        $("#PrivacyPolicyAccepted").rules("add", "ValidatePrivacyPolicyAccepted");
+    }
+
+
+    function ShowPrivacyPolicyModal()
+    {
+        $("#PrivacyPolicyContent").html($("#PrivacyPolicyContentSource").html());
+        $("#PrivacyPolicyModal").modal('show');
+        $("#PrivacyPolicyAcceptBtn").click(function () {
+            AcceptPrivacyPolicy();
+        });
+    }
+
+    function AcceptPrivacyPolicy()
+    {
+        privacyPolicyAccepted = true;
+        $("#PrivacyPolicyModal").modal('hide');
+        $("#PrivacyPolicyAccepted").prop("checked", true);
+
+        $("form").submit();
+    }
+
+</script>

@@ -1,0 +1,66 @@
+﻿@model GenomeNext.Data.EntityModel.GNProductType
+
+@{
+    ViewBag.Title = "Product Type";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-euro gn-green"></span>
+    @ViewBag.Title
+
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "ProductTypes", null, "info", "chevron-left")
+        @Html.BootstrapActionButton("Edit", "Edit", "ProductTypes", new RouteValueDictionary(new { id = Model.Id }), "warning", "cog")
+    </span>
+</h2>
+@Html.BootstrapRowSpacer()
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.BootstrapRowSpacer()
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsEligibleForDiscount)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsEligibleForDiscount)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CanSubscribe)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CanSubscribe)
+                </dd>
+
+                @{
+                    ViewData["ViewMode"] = "Details";
+                    ViewData["CreatedBy"] = Model.CreatedByContact;
+                    ViewData["CreateDateTime"] = Model.CreateDateTime;
+                }
+                @Html.Partial("_AuditModelPartial", null, ViewData)
+
+            </dl>
+        </div>
+    </div>
+}

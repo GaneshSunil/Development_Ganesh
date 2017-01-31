@@ -1,0 +1,76 @@
+﻿@model GenomeNext.Portal.Models.RegisterContactViewModel
+@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/register.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/register_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/register_white_green.png";
+    ViewData["ModuleHasActionBar"] = true;
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+}
+
+@section ModuleIndexHeadingActionBar{
+}
+
+@section ModuleIndexContent{
+
+    @using (Html.BeginForm("ContactSubmit", "Register", FormMethod.Post, new { @id = "ContactSubmitForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.OrgId)
+        @Html.HiddenFor(model => model.ContactId)
+        @Html.HiddenFor(model => model.IsExistingUser)
+
+        <div class="panel form-horizontal bg-white">
+
+            <div class="panel-body">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        <div class="well well-sm reg-left-info">
+
+                            @Html.FormFieldFor(model => model.OrgName, false)
+                            @Html.FormFieldFor(model => model.Title, false)
+                            @Html.FormFieldFor(model => model.FirstName, false)
+                            @Html.FormFieldFor(model => model.LastName, false)
+                            @Html.FormFieldFor(model => model.Email, false)
+
+                            @Html.FormFieldFor(model => model.TermsAndConditionsAccepted, false)
+                            @Html.FormFieldFor(model => model.PrivacyPolicyAccepted, false)
+                            @Html.FormFieldFor(model => model.SignUpForNewsAndProducts, false)
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        @Html.FormFieldFor(model => model.Phone, false)
+                        @Html.FormFieldFor(model => model.StreetAddress1, false)
+                        @Html.FormFieldFor(model => model.StreetAddress2, false)
+                        @Html.FormFieldFor(model => model.City, false)
+                        @Html.FormFieldFor(model => model.State, false)
+                        @Html.FormFieldFor(model => model.Zip, false)
+
+                        @Html.FormFieldFor(model => model.Password)
+                        @Html.FormFieldFor(model => model.PasswordConfirm)
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel-footer clearfix bg-gn-light-gray">
+                <button id="ContactConfirmBackBtn" class="btn bg-gn-dark-gray white pull-left">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    Back
+                </button>
+                <button id="ContactConfirmSubmitBtn" class="btn bg-gn-green white pull-right">
+                    Register&nbsp;
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+            </div>
+        </div>
+    }
+}

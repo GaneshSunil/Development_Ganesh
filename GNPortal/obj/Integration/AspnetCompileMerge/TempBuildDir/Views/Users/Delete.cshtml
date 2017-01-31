@@ -1,0 +1,44 @@
+﻿@model GenomeNext.Data.IdentityModel.AspNetUser
+
+@{
+    ViewBag.Title = "Delete User";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-user gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @if (!string.IsNullOrEmpty(Request["organizationId"]))
+        {
+            @Html.BootstrapActionButton("Back to List", "Index", "Users", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "chevron-right", null, true)
+        }
+        else
+        {
+            @Html.BootstrapActionButton("Back to List", "Index", "Users", null, "info", "chevron-right", null, true)
+        }
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="form-horizontal">
+
+    @Html.BootstrapRowSpacer()
+    
+    @Html.FormFieldFor(model => model.Id, false)
+    @Html.FormFieldFor(model => model.UserName, false)
+    @Html.FormFieldFor(model => model.Email, false)
+    @Html.FormFieldFor(model => model.PhoneNumber, false)
+    @Html.FormFieldFor(model => model.IsAdmin, false)
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("organizationId",Request["organizationId"])
+
+        <button type="submit" class="btn btn-danger">
+            <span class="glyphicon glyphicon-user"></span>
+            Delete
+        </button>
+    }
+</div>

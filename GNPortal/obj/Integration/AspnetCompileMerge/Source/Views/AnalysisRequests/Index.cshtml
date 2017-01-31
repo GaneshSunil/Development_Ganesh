@@ -1,0 +1,322 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNAnalysisRequest>
+
+@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/analyses.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/analyses_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/analyses_white_green.png";
+    ViewData["ModuleItemName"] = "Analysis";
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "Analysis Requests";
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+    //Setup Values for Searchable List Table/Control/Partials
+    ViewData["SearchListItemsCount"] = Model.Count();
+    if (User.IsInRole("GN_ADMIN"))
+    {
+        ViewData["SearchTextOptions"] = new string[] { "All", "Organization", "Team Name", "Project Name", "Description", "Type", "Status", "Percent Complete" };
+    }
+    else
+    {
+        ViewData["SearchTextOptions"] = new string[] { "All", "Team Name", "Project Name", "Description", "Type", "Status", "Percent Complete" };
+    }
+    
+    //ViewBag.customEnd = "10";
+   // ViewBag.customIncrement = "50";
+}
+
+@section ModuleSortDisplayButtons{
+
+    <script>
+        function sortElements(by) {
+            document.getElementById('sortBy').value = by;
+            document.getElementById('sortForm').submit();
+        }
+    </script>
+
+    <form name="sortForm" id="sortForm" method="get" action="@Url.Action("Index")">
+        <input type="hidden" name="sortBy" id="sortBy" value="@Request["sortBy"]" />
+        <input type="hidden" name="display" id="display" value="@Request["display"]" />
+    </form>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom:15px;">
+        <div class="pull-right">
+            <span class="small gn-dark-gray">
+                Sort by
+            </span>
+            <select class="header-dropdown-index" name="sortDropdown" id="sortDropdown" onchange="javascript: sortElements(this.value);">
+                <option value="DescriptionAsc" @(Request["sortBy"] == "DescriptionAsc" ? "selected" : "")>Description (asc)</option>
+                <option value="DescriptionDesc" @(Request["sortBy"] == "DescriptionDesc" ? "selected" : "")>Description (desc)</option>
+                <option value="NumSamplesAsc" @(Request["sortBy"] == "NumSamplesAsc" ? "selected" : "")>Num. Samples (asc)</option>
+                <option value="NumSamplesDesc" @(Request["sortBy"] == "NumSamplesDesc" ? "selected" : "")>Num. Samples (desc)</option>
+                <option value="ProgressAsc" @(Request["sortBy"] == "ProgressAsc" ? "selected" : "")>Progress (asc)</option>
+                <option value="ProgressDesc" @(Request["sortBy"] == "ProgressDesc" ? "selected" : "")>Progress (desc)</option>
+                <option value="ProjectAsc" @(Request["sortBy"] == "ProjectAsc" ? "selected" : "")>Project (asc)</option>
+                <option value="ProjectDesc" @(Request["sortBy"] == "ProjectDesc" ? "selected" : "")>Project (desc)</option>
+                <option value="TeamAsc" @(Request["sortBy"] == "TeamAsc" ? "selected" : "")>Team (asc)</option>
+                <option value="TeamDesc" @(Request["sortBy"] == "TeamDesc" ? "selected" : "")>Team (desc)</option>
+                <option value="TypeAsc" @(Request["sortBy"] == "TypeAsc" ? "selected" : "")>Type (asc)</option>
+                <option value="TypeDesc" @(Request["sortBy"] == "TypeDesc" ? "selected" : "")>Type (desc)</option>
+                <option value="CreateDateAsc" @(Request["sortBy"] == "CreateDateAsc" ? "selected" : "")>Creation Date (asc)</option>
+                <option value="CreateDateDesc" @(Request["sortBy"] == "CreateDateDesc" || Request["sortBy"] == null ? "selected" : "")>Creation Date (desc)</option>
+            </select>
+
+            @Html.BootstrapActionIconLink("Grid Display", "Index", "AnalysisRequests", new RouteValueDictionary(new { display = "grid", sortBy = Request["sortBy"] }), "gn-dark-gray", "th", "md", false, false)
+            &nbsp;
+            @Html.BootstrapActionIconLink("List Display", "Index", "AnalysisRequests", new RouteValueDictionary(new { display = "list", sortBy = Request["sortBy"] }), "gn-dark-gray", "th-list", "md", false, false)
+            @if(!contactForUser.IsInRole("COLLABORATOR"))
+            {
+                @Html.Raw("&nbsp;");
+                @Html.BootstrapActionIconLink("Create New", "Create", "AnalysisRequests", null, "gn-dark-gray", "plus", "md", false, false)
+            }
+        </div>
+    </div>
+}
+
+@section ModuleIndexContent{
+
+    @if (Model != null && Model.Count() != 0)
+    {
+        var SortedModel = Model.OrderByDescending(a => a.CreateDateTime);
+        if (Request["sortBy"] != null)
+        {
+            switch (Request["sortBy"])
+            {
+                case "DescriptionAsc":
+                    SortedModel = Model.OrderBy(a => a.Description);
+                    break;
+                case "DescriptionDesc":
+                    SortedModel = Model.OrderByDescending(a => a.Description);
+                    break;
+                case "NumSamplesAsc":
+                    SortedModel = Model.OrderBy(a => a.GNAnalysisRequestGNSamples.Count);
+                    break;
+                case "NumSamplesDesc":
+                    SortedModel = Model.OrderByDescending(a => a.GNAnalysisRequestGNSamples.Count);
+                    break;
+                case "ProgressAsc":
+                    SortedModel = Model.OrderBy(a => a.RequestProgress);
+                    break;
+                case "ProgressDesc":
+                    SortedModel = Model.OrderByDescending(a => a.RequestProgress);
+                    break;
+                case "TeamAsc":
+                    SortedModel = Model.OrderBy(a => a.Project.Teams.FirstOrDefault().Name);
+                    break;
+                case "TeamDesc":
+                    SortedModel = Model.OrderByDescending(a => a.Project.Teams.FirstOrDefault().Name);
+                    break;
+                case "ProjectAsc":
+                    SortedModel = Model.OrderBy(a => a.Project.Name);
+                    break;
+                case "ProjectDesc":
+                    SortedModel = Model.OrderByDescending(a => a.Project.Name);
+                    break;
+                case "TypeAsc":
+                    SortedModel = Model.OrderBy(a => a.AnalysisType.Name);
+                    break;
+                case "TypeDesc":
+                    SortedModel = Model.OrderByDescending(a => a.AnalysisType.Name);
+                    break;
+                case "CreateDateAsc":
+                    SortedModel = Model.OrderBy(a => a.CreateDateTime);
+                    break;
+                case "CreateDateDesc":
+                    SortedModel = Model.OrderByDescending(a => a.CreateDateTime);
+                    break;
+                default:
+                    SortedModel = Model.OrderByDescending(a => a.CreateDateTime);
+                    break;
+            }
+        }
+
+        if (Request["display"] != null && Request["display"] == "list")
+        {
+            int i = 0;
+            foreach (var item in SortedModel)
+            {
+                i++;
+                <div id="item_@i" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 flushLeft clickable"
+                     onclick="window.location.href='@Url.Action("Details", new { id=item.Id})'">
+                    <div class="panel border-gn-green @ViewBag.BoxHeightClass">
+                        <div class="panel-heading bg-gn-green">
+                            <span class="pull-right">
+                                @if (item.CanEdit)
+                                {
+                                    @Html.BootstrapActionIconLink("Edit", "Edit", "AnalysisRequests", new RouteValueDictionary(new { id = item.Id }), "white", "cog", "sm", false, false)
+                                }
+                            </span>
+                            <h3 class="panel-title white" style="width:600px;">
+                                <img class="pull-left" style="height:18px;padding-right:6px;" src="@Url.Content("~/Content/icons/analyses_white.png")" />
+                                @item.Description
+                            </h3>
+                        </div>
+                        <div class="panel-body" style="margin-top: -10px !important;">
+                            <div class="col-md-4">
+                                <span class="glyphicon glyphicon-user"></span> @item.Project.Teams.FirstOrDefault().Name<br />
+                                <span class="glyphicon glyphicon-folder-open"></span> @item.Project.Name
+                            </div>
+
+                            <div class="col-md-5">
+                                <span style="font-size:12px">
+                                    <strong class="label bg-gn-light-gray gn-dark-gray">@item.GNAnalysisRequestGNSamples.Count</strong> Sample@((@item.GNAnalysisRequestGNSamples.Count != 1) ? "s" : "") (@item.AnalysisType.Name)
+                                </span>
+
+                                @{
+                                int countResults = 0;
+                                string currentProgressBG = "bg-gn-light-gray gn-dark-gray";
+                                string currentStatus = item.CurrentStatusShort;
+
+                                if (!item.CanEdit)
+                                {
+                                    currentProgressBG = "bg-gn-medium-gray white";
+                                }
+
+                                if (item.AnalysisResult != null)
+                                {
+                                    countResults = item.AnalysisResult.ResultFiles.Count;
+
+                                    if (item.IsFailedRequest)
+                                    {
+                                        currentProgressBG = "label-danger white";
+                                    }
+                                    else if (item.CurrentProgress == 100)
+                                    {
+                                        currentProgressBG = "bg-gn-green white";
+                                    }
+                                }
+                                }
+                                <strong class="label bg-gn-light-gray gn-dark-gray">@countResults</strong> <span style="font-size:12px">Result File@((@countResults != 1) ? "s" : "")</span><br />
+                                <strong class="label @currentProgressBG">@(item.CurrentProgress)%</strong> <span style="font-size:12px">@currentStatus</span>
+
+                            </div>
+
+                            @if (User.IsInRole("GN_ADMIN"))
+                            {
+                                <div class="col-md-3">
+                                    <span class="glyphicon glyphicon-th-large"></span> @item.Project.Teams.FirstOrDefault().Organization.Name
+                                </div>
+                            }
+
+                            <span class="col-md-12 flushRight flushTop gn-medium-gray" style="font-size:10px;margin-top:-12px!important;margin-bottom:5px!important;text-align:right!important;" title="Created On">@item.CreateDateTime</span>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        }
+        else
+        {
+            int i = 0;
+            foreach (var item in SortedModel)
+            {
+                i++;
+                <div id="item_@i" class="col-xs-12 col-sm-3 col-md-3 col-lg-3 flushLeft clickable"
+                     onclick="window.location.href='@Url.Action("Details", new { id=item.Id})'">
+                    <div class="panel border-gn-green @ViewBag.BoxHeightClass">
+                        <div class="panel-heading bg-gn-green">
+                            <span class="pull-right">
+                                @if (item.CanEdit)
+                                {
+                                    @Html.BootstrapActionIconLink("Edit", "Edit", "AnalysisRequests", new RouteValueDictionary(new { id = item.Id }), "white", "cog", "sm", false, false)
+                                }
+                            </span>
+                            <h6 class="panel-title white ellipsis" style="width:170px;text-transform:uppercase;font-size:13px;">
+                                <img class="pull-left" style="height:18px;padding-right:6px;" src="@Url.Content("~/Content/icons/analyses_white.png")" />
+                                @item.Description
+                            </h6>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-12 flushRight flushTop gn-medium-gray" style="font-size:10px;margin-top:-12px!important;margin-bottom:5px!important;text-align:right!important;" title="Created On">@item.CreateDateTime</div>
+
+                            @if (User.IsInRole("GN_ADMIN"))
+                            {
+                                <div class="col-md-12">
+                                    <h6 class="gn-dark-gray flushLeft flushTop ellipsis" style="width:225px;"><span class="glyphicon glyphicon-th-large"></span> @item.Project.Teams.FirstOrDefault().Organization.Name</h6>
+                                </div>
+                            }
+
+                            <div class="col-md-12">
+                                <h6 class="gn-dark-gray flushLeft flushTop ellipsis" style="width:225px;"><span class="glyphicon glyphicon-user"></span>@item.Project.Teams.FirstOrDefault().Name</h6>
+                                <h6 class="gn-dark-gray flushLeft flushTop ellipsis" style="width:225px;"><span class="glyphicon glyphicon-folder-open"></span> @item.Project.Name</h6>
+                            </div>
+
+                            <div class="col-md-12 alert alert-info" style="margin:0!important;padding:0!important;text-align:center;">
+                                <h6>
+                                    @{
+                if (item.GNAnalysisRequestTypeCode == "RNA")
+                {
+                    @item.GNAnalysisRequestType.Name
+                }
+                else
+                {
+                    @item.AnalysisType.Name @Html.Raw(", ") @item.GNAnalysisRequestType.Name
+                }
+                                    }
+                                </h6>
+                            </div>
+
+                            <div class="col-md-12">
+
+                                @{
+                int countResults = 0;
+                string currentProgressBG = "bg-gn-light-gray gn-dark-gray";
+                string currentStatus = item.CurrentStatusShort;
+
+                if (!item.CanEdit)
+                {
+                    currentProgressBG = "bg-gn-medium-gray white";
+                }
+
+                if (item.AnalysisResult != null)
+                {
+                    countResults = item.AnalysisResult.ResultFiles.Count;
+
+                    if (item.IsFailedRequest)
+                    {
+                        currentProgressBG = "label-danger white";
+                    }
+                    else if (item.CurrentProgress == 100)
+                    {
+                        currentProgressBG = "bg-gn-green white";
+                    }
+                }
+                                }
+                                <h6>
+                                    <span style="font-size:12px">
+
+                                        <strong class="label bg-gn-light-gray gn-dark-gray"> @item.GNAnalysisRequestGNSamples.Count</strong> Sample@((@item.GNAnalysisRequestGNSamples.Count != 1) ? "s" : ""),
+                                    </span>
+
+                                    @{
+                if (item.GNAnalysisRequestTypeCode == "RNA")
+                {
+                    <span><strong class="label bg-gn-light-gray gn-dark-gray"> @item.GNAnalysisRequestGroups.Count</strong> Group@((@item.GNAnalysisRequestGroups.Count != 1) ? "s" : ""),</span>
+                }
+                                    }
+
+                                    <strong class="label bg-gn-light-gray gn-dark-gray">@countResults</strong> <span style="font-size:12px">Result@((@countResults != 1) ? "s" : "")</span>
+                                </h6>
+
+
+                                @{
+                var fontSize = "12px";
+                if (currentStatus.Length > 20)
+                {
+                    fontSize = "10px";
+                }
+                                }
+                                <h5><strong class="label @currentProgressBG">@(item.CurrentProgress)%</strong> <span style="font-size:@fontSize">@currentStatus</span></h5>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            }
+        }
+        @Html.Partial("_SearchListMoreResultsPartial")
+    }
+}

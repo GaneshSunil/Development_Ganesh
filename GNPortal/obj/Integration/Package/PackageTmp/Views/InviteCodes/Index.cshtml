@@ -1,0 +1,72 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNInviteCode>
+
+@{
+    ViewBag.Title = "Invite Codes";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-envelope gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Create New", "Create", "InviteCodes", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "plus")
+    </span>
+</h2>
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.InviteCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UseCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UseMaxAllowed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpireDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FreeCreditAllowance)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InviteCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UseCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UseMaxAllowed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpireDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FreeCreditAllowance)
+                </td>
+                <td>
+                    @Html.BootstrapActionButton("View", "Details", "InviteCodes", new RouteValueDictionary(new { id = item.InviteCode }), "success", "th-large", "sm")
+                    @Html.BootstrapActionButton("Edit", "Edit", "InviteCodes", new RouteValueDictionary(new { id = item.InviteCode }), "warning", "cog", "sm")
+                    @Html.BootstrapActionButton("Delete", "Delete", "InviteCodes", new RouteValueDictionary(new { id = item.InviteCode }), "danger", "trash", "sm")
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

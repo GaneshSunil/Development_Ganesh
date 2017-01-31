@@ -1,0 +1,70 @@
+﻿@model GenomeNext.Data.EntityModel.GNTeam
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Projects"))
+    {
+        <img class="pull-left"
+             style="margin:0px;padding:0px 10px 0px 0px;max-height:30px;max-width:30px;"
+             src="@Url.Content("~/Content/icons/projects_white.png")" />
+        <span class="badge">@Model.Projects.Count()</span>
+        <span class="pull-right">
+            @if (ViewBag.CanCreateProject != null && (bool)ViewBag.CanCreateProject)
+            {
+                @Html.BootstrapActionIconLink("New Project", "Create", "Projects", new RouteValueDictionary(new { teamId = Model.Id }), "white", "plus", null, false, false)
+            }
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(true))
+    {
+        if (Model.Projects != null && Model.Projects.Count() != 0)
+        {
+            int i = 0;
+            foreach (var item in Model.Projects.OrderByDescending(p=>p.CreateDateTime).Take(5))
+            {
+                using (Html.BeginGNClickableListGroupItem(
+                    Url.Action("Details", "Projects", new { id = item.Id, teamId = Model.Id }),
+                    (i % 2) != 0))
+                {
+                    <img class="pull-left flushTop"
+                         style="margin:0px;padding:0px 10px 0px 0px;max-height:30px;max-width:30px;"
+                         src="@Url.Content("~/Content/icons/projects.png")" />
+                    <h5 class="flushLeft flushTop" style="padding-top:3px !important">
+                        @item.Name
+                    </h5>
+                    <div>
+                        <p class="small text-inline text-padded-right">
+                            <span class="text-muted text-uppercase">@item.AnalysisRequests.Count</span> Analyses
+                        </p>
+                        <p class="small text-inline text-padded-right">
+                            <span class="text-muted text-uppercase">Project Lead</span> @item.ProjectLead.FullName
+                        </p>
+                    </div>
+                }
+                i++;
+            }
+        }
+        else
+        {
+            <div class="list-group-item">
+                <h5>
+                    Projects have not been created for this team.
+                </h5>
+            </div>
+        }
+    }
+
+    if (Model.Projects != null && Model.Projects.Count > 5)
+    {
+        using (Html.BeginGNPanelFooter())
+        {
+            <div class="col-md-12 text-center">
+                @Html.ActionLink("View All Projects", "Index", "Projects", new { teamId = Model.Id }, null)
+            </div>
+        }
+    }
+
+}

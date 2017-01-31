@@ -1,0 +1,70 @@
+﻿@model GenomeNext.Data.EntityModel.GNSampleRelationship
+
+@{
+    ViewBag.Title = "Create New Relationship for";
+
+    var canProceed = true;
+    
+    if (ViewBag.GNLeftSampleRelationshipTypeCount >= ViewBag.GNSampleRelationshipType.MaxRelationships)
+    {
+        canProceed = false;
+    }
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h2>
+        <span class="glyphicon glyphicon-tree-deciduous gn-green"></span>
+            @ViewBag.Title <b><i>@Html.DisplayFor(model => model.GNLeftSample.Name)</i></b>
+        <span class="pull-right">
+            @Html.BootstrapActionButton("Back to Pedigree", "Index", "SampleRelationships", new RouteValueDictionary(new { GNLeftSampleId = Request["GNLeftSampleId"], SampleName = Request["SampleName"] }), "info", "chevron-left")
+            @if (canProceed)
+            {
+                @Html.BootstrapFormSaveButton("Save")    
+            }        
+        </span>
+    </h2>
+
+    @Html.BootstrapRowSpacer()
+
+    <div class="form-horizontal">
+        @if (!canProceed)
+        {
+            <div style="margin:20px;">
+                @Html.ValidationSummary(false, "This sample has the maximum number of relationships of the selected type allowed.", new { @class = "text-danger" })
+            </div>
+        }
+         
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.GNLeftSampleId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.GNLeftSample.Name)
+                    @Html.HiddenFor(model => model.GNLeftSampleId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.GNLeftSampleId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        @if (canProceed)
+        { 
+            <div class="form-group">
+                @Html.LabelFor(model => model.GNRightSampleId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">                    
+                    @Html.DisplayFor(model => model.GNRightSample.Name)
+                    @Html.EditorFor(model => model.GNRightSampleId, new { htmlAttributes = new { @class = "form-control" } })    
+                    @Html.BootstrapActionButton("Search", "Index", "Samples", new RouteValueDictionary(new { addSampleRelationship = "1", GNLeftSampleId = Request["GNLeftSampleId"], Gender = ViewBag.GNSampleRelationshipType.Gender, GNSampleRelationshipTypeId = ViewBag.GNSampleRelationshipType.Id, GNSampleTypeId = Model.GNLeftSample.GNSampleTypeId, GNOrganizationId = Model.GNLeftSample.GNOrganizationId }), "info", "search")
+                    @Html.ValidationMessageFor(model => model.GNRightSampleId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        }
+            <div class="form-group">
+                @Html.LabelFor(model => model.GNSampleRelationshipTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="hidden" name="GNSampleRelationshipTypeId" id="GNSampleRelationshipTypeId" value="@ViewBag.GNSampleRelationshipType.Id" />
+                    @ViewBag.GNSampleRelationshipType.Name
+                    @Html.ValidationMessageFor(model => model.GNSampleRelationshipTypeId, "", new { @class = "text-danger" })</div>
+            </div>
+    </div>
+
+}

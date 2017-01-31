@@ -1,0 +1,33 @@
+﻿@model GenomeNext.Data.EntityModel.GNInviteCode
+
+@{
+    ViewBag.Title = "Create New Invite Code";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h2>
+        <span class="glyphicon glyphicon-envelope gn-green"></span>
+        @ViewBag.Title
+        <span class="pull-right">
+            @Html.BootstrapActionButton("Back to List", "Index", "InviteCodes", null, "info", "chevron-left")
+            @Html.BootstrapFormSaveButton("Create")
+        </span>
+    </h2>
+
+    @Html.BootstrapRowSpacer()
+
+    @Html.HiddenFor(model => model.UseCount)
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.FormFieldFor(model => model.InviteCode)
+        @Html.FormFieldFor(model => model.Description)
+        @Html.FormFieldFor(model => model.UseMaxAllowed)
+        @Html.FormFieldFor(model => model.ExpireDate)
+        @Html.FormFieldFor(model => model.FreeCreditAllowance)
+    </div>
+}

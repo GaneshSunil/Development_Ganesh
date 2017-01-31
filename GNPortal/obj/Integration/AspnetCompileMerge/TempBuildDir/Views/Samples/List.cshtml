@@ -1,0 +1,224 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNSample>
+@{    
+    ViewBag.Title = "Samples";
+
+    if (User.IsInRole("GN_ADMIN"))
+    {
+        ViewData["SearchTextOptions"] = new string[] { "Sample Name" };
+    }
+    else
+    {
+        ViewData["SearchTextOptions"] = new string[] { "Sample Name" };
+    }    
+}
+
+@Html.BootstrapRowSpacer()
+
+<div class="panel panel-border-gn-green clearfix">
+    
+        @if (!string.IsNullOrEmpty(Request["analysisRequestId"]))
+        {
+            <div class="panel-heading bg-gn-green clearfix">
+
+                <h2 class="col-xs-12 col-sm-10 col-md-10 col-lg-10 white" style="margin-top:10px !important;">
+                    <img class="pull-left" style="height:35px;padding-right:10px;"
+                         src="~/Content/icons/analyses_white.png" />
+                    @ViewBag.AnalysisName Sample Selection
+                </h2>
+
+                <h5 class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-right" style="margin-top:17px !important;">
+                    @Html.BootstrapActionIcon("Continue", "Details", "AnalysisRequests", new RouteValueDictionary(new { id = Request["analysisRequestId"] }), "bg-clear text-uppercase text-nowrap white", "chevron-right", null, true, "center", true)
+                </h5>
+            </div>
+
+            @Html.BootstrapRowSpacer()
+        }
+   
+
+        @using (Html.BeginGNPanel(false))
+        {
+            //Heading
+            using (Html.BeginGNPanelHeading("Samples", ""))
+            {
+                <img class="pull-left" style="height:18px;padding-right:6px;"
+                     src="@Url.Content("~/Content/icons/samples_white.png")" />
+                <span class="badge">@Model.Count()</span>
+                <span class="pull-right" style="font-size:.9em;margin-top:-5px;">
+                    @if (!string.IsNullOrEmpty(Request["analysisRequestId"]))
+                    {
+
+                    }
+                    else if ((bool)ViewBag.CanCreate && string.IsNullOrEmpty(Request["addSampleRelationship"]))
+                    {
+                        @Html.BootstrapActionButton("Create New", "Create", "Samples", null, "text-uppercase white", "plus")
+                    }
+
+                    @if (!string.IsNullOrEmpty(Request["addSampleRelationship"]))
+                    {
+                        @Html.BootstrapActionButton("Back", "Details", "Samples", new RouteValueDictionary(new { Id = Request["GNLeftSampleId"] }), "text-uppercase white", "chevron-left")
+                    }
+
+                    @if (ViewBag.PedigreeErrorMessage != null && ViewBag.PedigreeErrorMessage != null)
+                    {
+                        <span class="bg-danger alert-danger">Error found. Re-directing. Please wait.</span>
+                        <form name="goBackToSample" id="goBackToSample" method="post" action="@Url.Action("Details", "Samples", new RouteValueDictionary(new { Id = Request["GNLeftSampleId"] }))">
+                            <input type="hidden" name="PedigreeErrorMessage" id="PedigreeErrorMessage" value="@ViewBag.PedigreeErrorMessage" />
+                        </form>
+                    }
+                </span>
+            }
+
+            //Body
+            using (Html.BeginGNPanelBody(true))
+            {
+                <script type="text/javascript">
+                    function explainNotReady(id) {
+                        $('#' + id).toggle();
+                    }
+                </script>
+
+                <div class="list-group-item bg-gn-medium-gray">
+                    @Html.Partial("_SearchListControlPartial")
+                </div>
+
+                ViewData["SearchListItemsCount"] = 0;
+                if (Model != null && Model.Count() != 0)
+                {
+                    ViewData["SearchListItemsCount"] = Model.Count();
+                    int i = 0;
+                    int m = 0;
+                    foreach (var item in Model)
+                    {
+                        m++;
+                        string leftColStyle = "col-md-2 text-center";
+                        string rightColStyle = "col-md-10";
+
+                        if (!string.IsNullOrEmpty(Request["addSampleRelationship"]))
+                        {
+                            leftColStyle = "col-md-2 text-center";
+                            rightColStyle = "col-md-10";
+                        }
+
+                        using (Html.BeginGNClickableListGroupItem(
+                            "#",
+                            (i % 2) != 0))
+                        {
+                            string onClickRowLink = "";
+                            
+                            <div id="item_@m" class="@leftColStyle">
+                                @if (!string.IsNullOrEmpty(Request["addSampleRelationship"]))
+                                {
+                                    onClickRowLink = "javascript:window.location.href='";
+                                    onClickRowLink += Url.Action("CreatePedigree", "Samples",
+                                        new { GNLeftSampleId = Request["GNLeftSampleId"], GNSampleRelationshipTypeId = Request["GNSampleRelationshipTypeId"], GNRightSampleId = item.Id });
+                                    onClickRowLink += "'";
+
+                                    @Html.BootstrapActionIcon("Create Relationship", "CreatePedigree", "Samples",
+                                        new RouteValueDictionary(new { GNLeftSampleId = Request["GNLeftSampleId"], GNSampleRelationshipTypeId = Request["GNSampleRelationshipTypeId"], GNRightSampleId = item.Id }),
+                                        "gn-green text-center flushTop", "link", size:"md", displayText: true, glyphiconRight: true)
+                                }
+                                else
+                                {
+                                    if (item.IsReady && item.CloudFiles.Count() > 0)
+                                    {
+                                        if (!string.IsNullOrEmpty(Request["GroupId"]))
+                                        {
+                                            if (((GenomeNext.Data.EntityModel.GNAnalysisRequest)ViewBag.AnalysisRequest).GNAnalysisRequestGNSamples.Count(s => s.GNSample.Id == item.Id) == 0)
+                                            {
+                                                onClickRowLink = "javascript:window.location.href='";
+                                                onClickRowLink += Url.Action("AddToAnalysisRequest", "Samples", new { id = item.Id, analysisRequestId = ViewBag.AnalysisRequestId });
+                                                onClickRowLink += "'";
+                                                @Html.BootstrapActionIconLink("", "AddToAnalysisRequest", "Samples", new RouteValueDictionary(new { id = item.Id, analysisRequestId = ViewBag.AnalysisRequestId, GroupId = Request["GroupId"] }), "btn-lg gn-green", "unchecked")
+                                            }
+                                            else
+                                            {
+                                                onClickRowLink = "javascript:window.location.href='";
+                                                onClickRowLink += Url.Action("RemoveFromAnalysisRequest", "Samples", new { id = item.Id, analysisRequestId = ViewBag.AnalysisRequestId });
+                                                onClickRowLink += "'";
+                                                @Html.BootstrapActionIconLink("", "RemoveFromAnalysisRequest", "Samples", new RouteValueDictionary(new { id = item.Id, analysisRequestId = ViewBag.AnalysisRequestId, GroupId = Request["GroupId"] }), "btn-lg gn-green", "check")
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (((GenomeNext.Data.EntityModel.GNAnalysisRequest)ViewBag.AnalysisRequest).GNAnalysisRequestGNSamples.Count(s => s.GNSample.Id == item.Id) == 0)
+                                            {
+                                                onClickRowLink = "javascript:window.location.href='";
+                                                onClickRowLink += Url.Action("AddToAnalysisRequest", "Samples", new { id = item.Id, analysisRequestId = ViewBag.AnalysisRequestId });
+                                                onClickRowLink += "'";
+                                                @Html.BootstrapActionIconLink("", "AddToAnalysisRequest", "Samples", new RouteValueDictionary(new { id = item.Id, analysisRequestId = ViewBag.AnalysisRequestId }), "btn-lg gn-green", "unchecked")
+                                            }
+                                            else
+                                            {
+                                                onClickRowLink = "javascript:window.location.href='";
+                                                onClickRowLink += Url.Action("RemoveFromAnalysisRequest", "Samples", new { id = item.Id, analysisRequestId = ViewBag.AnalysisRequestId });
+                                                onClickRowLink += "'";
+                                                @Html.BootstrapActionIconLink("", "RemoveFromAnalysisRequest", "Samples", new RouteValueDictionary(new { id = item.Id, analysisRequestId = ViewBag.AnalysisRequestId }), "btn-lg gn-green", "check")
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="glyphicon glyphicon-exclamation-sign bg-warning" title="This Sample has been marked by a user as not ready for analysis, and/or has no files associated."></span><br /><span class="small">Not ready.</span>
+                                        <a href="javascript:explainNotReady('not_ready_box_@item.Id')" style="font-size:8pt;font-weight:bold;">Why?</a><br /><span id="not_ready_box_@item.Id" style="display:none;font-size:8pt;color:gray;">This Sample has been marked by a user as not ready for analysis (also known as incomplete upload or upload in progress), and/or has no files associated.</span>
+                                    }
+                                }
+                            </div>
+                            <div class="@rightColStyle" onclick="@onClickRowLink">
+                                <div class="col-md-12 flushLeft flushRight">
+                                    <img class="pull-left"
+                                         style="height:18px;padding-right:6px;"
+                                         src="@Url.Content("~/Content/icons/samples.png")" />
+
+                                    <h5 class="flushLeft flushTop text-inline">
+                                        @item.Name
+                                    </h5>
+                                </div>
+                                @if (item.GNSampleQualifierCode.Equals("RNA"))
+                                {
+                                    <p class="small text-inline">
+                                        @item.GNSampleQualifierCode, @item.ReadTypeDescription, <b>@item.CloudFiles.Count</b> files,
+                                        <b>@item.GNAnalysisRequestGNSamples.Count()</b> previous analyses @if (!item.IsReady)
+                                        {  <span>, </span><span class="glyphicon glyphicon-exclamation-sign"></span><span>&nbsp;not ready for analysis</span>}
+                                        <br />
+                                        <span class="text-muted">Created on: @item.CreateDateTime @(item.CreatedByContact != null ? "by " + item.CreatedByContact.FullName : "")</span>
+                                        &nbsp;
+                                        <span class="text-muted">Sample ID: @item.Id</span>
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p class="small text-inline">
+                                        @item.GNSampleQualifierCode, @item.GenderDescription, @item.SampleType.Name, @item.ReadTypeDescription, <b>@item.CloudFiles.Count</b> files, <b>@item.GNSampleLeftRelationships.Count()</b> relationships on pedigree,
+                                        <b>@item.GNAnalysisRequestGNSamples.Count()</b> previous analyses @if (!item.IsReady)
+                                        {  <span>, </span><span class="glyphicon glyphicon-exclamation-sign"></span><span>&nbsp;not ready for analysis</span>}
+                                        <br />
+                                        <span class="text-muted">Created on: @item.CreateDateTime @(item.CreatedByContact != null ? "by " + item.CreatedByContact.FullName : "")</span>
+                                        &nbsp;
+                                        <span class="text-muted">Sample ID: @item.Id</span>
+                                    </p>
+                                }
+                            </div>
+                        }
+                        i++;
+
+                    }
+                }
+                else
+                {
+                    <div class="list-group-item">
+                        <h5>
+                            No Samples found.
+                        </h5>
+                    </div>
+                }
+                @Html.Partial("_SearchListMoreResultsPartial")
+            }
+        }
+
+        @if (ViewBag.PedigreeErrorMessage != null && ViewBag.PedigreeErrorMessage != null)
+        {
+            <script type="text/javascript">
+                document.getElementById('goBackToSample').submit();
+            </script>
+        }
+</div>

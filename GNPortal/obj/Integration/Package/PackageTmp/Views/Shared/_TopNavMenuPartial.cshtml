@@ -1,0 +1,208 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.EnableSampleIndexImport = ((GenomeNext.Portal.Controllers.BaseController)this.ViewContext.Controller).EvalEnableSampleIndexImport();
+}
+<div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle border-gn-light-gray" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar bg-gn-light-gray"></span>
+            <span class="icon-bar bg-gn-light-gray"></span>
+            <span class="icon-bar bg-gn-light-gray"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse">
+        @if (Request.IsAuthenticated)
+        {
+            GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+                @Html.AntiForgeryToken()
+            }
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="@Url.Action("Index", "Home")" class="text-uppercase white gn-green-hover">
+                        <img src="@Url.Content("~/Content/icons/dashboard_white.png")" width="25" height="25"
+                             class="topNavIconImg" title="Dashboard" alt="Dashboard" />
+                        <span class="hidden-sm small">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Teams")" class="text-uppercase white gn-green-hover">
+                        <img src="@Url.Content("~/Content/icons/teams_white.png")" width="25" height="25"
+                             class="topNavIconImg" title="Teams" alt="Teams" />
+                        <span class="hidden-sm small">Teams</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Projects")" class="text-uppercase white gn-green-hover">
+                        <img src="@Url.Content("~/Content/icons/projects_white.png")" width="25" height="25"
+                             class="topNavIconImg" title="Projects" alt="Projects" />
+                        <span class="hidden-sm small">Projects</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "AnalysisRequests")" class="text-uppercase white gn-green-hover">
+                        <img src="@Url.Content("~/Content/icons/analyses_white.png")" width="25" height="25"
+                             class="topNavIconImg" title="Analysis" alt="Analysis" />
+                        <span class="hidden-sm small">Analysis</span>
+                    </a>
+                </li>
+                @if (!contactForUser.IsInRole("COLLABORATOR"))
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "Samples")" class="text-uppercase white gn-green-hover">
+                            <img src="@Url.Content("~/Content/icons/samples_white.png")" width="25" height="25"
+                                 class="topNavIconImg" title="Samples" alt="Samples" />
+                            <span class="hidden-sm small">Samples</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                @if (User.IsInRole("GN_ADMIN")
+                    || contactForUser.IsInRole("ORG_MANAGER"))
+                {
+                    <li class="hidden-xs">
+                        <a href="@Url.Action("MyBillingBuyCredits", "Account")" class="text-uppercase white gn-green-hover text-nowrap">
+                            <img src="@Url.Content("~/Content/icons/billing_white.png")" width="25" height="25"
+                                 class="topNavIconImg"
+                                 style="vertical-align:top;float:left;"
+                                 title="Available Credits" alt="Available Credits" />
+                            <span class="hidden-sm hidden-md flushTop text-padded-left small" style="line-height:15px;float:left;">
+                                <span class="hidden-xs flushTop">
+                                    <span class="text-nowrap small">AVAILABLE CREDITS</span>
+                                    @{
+                    var remainingBudget = 0.0;
+                    if (ViewBag.MyRemainingBudget != null)
+                    {
+                        remainingBudget = ViewBag.MyRemainingBudget;
+                    }
+                                    }
+                                    <span style="display:block">@(string.Format("{0:c}", (double)remainingBudget))</span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="hidden-sm hidden-md hidden-lg">
+                        <a href="@Url.Action("MyBillingBuyCredits", "Account")" class="text-uppercase white gn-green-hover text-nowrap">
+                            <img src="@Url.Content("~/Content/icons/billing_white.png")" width="25" height="25"
+                                 class="topNavIconImg"
+                                 title="Available Credits" alt="Available Credits" />
+                            <span>
+                                AVAILABLE CREDITS&nbsp;=&nbsp;
+                                @{
+                    remainingBudget = 0.0;
+                    if (ViewBag.MyRemainingBudget != null)
+                    {
+                        remainingBudget = ViewBag.MyRemainingBudget;
+                    }
+                                }
+
+                                @(string.Format("{0:c}", (double)remainingBudget))
+                            </span>
+                        </a>
+                    </li>
+                }
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle text-uppercase white gn-green-hover" data-toggle="dropdown">
+                        <img src="@Url.Content("~/Content/icons/profile_white.png")" width="25" height="25"
+                             class="topNavIconImg" title="My Account" alt="My Account" />
+                        <span class="hidden-sm hidden-md hidden-lg">My Account</span>
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li style="padding:5px 15px 5px 15px;white-space:nowrap;">
+                            <a id="manageAccountLink" href="@Url.Action("MyOrganization", "Account")">
+                                <span class="glyphicon glyphicon-globe gn-green"></span>
+                                My Organization
+                            </a>
+                        </li>
+                        <li style="padding:5px 15px 5px 15px;white-space:nowrap;">
+                            <a id="manageAccountLink" href="@Url.Action("MyProfile", "Account")">
+                                <span class="glyphicon glyphicon-user gn-green"></span>
+                                My Profile
+                            </a>
+                        </li>
+                        <li style="padding:5px 15px 5px 15px;white-space:nowrap;">
+                            <a id="manageAccountLink" href="@Url.Action("MyCredentials", "Account")">
+                                <span class="glyphicon glyphicon-lock gn-green"></span>
+                                My Credentials
+                            </a>
+                        </li>
+                        @if ((bool)ViewBag.EnableSampleIndexImport)
+                        {
+                            <li style="padding:5px 15px 5px 15px;white-space:nowrap;">
+                                <a id="manageAccountLink" href="@Url.Action("MyImports", "BulkImport")">
+                                    <span class="glyphicon glyphicon-save gn-green"></span>
+                                    My Sample Imports
+                                </a>
+                            </li>
+                        }
+                        @if (contactForUser.IsInRole("ORG_MANAGER") || User.IsInRole("GN_ADMIN"))
+                        {
+                            <li style="padding:5px 15px 5px 15px;white-space:nowrap;">
+                                <a id="manageAccountLink" href="@Url.Action("MyBillingOverview", "Account")">
+                                    <span class="glyphicon glyphicon-usd gn-green"></span>
+                                    My Billing
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+                @if (User.IsInRole("GN_ADMIN"))
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "Admin")" class="text-uppercase white gn-green-hover">
+                            <img src="@Url.Content("~/Content/icons/admin_white.png")" width="25" height="25"
+                                 class="topNavIconImg" title="Admin" alt="Admin" />
+                            <span class="hidden-sm hidden-md hidden-lg">Admin</span>
+                        </a>
+                    </li>
+                }
+                <li>
+                    <a id="helpLink" href="http://support.genomenext.com" target="_blank" class="text-uppercase white gn-green-hover">
+                        <img src="@Url.Content("~/Content/icons/help_white.png")" width="25" height="25"
+                             class="topNavIconImg" title="Help" alt="Help" />
+                        <span class="hidden-sm hidden-md hidden-lg">Help</span>
+                    </a>
+                </li>
+                <li>
+                    <a id="logoutLink" href="#" class="text-uppercase white gn-green-hover">
+                        <img src="@Url.Content("~/Content/icons/logout_white.png")" width="25" height="25"
+                             class="topNavIconImg" title="Logout" alt="Logout" />
+                        <span class="hidden-sm hidden-md hidden-lg">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        }
+        else
+        {
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a id="regLink" href="@Url.Action("Account", "Register")" class="text-uppercase white gn-green-hover">
+                        <img src="@Url.Content("~/Content/icons/register_white.png")" width="25" height="25"
+                             class="topNavIconImg" />
+                        <span class="small">Register</span>
+                    </a>
+                </li>
+                <li>
+                    <a id="loginLink" href="@Url.Action("Login", "Account")" class="text-uppercase white gn-green-hover">
+                        <img src="@Url.Content("~/Content/icons/login_white.png")" width="25" height="25"
+                             class="topNavIconImg" />
+                        <span class="small">Login</span>
+                    </a>
+                </li>
+                <li>
+                    <a id="helpLink" href="http://support.genomenext.com" target="_blank" class="text-uppercase white gn-green-hover">
+                        <img src="@Url.Content("~/Content/icons/help_white.png")" width="25" height="25"
+                             class="topNavIconImg" title="Help" alt="Help" />
+                        <span class="small">Help</span>
+                    </a>
+                </li>
+            </ul>
+        }
+    </div>
+</div>

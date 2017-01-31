@@ -1,0 +1,1 @@
+ALTER TABLE gn.GNNotificationTopicSubscribers ADD [IsSubscribed] nchar(1)  NOT NULL DEFAULT 'Y';

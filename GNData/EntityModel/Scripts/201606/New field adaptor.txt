@@ -1,0 +1,35 @@
+alter table gn.GNAnalysisRequests add [GNAnalysisAdaptorCode] nvarchar(30)  NULL
+
+
+
+-- Creating table 'GNAnalysisAdaptors'
+CREATE TABLE [gn].[GNAnalysisAdaptors] (
+    [Code] nvarchar(30)  NOT NULL,
+    [Name] nvarchar(100)  NOT NULL,
+    [CreatedBy] uniqueidentifier  NOT NULL,
+    [CreateDateTime] datetime  NOT NULL
+);
+GO
+
+
+-- Creating primary key on [Code] in table 'GNAnalysisAdaptors'
+ALTER TABLE [gn].[GNAnalysisAdaptors]
+ADD CONSTRAINT [PK_GNAnalysisAdaptors]
+    PRIMARY KEY CLUSTERED ([Code] ASC);
+GO
+
+
+-- Creating foreign key on [GNAnalysisAdaptorCode] in table 'GNAnalysisRequests'
+ALTER TABLE [gn].[GNAnalysisRequests]
+ADD CONSTRAINT [FK_GNAnalysisAdaptorGNAnalysisRequest]
+    FOREIGN KEY ([GNAnalysisAdaptorCode])
+    REFERENCES [gn].[GNAnalysisAdaptors]
+        ([Code])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_GNAnalysisAdaptorGNAnalysisRequest'
+CREATE INDEX [IX_FK_GNAnalysisAdaptorGNAnalysisRequest]
+ON [gn].[GNAnalysisRequests]
+    ([GNAnalysisAdaptorCode]);
+GO

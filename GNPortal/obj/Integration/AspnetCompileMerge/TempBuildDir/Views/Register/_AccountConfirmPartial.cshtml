@@ -1,0 +1,99 @@
+﻿@model GenomeNext.Portal.Models.RegisterAccountViewModel
+@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/register.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/register_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/register_white_green.png";
+    ViewData["ModuleHasActionBar"] = true;
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+}
+
+@section ModuleIndexHeadingActionBar{
+}
+
+@section ModuleIndexContent{
+@using (Html.BeginForm("AccountSubmit", "Register", FormMethod.Post, new { @id="AccountSubmitForm" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.IsExistingUser)
+
+    <div class="panel form-horizontal bg-white">
+
+        <div class="panel-body">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="well well-sm reg-left-info">
+
+                        <h3 class="col-md-12 text-center gn-green reg-left-info-heading">
+                            <span class="glyphicon glyphicon-th"></span>
+                            Organization
+                        </h3>
+
+                        @Html.BootstrapRowSpacer()
+
+                        @Html.FormFieldFor(model => model.OrgName, false)
+                        @Html.FormFieldFor(model => model.UTCOffsetDescription, false)
+                        @Html.FormFieldFor(model => model.Phone, false)
+                        @Html.FormFieldFor(model => model.Fax, false)
+                        @Html.FormFieldFor(model => model.Website, false)
+                        @Html.FormFieldFor(model => model.StreetAddress1, false)
+                        @Html.FormFieldFor(model => model.StreetAddress2, false)
+                        @Html.FormFieldFor(model => model.City, false)
+                        @Html.FormFieldFor(model => model.State, false)
+                        @Html.FormFieldFor(model => model.Zip, false)
+
+                        @Html.BootstrapRowSpacer()
+                        @Html.BootstrapRowSpacer()
+                        @Html.BootstrapRowSpacer()
+                        @Html.BootstrapRowSpacer()
+                        @Html.BootstrapRowSpacer()
+                        @Html.BootstrapRowSpacer()
+                        @Html.BootstrapRowSpacer()
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <h3 class="col-md-12 text-center gn-green reg-right-info-heading">
+                        <span class="glyphicon glyphicon-user"></span>
+                        Account Owner
+                    </h3>
+
+                    @Html.BootstrapRowSpacer()
+
+                    @Html.FormFieldFor(model => model.Title, false)
+                    @Html.FormFieldFor(model => model.FirstName, false)
+                    @Html.FormFieldFor(model => model.LastName, false)
+                    @Html.FormFieldFor(model => model.Email, false)
+                    @Html.HiddenFor(model => model.InviteCode, false)
+                    @Html.FormFieldFor(model => model.TermsAndConditionsAccepted, false)
+                    @Html.FormFieldFor(model => model.PrivacyPolicyAccepted, false)
+                    @Html.FormFieldFor(model => model.SignUpForNewsAndProducts, false)
+
+                    @Html.FormFieldFor(model => model.Password)
+                    @Html.FormFieldFor(model => model.PasswordConfirm)
+
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-footer clearfix bg-gn-light-gray">
+            <button id="AccountConfirmBackBtn" class="btn bg-gn-dark-gray white pull-left">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Back
+            </button>
+            <button id="AccountConfirmSubmitBtn" type="submit" class="btn bg-gn-green white pull-right">
+                Register&nbsp;
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+        </div>
+    </div>
+}
+}

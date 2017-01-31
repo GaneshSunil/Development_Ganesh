@@ -1,0 +1,105 @@
+﻿@model GenomeNext.Portal.Models.RegisterContactViewModel
+@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/register.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/register_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/register_white_green.png";
+    ViewData["ModuleHasActionBar"] = true;
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "User Registration - Get Started";
+}
+
+@section scripts{
+
+    @Html.Partial("_TermsConditionsModalPartial_Script")
+    @Html.Partial("_PrivacyPolicyModalPartial_Script")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            InitTermsAndConditions();
+            InitPrivacyPolicy();
+
+            $("form").submit(function (e) {
+
+                if (termsAndConditionsAccepted == false) {
+                    e.preventDefault();
+                    $(this).prop("checked", false);
+                    ShowTermsAndConditionsModal();
+                    return false;
+                }
+
+                if (privacyPolicyAccepted == false) {
+                    e.preventDefault();
+                    $(this).prop("checked", false);
+                    ShowPrivacyPolicyModal();
+                    return false;
+                }
+            });
+        });
+
+    </script>
+}
+
+@section ModuleIndexHeadingActionBar{
+}
+
+@section ModuleIndexContent{
+
+    @using (Html.BeginForm("ContactConfirm", "Register", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.OrgId)
+        @Html.HiddenFor(model => model.ContactId)
+
+        <div class="panel form-horizontal bg-white">
+
+            <div class="panel-body">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        <div class="well well-sm reg-left-info">
+
+                            @Html.FormFieldFor(model => model.OrgName, false)
+                            @Html.FormFieldFor(model => model.Title)
+                            @Html.FormFieldFor(model => model.FirstName)
+                            @Html.FormFieldFor(model => model.LastName)
+                            @Html.FormFieldFor(model => model.Email)
+                            @Html.Hidden("TermsAndConditionsAccepted", true)
+                            @Html.Hidden("PrivacyPolicyAccepted", true)
+                            @Html.FormFieldFor(model => model.SignUpForNewsAndProducts)
+
+                            @Html.Hidden("Password", "123456")
+                            @Html.Hidden("PasswordConfirm", "123456")
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        @Html.FormFieldFor(model => model.Phone)
+                        @Html.FormFieldFor(model => model.StreetAddress1)
+                        @Html.FormFieldFor(model => model.StreetAddress2)
+                        @Html.FormFieldFor(model => model.City)
+                        @Html.FormFieldFor(model => model.State)
+                        @Html.FormFieldFor(model => model.Zip)
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel-footer clearfix bg-gn-light-gray text-right">
+                @Html.BootstrapFormSaveButton("Continue", "chevron-right", "bg-gn-green white", true)
+            </div>
+        </div>
+    }
+
+    @Html.Partial("_TermsConditionsModalPartial")
+    @Html.Partial("_PrivacyPolicyModalPartial")
+}

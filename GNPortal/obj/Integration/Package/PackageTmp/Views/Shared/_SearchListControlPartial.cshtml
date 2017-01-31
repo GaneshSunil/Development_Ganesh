@@ -1,0 +1,20 @@
+﻿<div class="input-group" style="padding-bottom:10px;">
+    <input id="searchText" type="text" class="form-control" placeholder="Search @ViewBag.Title">
+    <div class="input-group-btn">
+        <button id="searchClear" class="btn bg-gn-green" type="button">
+            <span class="small text-uppercase white">Reset</span>
+        </button>
+        <button type="button" class="btn bg-gn-green dropdown-toggle" data-toggle="dropdown" style="border-radius:0px">
+            <span id="searchTextOption" class="white"></span><span class="caret white"></span>
+        </button>
+        <ul id="searchTextOptionList" class="dropdown-menu dropdown-menu-right" role="menu">
+            @foreach (var searchTextOption in (IEnumerable<string>)ViewData["SearchTextOptions"])
+            {
+                <li><a href="#">@searchTextOption</a></li>
+            }
+        </ul>
+        <button id="searchBtn" class="btn bg-gn-green" type="button">
+            <span class="glyphicon glyphicon-search white"></span>
+        </button>
+    </div>
+</div>

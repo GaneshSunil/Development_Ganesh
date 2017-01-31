@@ -1,0 +1,42 @@
+﻿@model GenomeNext.Data.EntityModel.GNGene
+
+@{
+    ViewBag.Title = "Edit Gene";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h2>
+        <span class="glyphicon glyphicon-envelope gn-green"></span>
+        @ViewBag.Title
+
+        <span class="pull-right">
+            @Html.BootstrapActionButton("Back to List", "Index", "Genes", null, "info", "chevron-left")
+            @Html.BootstrapFormSaveButton()
+        </span>
+    </h2>
+
+    @Html.BootstrapRowSpacer()
+    @Html.HiddenFor(model => model.CreatedBy)
+    @Html.HiddenFor(model => model.CreateDateTime)
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.FormFieldFor(model => model.Id, false)
+        @Html.FormFieldFor(model => model.GeneCode)
+        @Html.FormFieldFor(model => model.Chromosome)
+        @Html.FormFieldFor(model => model.Isoform)
+        @Html.FormFieldFor(model => model.CytoBand)
+
+        @{
+  //  ViewData["ViewMode"] = "Edit";
+    //  ViewData["CreatedBy"] = Model.CreatedByContact;
+  //  ViewData["CreateDateTime"] = Model.CreateDateTime;
+  //  @Html.Partial("_AuditModelPartial", null, ViewData)
+        }
+    </div>
+}
+

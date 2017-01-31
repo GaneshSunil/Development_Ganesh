@@ -1,0 +1,83 @@
+﻿@model IEnumerable<GenomeNext.Data.EntityModel.GNBillingInvoice>
+
+@{
+    ViewBag.Title = "Invoices";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-euro gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @if (!string.IsNullOrEmpty(Request["purchaseOrderId"]))
+        {
+            @Html.BootstrapActionButton("Back to Purchase Order", "Edit", "PurchaseOrders", new RouteValueDictionary(new { id = Request["purchaseOrderId"] }), "info", "plus")
+        }
+        else
+        {
+            @Html.BootstrapActionButton("Create New", "Create", "BillingInvoices", null, "info", "plus")
+        }
+    </span>
+</h2>
+
+
+@Html.BootstrapRowSpacer()
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-gn">
+        <tr>
+            <th class="col-md-2">
+                Account
+            </th>
+            <th class="col-md-3">
+                Invoice #
+            </th>
+            <th>
+                Invoice Date
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th class="col-md-3">
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="col-md-3">
+                    @Html.DisplayFor(modelItem => item.GNBillingAccount.GNOrganization.Name)
+                </td>
+                <td>
+                    <strong>@Html.DisplayFor(modelItem => item.ExternalInvoiceNum)</strong>
+                    <br />
+                    <small>@Html.DisplayFor(modelItem => item.Id)</small>
+                </td>
+                <td class="col-md-2">
+                    @Html.DisplayFor(modelItem => item.InvoiceStartDate)
+                    -
+                    @Html.DisplayFor(modelItem => item.InvoiceEndDate)
+                    <br />
+                    @Html.DisplayNameFor(model => model.NetTerms) :  @Html.DisplayFor(modelItem => item.NetTerms)
+                </td>
+                <td class="col-md-2">
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td class="col-md-3">
+                    @if (!string.IsNullOrEmpty(Request["purchaseOrderId"]))
+                    {
+                        @Html.BootstrapActionButton(null, "AddToInvoiceToPurchaseOrder", "PurchaseOrders", new RouteValueDictionary(new { invoiceId = item.Id, purchaseOrderId = Request["purchaseOrderId"] }), "success", "plus", "sm", false, "center", false)
+                    }
+                    else
+                    {
+                        @Html.BootstrapActionButton("View", "Details", "BillingInvoices", new RouteValueDictionary(new { id = item.Id }), "success", "th-large", "sm")
+                        @Html.Raw("&nbsp;");
+                        @Html.BootstrapActionButton("Edit", "Edit", "BillingInvoices", new RouteValueDictionary(new { id = item.Id }), "warning", "cog", "sm")
+                        @Html.Raw("&nbsp;");
+                        @Html.BootstrapActionButton("Delete", "Delete", "BillingInvoices", new RouteValueDictionary(new { id = item.Id }), "danger", "trash", "sm")
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

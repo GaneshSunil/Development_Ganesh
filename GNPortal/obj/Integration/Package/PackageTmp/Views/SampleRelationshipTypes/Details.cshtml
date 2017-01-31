@@ -1,0 +1,67 @@
+﻿@model GenomeNext.Data.EntityModel.GNSampleRelationshipType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-tint gn-green"></span>
+    @ViewBag.Title
+
+    <span class="pull-right">
+        @Html.BootstrapActionButton("Back to List", "Index", "SampleRelationshipTypes", null, "info", "chevron-left")
+        @Html.BootstrapActionButton("Edit", "Edit", "SampleRelationshipTypes", new RouteValueDictionary(new { id = Model.Id }), "warning", "cog")
+    </span>
+</h2>
+@Html.BootstrapRowSpacer()
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.BootstrapRowSpacer()
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Gender)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MaxRelationships)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MaxRelationships)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedBy)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreateDateTime)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CreateDateTime)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+}

@@ -1,0 +1,8 @@
+﻿@model GenomeNext.Portal.Models.RegisterContactViewModel
+@{
+    ViewBag.Title = "User Registration - Confirm";
+}
+@Html.Partial("_ContactConfirmPartial", Model)
+@section scripts{
+    @Html.Partial("_ContactConfirmPartial_Script", Model)
+}

@@ -1,0 +1,59 @@
+﻿@model GenomeNext.Data.EntityModel.AWSResource
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>
+    <span class="glyphicon glyphicon-cloud gn-green"></span>
+    @ViewBag.Title
+    <span class="pull-right">
+        @if (!string.IsNullOrEmpty(Request["organizationId"]))
+        {
+            @Html.BootstrapActionButton("Back to List", "Index", "AWSResources", new RouteValueDictionary(new { organizationId = Request["organizationId"] }), "info", "chevron-left")
+            @Html.Raw("&nbsp;")
+            @Html.BootstrapActionButton("Edit", "Edit", "AWSResources", new RouteValueDictionary(new { id = Model.Id, organizationId = Request["organizationId"] }), "warning", "cog", null)
+        }
+        else
+        {
+            @Html.BootstrapActionButton("Back to List", "Index", "AWSResources", null, "info", "chevron-left")
+            @Html.Raw("&nbsp;")
+            @Html.BootstrapActionButton("Edit", "Edit", "AWSResources", new RouteValueDictionary(new { id = Model.Id }), "warning", "cog", null)
+        }
+    </span>
+</h2>
+@Html.BootstrapRowSpacer()
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.BootstrapRowSpacer()
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ARN)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ARN)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AWSConfig.AWSAccessKeyId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AWSConfig.AWSAccessKeyId)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AWSResourceType.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AWSResourceType.Name)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+}

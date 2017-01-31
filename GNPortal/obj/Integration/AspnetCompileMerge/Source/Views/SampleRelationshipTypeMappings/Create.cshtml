@@ -1,0 +1,51 @@
+﻿@model GenomeNext.Data.EntityModel.GNSampleRelationshipTypeMapping
+@{
+    ViewBag.Title = "Create New Sample Relationship Type Mapping";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h2>
+        <span class="glyphicon glyphicon-tint gn-green"></span>
+        @ViewBag.Title
+        <span class="pull-right">
+            @Html.BootstrapActionButton("Back to List", "Index", "SampleRelationshipTypeMappings", null, "info", "chevron-left")
+            @Html.BootstrapFormSaveButton("Create")
+        </span>
+    </h2>
+
+    @Html.BootstrapRowSpacer()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.NameLeftRelationship, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">                
+                @Html.DropDownList("GNSampleRelationshipTypes", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NameLeftRelationship, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GenderRightRelationship, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.GenderRightRelationship, "F")
+                @Html.LabelFor(model => model.GenderRightRelationship, "Female")
+
+                @Html.RadioButtonFor(model => model.GenderRightRelationship, "M")
+                @Html.LabelFor(model => model.GenderRightRelationship, "Male")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NameRightRelationship, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("GNSampleRelationshipTypes", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NameRightRelationship, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+}

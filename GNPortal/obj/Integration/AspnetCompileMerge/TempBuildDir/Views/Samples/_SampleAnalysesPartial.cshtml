@@ -1,0 +1,169 @@
+﻿@model GenomeNext.Data.EntityModel.GNSample
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+    ViewBag.CanExportAnalysisReport = ((GenomeNext.Portal.Controllers.BaseController)this.ViewContext.Controller).EvalCanExportAnalysisReport();        
+}
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Analyses", "indent-left"))
+    {
+        <span class="badge">@Model.GNAnalysisRequestGNSamples.Count</span>
+        <span class="pull-right">
+            @if ((bool)ViewBag.CanExportAnalysisReport)
+            {
+                @Html.BootstrapActionIconLink("Export Analysis Report", "ExportAnalysisReport", "AnalysisRequests", new RouteValueDictionary(new { sampleId = Model.Id }), "white", "list-alt", null, false, false)
+            }
+            @if (Model.CanEdit && Model.CloudFiles.Count > 0 && Model.IsReady)
+            {
+                <span>&nbsp;</span>
+                @Html.BootstrapActionIconLink("New Analysis", "Create", "AnalysisRequests", new RouteValueDictionary(new { sampleId = Model.Id }), "white", "plus", null, false, false)
+            }
+        </span>
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody(true))
+    {                
+        if(Model.CloudFiles.Count == 0 || !Model.IsReady)
+        {
+            <div class="bg-danger alert-danger" style="padding:10px;">
+                <span>
+                    To enable the "Add" button, please complete the set up of the Sample by uploading Files and marking the Sample as "Ready for Analysis".
+                </span>
+            </div>
+        }
+
+        <script language="javascript">
+            function showBox(id) {
+                $('#' + id + '_box').toggle();
+                if (document.getElementById(id + '_box').style.display == 'none') {
+                    document.getElementById(id+'_link').innerHTML = "<span class='glyphicon glyphicon-plus'></span>";
+                }
+                else {
+                    document.getElementById(id + '_link').innerHTML = "<span class='glyphicon glyphicon-minus'></span>";
+                }
+            }
+        </script>
+
+        if (Model.GNAnalysisRequestGNSamples != null && Model.GNAnalysisRequestGNSamples.Count != 0)
+        {
+            int i = 0;
+            
+            foreach (var item in Model.GNAnalysisRequestGNSamples.OrderByDescending(a => a.CreateDateTime))
+            {
+                var currentProgressBG = "";
+                if (item.GNAnalysisRequest.AnalysisResult != null && !item.GNAnalysisRequest.AnalysisResult.Success)
+                {
+                    currentProgressBG = "alert alert-danger";
+                }
+                <div class="list-group-item clearfix">
+                    <h5 class="flushLeft flushTop"><span class="glyphicon glyphicon-indent-left"></span> 
+                        <span class="@currentProgressBG" style="padding:4px;">
+                            <a href="@Url.Action("Details", "AnalysisRequests", new { id = item.GNAnalysisRequest.Id, sampleId = item.GNSampleId })">@item.GNAnalysisRequest.Description (@(item.GNAnalysisRequest.CurrentProgress + "%") complete)</a>
+                        </span>
+                    </h5>
+
+                    @if (item.GNAnalysisRequest.AnalysisResult != null && item.GNAnalysisRequest.AnalysisResult.Success)
+                    {
+                    <div class="sampleAnalysisFiles">
+                        <p class="small text-inline">
+                            <span class="text-muted text-uppercase"><b>@((item.GNAnalysisRequest.AnalysisResult != null) ? item.GNAnalysisRequest.AnalysisResult.ResultFiles.Count : 0)</b></span> Result Files
+                        </p>
+                        <p class="small text-inline">
+                            @Html.Raw((item.GNAnalysisRequest.RequestDateTime.HasValue) ? " received on <span class=\"text-muted text-uppercase\">" + TimeZoneInfo.ConvertTime(item.GNAnalysisRequest.RequestDateTime.Value, contactForUser.GNOrganization.OrgTimeZoneInfo).ToShortDateString() + "</span>" : "")
+                            <a id="@(item.GNAnalysisRequestId+"_link")" href="javascript:showBox('@item.GNAnalysisRequestId')"><span class="glyphicon glyphicon-plus"></span></a>
+                        </p>
+                        <div id="@(item.GNAnalysisRequestId+"_box")" style="display:none;">
+                            <p class="small text-inline">
+                                @foreach (var file in item.GNAnalysisRequest.AnalysisResult.ResultFiles.Where(a => !a.CloudFileCategory.Name.Contains("Annotation")).OrderBy(b => b.CreateDateTime))
+                                {
+                                <p class="small text-inline" style="font-size:10px!important;">
+                                    @{
+                                    string description = file.Description.Substring(file.Description.LastIndexOf('/') + 1);
+                                    }
+                                    <span>
+                                        &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-file"></span>&nbsp;@description (@file.CloudFileCategory.Name) <b>@(Math.Round(file.FileSize / (1024.0 * 1024.0), 2) + " MB")</b>
+                                        @Html.BootstrapActionIconLink("Download", "Download", "CloudFiles", new RouteValueDictionary(new { id = file.Id, analysisRequestId = item.GNAnalysisRequest.AnalysisResult.AnalysisRequest.Id }), "black", "cloud-download", "sm", false, false)
+                                    </span>
+                                    <br />
+                                </p>
+                                }
+
+                                @{
+                                Dictionary<string, string> boxes = new Dictionary<string, string>();
+                                List<string> patterns = new List<string>();
+                                string requestName = item.GNAnalysisRequest.Description + "_";
+
+                                foreach (var file in item.GNAnalysisRequest.AnalysisResult.ResultFiles.Where(a => a.CloudFileCategory.Name.Contains("Annotation")).OrderByDescending(b => b.CreateDateTime))
+                                {
+                                    string filename = file.Description.Substring(file.Description.LastIndexOf('/') + 1);
+
+                                    string pattern1 = filename;
+                                    string pattern2 = filename;
+                                    try
+                                    {
+                                        pattern1 = filename.Substring(0, (requestName.Length) + 13);
+                                        pattern2 = filename.Substring(0, (requestName.Length) + 16);
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        pattern1 = filename.Substring(0, filename.IndexOf('.'));
+                                        pattern2 = filename.Substring(0, filename.IndexOf('.'));
+                                    }
+
+                                    if (!patterns.Exists(a => a.Equals(pattern1)))
+                                    {
+                                        patterns.Add(pattern1);
+                                        string createdatetime = TimeZoneInfo.ConvertTime((DateTime)file.CreateDateTime, contactForUser.GNOrganization.OrgTimeZoneInfo).ToString();
+                                        boxes.Add(pattern1, createdatetime);
+                                    }
+                                }
+
+                                foreach (KeyValuePair<string, string> entry in boxes)
+                                {
+                                    //build
+                                    <br />
+                                    <p class="small text-inline">
+                                        @Html.Raw("Annotation files created on <span class=\"text-muted text-uppercase\">" + entry.Value + "</span>")
+                                        <a id="@(entry.Key + "_link")" href="javascript:showBox('@entry.Key')"><span class="glyphicon glyphicon-plus"></span></a>
+                                    </p>
+
+                                    <div id="@(entry.Key + "_box")" class="flushLeft flushTop" style="display:none;">
+
+                                        @foreach (var file in item.GNAnalysisRequest.AnalysisResult.ResultFiles.Where(a => a.CloudFileCategory.Name.Contains("Annotation") && a.Description.Contains(entry.Key)).OrderByDescending(b => b.CreateDateTime))
+                                        {
+                                            <p class="small text-inline" style="font-size:10px!important;">
+                                                @{
+                                            string description = file.Description.Substring(file.Description.LastIndexOf('/') + 1);
+                                                }
+                                                <span>
+                                                    &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-file"></span>&nbsp;@description (@file.CloudFileCategory.Name) <b>@(Math.Round(file.FileSize / (1024.0 * 1024.0), 2) + " MB")</b>
+                                                    @Html.BootstrapActionIconLink("Download", "Download", "CloudFiles", new RouteValueDictionary(new { id = file.Id, analysisRequestId = item.GNAnalysisRequest.AnalysisResult.AnalysisRequest.Id }), "black", "cloud-download", "sm", false, false)
+                                                </span>
+                                                <br />
+                                            </p>
+                                        }
+
+                                    </div>
+                                }
+                                }
+                                </p>
+                            </div>
+                        </div>
+                        }
+                </div>
+
+                i++;
+            }
+        }
+        else
+        {
+            <div class="list-group-item">
+                <h5>
+                    Analyses have not been created for this sample.
+                </h5>
+            </div>
+        }
+    }
+}

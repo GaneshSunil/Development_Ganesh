@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["ModuleIconPath"] = "~/Content/icons/organization.png";
+    ViewData["ModuleIconWhitePath"] = "~/Content/icons/organization_white.png";
+    ViewData["ModuleIconWhiteGreenPath"] = "~/Content/icons/organization_white_green.png";
+    ViewData["ModuleHasActionBar"] = true;
+
+    Layout = "~/Views/Shared/_ModuleIndexLayout.cshtml";
+
+    ViewBag.Title = "Activity Not Allowed for Account";
+
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+}
+
+@section scripts{
+    @Html.Partial("~/Views/Error/_ErrorBackBtn_Script.cshtml")
+}
+
+@section ModuleIndexHeadingActionBar{
+    @Html.Partial("~/Views/Error/_ErrorBackBtn.cshtml")
+}
+
+@section ModuleIndexContent{
+
+<div class="col-md-12 panel form-horizontal bg-white">
+
+    @Html.BootstrapRowSpacer()
+
+    <div class="row">
+        <div class="col-md-12 text-padded">
+            <div class="alert alert-warning text-uppercase">
+                @if (contactForUser.IsInRole("ORG_MANAGER"))
+                {
+                    <span>
+                        This Organization Account requires a valid Payment Method with Available Funds and/or has a Balance higher than the Allowed Limit to perform this action.
+                        Please visit @Html.ActionLink("My Billing", "MyBillingOverview", "Account").
+                    </span>
+                }
+                else
+                {
+                    <span>
+                        This Organization Account requires a valid Payment Method with Available Funds to perform this action.
+                        Please contact your Organization's account manager to resolve this issue.
+                    </span>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+
+}

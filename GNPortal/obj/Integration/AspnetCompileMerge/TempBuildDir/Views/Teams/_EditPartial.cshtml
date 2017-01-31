@@ -1,0 +1,63 @@
+﻿@model GenomeNext.Data.EntityModel.GNTeam
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    using (Html.BeginGNPanel())
+    {
+        //Heading
+        using (Html.BeginGNPanelHeading("Team Info", "info-sign"))
+        {
+            if (Model.CanDelete)
+            {
+                <span class="pull-right">
+                    @Html.BootstrapActionIconLink("Delete", "Delete", "Teams", new RouteValueDictionary(new { id = Model.Id }), "white", "trash", null)
+                </span>
+            }
+        }
+
+        //Body
+        using (Html.BeginGNPanelBody())
+        {
+            <div class="form-horizontal col-md-12">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.CreatedBy)
+                @Html.HiddenFor(model => model.CreateDateTime)
+
+                @Html.FormFieldFor(model => model.OrganizationId,false,null,4,8,true,"Organization")
+                @Html.FormFieldFor(model => model.Name)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GNContactId, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownList("GNContactId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.GNContactId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @{
+                    ViewData["ViewMode"] = "Edit";
+                    ViewData["CreateDateTime"] = Model.CreateDateTime;
+                    ViewData["LeftColWidth"] = "4";
+                    ViewData["RightColWidth"] = "8";
+                }
+                @Html.Partial("_AuditModelPartial", Model, ViewData)
+
+            </div>
+        }
+
+        //Footer
+        using (Html.BeginGNPanelFooter())
+        {
+            <div class="pull-left">
+                @Html.BootstrapActionButton("Cancel", "Details", "Teams", new RouteValueDictionary(new { id = Model.Id }), "bg-gn-medium-gray white", "remove")
+            </div>
+            <div class="pull-right">
+                @Html.BootstrapFormSaveButton("Save", "floppy-disk", "bg-gn-green white")
+            </div>
+        }
+    }
+}

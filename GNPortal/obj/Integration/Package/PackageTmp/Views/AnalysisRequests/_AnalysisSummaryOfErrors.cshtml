@@ -1,0 +1,61 @@
+﻿@model GenomeNext.Data.EntityModel.GNAnalysisRequest
+
+
+@using (Html.BeginGNPanel())
+{
+    //Heading
+    using (Html.BeginGNPanelHeading("Summary of Errors", "exclamation-sign"))
+    {
+        
+    }
+
+    //Body
+    using (Html.BeginGNPanelBody())
+    {
+        <div style="color:#d9534f;">
+            The system has detected one or more problems with the setup of the analysis and/or the sample(s) selected. You need to address each problem in order to enable the launch button.
+       </div>
+
+        <ul style="color:#d9534f;">
+            @if (!Model.IfTumorNormalIsReady)
+            {
+                <li>The Analysis needs one Normal Sample and one Tumor Sample associated before it can be launched.</li>
+            }
+            
+            @if (!Model.IfRnaIsReady)
+            {
+                <li>
+                    The Analysis is not ready to launch. Please review that:
+                    <ul>
+                        <li>At least two groups have been created</li>
+                        <li>Each group has at least one sample</li>
+                        <li>At least one comparison has been set</li>
+                        <li>All groups are to be compared</li>
+                    </ul>
+                </li>
+            }
+            
+            @if(!Model.IsValidSampleSetPairEndings)
+            {
+                <li>Sample associated has invalid paired-end FASTQ files.</li>
+            }
+
+            @if (!Model.IsValidSampleNumberOfFiles)
+            {
+               <li>Sample associated to the Analysis with 0 FASTQ files.</li>
+            }
+            
+            @if (Model.GNAnalysisRequestGNSamples.Count == 0)
+            {
+                <li>The Analysis has no samples associated.</li>
+            }
+
+            @if (Model.GNAnalysisRequestGNSamples.Count > 0 && Model.AllSamplesAreReady)
+            {
+                <li>One or more samples are marked as "not ready for analysis". Maybe after being associated to this analysis, the field was switched from "ready" to "incomplete upload"?</li>
+            }            
+        </ul>
+
+    }
+    
+}

@@ -1,0 +1,52 @@
+﻿@model GenomeNext.Data.EntityModel.GNTemplate
+
+@{
+    GenomeNext.Data.EntityModel.GNContact contactForUser = ViewBag.ContactForUser;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    using (Html.BeginGNPanel())
+    {
+        //Heading
+        using (Html.BeginGNPanelHeading("Template Info", "info-sign"))
+        {
+        }
+
+        //Body
+        using (Html.BeginGNPanelBody())
+        {
+            <div class="form-horizontal col-md-12">
+
+                @Html.BootstrapRowSpacer()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GNOrganizationId, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownList("GNOrganizationId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.GNOrganizationId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @Html.FormFieldFor(model => model.Code)
+                @Html.FormFieldFor(model => model.Name)
+                @Html.FormFieldFor(model => model.Version)
+
+            </div>
+        }
+
+        //Footer
+        using (Html.BeginGNPanelFooter())
+        {
+            <div class="pull-left">
+                @Html.BootstrapActionButton("Cancel", "Index", "Templates", null, "bg-gn-medium-gray white", "remove")
+            </div>
+            <div class="pull-right">
+                @Html.BootstrapFormSaveButton("Save", "floppy-disk", "bg-gn-green white")
+            </div>
+        }
+    }
+}
